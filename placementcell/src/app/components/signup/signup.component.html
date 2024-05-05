@@ -1,0 +1,104 @@
+ 
+<main>
+<div class="container-flude mt-2 mb-3 p-0 user-select-none">
+    <div class="container page-heading text-center p-0 bg-white rounded shadow">
+        <h3 style="background-color: #3aaaff"
+            class="card-header p-2 text-light rounded border border-end-0 border-bottom-0 border-start-0 border-5 border-dark">
+            <strong>Signup</strong>
+        </h3>
+    </div>
+
+    <!-- <div class="container main-con mt-2 bg-white-subtle p-1  rounded">
+
+        <form class="form" #NgForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data" >    
+            <div class="card">
+          
+                <div class="card-body">
+                    <div class="col">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>
+                                   <b>User Name:</b>
+                                </label>
+                                <input type="text" class="form-control shadow rounded border-1 border-dark" id="Mobile_No" [(ngModel)]="formData.Mobile_No" name="username" placeholder="User Name"  />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>
+                                   <b>Password:</b>
+                                </label>
+                                <input type="text" class="form-control shadow rounded border-1 border-dark" id="Mobile_No" [(ngModel)]="formData.Mobile_No" name="password" placeholder="Mobile"  />
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>
+                                   <b>Re-Password:</b>
+                                </label>
+                                <input type="text" class="form-control shadow rounded border-1 border-dark" id="Mobile_No" [(ngModel)]="formData.Mobile_No" name="password" placeholder="Mobile"  />
+                            </div>
+                        </div>                 
+                   
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2 d-flex justify-content-evenly pt-4 pb-3 rounded-top bg-white border border-1 border-dark">            
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div> -->
+
+
+ 
+
+  
+<div class="signup-container">
+    <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+      <!-- Other form fields -->
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" [(ngModel)]="user.username" required minlength="3" maxlength="20" #username="ngModel">
+        <div style="color: red;" *ngIf="username.hasError('required') && (username.dirty || username.touched)" class="error">
+            Username is required.
+          </div>
+          <div style="color: red;" *ngIf="username.hasError('minlength') && username.dirty" class="error">
+            Username must be at least 3 characters long.
+          </div>
+          
+        <div style="color: red;" *ngIf="username.hasError('maxlength') && (username.dirty || username.touched)" class="error">
+            Username cannot be longer than 20 characters.
+          </div>
+          
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="user.password" required minlength="6" #password="ngModel">
+        <div style="color: red;" *ngIf="password.hasError('required') && (password.dirty || password.touched)" class="error">
+            Password is required.
+          </div>
+          
+
+          <div style="color: red;" *ngIf="password.hasError('minlength') && (password.dirty || password.touched)" class="error">
+            Password must be at least 6 characters long.
+          </div>          
+      </div>
+      <div class="form-group">
+        <label for="re_password">Confirm Password</label>
+        <input type="password" id="re_password" name="re_password" [(ngModel)]="user.rePassword" required minlength="6" #rePassword="ngModel">
+        <div style="color: red;" *ngIf="rePassword.hasError('required') && (rePassword.dirty || rePassword.touched)" class="error">
+            Confirm Password is required.
+          </div>          
+        <div *ngIf="user.password !== user.rePassword" class="error">
+          Passwords do not match.
+        </div>
+      </div>
+      <div class="text-center"> <!-- Centering the button -->
+        <button type="submit"  [disabled]="signupForm.invalid" class="btn btn-primary">Sign Up</button>
+      </div>
+    </form>
+  </div>
+</div>
+</main>
+  

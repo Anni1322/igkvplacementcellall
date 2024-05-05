@@ -1,0 +1,63 @@
+<mat-toolbar  class="custom-toolbar mat-elevation-z8 ">
+    <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span class="example-spacer">IGKV Placement</span>
+    <!-- <button routerLink="" mat-button>Home</button> -->
+    <!-- <button [matMenuTriggerFor]="lvl1master"  mat-button>Registration</button> -->
+    <mat-menu #lvl1master="matMenu">
+        <button  mat-menu-item routerLink="student_registraion" >Student</button>
+        <button  mat-menu-item routerLink="company_registraion" >Company</button>
+    </mat-menu>
+    <!-- <button [matMenuTriggerFor]="login" mat-button>Profile</button> -->
+    <button [matMenuTriggerFor]="login" mat-button>Welcome, {{ user?.username }}</button>
+
+    <mat-menu #login="matMenu">
+        <button  mat-menu-item routerLink="Profile" >Profile</button>
+        <!-- <button  mat-menu-item  routerLink="/login" onclick="logout()" >Logout</button> -->
+        <button mat-menu-item (click)="logout()">Logout</button>
+
+    </mat-menu>
+    <!-- <button routerLink="" mat-button>about</button> -->
+    <mat-icon matBadge="15" routerLink="/student_notification" matBadgeColor="warn">notifications</mat-icon>
+</mat-toolbar>
+
+
+<mat-drawer-container class="example-container" autosize>
+    <!-- <mat-drawer #drawer class="example-sidenav" opened="true"  mode="side"> -->
+    <!-- <mat-drawer #drawer class="example-sidenav" opened="true"  mode="over"> -->
+    <mat-drawer #drawer class="example-sidenav" opened="true"  mode="push">
+        <mat-nav-list>
+            <mat-list-item>
+                <button mat-button><mat-icon style="color: rgb(255, 149, 10);">dashboard</mat-icon>dashboard</button>
+              </mat-list-item>
+            <mat-list-item>
+                <button mat-button routerLink="/profile"><mat-icon>account_circle</mat-icon>Profile</button>
+              </mat-list-item>
+            <mat-list-item>
+                <button mat-button routerLink="/student_job_list"><mat-icon>info</mat-icon>Jobs</button>
+              </mat-list-item>
+            <mat-list-item>
+                <button mat-button routerLink="/my_application"><mat-icon>help</mat-icon>My Appication</button>
+              </mat-list-item>
+            <!-- <mat-list-item>
+                <button mat-button routerLink="/profile"><mat-icon>phone</mat-icon>?</button>
+              </mat-list-item>
+            <mat-list-item>
+                <button mat-button routerLink="/profile"><mat-icon>email</mat-icon>dashboard</button>
+              </mat-list-item> -->
+            <mat-list-item>
+                <button mat-button routerLink="/profile"><mat-icon>settings</mat-icon>Setting</button>
+              </mat-list-item>
+        </mat-nav-list>
+    </mat-drawer>
+
+    <mat-drawer-content>
+    <div style="text-align: center;min-height: 600px;"> 
+        
+        
+        <router-outlet></router-outlet>
+    </div>
+    </mat-drawer-content>  
+  </mat-drawer-container>
+  
