@@ -21,6 +21,11 @@ const sql = require('../config/db');
 
 
 
+ 
+
+ 
+
+
 //  jwt token use 
 const login = async (req, res) => {
     const { username , password } = req.body;
@@ -61,6 +66,12 @@ const login = async (req, res) => {
 // for Signup
 // Define the generateEmpId function
 function generateEmpId(empNum) {
+    // Check if empNum is null or undefined
+    if (empNum === null || empNum === undefined) {
+        console.error("empNum is null or undefined");
+        return null; 
+    }
+
     // Format empNum to have leading zeros if necessary
     const paddedEmpNum = empNum.toString().padStart(2, '0');
     // Concatenate 'igkv' with paddedEmpNum
@@ -68,10 +79,23 @@ function generateEmpId(empNum) {
     return empId;
 }
 
+
 const Signup = async (req, res) => {
     // Access the request body
     const { username, password } = req.body;
     console.log("Data=>", username, password );
+
+
+    bcrypt.hash(password, 10, (hashErr, hashedPassword) => {
+        if (hashErr) {
+            console.error('Error hashing password: ', hashErr);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+    
+        console.log("pass=>", hashedPassword);
+    });
+    
+
      
     // Validate required fields
     if (!username || !password  ) {
@@ -91,40 +115,44 @@ const Signup = async (req, res) => {
             // Username exists, return an error
             return res.status(400).json({ error: 'Username already exists' });
         } else {
-
-            // const query = 'SELECT MAX(id) AS max_emp_id FROM dbo.login_table;';
-            // // const query = 'SELECT TOP 1 id FROM dbo.login_table ORDER BY id DESC';
-            // request.query(query, (err, result) => {
-            //     if (err) {
-            //         console.error('Error retrieving largest id: ', err);
-            //     } else {
-            //         // Access the max_emp_id value from the result
-            //         const maxEmpId = result.recordset[0].max_emp_id;
-             
-            //         // Increment the largest id by 1
-            //         const newId = maxEmpId + 1;
-            //         console.log('New id:', newId);
-            //     }
-            // });
-             
-            // const empId = generateEmpId(id);
-            // console.log(empId)
-
-            const insertQuery = 'INSERT INTO dbo.login_table (username, password) VALUES (@username, @password)';
-            request.input('password', sql.VarChar, password); // assuming password is stored as a string
-            // request.input('Emp_Id', sql.VarChar, empId);
-
-            request.query(insertQuery, (err, results) => {
+           // Retrieve the maximum id from login_table
+            const query = `SELECT MAX(id) AS max_emp_id FROM dbo.login_table`;
+            request.query(query, (err, result) => {
                 if (err) {
-                    console.error('Error inserting into SQL Server: ', err);
+                    console.error('Error retrieving largest id: ', err);
                     return res.status(500).json({ error: 'Internal Server Error' });
                 }
-                // Handle successful insertion
-                res.status(200).json({ message: 'User registered successfully' });
+                // console.log('Query Result:', result); // Log the result object
+    
+                const maxEmpId = result.recordset[0].max_emp_id;
+                console.log("Max Employee ID:", maxEmpId);
+
+                const maxId = result.recordset[0].max_id || 1;
+                console.log("Max ID:", maxId);
+
+                // // Generate employee ID using maxId
+                const empId = generateEmpId(maxId + maxEmpId);
+                console.log("Generated Emp Id:", empId);
+             
+                // Insert user into the database
+                const insertQuery = 'INSERT INTO dbo.login_table (username, password, Emp_Id) VALUES (@username, @password, @Emp_Id)';
+                request.input('password', sql.VarChar, password);
+                request.input('Emp_Id', sql.VarChar, empId);
+                request.query(insertQuery, (err, results) => {
+                    if (err) {
+                        console.error('Error inserting into SQL Server: ', err);
+                        return res.status(500).json({ error: 'Internal Server Error' });
+                    }
+                    // Handle successful insertion
+                    res.status(200).json({empId:empId,  message: 'User registered successfully' });
+                });
             });
         }
+
+
     });
 };
+
 
 
 

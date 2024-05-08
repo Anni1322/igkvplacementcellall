@@ -15,6 +15,9 @@ router.post('/signup',studentController.Signup);
 router.post('/login',studentController.login);
 
 
+// router.get('/users',studentController.users);
+
+
 
 
 

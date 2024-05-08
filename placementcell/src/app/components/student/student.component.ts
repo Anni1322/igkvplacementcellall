@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router'; 
 
@@ -11,6 +11,14 @@ import { Router } from '@angular/router';
 export class StudentComponent implements OnInit {
 
   user: any; // Variable to store user data retrieved from localStorage
+  @Input()
+  src?: string;
+  
+  @Input()
+  size = 128;
+
+  
+  notification_detail: any;
 
   constructor(private authService: AuthService,private router: Router) {}
 
@@ -29,3 +37,7 @@ logout(){
 }
 
 }
+
+
+
+ 

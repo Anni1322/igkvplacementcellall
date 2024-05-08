@@ -14,8 +14,11 @@ export class AuthService {
   login(credentials: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
       map(response => {
-        // Store user details and token in local storage or cookie
+        // Store user details and token in local storage
         localStorage.setItem('currentUser', JSON.stringify(response));
+        if (response && response.userId) {
+          localStorage.setItem('userId', response.userId);
+        }
         return response;
       }),
       catchError(error => {

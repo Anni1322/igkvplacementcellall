@@ -1,24 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router'; 
-
 
 @Component({
-  selector: 'app-student-header',
-  templateUrl: './student-header.component.html',
-  styleUrls: ['./student-header.component.scss']
+  selector: 'app-admin-header',
+  templateUrl: './admin-header.component.html',
+  styleUrls: ['./admin-header.component.scss']
 })
-export class StudentHeaderComponent  implements OnInit{
+export class AdminHeaderComponent {
+  showFiller = false;
 
   user: any; // Variable to store user data retrieved from localStorage
-  @Input()
-  src?: string;
-  
-  @Input()
-  size = 128;
-
-  
-  notification_detail: any;
 
   constructor(private authService: AuthService,private router: Router) {}
 

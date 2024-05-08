@@ -4,10 +4,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminComponent } from './components/admin/admin/admin.component';
 import { StudentComponent } from './components/student/student.component';
 
-import { LayoutComponent } from './layout/layout.component';
+ 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -34,6 +34,27 @@ import { StudentProfileComponent } from './components/student/student-profile/st
 import { MyApplicationTrackingComponent } from './components/student/my-application-tracking/my-application-tracking.component';
 import { JobListComponent } from './components/student/job-list/job-list.component';
 import { StudentHeaderComponent } from './components/student/student-header/student-header.component';
+import { LoginpageComponent } from './practice/loginpage/loginpage.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
+
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+
+import { BodyComponent } from './practice2/body/body.component';
+import { SidenavComponent } from './practice2/sidenav/sidenav.component';
+import { DashboardComponent } from './practice2/dashboard/dashboard.component';
+import { AdminProfileComponent } from './components/admin/admin-profile/admin-profile.component';
+import { AdminSidebarComponent } from './components/admin/admin-sidebar/admin-sidebar.component';
+import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
+import { AdminBodyComponent } from './components/admin/admin-body/admin-body.component';
+
+
+// 05 5 2024 for install 
+ 
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 
 @NgModule({
@@ -41,7 +62,6 @@ import { StudentHeaderComponent } from './components/student/student-header/stud
     AppComponent,
     AdminComponent,
     StudentComponent,
-    LayoutComponent,
     MenubarComponent,
     HomeComponent,
     CompanyregistrationComponentComponent,
@@ -54,7 +74,18 @@ import { StudentHeaderComponent } from './components/student/student-header/stud
     StudentProfileComponent,
     MyApplicationTrackingComponent,
     JobListComponent,
-    StudentHeaderComponent
+    StudentHeaderComponent,
+    LoginpageComponent,
+    BodyComponent,
+    SidenavComponent,
+    DashboardComponent,
+    AdminProfileComponent,
+    AdminSidebarComponent,
+    AdminHeaderComponent,
+    AdminBodyComponent,
+ 
+
+
   ],
   imports: [
     BrowserModule,
@@ -68,9 +99,16 @@ import { StudentHeaderComponent } from './components/student/student-header/stud
     MatListModule,
     MatCommonModule,
     MatBadgeModule,
+    MatCardModule,
+
+    MatInputModule,
+    ReactiveFormsModule,
+ 
 
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
+    MatExpansionModule
 
     
     
