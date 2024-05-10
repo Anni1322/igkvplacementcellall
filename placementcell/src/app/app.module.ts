@@ -49,13 +49,15 @@ import { AdminProfileComponent } from './components/admin/admin-profile/admin-pr
 import { AdminSidebarComponent } from './components/admin/admin-sidebar/admin-sidebar.component';
 import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
 import { AdminBodyComponent } from './components/admin/admin-body/admin-body.component';
-
+// 10 5 2024  for install
+import {MatStepperModule} from '@angular/material/stepper';
+import { CompanyComponent } from './components/company/company.component';
 
 // 05 5 2024 for install 
  
 import { MatExpansionModule } from '@angular/material/expansion';
 
-
+ 
 
 @NgModule({
   declarations: [
@@ -83,6 +85,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     AdminSidebarComponent,
     AdminHeaderComponent,
     AdminBodyComponent,
+    CompanyComponent,
  
 
 
@@ -108,8 +111,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     FormsModule,
     HttpClientModule,
 
-    MatExpansionModule
-
+    MatExpansionModule,
+    MatStepperModule
     
     
   ],
