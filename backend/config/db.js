@@ -2,9 +2,10 @@
 const sql = require("mssql/msnodesqlv8");
 
 var config = {
-    server: "ANNI\\SQLEXPRESS",
+    user: "igkv",
     database: "placementcell",
-    driver: "msnodesqlv8",
+    server:"DESKTOP-NDU9JS5",
+    password: "igkv@123",
     options: {
         trustedConnection: true
     }
