@@ -11,11 +11,18 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent {
   loginData: any = {}; // Object to store login form data
 
-  constructor(private router: Router,private auth:AuthService) {}
+  constructor(
+    private router: Router,
+    private auth:AuthService
+    ) {}
 
   onSubmit() {
     console.log('User submitted:', this.loginData);
+
     const formdata = this.loginData;
+
+
+
 
     this.auth.login(formdata).subscribe(
       (response) => { 
@@ -25,7 +32,7 @@ export class LoginComponent {
           // Do something with the id and username, such as storing in local storage
           console.log('Login successful. User ID:', id, 'Username:', username);
           alert("Login successful");
-          this.router.navigate(['/student']);
+          this.router.navigate(['/student/s-basic-details']);
         } else {
           alert("wrong password");
           console.log('Login failed. Invalid credentials.');

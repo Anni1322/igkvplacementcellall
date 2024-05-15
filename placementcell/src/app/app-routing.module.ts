@@ -17,6 +17,11 @@ import { LoginpageComponent } from './practice/loginpage/loginpage.component';
 import { SidenavComponent } from './practice2/sidenav/sidenav.component';
 import { DashboardComponent } from './practice2/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
+import { SHeaderComponent } from './components/student/s-layout/s-header/s-header.component';
+import { SProfileComponent } from './components/student/s-profile/s-profile.component';
+import { SAplicationComponent } from './components/student/s-aplication/s-aplication.component';
+import { SBasicDetailsComponent } from './components/student/s-basic-details/s-basic-details.component';
+import { SProfileEditComponent } from './components/student/s-profile-edit/s-profile-edit.component';
 
 
 
@@ -31,9 +36,9 @@ const routes: Routes = [
  
   {path:'', component:HomeComponent},
   {path:'admin', component:AdminComponent},
-  {path:'company_registraion', component:CompanyregistrationComponentComponent},
+  {path:'company_registration', component:CompanyregistrationComponentComponent},
   // {path:'student_registraion', component:StudentragistrationComponentComponent},
-  {path:'student_registraion', component:StudentragistrationComponentComponent},
+  
   {path:'joblist', component:JoblistComponent},
 
   {path:'login', component:LoginComponent},
@@ -44,16 +49,23 @@ const routes: Routes = [
 
 
  
-  {path:'student', component:StudentComponent},
-  {path:'student_profile', component:StudentProfileComponent},
-  {path:'student_notification', component:StudentNotificationComponent},
-  {path:'student_job_list', component:JobListComponent},
-  {path:'my_application', component:MyApplicationTrackingComponent},
+  {path:'student', component:StudentComponent,children:[
+    {path:'student_profile', component:StudentProfileComponent},
+    {path:'student_notification', component:StudentNotificationComponent},
+    {path:'student_job_list', component:JobListComponent},
+    {path:'s-basic-details', component:SAplicationComponent},
+    {path:'s-basic-form', component:SBasicDetailsComponent},
+    {path:'s-profile', component:SProfileComponent},
+    {path:'s-profile-edit/:id', component:SProfileEditComponent},
+    {path:'student_registration', component:StudentragistrationComponentComponent},
+  ]},
+ 
 
 
   // practice 
 
  {path:'logpra', component:LoginpageComponent},
+ {path:'s-header', component:SHeaderComponent},
 
  
 

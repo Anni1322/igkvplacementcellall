@@ -1,5 +1,5 @@
 <main>
-<div class="container homebody">
+<div class=" homebody">
     <header>
       <nav>
         <div class="logo">
@@ -8,12 +8,9 @@
         <ul class="nav-links">
           <li><a routerLink="/login">Login</a></li>
           <li><a routerLink="/signup">Signup</a></li>
-          
         </ul>
       </nav>
     </header>
-
-
 
     <div class="content">
       <h1>Welcome to Placement Portal</h1>
@@ -26,3 +23,9 @@
   </div>
 </main>
   
+<app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+
+<app-body>
+    [collapsed]="isSideNavCollapsed"
+    [screenWidth]="screenWidth"
+</app-body>

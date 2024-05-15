@@ -29,10 +29,12 @@ const sql = require('../config/db');
 //  jwt token use 
 const login = async (req, res) => {
     const { username , password } = req.body;
+
     console.log(username,password);
+
     try {
         const request = new sql.Request();
-        const usernameCheckQuery = 'SELECT id, username, password FROM dbo.login_table WHERE username = @username';
+        const usernameCheckQuery = 'SELECT id, Emp_Id, username, password FROM dbo.login_table WHERE username = @username';
         request.input('username', sql.VarChar, username);
         request.input('password', sql.VarChar, password);  
 
@@ -46,7 +48,9 @@ const login = async (req, res) => {
                 return res.status(200).json({ 
                     id: user.id, 
                     username: user.username, 
+                    eid: user.Emp_Id, 
                     message: 'Username login successful' 
+                    // message:user.Emp_Id,
                 });
             } else {
                 // Password does not match
@@ -101,8 +105,11 @@ const Signup = async (req, res) => {
     if (!username || !password  ) {
         return res.status(400).json({ error: 'All fields are required' });
     }
+
+
     const request = new sql.Request();
     const usernameCheckQuery = 'SELECT COUNT(*) AS count FROM dbo.login_table WHERE username = @username';
+    
     request.input('username', sql.VarChar, username);
 
     request.query(usernameCheckQuery, (err, result) => {
@@ -110,13 +117,16 @@ const Signup = async (req, res) => {
             console.error('Error checking Username existence in SQL Server: ', err);
             return res.status(500).json({ error: 'Internal Server Error' });
         }
+
         // If count is greater than 0, username exists
         if (result.recordset[0].count > 0) {
             // Username exists, return an error
             return res.status(400).json({ error: 'Username already exists' });
         } else {
+
            // Retrieve the maximum id from login_table
             const query = `SELECT MAX(id) AS max_emp_id FROM dbo.login_table`;
+
             request.query(query, (err, result) => {
                 if (err) {
                     console.error('Error retrieving largest id: ', err);
@@ -134,10 +144,14 @@ const Signup = async (req, res) => {
                 const empId = generateEmpId(maxId + maxEmpId);
                 console.log("Generated Emp Id:", empId);
              
+
+
                 // Insert user into the database
                 const insertQuery = 'INSERT INTO dbo.login_table (username, password, Emp_Id) VALUES (@username, @password, @Emp_Id)';
+                
                 request.input('password', sql.VarChar, password);
                 request.input('Emp_Id', sql.VarChar, empId);
+
                 request.query(insertQuery, (err, results) => {
                     if (err) {
                         console.error('Error inserting into SQL Server: ', err);
@@ -148,8 +162,6 @@ const Signup = async (req, res) => {
                 });
             });
         }
-
-
     });
 };
 

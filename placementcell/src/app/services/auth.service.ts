@@ -9,10 +9,12 @@ import { catchError, map } from 'rxjs/operators';
 export class AuthService {
   private apiUrl = 'http://localhost:3000/student';  
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient
+    ) {}
 
-  login(credentials: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
+  login(loginData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, loginData).pipe(
       map(response => {
         // Store user details and token in local storage
         localStorage.setItem('currentUser', JSON.stringify(response));

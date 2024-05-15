@@ -1,13 +1,14 @@
 .sidenav{
    
     // background: #001520;
-    background: linear-gradient(to right, #0000FF, #27a1ff, #0075fb);
+    background: linear-gradient(to right, #0000FF,  #0075fb);
     transition: all .5s ease;
     position: fixed;
     z-index: 9;
     top: 0;
     width: 5rem;
     height: 100vh;
+    border-right: 4px solid rgb(255, 255, 255);
     // box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
     li{
         list-style: none;

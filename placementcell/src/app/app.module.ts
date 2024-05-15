@@ -56,8 +56,18 @@ import { CompanyComponent } from './components/company/company.component';
 // 05 5 2024 for install 
  
 import { MatExpansionModule } from '@angular/material/expansion';
+import { StudentSidebarComponent } from './components/student/layout/student-sidebar/student-sidebar.component';
+import { SDashboardComponent } from './components/student/s-dashboard/s-dashboard.component';
+import { SMainComponent } from './components/student/s-main/s-main.component';
+import { SAplicationComponent } from './components/student/s-aplication/s-aplication.component';
+import { SJobSerchComponent } from './components/student/s-job-serch/s-job-serch.component';
+import { SBasicDetailsComponent } from './components/student/s-basic-details/s-basic-details.component';
+import { SHeaderComponent } from './components/student/s-layout/s-header/s-header.component';
+import { SSidebarComponent } from './components/student/s-layout/s-sidebar/s-sidebar.component';
+import { SProfileComponent } from './components/student/s-profile/s-profile.component';
 
- 
+import { SProfileEditComponent } from './components/student/s-profile-edit/s-profile-edit.component';
+
 
 @NgModule({
   declarations: [
@@ -86,7 +96,18 @@ import { MatExpansionModule } from '@angular/material/expansion';
     AdminHeaderComponent,
     AdminBodyComponent,
     CompanyComponent,
- 
+    StudentSidebarComponent,
+    SDashboardComponent,
+    SMainComponent,
+    SAplicationComponent,
+    SJobSerchComponent,
+    SBasicDetailsComponent,
+    SHeaderComponent,
+    SSidebarComponent,
+    SProfileComponent,
+
+    SProfileEditComponent,
+  
 
 
   ],

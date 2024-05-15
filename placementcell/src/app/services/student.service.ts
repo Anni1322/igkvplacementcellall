@@ -20,4 +20,5 @@ export class StudentService {
   postStudentDetails(data: any) {
     return this.http.post(this.studentDetail_Post_Url, data);  
   }
+  
 }

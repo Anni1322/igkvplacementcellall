@@ -55,6 +55,7 @@
 
   
 <div class="signup-container">
+
     <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
       <!-- Other form fields -->
       <div class="form-group">
@@ -63,6 +64,7 @@
         <div style="color: red;" *ngIf="username.hasError('required') && (username.dirty || username.touched)" class="error">
             Username is required.
           </div>
+          
           <div style="color: red;" *ngIf="username.hasError('minlength') && username.dirty" class="error">
             Username must be at least 3 characters long.
           </div>
@@ -98,6 +100,8 @@
         <button type="submit"  [disabled]="signupForm.invalid" class="btn btn-primary">Sign Up</button>
       </div>
     </form>
+
+
   </div>
 </div>
 </main>
