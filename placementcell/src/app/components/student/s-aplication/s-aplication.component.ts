@@ -21,7 +21,12 @@ export class SAplicationComponent implements OnInit  {
         this.user = JSON.parse(userData);
         // Initialize formData object after user data is retrieved
         this.formData = {
-          user_id: this.user.eid || '' // Assign user id if available, otherwise empty string
+          user_id: this.user.eid || '', // Assign user id if available, otherwise empty string
+          RegistrationType: this.user.RegistrationType || '' 
+          // user_id: this.user.eid || '' 
+          // user_id: this.user.eid || '' 
+          // user_id: this.user.eid || '' 
+          // user_id: this.user.eid || '' 
         };
         console.log(this.formData.user_id); // Log user_id here
     }

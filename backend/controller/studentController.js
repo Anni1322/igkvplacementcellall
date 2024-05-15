@@ -34,7 +34,14 @@ const login = async (req, res) => {
 
     try {
         const request = new sql.Request();
-        const usernameCheckQuery = 'SELECT id, Emp_Id, username, password FROM dbo.login_table WHERE username = @username';
+        // const usernameCheckQuery = 'SELECT id, Emp_Id, username, password FROM dbo.login_table WHERE username = @username';
+  
+        const usernameCheckQuery = `
+        SELECT l.id, l.Emp_Id, l.username, l.password, s.*
+        FROM dbo.login_table AS l
+        FULL JOIN student_registration AS s ON l.Emp_Id = s.UE_ID
+        WHERE l.username = @username`;
+        
         request.input('username', sql.VarChar, username);
         request.input('password', sql.VarChar, password);  
 
@@ -49,6 +56,12 @@ const login = async (req, res) => {
                     id: user.id, 
                     username: user.username, 
                     eid: user.Emp_Id, 
+                    fname: user.Student_First_Name_E, 
+                    mname: user.Student_Middle_Name_E, 
+                    lname: user.Student_Last_Name_E, 
+                    mno: user.Mobile_No, 
+                    email: user.Email_Id, 
+                    dob: user.DOB, 
                     message: 'Username login successful' 
                     // message:user.Emp_Id,
                 });
@@ -303,7 +316,7 @@ const { insertQuery } = require('./queries');
 const registerStudent = async (req, res) => {
     // Access the request body
     const {
-        UE_ID,
+        user_id,
         Registration_Type,
         Salutation_E,
         Salutation_H,
@@ -336,6 +349,8 @@ const registerStudent = async (req, res) => {
     // if (!name || !email || !age || !gender ) {
     //     return res.status(400).json({ error: 'All fields are required' });
     // }
+
+    console.log("this id check"+ user_id);
     
     // Create a new request object
     const request = new sql.Request();
@@ -415,7 +430,7 @@ const registerStudent = async (req, res) => {
                     @Public_IP_Address,
                     @Private_IP_Address
                 )`;
-                    request.input('UE_ID', sql.BigInt, UE_ID);
+                    request.input('UE_ID', sql.VarChar(50), user_id);
                     request.input('Registration_Type', sql.Char, Registration_Type);
                     request.input('Salutation_E', sql.TinyInt, Salutation_E);
                     request.input('Salutation_H', sql.TinyInt, Salutation_H);

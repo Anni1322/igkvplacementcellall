@@ -22,6 +22,8 @@ import { SProfileComponent } from './components/student/s-profile/s-profile.comp
 import { SAplicationComponent } from './components/student/s-aplication/s-aplication.component';
 import { SBasicDetailsComponent } from './components/student/s-basic-details/s-basic-details.component';
 import { SProfileEditComponent } from './components/student/s-profile-edit/s-profile-edit.component';
+import { SJobSerchComponent } from './components/student/s-job-serch/s-job-serch.component';
+import { SJoblistComponent } from './components/student/s-joblist/s-joblist.component';
 
 
 
@@ -52,7 +54,7 @@ const routes: Routes = [
   {path:'student', component:StudentComponent,children:[
     {path:'student_profile', component:StudentProfileComponent},
     {path:'student_notification', component:StudentNotificationComponent},
-    {path:'student_job_list', component:JobListComponent},
+    {path:'student_job_list', component:SJoblistComponent},
     {path:'s-basic-details', component:SAplicationComponent},
     {path:'s-basic-form', component:SBasicDetailsComponent},
     {path:'s-profile', component:SProfileComponent},

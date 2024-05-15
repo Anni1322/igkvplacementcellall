@@ -67,6 +67,7 @@ import { SSidebarComponent } from './components/student/s-layout/s-sidebar/s-sid
 import { SProfileComponent } from './components/student/s-profile/s-profile.component';
 
 import { SProfileEditComponent } from './components/student/s-profile-edit/s-profile-edit.component';
+import { SJoblistComponent } from './components/student/s-joblist/s-joblist.component';
 
 
 @NgModule({
@@ -107,6 +108,7 @@ import { SProfileEditComponent } from './components/student/s-profile-edit/s-pro
     SProfileComponent,
 
     SProfileEditComponent,
+      SJoblistComponent,
   
 
 
