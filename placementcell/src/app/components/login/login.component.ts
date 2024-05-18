@@ -21,18 +21,22 @@ export class LoginComponent {
 
     const formdata = this.loginData;
 
-
-
-
     this.auth.login(formdata).subscribe(
       (response) => { 
         if (response) {
           const id = response.id;
           const username = response.username;
+          const eid = response.eid;
           // Do something with the id and username, such as storing in local storage
           console.log('Login successful. User ID:', id, 'Username:', username);
           alert("Login successful");
-          this.router.navigate(['/student/s-basic-details']);
+          // condition check for admin or not
+          if (eid == "igkv02") {
+             this.router.navigate(['/company/c-dashboard']);
+          } else {
+            this.router.navigate(['/student/s-basic-details']);
+          }
+         
         } else {
           alert("wrong password");
           console.log('Login failed. Invalid credentials.');

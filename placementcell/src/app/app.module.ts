@@ -32,7 +32,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { StudentNotificationComponent } from './components/student/student-notification/student-notification.component';
 import { StudentProfileComponent } from './components/student/student-profile/student-profile.component';
 import { MyApplicationTrackingComponent } from './components/student/my-application-tracking/my-application-tracking.component';
-import { JobListComponent } from './components/student/job-list/job-list.component';
+
 import { StudentHeaderComponent } from './components/student/student-header/student-header.component';
 import { LoginpageComponent } from './practice/loginpage/loginpage.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -68,6 +68,20 @@ import { SProfileComponent } from './components/student/s-profile/s-profile.comp
 
 import { SProfileEditComponent } from './components/student/s-profile-edit/s-profile-edit.component';
 import { SJoblistComponent } from './components/student/s-joblist/s-joblist.component';
+import { CMainComponent } from './components/company/c-main/c-main.component';
+
+import { CHeaderComponent } from './components/company/c-layout/c-header/c-header.component';
+import { CSidebarComponent } from './components/company/c-layout/c-sidebar/c-sidebar.component';
+import { CDashboardComponent } from './components/company/c-dashboard/c-dashboard.component';
+import { CJobpostComponent } from './components/company/c-jobpost/c-jobpost.component';
+import { CStatusComponent } from './components/company/c-status/c-status.component';
+import { CProfileComponent } from './components/company/c-profile/c-profile.component';
+import { SStatusComponent } from './components/student/s-status/s-status.component';
+import { SVacancyDetailsComponent } from './components/student/s-vacancy-details/s-vacancy-details.component';
+import { CAddVacancyDetailsComponent } from './components/company/c-add-vacancy-details/c-add-vacancy-details.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 @NgModule({
@@ -86,7 +100,6 @@ import { SJoblistComponent } from './components/student/s-joblist/s-joblist.comp
     StudentNotificationComponent,
     StudentProfileComponent,
     MyApplicationTrackingComponent,
-    JobListComponent,
     StudentHeaderComponent,
     LoginpageComponent,
     BodyComponent,
@@ -109,6 +122,17 @@ import { SJoblistComponent } from './components/student/s-joblist/s-joblist.comp
 
     SProfileEditComponent,
       SJoblistComponent,
+      CMainComponent,
+      CHeaderComponent,
+      CSidebarComponent,
+      CDashboardComponent,
+      CJobpostComponent,
+      CStatusComponent,
+      CProfileComponent,
+      SStatusComponent,
+      SVacancyDetailsComponent,
+      CAddVacancyDetailsComponent,
+   
   
 
 
@@ -135,7 +159,9 @@ import { SJoblistComponent } from './components/student/s-joblist/s-joblist.comp
     HttpClientModule,
 
     MatExpansionModule,
-    MatStepperModule
+    MatStepperModule,
+    MatPaginatorModule,
+    MatTableModule
     
     
   ],

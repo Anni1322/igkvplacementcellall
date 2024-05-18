@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const studentRouter = require('./routes/student')
+const companyRouter = require('./routes/company')
 const sql = require('./config/db');
 const cors = require('cors');
 // morgun
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 
 
 app.use('/student', studentRouter);
+app.use('/company', companyRouter);
 
 
 app.listen(PORT, () => {
