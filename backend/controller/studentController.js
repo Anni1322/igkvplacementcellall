@@ -77,7 +77,13 @@ const login = async (req, res) => {
         console.error('Error checking Username existence in SQL Server: ', error);
         return res.status(500).json({ error: 'Internal Server Error' });
     }
+
+
 };
+
+
+
+
 
 
 // for Signup
@@ -177,6 +183,32 @@ const Signup = async (req, res) => {
         }
     });
 };
+
+
+
+const Profile = async (req, res) => {
+    const { eid } = req.body;
+    // if (!eid) {
+    //     return res.status(400).json({ error: 'eid is required' });
+    // }
+    try {
+        const request = new sql.Request();
+        request.input('eid', sql.VarChar(50), eid);
+
+        const query = 'SELECT * FROM dbo.student_registration WHERE UE_ID = @eid';
+        console.log('Executing query:', query, 'with eid:', eid);
+        const result = await request.query(query);
+        if (result.recordset.length > 0) {
+            res.json(result.recordset[0]);
+        } else {
+            return res.status(404).json({ error: 'Student not found' });
+        }
+    } catch (error) {
+        console.error('Error checking existence in SQL Server: ', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
 
 
 
@@ -479,5 +511,6 @@ module.exports ={
     registerStudent,
     Signup,
     login,
-    getStudents
+    getStudents,
+    Profile
 }

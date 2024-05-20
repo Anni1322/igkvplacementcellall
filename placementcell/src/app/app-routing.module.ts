@@ -33,8 +33,10 @@ import { SStatusComponent } from './components/student/s-status/s-status.compone
 import { SDashboardComponent } from './components/student/s-dashboard/s-dashboard.component';
 import { SVacancyDetailsComponent } from './components/student/s-vacancy-details/s-vacancy-details.component';
 import { CAddVacancyDetailsComponent } from './components/company/c-add-vacancy-details/c-add-vacancy-details.component';
-import { AdminBodyComponent } from './components/admin/admin-body/admin-body.component';
-
+import { AdminBodyComponent } from './components/admin/a-layout/admin-body/admin-body.component';
+import { ADashboardComponent } from './components/admin/a-dashboard/a-dashboard.component';
+import { CEditVacancyDetailsComponent } from './components/company/c-edit-vacancy-details/c-edit-vacancy-details.component';
+ 
 
 
 
@@ -43,13 +45,14 @@ const routes: Routes = [
   // for new sidebar 
   // {path:'', redirectTo: 'dashboard', pathMatch : 'full'},
   {path:'dashboard', component:DashboardComponent},
+  {path:'abody', component:AdminBodyComponent},
 
 
  
   {path:'', component:HomeComponent},
   {path:'admin', component:AdminComponent,children:[
     {path:'company_registration', component:CompanyregistrationComponentComponent},
-    {path:'admin', component:AdminBodyComponent},
+    {path:'a-dashboard', component:ADashboardComponent},
   ]},
  
   // {path:'student_registraion', component:StudentragistrationComponentComponent},
@@ -88,6 +91,7 @@ const routes: Routes = [
     {path:'c-status', component:CStatusComponent},
     {path:'c-profile', component:CProfileComponent},
     {path:'c-add-vacancy', component:CAddVacancyDetailsComponent},
+    {path:'c-edit-vacancy/:id', component:CEditVacancyDetailsComponent},
   
   ]},
 

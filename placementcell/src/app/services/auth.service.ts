@@ -37,5 +37,11 @@ export class AuthService {
     
   }
 
+
+
+ 
+
+  
+
   // Implement other authentication-related methods such as registration, logout, etc.
 }

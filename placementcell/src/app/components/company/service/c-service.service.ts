@@ -8,6 +8,7 @@ import { JobStatus } from '../c-status/job-status.model';
 })
 export class CServiceService {
   private apiUrl = 'http://localhost:3000/company/vacancies'; 
+  private baseurl = 'http://localhost:3000'; 
   private postapiUrl = 'http://localhost:3000/company/add_vacancy'; 
  
   constructor(private http:HttpClient) { }
@@ -16,6 +17,13 @@ export class CServiceService {
 postVacancies(vdata: any) {
   return this.http.post(this.postapiUrl, vdata)
 }
+
+// update vacancy 
+// get data form vacancy id 
+updateVacancy(vdata: string): Observable<any> {
+  return this.http.post<any>(`${this.baseurl}/company/update_vacancy`, vdata );
+}
+
 
 postsignup(data: any) {
   return this.http.post(this.apiUrl+'/vacancies', data);  
@@ -26,6 +34,14 @@ postsignup(data: any) {
     return this.http.get<JobStatus[]>(this.apiUrl);
   }
 
+
+
+// get data form vacancy id 
+getVacancyedata(Vacancy_ID: string): Observable<any> {
+  return this.http.post<any>(`${this.baseurl}/company/getdata_update_vacancy`, { Vacancy_ID });
+}
+
+  
 
 
 

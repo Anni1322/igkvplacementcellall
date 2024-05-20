@@ -14,6 +14,8 @@ router.get('/student_List', studentController.getAllStudents);
 router.post('/signup',studentController.Signup);
 
 router.post('/login',studentController.login);
+
+router.post('/search',studentController.Profile);
  
 
 

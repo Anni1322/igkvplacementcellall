@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-s-profile',
@@ -10,9 +11,11 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SProfileComponent implements OnInit{
 
 
-  constructor(private auth:AuthService,
-    private router:Router
-    ){  }
+  constructor(
+    private auth:AuthService,
+    private router:Router,
+    private ds:StudentService
+    ){}
 
 
 
@@ -27,12 +30,40 @@ export class SProfileComponent implements OnInit{
       if (userData) {
           // Parse user data from JSON and assign it to the user variable
           this.user = JSON.parse(userData);
+
+          console.log("idddd"+this.user.eid)
+          // id pass 
+          this.getdata(this.user.eid);
       }
-
-
 
   }
 
+
+  // 
+  profiledata:any
+  
+  getdata(eid: any) {
+    console.log('EID:', eid);
+    this.ds.getProfiledata(eid).subscribe(
+      (response) => {
+        console.log('Raw Response:', response);
+  
+        this.profiledata = response;
+        console.log('Profile Data:', this.profiledata);
+  
+        if (this.profiledata) {
+          console.log('eid:', this.profiledata.UE_ID);
+          // console.log('username:', this.profiledata.username);
+        } else {
+          console.log('No profile data received.');
+        }
+      },
+      (error) => {
+        console.log('Error:', error);
+      }
+    );
+  }
+  
 
 getid(){
   const userid = this.user;

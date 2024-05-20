@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -6,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SidebarService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   private sidebarVisibilitySubject = new BehaviorSubject<boolean>(true);
   sidebarVisibility$ = this.sidebarVisibilitySubject.asObservable();
@@ -14,4 +15,12 @@ export class SidebarService {
   toggleSidebar() {
     this.sidebarVisibilitySubject.next(!this.sidebarVisibilitySubject.value);
   }
+
+
+
+
+
+
+
+
 }

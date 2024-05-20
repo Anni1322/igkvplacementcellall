@@ -31,9 +31,12 @@ export class LoginComponent {
           console.log('Login successful. User ID:', id, 'Username:', username);
           alert("Login successful");
           // condition check for admin or not
-          if (eid == "igkv02") {
+          if (username == "company") {
              this.router.navigate(['/company/c-dashboard']);
-          } else {
+          }else if(username == "admin"){
+            this.router.navigate(['/admin/a-dashboard']);
+          } 
+          else {
             this.router.navigate(['/student/s-basic-details']);
           }
          

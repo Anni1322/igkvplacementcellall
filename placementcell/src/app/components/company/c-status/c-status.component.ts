@@ -12,7 +12,7 @@ import { CServiceService } from '../service/c-service.service';
  
   
 export class CStatusComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['id', 'jobTitle', 'companyName', 'jobLocation', 'jobType', 'status', 'edit'];
+  displayedColumns: string[] = ['S.No.','id', 'jobTitle', 'companyName', 'jobLocation', 'jobType', 'status', 'edit'];
   // dataSource = new MatTableDataSource<JobStatus>(JOB_DATA);
   dataSource = new MatTableDataSource<JobStatus>();
 
@@ -43,6 +43,8 @@ export class CStatusComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+
 
 
 

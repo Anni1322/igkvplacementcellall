@@ -100,6 +100,148 @@ console.log('Private_IP_Address:', Private_IP_Address);
 };
 
 
+// get data for update vacancy deails
+const Updatejobdataget = async (req, res) => {
+    const { Vacancy_ID } = req.body;
+
+    // vid = 10
+    // if (!eid) {
+    //     return res.status(400).json({ error: 'eid is required' });
+    // }
+    try {
+        const request = new sql.Request();
+        request.input('Vacancy_ID', sql.VarChar(50), Vacancy_ID);
+        const query = 'SELECT * FROM dbo.tnp_vacancy_details WHERE Vacancy_ID = @Vacancy_ID';
+        console.log('Executing query:', query, 'with eid:', Vacancy_ID);
+        const result = await request.query(query);
+        if (result.recordset.length > 0) {
+            res.json(result.recordset[0]);
+        } else {
+            return res.status(404).json({ error: 'vacancy not found' });
+        }
+    } catch (error) {
+        console.error('Error checking existence in SQL Server: ', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+
+// for update vacancy
+const updateJob = async (req, res) => {
+    try {
+        const pool = await sql.connect(); // Connect to the database using the exported sql object
+        const request = pool.request(); // Create a request object from the pool
+        const {
+            Vacancy_ID,
+            Company_Id,
+            Company_Registration_No,
+            Job_Title,
+            Job_Description,
+            Job_Selection,
+            Job_Location,
+            No_Of_Post,
+            Salary,
+            Last_Date_for_apply,
+            Min_Experience_in_Year,
+            Maximum_Age,
+            Preferred_Gender,
+            Prefered_Language,
+            Status,
+            Created_By,
+            Created_Date,
+            Modified_By,
+            Modified_Date,
+            Delete_Flag,
+            Public_IP_Address,
+            Private_IP_Address
+        } = req.body;
+
+
+
+        console.log('Vacancy_ID:', Vacancy_ID);
+        console.log('Company_Id:', Company_Id);
+        console.log('Company_Registration_No:', Company_Registration_No);
+        console.log('Job_Title:', Job_Title);
+        console.log('Job_Description:', Job_Description);
+        console.log('Job_Selection:', Job_Selection);
+        console.log('Job_Location:', Job_Location);
+        console.log('No_Of_Post:', No_Of_Post);
+        console.log('Salary:', Salary);
+        console.log('Last_Date_for_apply:', Last_Date_for_apply);
+        console.log('Min_Experience_in_Year:', Min_Experience_in_Year);
+        console.log('Maximum_Age:', Maximum_Age);
+        console.log('Preferred_Gender:', Preferred_Gender);
+        console.log('Prefered_Language:', Prefered_Language);
+        console.log('Status:', Status);
+        console.log('Created_By:', Created_By);
+        console.log('Created_Date:', Created_Date);
+        console.log('Modified_By:', Modified_By);
+        console.log('Modified_Date:', Modified_Date);
+        console.log('Delete_Flag:', Delete_Flag);
+        console.log('Public_IP_Address:', Public_IP_Address);
+        console.log('Private_IP_Address:', Private_IP_Address);
+
+        const result = await request
+            .input('Vacancy_ID', sql.VarChar, Vacancy_ID)
+            .input('Company_Id', sql.VarChar, Company_Id)
+            .input('Company_Registration_No', sql.VarChar, Company_Registration_No)
+            .input('Job_Title', sql.VarChar, Job_Title)
+            .input('Job_Description', sql.VarChar, Job_Description)
+            .input('Job_Selection', sql.VarChar, Job_Selection)
+            .input('Job_Location', sql.VarChar, Job_Location)
+            .input('No_Of_Post', sql.Int, No_Of_Post)
+            .input('Salary', sql.VarChar, Salary)
+            .input('Last_Date_for_apply', sql.Date, Last_Date_for_apply)
+            .input('Min_Experience_in_Year', sql.Int, Min_Experience_in_Year)
+            .input('Maximum_Age', sql.Int, Maximum_Age)
+            .input('Preferred_Gender', sql.VarChar, Preferred_Gender)
+            .input('Prefered_Language', sql.VarChar, Prefered_Language)
+            .input('Status', sql.VarChar, Status)
+            .input('Created_By', sql.VarChar, Created_By)
+            .input('Created_Date', sql.DateTime, Created_Date)
+            .input('Modified_By', sql.VarChar, Modified_By)
+            .input('Modified_Date', sql.DateTime, Modified_Date)
+            .input('Delete_Flag', sql.VarChar, Delete_Flag)
+            .input('Public_IP_Address', sql.VarChar, Public_IP_Address)
+            .input('Private_IP_Address', sql.VarChar, Private_IP_Address)
+            .query(`
+                UPDATE tnp_vacancy_details 
+                SET 
+                    Company_Id = @Company_Id,
+                    Company_Registration_No = @Company_Registration_No,
+                    Job_Title = @Job_Title,
+                    Job_Description = @Job_Description,
+                    Job_Selection = @Job_Selection,
+                    Job_Location = @Job_Location,
+                    No_Of_Post = @No_Of_Post,
+                    Salary = @Salary,
+                    Last_Date_for_apply = @Last_Date_for_apply,
+                    Min_Experience_in_Year = @Min_Experience_in_Year,
+                    Maximum_Age = @Maximum_Age,
+                    Preferred_Gender = @Preferred_Gender,
+                    Prefered_Language = @Prefered_Language,
+                    Status = @Status,
+                    Created_By = @Created_By,
+                    Created_Date = @Created_Date,
+                    Modified_By = @Modified_By,
+                    Modified_Date = @Modified_Date,
+                    Delete_Flag = @Delete_Flag,
+                    Public_IP_Address = @Public_IP_Address,
+                    Private_IP_Address = @Private_IP_Address
+                WHERE Vacancy_ID = @Vacancy_ID
+            `);
+
+        res.status(200).send({ message: 'Vacancy updated successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ message: 'Error updating vacancy', error: err.message });
+    }
+};
+
+
+
+
+
 // API endpoint to get all vacancies
 const getJobs = async (req, res) => {
     try {
@@ -477,5 +619,7 @@ module.exports ={
     login,
     
     addjob,
+    Updatejobdataget,
+    updateJob,
     getJobs
 }

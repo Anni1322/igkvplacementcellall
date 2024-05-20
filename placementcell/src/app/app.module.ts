@@ -46,9 +46,7 @@ import { BodyComponent } from './practice2/body/body.component';
 import { SidenavComponent } from './practice2/sidenav/sidenav.component';
 import { DashboardComponent } from './practice2/dashboard/dashboard.component';
 import { AdminProfileComponent } from './components/admin/admin-profile/admin-profile.component';
-import { AdminSidebarComponent } from './components/admin/admin-sidebar/admin-sidebar.component';
-import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
-import { AdminBodyComponent } from './components/admin/admin-body/admin-body.component';
+ 
 // 10 5 2024  for install
 import {MatStepperModule} from '@angular/material/stepper';
 import { CompanyComponent } from './components/company/company.component';
@@ -81,6 +79,11 @@ import { SVacancyDetailsComponent } from './components/student/s-vacancy-details
 import { CAddVacancyDetailsComponent } from './components/company/c-add-vacancy-details/c-add-vacancy-details.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { AdminSidebarComponent } from './components/admin/a-layout/admin-sidebar/admin-sidebar.component';
+import { AdminHeaderComponent } from './components/admin/a-layout/admin-header/admin-header.component';
+import { AdminBodyComponent } from './components/admin/a-layout/admin-body/admin-body.component';
+import { ADashboardComponent } from './components/admin/a-dashboard/a-dashboard.component';
+import { CEditVacancyDetailsComponent } from './components/company/c-edit-vacancy-details/c-edit-vacancy-details.component';
 
 
 
@@ -132,6 +135,8 @@ import { MatTableModule } from '@angular/material/table';
       SStatusComponent,
       SVacancyDetailsComponent,
       CAddVacancyDetailsComponent,
+      ADashboardComponent,
+      CEditVacancyDetailsComponent,
    
   
 
