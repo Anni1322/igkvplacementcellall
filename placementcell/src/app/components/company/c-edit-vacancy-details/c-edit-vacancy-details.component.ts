@@ -62,7 +62,7 @@ getvacancydata(vid:any) {
     console.log('Form Data:', formData);
 
     this.ds.updateVacancy(formData).subscribe(()=>{
-      alert('Update successfully!');
+      alert('Update(edit) successfully!');
     },(error) => {
       console.error('Error submitting form:', error);
     })
