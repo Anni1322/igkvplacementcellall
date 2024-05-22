@@ -84,6 +84,9 @@ import { AdminHeaderComponent } from './components/admin/a-layout/admin-header/a
 import { AdminBodyComponent } from './components/admin/a-layout/admin-body/admin-body.component';
 import { ADashboardComponent } from './components/admin/a-dashboard/a-dashboard.component';
 import { CEditVacancyDetailsComponent } from './components/company/c-edit-vacancy-details/c-edit-vacancy-details.component';
+import { CBasicDetailsComponent } from './components/company/c-basic-details/c-basic-details.component';
+import { SBasicDetailsEditComponent } from './components/student/s-basic-details-edit/s-basic-details-edit.component';
+import { SApplyJobComponent } from './components/student/s-apply-job/s-apply-job.component';
 
 
 
@@ -137,6 +140,9 @@ import { CEditVacancyDetailsComponent } from './components/company/c-edit-vacanc
       CAddVacancyDetailsComponent,
       ADashboardComponent,
       CEditVacancyDetailsComponent,
+      CBasicDetailsComponent,
+      SBasicDetailsEditComponent,
+      SApplyJobComponent,
    
   
 

@@ -1,182 +1,4 @@
-<!-- <div class="card-body">
-                <div class="col-lg-6 col-md-12 -2">
-                <div class="form-group " >
-                    <label>
-                    <b>User ID:</b></label>
-
-                
-                    
-                   This is Your Id Fill bellow:{{user?.eid}}
-                    <input type="text"  class=" form-control shadow rounded border-1 border-dark" id="name" [(ngModel)]="formData.user_id" name="user_id"  placeholder="Enter eid" />  
-                    <input type="text" class="form-control shadow rounded border-1 border-dark" id="name" [(ngModel)]="formData.user_id" [value]="user?.eid" name="user_id" placeholder="Enter eid" />
-            
-            
-                        
-
-                </div>
-            </div> 
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label>
-                        <b>Registration Type:</b></label>
-                        <select class="form-control shadow rounded border-1 border-dark" name="RegistrationType" id="RegistrationType">
-                            <option value="S">Standerd</option>
-                            <option value="P">Premium</option>
-                            <option value="R">Referral</option>
-                        </select>
-
-                        
-                        <input type="text" class="form-control shadow rounded border-1 border-dark" id="RegistrationType" [(ngModel)]="formData.RegistrationType" name="RegistrationType" placeholder="Standerd-S, Premium -P, Referral-R..."  />
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <label>
-                        <b>Mr/Mrs:</b></label>
-                        <select class="form-control shadow rounded border-1 border-dark" [(ngModel)]="formData.Salutation_E" name="Salutation_E" id="Salutation_E">
-                            <option value="Mr">Mr</option>
-                            <option value="Mrs">Mrs</option>
-                        </select>
-                        <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Salutation_E" [(ngModel)]="formData.Salutation_E" name="Salutation_E" placeholder="Enter 1 2"  />
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <label>
-                        <b>Student First Name:</b>
-                    </label>
-                    <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Student_First_Name_E" [(ngModel)]="formData.Student_First_Name_E" name="Student_First_Name_E" placeholder="First Name"  /> 
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <label>
-                        <b>Student Middle Name:</b>
-                    </label>
-                    <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Student_Middle_Name_E" [(ngModel)]="formData.Student_Middle_Name_E" name="Student_Middle_Name_E" placeholder="Middle Name"  />
-                </div>
-            </div>        
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <label><b>Student Last Name:</b></label>
-                    <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Student_Last_Name_E" [(ngModel)]="formData.Student_Last_Name_E" name="Student_Last_Name_E" placeholder="Last Name"  />
-                </div>
-            </div>  
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <label><b>श्रीमान/श्रीमति:</b></label>
-                    <select class="form-control shadow rounded border-1 border-dark" [(ngModel)]="formData.Salutation_H" name="Salutation_H" id="Salutation_H">
-                        <option value="श्रीमान">श्रीमान</option>
-                        <option value="श्रीमति">श्रीमति</option>
-                    </select>
-                       <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Salutation_H" [(ngModel)]="formData.Salutation_H" name="Salutation_H" placeholder="श्रीमान/श्रीमति"  />
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <label><b>विद्यार्थी का प्रथम नाम:</b></label>
-                    <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Student_First_Name_H" [(ngModel)]="formData.Student_First_Name_H" name="Student_First_Name_H" placeholder="प्रथम नाम"  />
-                </div>
-            </div>  
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <label>
-                        <b>विद्यार्थी का मध्य नाम:</b>
-                    </label>
-                    <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Student_Middle_Name_H" [(ngModel)]="formData.Student_Middle_Name_H" name="Student_Middle_Name_H" placeholder="मध्य नाम" lang="hi"  />
-                </div>
-            </div>  
-            <div class="col-lg-3">
-                <div class="form-group">
-                    <label>
-                        <b>छात्र का अंतिम नाम:</b>
-                    </label>
-                    <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Student_Last_Name_H" [(ngModel)]="formData.Student_Last_Name_H" name="Student_Last_Name_H" placeholder="अंतिम नाम"  />
-                </div>
-            </div> 
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label>
-                       <b>Date Of Birth:</b>
-                    </label>
-                    <input type="date" class="form-control shadow rounded border-1 border-dark" id="DOB" [(ngModel)]="formData.DOB" name="DOB" placeholder="D/M/Y"  />
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label><b>Gender:</b></label>
-                    <select class="form-control shadow rounded border-1 border-dark" [(ngModel)]="formData.Gender_Id" name="Gender_Id" id="Gender_Id">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Gender_Id" [(ngModel)]="formData.Gender_Id" name="Gender_Id" placeholder=" m1 f2"  />
-                </div>
-            </div> -->
-
-
-
-
-
-
-<!-- <div class="col-lg-6">
-        <div class="form-group">
-            <label><b>Father Name:</b> </label>
-            <label class="lbl-req">
-                *</label>
-                <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Father_Name_E" [(ngModel)]="formData.Father_Name_E" name="Father_Name_E" placeholder="Father Name"  />
-        </div>
-    </div>
-
-    <div class="col-lg-6">
-        <div class="form-group">
-            <label><b>Mother Name:</b></label>
-            <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Mother_Name_E" [(ngModel)]="formData.Mother_Name_E" name="Mother_Name_E" placeholder="Mother Name"  />
-        </div>
-    </div>
-    <div class="col-lg-6">
-        <div class="form-group">
-            <label><b>Father Name:</b> </label>
-            <label class="lbl-req">
-                *</label>
-                <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Father_Name_H" [(ngModel)]="formData.Father_Name_H" name="Father_Name_H" placeholder="Father Name"  />
-        </div>
-    </div>
-    <div class="col-lg-6">
-        <div class="form-group">
-            <label><b>Mother Name:</b></label>
-            <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Mother_Name_H" [(ngModel)]="formData.Mother_Name_H" name="Mother_Name_H" placeholder="Mother Name"  />
-        </div>
-    </div>
-
-    <div  class="col-lg-6">
-        <div class="form-group">
-            <label><b>Guardian Name:</b></label>
-            <input type="text" class="form-control shadow rounded border-1 border-dark" id="Guardian_Name_E" [(ngModel)]="formData.Guardian_Name_E" name="Guardian_Name_E" placeholder="Guardian Name"  />
-        </div>
-    </div>
-
-    <div class="col-lg-6">
-        <div class="form-group">
-            <label><b>Spouse Name:</b></label>
-            <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Spouse_Name_E" [(ngModel)]="formData.Spouse_Name_E" name="Spouse_Name_E" placeholder="Spouse Name"  />
-        </div>
-    </div>
-</div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
 
         <!-- stapper start -->
@@ -184,7 +6,7 @@
             <div class="container page-heading text-center p-0 bg-white rounded shadow">
                 <h3 style="background-color: #3aaaff"
                     class="card-header p-2 text-light rounded border border-end-0 border-bottom-0 border-start-0 border-5 border-dark">
-                    <strong>Student Registration</strong>
+                    <strong>Student Registration Update</strong>
                 </h3>
             </div>
 
@@ -211,9 +33,8 @@
                                                             <!-- {{user.eid}} -->
                                                         <input type="text" 
                                                             class=" form-control shadow rounded border-1 border-dark"
-                                                            id="name" [(ngModel)]="formData.user_id" name="user_id"
+                                                            id="name" [(ngModel)]="basicdata.UE_ID" name="UE_ID"
                                                             placeholder="Enter user id" />
-                                                 
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
@@ -221,7 +42,7 @@
                                                         <label>
                                                             <b>Registration Type:</b></label>
                                                         <select class="form-control shadow rounded border-1 border-dark"
-                                                            [(ngModel)]="formData.RegistrationType"
+                                                            [(ngModel)]="basicdata.RegistrationType"
                                                             name="RegistrationType" id="RegistrationType">
                                                             <option value="S">Standerd</option>
                                                             <option value="P">Premium</option>
@@ -235,7 +56,7 @@
                                                         <label>
                                                             <b>Salutation_E:</b></label>
                                                         <select class="form-control shadow rounded border-1 border-dark"
-                                                            [(ngModel)]="formData.Salutation_E" name="Salutation_E"
+                                                            [(ngModel)]="basicdata.Salutation_E" name="Salutation_E"
                                                             id="Salutation_E">
                                                             <option value="Mr">Mr</option>
                                                             <option value="Mrs">Mrs</option>
@@ -251,7 +72,7 @@
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
                                                             id="Student_First_Name_E"
-                                                            [(ngModel)]="formData.Student_First_Name_E"
+                                                            [(ngModel)]="basicdata.Student_First_Name_E"
                                                             name="Student_First_Name_E" placeholder="First Name" />
                                                     </div>
                                                 </div>
@@ -263,7 +84,7 @@
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
                                                             id="Student_Middle_Name_E"
-                                                            [(ngModel)]="formData.Student_Middle_Name_E"
+                                                            [(ngModel)]="basicdata.Student_Middle_Name_E"
                                                             name="Student_Middle_Name_E" placeholder="Middle Name" />
                                                     </div>
                                                 </div>
@@ -273,7 +94,7 @@
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
                                                             id="Student_Last_Name_E"
-                                                            [(ngModel)]="formData.Student_Last_Name_E"
+                                                            [(ngModel)]="basicdata.Student_Last_Name_E"
                                                             name="Student_Last_Name_E" placeholder="Last Name" />
                                                     </div>
                                                 </div>
@@ -281,12 +102,12 @@
                                                     <div class="form-group">
                                                         <label><b>Salutation_H:</b></label>
                                                         <select class="form-control shadow rounded border-1 border-dark"
-                                                            name="Salutation_H" [(ngModel)]="formData.Salutation_H"
+                                                            name="Salutation_H" [(ngModel)]="basicdata.Salutation_H"
                                                             id="Salutation_H">
                                                             <option value="श्रीमान">श्रीमान</option>
                                                             <option value="श्रीमति">श्रीमति</option>
                                                         </select>
-                                                        <!--  <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Salutation_H" [(ngModel)]="formData.Salutation_H" name="Salutation_H" placeholder="श्रीमान/श्रीमति"  /> -->
+                                                        <!--  <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Salutation_H" [(ngModel)]="basicdata.Salutation_H" name="Salutation_H" placeholder="श्रीमान/श्रीमति"  /> -->
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
@@ -295,7 +116,7 @@
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
                                                             id="Student_First_Name_H"
-                                                            [(ngModel)]="formData.Student_First_Name_H"
+                                                            [(ngModel)]="basicdata.Student_First_Name_H"
                                                             name="Student_First_Name_H" placeholder="प्रथम नाम" />
                                                     </div>
                                                 </div>
@@ -307,7 +128,7 @@
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
                                                             id="Student_Middle_Name_H"
-                                                            [(ngModel)]="formData.Student_Middle_Name_H"
+                                                            [(ngModel)]="basicdata.Student_Middle_Name_H"
                                                             name="Student_Middle_Name_H" placeholder="मध्य नाम"
                                                             lang="hi" />
                                                     </div>
@@ -320,7 +141,7 @@
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
                                                             id="Student_Last_Name_H"
-                                                            [(ngModel)]="formData.Student_Last_Name_H"
+                                                            [(ngModel)]="basicdata.Student_Last_Name_H"
                                                             name="Student_Last_Name_H" placeholder="अंतिम नाम" />
                                                     </div>
                                                 </div>
@@ -331,7 +152,7 @@
                                                         </label>
                                                         <input type="date"
                                                             class="form-control shadow rounded border-1 border-dark"
-                                                            id="DOB" [(ngModel)]="formData.DOB" name="DOB"
+                                                            id="DOB" [(ngModel)]="basicdata.DOB" name="DOB"
                                                             placeholder="D/M/Y" />
                                                     </div>
                                                 </div>
@@ -339,7 +160,7 @@
                                                     <div class="form-group">
                                                         <label><b>Gender:</b></label>
                                                         <select class="form-control shadow rounded border-1 border-dark"
-                                                            name="Gender_Id" [(ngModel)]="formData.Gender_Id"
+                                                            name="Gender_Id" [(ngModel)]="basicdata.Gender_Id"
                                                             id="Gender_Id">
                                                             <option value="Male">Male</option>
                                                             <option value="Female">Female</option>
@@ -355,7 +176,7 @@
                                                         </label>
                                                         <input type="text"
                                                             class="form-control shadow rounded border-1 border-dark"
-                                                            id="Mobile_No" [(ngModel)]="formData.Mobile_No"
+                                                            id="Mobile_No" [(ngModel)]="basicdata.Mobile_No"
                                                             name="Mobile_No" placeholder="Mobile" />
                                                     </div>
                                                 </div>
@@ -364,7 +185,7 @@
                                                         <label><b>Email:</b></label>
                                                         <input type="email"
                                                             class=" form-control shadow rounded border-1 border-dark"
-                                                            id="Email_Id" [(ngModel)]="formData.Email_Id"
+                                                            id="Email_Id" [(ngModel)]="basicdata.Email_Id"
                                                             name="Email_Id" placeholder="igkv@gmail.com" />
                                                     </div>
                                                 </div>
@@ -387,7 +208,7 @@
                                                             *</label>
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
-                                                            id="Father_Name_E" [(ngModel)]="formData.Father_Name_E"
+                                                            id="Father_Name_E" [(ngModel)]="basicdata.Father_Name_E"
                                                             name="Father_Name_E" placeholder="Father Name" />
                                                     </div>
                                                 </div>
@@ -397,7 +218,7 @@
                                                         <label><b>Mother Name:</b></label>
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
-                                                            id="Mother_Name_E" [(ngModel)]="formData.Mother_Name_E"
+                                                            id="Mother_Name_E" [(ngModel)]="basicdata.Mother_Name_E"
                                                             name="Mother_Name_E" placeholder="Mother Name" />
                                                     </div>
                                                 </div>
@@ -408,7 +229,7 @@
                                                             *</label>
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
-                                                            id="Father_Name_H" [(ngModel)]="formData.Father_Name_H"
+                                                            id="Father_Name_H" [(ngModel)]="basicdata.Father_Name_H"
                                                             name="Father_Name_H" placeholder="Father Name" />
                                                     </div>
                                                 </div>
@@ -417,7 +238,7 @@
                                                         <label><b>Mother Name:</b></label>
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
-                                                            id="Mother_Name_H" [(ngModel)]="formData.Mother_Name_H"
+                                                            id="Mother_Name_H" [(ngModel)]="basicdata.Mother_Name_H"
                                                             name="Mother_Name_H" placeholder="Mother Name" />
                                                     </div>
                                                 </div>
@@ -427,7 +248,7 @@
                                                         <label><b>Guardian Name:</b></label>
                                                         <input type="text"
                                                             class="form-control shadow rounded border-1 border-dark"
-                                                            id="Guardian_Name_E" [(ngModel)]="formData.Guardian_Name_E"
+                                                            id="Guardian_Name_E" [(ngModel)]="basicdata.Guardian_Name_E"
                                                             name="Guardian_Name_E" placeholder="Guardian Name" />
                                                     </div>
                                                 </div>
@@ -437,7 +258,7 @@
                                                         <label><b>Spouse Name:</b></label>
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
-                                                            id="Spouse_Name_E" [(ngModel)]="formData.Spouse_Name_E"
+                                                            id="Spouse_Name_E" [(ngModel)]="basicdata.Spouse_Name_E"
                                                             name="Spouse_Name_E" placeholder="Spouse Name" />
                                                     </div>
                                                 </div>
@@ -457,7 +278,7 @@
                                                         <label><b>Created By:</b></label>
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
-                                                            id="Created_By" [(ngModel)]="formData.Created_By"
+                                                            id="Created_By" [(ngModel)]="basicdata.Created_By"
                                                             name="Created_By" placeholder="text" />
                                                     </div>
                                                 </div>
@@ -466,7 +287,7 @@
                                                         <label><b>Created Date:</b></label>
                                                         <input type="date"
                                                             class=" form-control shadow rounded border-1 border-dark"
-                                                            id="Created_Date" [(ngModel)]="formData.Created_Date"
+                                                            id="Created_Date" [(ngModel)]="basicdata.Created_Date"
                                                             name="Created_Date" placeholder="text" />
                                                     </div>
                                                 </div>
@@ -475,7 +296,7 @@
                                                         <label><b>Modified By:</b></label>
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
-                                                            id="Modified_By" [(ngModel)]="formData.Modified_By"
+                                                            id="Modified_By" [(ngModel)]="basicdata.Modified_By"
                                                             name="Modified_By" placeholder="text" />
                                                     </div>
                                                 </div>
@@ -484,7 +305,7 @@
                                                         <label><b>Modified Date:</b></label>
                                                         <input type="date"
                                                             class=" form-control shadow rounded border-1 border-dark"
-                                                            id="Modified_Date" [(ngModel)]="formData.Modified_Date"
+                                                            id="Modified_Date" [(ngModel)]="basicdata.Modified_Date"
                                                             name="Modified_Date" placeholder="text" />
                                                     </div>
                                                 </div>
@@ -493,7 +314,7 @@
                                                         <label><b>Delete_Flag:</b></label>
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
-                                                            id="Delete_Flag" [(ngModel)]="formData.Delete_Flag"
+                                                            id="Delete_Flag" [(ngModel)]="basicdata.Delete_Flag"
                                                             name="Delete_Flag" placeholder="text" />
                                                     </div>
                                                 </div>
@@ -503,7 +324,7 @@
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
                                                             id="Public_IP_Address"
-                                                            [(ngModel)]="formData.Public_IP_Address"
+                                                            [(ngModel)]="basicdata.Public_IP_Address"
                                                             name="Public_IP_Address" placeholder="text" />
                                                     </div>
                                                 </div>
@@ -513,7 +334,7 @@
                                                         <input type="text"
                                                             class=" form-control shadow rounded border-1 border-dark"
                                                             id="Private_IP_Address"
-                                                            [(ngModel)]="formData.Private_IP_Address"
+                                                            [(ngModel)]="basicdata.Private_IP_Address"
                                                             name="Private_IP_Address" placeholder="text" />
                                                     </div>
                                                 </div>
@@ -526,7 +347,7 @@
                                 <div
                                     class="mt-2 d-flex justify-content-evenly pt-4 pb-3 rounded-top bg-white border border-1 border-dark">
                                     <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                                    <button type="submit" class="btn btn-primary" (click)="getvalueFromform(NgForm.value)">Submit</button>
+                                    <button type="submit" class="btn btn-primary" (click)="getvalueBasicDetails(NgForm.value)">Submit</button>
                                 </div>
                         
                                 <div

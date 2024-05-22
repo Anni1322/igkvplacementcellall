@@ -209,6 +209,145 @@ const Profile = async (req, res) => {
     }
 };
 
+// api for get update basic detils
+const getbasicdetails = async (req, res) => {
+    const { eid } = req.body;
+    // if (!eid) {
+    //     return res.status(400).json({ error: 'eid is required' });
+    // }
+    try {
+        const request = new sql.Request();
+        request.input('eid', sql.VarChar(50), eid);
+
+        const query = 'SELECT * FROM dbo.student_registration WHERE UE_ID = @eid';
+        console.log('Executing query:', query, 'with eid:', eid);
+        const result = await request.query(query);
+        if (result.recordset.length > 0) {
+            res.json(result.recordset[0]);
+        } else {
+            return res.status(404).json({ error: 'Student not found' });
+        }
+    } catch (error) {
+        console.error('Error checking existence in SQL Server: ', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+// api for post update basic details
+const postbasicdetails = async (req, res)=>{
+        // Access the request body
+        const {
+            UE_ID,
+            Registration_Type,
+            Salutation_E,
+            Salutation_H,
+            Student_First_Name_E,
+            Student_Middle_Name_E,
+            Student_Last_Name_E,
+            Student_First_Name_H,
+            Student_Middle_Name_H,
+            Student_Last_Name_H,
+            DOB,
+            Gender_Id,
+            Mobile_No,
+            Email_Id,
+            Father_Name_E,
+            Mother_Name_E,
+            Father_Name_H,
+            Mother_Name_H,
+            Guardian_Name_E,
+            Spouse_Name_E,
+            Modified_By,
+            Modified_Date,
+            Delete_Flag,
+            Public_IP_Address,
+            Private_IP_Address
+        } = req.body;
+        
+        try {
+            const pool = await sql.connect(); // Connect to the database using the exported sql object
+            const request = pool.request(); // Create a request object from the pool
+    
+            // Check if the student with the provided UE_ID exists
+            const checkQuery = 'SELECT COUNT(*) AS count FROM dbo.student_registration WHERE UE_ID = @UE_ID';
+            request.input('UE_ID', sql.VarChar(50), UE_ID);
+    
+            const checkResult = await request.query(checkQuery);
+    
+            if (checkResult.recordset[0].count === 0) {
+                return res.status(404).json({ error: 'Student not found' });
+            }
+    
+            // Update the student data
+            const updateQuery = `UPDATE dbo.student_registration SET
+                    Registration_Type = @Registration_Type,
+                    Salutation_E = @Salutation_E,
+                    Salutation_H = @Salutation_H,
+                    Student_First_Name_E = @Student_First_Name_E,
+                    Student_Middle_Name_E = @Student_Middle_Name_E,
+                    Student_Last_Name_E = @Student_Last_Name_E,
+                    Student_First_Name_H = @Student_First_Name_H,
+                    Student_Middle_Name_H = @Student_Middle_Name_H,
+                    Student_Last_Name_H = @Student_Last_Name_H,
+                    DOB = @DOB,
+                    Gender_Id = @Gender_Id,
+                    Mobile_No = @Mobile_No,
+                    Email_Id = @Email_Id,
+                    Father_Name_E = @Father_Name_E,
+                    Mother_Name_E = @Mother_Name_E,
+                    Father_Name_H = @Father_Name_H,
+                    Mother_Name_H = @Mother_Name_H,
+                    Guardian_Name_E = @Guardian_Name_E,
+                    Spouse_Name_E = @Spouse_Name_E,
+                    Modified_By = @Modified_By,
+                    Modified_Date = @Modified_Date,
+                    Delete_Flag = @Delete_Flag,
+                    Public_IP_Address = @Public_IP_Address,
+                    Private_IP_Address = @Private_IP_Address
+                WHERE UE_ID = @UE_ID`;
+    
+            // Bind the updated values
+            request.input('Registration_Type', sql.Char, Registration_Type);
+            request.input('Salutation_E', sql.TinyInt, Salutation_E);
+            request.input('Salutation_H', sql.TinyInt, Salutation_H);
+            request.input('Student_First_Name_E', sql.VarChar(50), Student_First_Name_E);
+            request.input('Student_Middle_Name_E', sql.VarChar(50), Student_Middle_Name_E);
+            request.input('Student_Last_Name_E', sql.VarChar(50), Student_Last_Name_E);
+            request.input('Student_First_Name_H', sql.VarChar(50), Student_First_Name_H);
+            request.input('Student_Middle_Name_H', sql.VarChar(50), Student_Middle_Name_H);
+            request.input('Student_Last_Name_H', sql.VarChar(50), Student_Last_Name_H);
+            request.input('DOB', sql.Date, DOB);
+            request.input('Gender_Id', sql.Char, Gender_Id);
+            request.input('Mobile_No', sql.VarChar(12), Mobile_No);
+            request.input('Email_Id', sql.VarChar(50), Email_Id);
+            request.input('Father_Name_E', sql.VarChar(50), Father_Name_E);
+            request.input('Mother_Name_E', sql.VarChar(50), Mother_Name_E);
+            request.input('Father_Name_H', sql.VarChar(50), Father_Name_H);
+            request.input('Mother_Name_H', sql.VarChar(50), Mother_Name_H);
+            request.input('Guardian_Name_E', sql.VarChar(50), Guardian_Name_E);
+            request.input('Spouse_Name_E', sql.VarChar(50), Spouse_Name_E);
+            request.input('Modified_By', sql.VarChar(20), Modified_By);
+            request.input('Modified_Date', sql.DateTime, Modified_Date);
+            request.input('Delete_Flag', sql.Char, Delete_Flag);
+            request.input('Public_IP_Address', sql.VarChar(20), Public_IP_Address);
+            request.input('Private_IP_Address', sql.VarChar(20), Private_IP_Address);
+    
+            await request.query(updateQuery);
+    
+            // Respond with success message
+            res.status(200).json({ message: 'Student details updated successfully' });
+        } catch (err) {
+            console.error('Error updating student details: ', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
+    };
+    
+
+
+
+
+
+
 
 
 
@@ -512,5 +651,7 @@ module.exports ={
     Signup,
     login,
     getStudents,
-    Profile
+    Profile,
+    getbasicdetails,
+    postbasicdetails
 }

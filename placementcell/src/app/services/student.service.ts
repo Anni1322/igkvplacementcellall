@@ -29,5 +29,19 @@ export class StudentService {
     return this.http.post<any>(`${this.apiUrl}/student/search`, { eid });
   }
 
+
+  //add fot get data from basice details
+  getBasicDetails(eid: any){
+    return this.http.post<any>(`${this.apiUrl}/student/getbasicdetails`, { eid });
+  }
+  // end
+
+//add fot get data from basice details
+  postBasicDetails(data: any) {
+    // return this.http.post(this.studentDetail_Post_Url, data);  
+    return this.http.post<any>(`${this.apiUrl}/student/postbasicdetails`, data);
+  }
+// end
+
   
 }

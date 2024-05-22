@@ -16,6 +16,12 @@ router.post('/signup',studentController.Signup);
 router.post('/login',studentController.login);
 
 router.post('/search',studentController.Profile);
+
+
+
+router.post('/getbasicdetails',studentController.getbasicdetails);
+
+router.post('/postbasicdetails',studentController.postbasicdetails);
  
 
 

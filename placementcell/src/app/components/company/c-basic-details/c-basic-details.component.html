@@ -1,0 +1,405 @@
+<div class=" container container-flude mt-2 mb-3 p-0 user-select-none">
+    <div class="container page-heading text-center p-0 bg-white rounded shadow">
+        <h3 style="background-color: #3aaaff"
+            class="card-header p-2 text-light rounded border border-end-0 border-bottom-0 border-start-0 border-5 border-dark">
+            <strong>Company Registration</strong>
+        </h3>
+    </div>
+
+    <div class="container main-con mt-2 bg-white-subtle p-1  rounded">
+        <form class="form" #NgForm="ngForm" enctype="multipart/form-data">
+            <div class="row basic-row ">
+                <div class="#">
+                    <div class="card">
+                        <div class="card-header p-1" style="background-color: #3aaaff">
+                            <h5 class="ms-1 mt-1 text-white"><b>Basic Information / मूलभूत जानकारी</b></h5>
+                        </div>
+
+                        <mat-stepper>
+                            <mat-step>
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <ng-template matStepLabel="content">FirstContent</ng-template>
+                                        <h2>Personal_Details</h2>
+                                        <div class="col-lg-4 ">
+                                            <div class="form-group">
+                                                <label>
+                                                    <b>Id:</b></label>
+                                                    
+                                                <input type="text" 
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="id" [(ngModel)]="formData.id" name="id"
+                                                    placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    <b>Company_Id:</b></label>
+                                                <input type="text" 
+                                                    class="form-control shadow rounded border-1 border-dark"
+                                                    [(ngModel)]="formData.Company_Id"
+                                                    name="Company_Id" id=" ">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    <b>Tnp_Registration_No:</b></label>
+                                                <input type="text"  
+                                                    class="form-control shadow rounded border-1 border-dark"
+                                                    [(ngModel)]="formData.Tnp_Registration_No" name="Tnp_Registration_No"
+                                                    id="Tnp_Registration_No">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    <b>Company_Name:</b>
+                                                </label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Company_Name"
+                                                    [(ngModel)]="formData.Company_Name"
+                                                    name="Company_Name" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    <b>Company_Type:</b>
+                                                </label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Company_Type"
+                                                    [(ngModel)]="formData.Company_Type"
+                                                    name="Company_Type" placeholder=" " />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label><b>Company_Category:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Company_Category"
+                                                    [(ngModel)]="formData.Company_Category"
+                                                    name="Company_Category" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label><b>Company_Email:</b></label>
+                                                <input class="form-control shadow rounded border-1 border-dark"
+                                                    name="Company_Email" [(ngModel)]="formData.Company_Email"
+                                                    id="Company_Email" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label><b>Company_Phone_No:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Company_Phone_No"
+                                                    [(ngModel)]="formData.Company_Phone_No"
+                                                    name="Company_Phone_No" placeholder=""/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    <b>Hr_Name:</b>
+                                                </label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Hr_Name"
+                                                    [(ngModel)]="formData.Hr_Name"
+                                                    name="Hr_Name" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    <b>Hr_Contact_No:</b>
+                                                </label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Hr_Contact_No"
+                                                    [(ngModel)]="formData.Hr_Contact_No"
+                                                    name="Hr_Contact_No" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    <b>Hr_Email:</b>
+                                                </label>
+                                                <input type="email"
+                                                    class="form-control shadow rounded border-1 border-dark"
+                                                    id="Hr_Email" [(ngModel)]="formData.Hr_Email" name="Hr_Email"
+                                                    placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label><b>Contact_Person:</b></label>
+                                                <input class="form-control shadow rounded border-1 border-dark"
+                                                    name="Contact_Person" [(ngModel)]="formData.Contact_Person"
+                                                    id="Contact_Person">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>
+                                                    <b>Contact_Person_Email:</b>
+                                                </label>
+                                                <input type="email"
+                                                    class="form-control shadow rounded border-1 border-dark"
+                                                    id="Contact_Person_Email" [(ngModel)]="formData.Contact_Person_Email"
+                                                    name="Contact_Person_Email" placeholder=" " />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label><b>Contact_Person_Phone:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Contact_Person_Phone" [(ngModel)]="formData.Contact_Person_Phone"
+                                                    name="Contact_Person_Phone" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label><b>Company_short_name:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Company_short_name" [(ngModel)]="formData.Company_short_name"
+                                                    name="Company_short_name" placeholder="" />
+                                            </div>
+                                        </div>
+
+                                        <button mat-button matStepperNext>Next</button>
+
+                                    </div>
+                                </div>
+                            </mat-step>
+
+                            <mat-step>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <h2>Address_Details</h2>
+                                        <ng-template matStepLabel="content">SecondContent</ng-template>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Address:</b> </label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Address" [(ngModel)]="formData.Address"
+                                                    name="Address" placeholder=" " />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>State:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="State" [(ngModel)]="formData.State"
+                                                    name="State" placeholder=" " />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>District:</b> </label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="District" [(ngModel)]="formData.District"
+                                                    name="District" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Block:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Block" [(ngModel)]="formData.Block"
+                                                    name="Block" placeholder="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Website:</b></label>
+                                                <input type="text"
+                                                    class="form-control shadow rounded border-1 border-dark"
+                                                    id="Website" [(ngModel)]="formData.Website"
+                                                    name="Website" placeholder="" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Company_Logo_Url:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Company_Logo_Url" [(ngModel)]="formData.Company_Logo_Url"
+                                                    name="Company_Logo_Url" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Company_Broucher:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Company_Broucher" [(ngModel)]="formData.Company_Broucher"
+                                                    name="Company_Broucher" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Company_other_doc_url:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Company_other_doc_url" [(ngModel)]="formData.Company_other_doc_url"
+                                                    name="Company_other_doc_url" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <button mat-button matStepperPrevious>Back</button>
+                                        <button mat-button matStepperNext>Next</button>
+                                    </div>
+                                </div>
+                            </mat-step>
+
+                            <mat-step>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <h2>Other_Details</h2>
+                                        <ng-template matStepLabel="content">Third_Content</ng-template>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Created By:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Created_By" [(ngModel)]="formData.Created_By"
+                                                    name="Created_By" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Created Date:</b></label>
+                                                <input type="date"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Created_Date" [(ngModel)]="formData.Created_Date"
+                                                    name="Created_Date" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Modified By:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Modified_By" [(ngModel)]="formData.Modified_By"
+                                                    name="Modified_By" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Modified Date:</b></label>
+                                                <input type="date"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Modified_Date" [(ngModel)]="formData.Modified_Date"
+                                                    name="Modified_Date" placeholder=""/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Delete_Flag:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Delete_Flag" [(ngModel)]="formData.Delete_Flag"
+                                                    name="Delete_Flag" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Public_IP_Address:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Public_IP_Address"
+                                                    [(ngModel)]="formData.Public_IP_Address"
+                                                    name="Public_IP_Address" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label><b>Private_IP_Address:</b></label>
+                                                <input type="text"
+                                                    class=" form-control shadow rounded border-1 border-dark"
+                                                    id="Private_IP_Address"
+                                                    [(ngModel)]="formData.Private_IP_Address"
+                                                    name="Private_IP_Address" placeholder="" />
+                                            </div>
+                                        </div>
+                                        <button mat-button matStepperPrevious>Back</button>
+                                        <button mat-button matStepperNext>Next</button>
+                                    </div>
+                                </div>
+                            </mat-step>
+                            <mat-step>
+                                <ng-template matStepLabel="content">Done</ng-template>
+                                    <div class="col-lg-3">
+                                        <div class="card">
+                                            <div class="card-header  p-1 " style="background-color: #3aaaff">
+                                                <h5 class="ms-1 mt-1 text-white">Company_Logo</h5>
+                                            </div>
+                                        <div class="card-body ">
+                                            <div class="row">
+                                                <div class="col-lg-12 d-flex justify-content-center">
+                                                    <div class=" rounded shadow mb-1 border border-1 border-dark" style="background-image: url('./../assets/register/prof-bg.jpg'); background-size: cover; background-position: center; width: 200px; height: 252px;">
+                                                        <img id="imgUpload" class="img-thumbnail bg-transparent rounded"  style="height:250px;width:200px;">
+                                                    </div>
+                                                 </div>
+                                                    <hr class="brline p-0 m-0 mt-1"/>
+               
+                                                     <hr class="brline p-0 m-0 mt-1"/>
+
+                                                    <div class="upload-option1 mt-1">
+                                                    <label for="files"><i class="fa-solid fa-user-graduate"></i> <b> Select Company Logo File</b></label>
+                                                    <input class="form-control form-control shadow rounded border-1 border-dark bg-primary-subtle" id="C_Logo_File" type="file" title ="Please Choose Company Logo" />
+                                                </div>
+                                                     <hr class="brline p-0 m-0 mt-2"/>
+                                            </div>
+                                        </div>
+                                            <button mat-button matStepperPrevious>Back</button>
+                                        </div>
+                                    </div>
+                            </mat-step>
+                        </mat-stepper>
+                        <div
+                            class="mt-2 d-flex justify-content-evenly pt-4 pb-3 rounded-top bg-white border border-1 border-dark">
+                            <!--<button type="submit" class="btn btn-primary">Submit</button> -->
+                            <button type="submit" class="btn btn-primary" (click)="getvalueFromform(NgForm.value)">Submit</button>
+                        </div>
+                
+                        <div
+                            class="rounded-bottom border border-dark border-1 p-1 text-center m-0 bg-dark text-light fw-bold">
+
+                            <a class="text-light" href="#">User Manual</a> ||
+                            <a class="text-light" href="#">User Instruction</a> ||
+                            <small class="text-primary register-text">If Already have an account !..
+                            </small>
+                            <a class="text-warning" routerLink="/login" href="#"><b>Login</b></a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- stapper end -->
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+

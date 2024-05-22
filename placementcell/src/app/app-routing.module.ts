@@ -36,6 +36,9 @@ import { CAddVacancyDetailsComponent } from './components/company/c-add-vacancy-
 import { AdminBodyComponent } from './components/admin/a-layout/admin-body/admin-body.component';
 import { ADashboardComponent } from './components/admin/a-dashboard/a-dashboard.component';
 import { CEditVacancyDetailsComponent } from './components/company/c-edit-vacancy-details/c-edit-vacancy-details.component';
+import { CBasicDetailsComponent } from './components/company/c-basic-details/c-basic-details.component';
+import { SBasicDetailsEditComponent } from './components/student/s-basic-details-edit/s-basic-details-edit.component';
+import { SApplyJobComponent } from './components/student/s-apply-job/s-apply-job.component';
  
 
 
@@ -70,8 +73,10 @@ const routes: Routes = [
     {path:'student_profile', component:StudentProfileComponent},
     {path:'student_notification', component:StudentNotificationComponent},
     {path:'s-joblist', component:SJoblistComponent},
+    {path:'s-apply_job', component:SApplyJobComponent},
     {path:'s-status', component:SStatusComponent},
     {path:'s-basic-details', component:SAplicationComponent},
+    {path:'s-basic-details-edit', component:SBasicDetailsEditComponent},
     {path:'s-basic-form', component:SBasicDetailsComponent},
     {path:'s-profile', component:SProfileComponent},
     {path:'s-profile-edit/:id', component:SProfileEditComponent},
@@ -87,6 +92,7 @@ const routes: Routes = [
   // company
   {path:'company', component:CompanyComponent,children:[
     {path:'c-dashboard', component:CDashboardComponent},
+    {path:'c-basic-details', component:CBasicDetailsComponent},
     {path:'c-Jobpost', component:CJobpostComponent},
     {path:'c-status', component:CStatusComponent},
     {path:'c-profile', component:CProfileComponent},
