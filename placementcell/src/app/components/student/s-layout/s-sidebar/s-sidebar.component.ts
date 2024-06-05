@@ -63,9 +63,14 @@ export class SSidebarComponent implements OnInit {
 
 // logout 
 logout() {
-  this.auth.logout();
-  this.router.navigate(['/login']);
-}
+  const confirmation = confirm("Are you sure you want to logout?");
+  if (confirmation) {
+    this.auth.logout();
+    this.router.navigate(['/login']);
+  }
 // logout end
+}
+
+
 
 }

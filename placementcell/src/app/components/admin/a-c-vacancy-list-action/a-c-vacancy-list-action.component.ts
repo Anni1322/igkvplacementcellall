@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+ 
 import { ActivatedRoute } from '@angular/router';
 import { CServiceService } from '../../company/service/c-service.service';
 
 @Component({
-  selector: 'app-s-apply-job',
-  templateUrl: './s-apply-job.component.html',
-  styleUrls: ['./s-apply-job.component.scss']
+  selector: 'app-a-c-vacancy-list-action',
+  templateUrl: './a-c-vacancy-list-action.component.html',
+  styleUrls: ['./a-c-vacancy-list-action.component.scss']
 })
-export class SApplyJobComponent implements OnInit  {
+export class ACVacancyListActionComponent implements OnInit  {
   formData: any = {};
   constructor(
     private ds:CServiceService,
@@ -26,6 +27,8 @@ export class SApplyJobComponent implements OnInit  {
     });
     this.getvacancydata(this.vid)
   }
+
+
 
 
 // dataget through vacancy id 
@@ -82,6 +85,5 @@ getvacancydata(vid:any) {
       console.log('Form is invalid');
     }
   }
-
 
 }

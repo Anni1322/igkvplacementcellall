@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { StudentService } from 'src/app/services/student.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-s-profile',
@@ -14,13 +15,14 @@ export class SProfileComponent implements OnInit{
   constructor(
     private auth:AuthService,
     private router:Router,
-    private ds:StudentService
+    private ds:StudentService,
+    private route: ActivatedRoute
     ){}
 
 
 
   user: any = {}; // Initialize user object here
-
+  studentId:any;
   ngOnInit(): void {
       // Retrieve user data from localStorage
       const userData = localStorage.getItem('currentUser');
@@ -31,10 +33,16 @@ export class SProfileComponent implements OnInit{
           // Parse user data from JSON and assign it to the user variable
           this.user = JSON.parse(userData);
 
-          console.log("idddd"+this.user.eid)
+          console.log("idddd"+ this.user.eid)
           // id pass 
-          this.getdata(this.user.eid);
+          // this.getdata(this.user.eid);
       }
+
+      // get id form param
+      // this.studentId = this.route.snapshot.paramMap.get('id')!;
+      // console.log("from router",this.studentId);
+
+      
 
   }
 

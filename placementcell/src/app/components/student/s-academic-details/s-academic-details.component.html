@@ -1,0 +1,87 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="academicDetailsForm" (ngSubmit)="onSubmit()">
+          <p class="mb-4"><span class="text-primary font-italic me-1"></span><b> Academic Records</b></p>
+  
+          <!-- Grid Layout -->
+          <div class="row">
+            <!-- Student Enrollment Details -->
+            <div class="col-md-6">
+              <div class="form-group mb-1">
+                <label for="registrationNo" style="font-size: .77rem;">Registration No:</label>
+                <input id="registrationNo" formControlName="registrationNo" class="form-control" style="font-size: .77rem;" />
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <div class="form-group mb-1">
+                <label for="studentEnrollId" style="font-size: .77rem;">Student Enroll ID:</label>
+                <input id="studentEnrollId" formControlName="studentEnrollId" class="form-control" style="font-size: .77rem;" />
+              </div>
+            </div>
+  
+            <!-- Degree Program Details -->
+            <div class="col-md-6">
+              <div class="form-group mb-1">
+                <label for="degreeProgrammeTypeId" style="font-size: .77rem;">Degree Program Type ID:</label>
+                <input id="degreeProgrammeTypeId" formControlName="degreeProgrammeTypeId" class="form-control" style="font-size: .77rem;" />
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <div class="form-group mb-1">
+                <label for="degreeProgrammeId" style="font-size: .77rem;">Degree Program ID:</label>
+                <input id="degreeProgrammeId" formControlName="degreeProgrammeId" class="form-control" style="font-size: .77rem;" />
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <div class="form-group mb-1">
+                <label for="collegeName" style="font-size: .77rem;">College Name:</label>
+                <input id="collegeName" formControlName="collegeName" class="form-control" style="font-size: .77rem;" />
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <div class="form-group mb-1">
+                <label for="subjectId" style="font-size: .77rem;">Subject ID:</label>
+                <input id="subjectId" formControlName="subjectId" class="form-control" style="font-size: .77rem;" />
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <div class="form-group mb-1">
+                <label for="ogpa" style="font-size: .77rem;">OGPA:</label>
+                <input id="ogpa" formControlName="ogpa" type="number" class="form-control" style="font-size: .77rem;" />
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <div class="form-group mb-1">
+                <label for="admissionYearId" style="font-size: .77rem;">Year of Admission:</label>
+                <input id="admissionYearId" formControlName="admissionYearId" class="form-control" style="font-size: .77rem;" />
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <div class="form-group mb-1">
+                <label for="passingOutYearId" style="font-size: .77rem;">Year of Passing Out:</label>
+                <input id="passingOutYearId" formControlName="passingOutYearId" class="form-control" style="font-size: .77rem;" />
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <div class="form-group mb-1">
+                <label for="marksheetUrl" style="font-size: .77rem;">Marksheet:</label>
+                <input id="marksheetUrl" formControlName="marksheetUrl" class="form-control" style="font-size: .77rem;" />
+              </div>
+            </div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

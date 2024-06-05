@@ -28,6 +28,8 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-nav-list>
+              <a mat-list-item routerLink="/admin/a-dashboard">Dashboard</a>
+              
               <a mat-list-item routerLink="approveuser">Students</a>
               <a mat-list-item routerLink="approvecompany">Company</a>
               <a mat-list-item routerLink="approvevacancy">Vacancy</a>
@@ -55,7 +57,7 @@
         <li class="nav-item">
           <button mat-button routerLink="/home" >
             <mat-icon>exit_to_app</mat-icon>
-            <span>Logout</span>
+            <span (click)="logout()">Logout</span>
           </button>
         </li>
       </mat-nav-list>

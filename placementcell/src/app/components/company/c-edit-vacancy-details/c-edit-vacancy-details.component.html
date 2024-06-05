@@ -27,7 +27,7 @@
                                         <div class="col-lg-4 ">
                                             <div class="form-group">
                                                 <label for="Vacancy_ID">Vacancy ID</label>
-                                                <input type="text" class="form-control shadow rounded border-1 border-dark" [(ngModel)]="vacancydata.Vacancy_ID" id="Vacancy_ID"   name="Vacancy_ID" ngModel required>
+                                                <input type="text" class="form-control " [(ngModel)]="vacancydata.Vacancy_ID" id="Vacancy_ID"   name="Vacancy_ID" ngModel required>
                         
                                             </div>
                                         </div>
@@ -112,10 +112,6 @@
                                                 <label for="Maximum_Age">Maximum Age</label>
                                                 <input type="number" class="form-control" [(ngModel)]="vacancydata.Maximum_Age" id="Maximum_Age" name="Maximum_Age" ngModel>
                                            
-                                                
-
-
-
                                         </div>
                                         </div>
                                         <div class="col-lg-4">
@@ -150,13 +146,13 @@
 
 
 
-                                        <div class="col-lg-4">
+                                        <!-- <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label for="Status">Status</label>
                                                 <input type="text" class="form-control" [(ngModel)]="vacancydata.Status" id="Status" name="Status" value="Pending" ngModel>
                                                                                      
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label for="Created_By">Created By</label>
@@ -214,35 +210,19 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                               
-                                            </div>
-                                        </div>
+                                     
                                         <button mat-button matStepperPrevious>Back</button>
                                         <button mat-button matStepperNext>Next</button>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                              <button mat-button matStepperPrevious>Back</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                              <button mat-button matStepperNext>Next</button>
+                                            </div>
+                                          </div>
+                                          
                                     </div>
                                 </div>
                             </mat-step>

@@ -2,7 +2,10 @@
 const Student = require('../model/studentModel');
 const bcrypt = require('bcrypt');
 const sql = require('../config/db');
-
+ 
+// get ip
+const os = require('os');
+// end
 
 
 // function generateEmpId(empNum) {
@@ -28,42 +31,43 @@ const sql = require('../config/db');
 
 //  jwt token use 
 const login = async (req, res) => {
-    const { username , password } = req.body;
-
-    console.log(username,password);
+    const { username, password } = req.body;
+    console.log(username, password);
 
     try {
         const request = new sql.Request();
-        // const usernameCheckQuery = 'SELECT id, Emp_Id, username, password FROM dbo.login_table WHERE username = @username';
-  
         const usernameCheckQuery = `
-        SELECT l.id, l.Emp_Id, l.username, l.password, s.*
+        SELECT l.id, l.Emp_Id, l.username, l.password, l.role, 
+               s.Student_First_Name_E, s.Student_Middle_Name_E, s.Student_Last_Name_E, 
+               s.Father_Name_E, s.Mobile_No, s.Email_Id, s.DOB
         FROM dbo.login_table AS l
         FULL JOIN student_registration AS s ON l.Emp_Id = s.UE_ID
         WHERE l.username = @username`;
-        
+
         request.input('username', sql.VarChar, username);
-        request.input('password', sql.VarChar, password);  
 
         const result = await request.query(usernameCheckQuery);
 
         if (result.recordset.length > 0) {
             const user = result.recordset[0];
-            // Compare the passwords
-            if (user.password === password) {
-                // Password matches, return success along with username and id
-                return res.status(200).json({ 
-                    id: user.id, 
-                    username: user.username, 
-                    eid: user.Emp_Id, 
-                    fname: user.Student_First_Name_E, 
-                    mname: user.Student_Middle_Name_E, 
-                    lname: user.Student_Last_Name_E, 
-                    mno: user.Mobile_No, 
-                    email: user.Email_Id, 
-                    dob: user.DOB, 
-                    message: 'Username login successful' 
-                    // message:user.Emp_Id,
+            const isPasswordValid = await bcrypt.compare(password, user.password);
+
+            if (isPasswordValid) {
+                // Password matches, return success along with user details
+                return res.status(200).json({
+                    id: user.id,
+                    username: user.username,
+                    role: user.role,
+                    eid: user.Emp_Id,
+                    fname: user.Student_First_Name_E,
+                    mname: user.Student_Middle_Name_E,
+                    lname: user.Student_Last_Name_E,
+                    FatherName: user.Father_Name_E,
+                    mno: user.Mobile_No,
+                    email: user.Email_Id,
+                    dob: user.DOB,
+                    fullname: `${user.Student_First_Name_E} ${user.Student_Middle_Name_E} ${user.Student_Last_Name_E}`,
+                    message: 'Username login successful'
                 });
             } else {
                 // Password does not match
@@ -77,8 +81,6 @@ const login = async (req, res) => {
         console.error('Error checking Username existence in SQL Server: ', error);
         return res.status(500).json({ error: 'Internal Server Error' });
     }
-
-
 };
 
 
@@ -104,86 +106,60 @@ function generateEmpId(empNum) {
 
 
 const Signup = async (req, res) => {
-    // Access the request body
-    const { username, password } = req.body;
-    console.log("Data=>", username, password );
+    try {
+        // Access the request body
+        const { username, password, role } = req.body;
+        console.log("Data=>", username, password, role);
 
-
-    bcrypt.hash(password, 10, (hashErr, hashedPassword) => {
-        if (hashErr) {
-            console.error('Error hashing password: ', hashErr);
-            return res.status(500).json({ error: 'Internal Server Error' });
-        }
-    
-        console.log("pass=>", hashedPassword);
-    });
-    
-
-     
-    // Validate required fields
-    if (!username || !password  ) {
-        return res.status(400).json({ error: 'All fields are required' });
-    }
-
-
-    const request = new sql.Request();
-    const usernameCheckQuery = 'SELECT COUNT(*) AS count FROM dbo.login_table WHERE username = @username';
-    
-    request.input('username', sql.VarChar, username);
-
-    request.query(usernameCheckQuery, (err, result) => {
-        if (err) {
-            console.error('Error checking Username existence in SQL Server: ', err);
-            return res.status(500).json({ error: 'Internal Server Error' });
+        // Validate required fields
+        if (!username || !password) {
+            return res.status(400).json({ error: 'All fields are required' });
         }
 
-        // If count is greater than 0, username exists
-        if (result.recordset[0].count > 0) {
-            // Username exists, return an error
+        // Check if password is a string
+        if (typeof password !== 'string') {
+            return res.status(400).json({ error: 'Password must be a string' });
+        }
+
+        // Hash the password
+        const hashedPassword = await bcrypt.hash(password, 10);
+        console.log("Hashed Password=>", hashedPassword);
+
+        // Set up SQL request
+        const request = new sql.Request();
+        const usernameCheckQuery = 'SELECT COUNT(*) AS count FROM dbo.login_table WHERE username = @username';
+        request.input('username', sql.VarChar, username);
+
+        // Check if username already exists
+        const usernameResult = await request.query(usernameCheckQuery);
+        if (usernameResult.recordset[0].count > 0) {
             return res.status(400).json({ error: 'Username already exists' });
-        } else {
-
-           // Retrieve the maximum id from login_table
-            const query = `SELECT MAX(id) AS max_emp_id FROM dbo.login_table`;
-
-            request.query(query, (err, result) => {
-                if (err) {
-                    console.error('Error retrieving largest id: ', err);
-                    return res.status(500).json({ error: 'Internal Server Error' });
-                }
-                // console.log('Query Result:', result); // Log the result object
-    
-                const maxEmpId = result.recordset[0].max_emp_id;
-                console.log("Max Employee ID:", maxEmpId);
-
-                const maxId = result.recordset[0].max_id || 1;
-                console.log("Max ID:", maxId);
-
-                // // Generate employee ID using maxId
-                const empId = generateEmpId(maxId + maxEmpId);
-                console.log("Generated Emp Id:", empId);
-             
-
-
-                // Insert user into the database
-                const insertQuery = 'INSERT INTO dbo.login_table (username, password, Emp_Id) VALUES (@username, @password, @Emp_Id)';
-                
-                request.input('password', sql.VarChar, password);
-                request.input('Emp_Id', sql.VarChar, empId);
-
-                request.query(insertQuery, (err, results) => {
-                    if (err) {
-                        console.error('Error inserting into SQL Server: ', err);
-                        return res.status(500).json({ error: 'Internal Server Error' });
-                    }
-                    // Handle successful insertion
-                    res.status(200).json({empId:empId,  message: 'User registered successfully' });
-                });
-            });
         }
-    });
-};
 
+        // Retrieve the maximum id from login_table
+        const maxIdQuery = 'SELECT MAX(id) AS max_id FROM dbo.login_table';
+        const maxIdResult = await request.query(maxIdQuery);
+
+        const maxId = maxIdResult.recordset[0].max_id || 0;
+        console.log("Max ID:", maxId);
+
+        // Generate employee ID using maxId
+        const empId = generateEmpId(maxId + 1);
+        console.log("Generated Emp Id:", empId);
+
+        // Insert user into the database
+        const insertQuery = 'INSERT INTO dbo.login_table (username, password, Emp_Id, role) VALUES (@username, @password, @Emp_Id, @role)';
+        request.input('password', sql.VarChar, hashedPassword);
+        request.input('Emp_Id', sql.VarChar, empId);
+        request.input('role', sql.Int, role);
+
+        await request.query(insertQuery);
+        res.status(200).json({ empId: empId, message: 'User registered successfully' });
+    } catch (err) {
+        console.error('Error: ', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
 
 
 const Profile = async (req, res) => {
@@ -208,6 +184,62 @@ const Profile = async (req, res) => {
         return res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+
+
+
+
+
+
+// login
+// const login = async (req, res) => {
+//     try {
+//         // Access the request body
+//         const { username, password } = req.body;
+//         console.log("Login Data=>", username, password);
+
+//         // Validate required fields
+//         if (!username || !password) {
+//             return res.status(400).json({ error: 'All fields are required' });
+//         }
+
+//         // Check if password is a string
+//         if (typeof password !== 'string') {
+//             return res.status(400).json({ error: 'Password must be a string' });
+//         }
+
+//         // Set up SQL request
+//         const request = new sql.Request();
+    
+//         const userCheckQuery = `
+//         SELECT l.id, l.Emp_Id, l.username, l.password, l.role s.*
+//         FROM dbo.login_table AS l
+//         FULL JOIN student_registration AS s ON l.Emp_Id = s.UE_ID
+//         WHERE l.username = @username`;
+        
+//         request.input('username', sql.VarChar, username);
+
+//         // Check if the user exists
+//         const userResult = await request.query(userCheckQuery);
+//         if (userResult.recordset.length === 0) {
+//             return res.status(400).json({ error: 'Invalid username or password' });
+//         }
+
+//         const user = userResult.recordset[0];
+//         console.log("User Data=>", user);
+
+//         // Compare the provided password with the stored hashed password
+//         const isPasswordValid = await bcrypt.compare(password, user.password);
+//         if (!isPasswordValid) {
+//             return res.status(400).json({ error: 'Invalid username or password' });
+//         }
+
+//         // Successful login
+//         res.status(200).json({ message: 'Login successful', empId: user.Emp_Id, role: user.role });
+//     } catch (err) {
+//         console.error('Error: ', err);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// };
 
 // api for get update basic detils
 const getbasicdetails = async (req, res) => {
@@ -344,8 +376,132 @@ const postbasicdetails = async (req, res)=>{
     
 
 
+// post api for apply vacancy
+const VacancyApply = async (req, res) => {
+    const {
+        Vacancy_ID,
+        Company_ID,
+        Student_ID,
+        Full_Name,
+        Post_Name,
+        Fathers_Name,
+        Email,
+        Mobile,
+        Status,
+        Created_By,
+        Modified_By,
+        Delete_Flag,
+        Public_IP_Address,
+        Private_IP_Address
+    } = req.body;
+
+    // console.log(Post_Name);
+
+    const file = req.file; // Get the file from the request
+    const Resume_Path = file ? file.path : null; // Get the file path
+
+    try {
+        const pool = await sql.connect(); // Connect to the database using the exported sql object
+        const request = pool.request(); // Create a request object from the pool
+
+        // Check if the Vacancy_ID already exists
+        const checkQuery = `
+            SELECT COUNT(*) as count 
+            FROM tnp_student_application_details 
+            WHERE Vacancy_ID = @Vacancy_ID AND Student_ID = @Student_ID`;
+
+        request.input('Vacancy_ID', sql.NVarChar(50), Vacancy_ID);
+        request.input('Student_ID', sql.NVarChar(50), Student_ID);
+
+        const result = await request.query(checkQuery);
+        const count = result.recordset[0].count;
+
+        if (count > 0) {
+            console.log(count);
+            // Vacancy_ID already exists for the given Student_ID, return a response indicating that the form is already submitted
+            return res.status(400).json({ message: 'Form already submitted for this vacancy.' });
+        }
+
+        // Insert new student application details
+        const insertQuery = `
+            INSERT INTO tnp_student_application_details 
+                (Vacancy_ID, Company_ID, Student_ID, Full_Name, Post_Name, Fathers_Name, Email, Mobile, Status, Resume_Path, Created_By, Modified_By, Delete_Flag, Public_IP_Address, Private_IP_Address)
+            VALUES 
+                (@Vacancy_ID, @Company_ID, @Student_ID, @Full_Name, @Post_Name, @Fathers_Name, @Email, @Mobile, @Status, @Resume_Path, @Created_By, @Modified_By, @Delete_Flag, @Public_IP_Address, @Private_IP_Address)`;
+
+        // Bind the remaining values
+        request.input('Company_ID', sql.NVarChar(50), Company_ID);
+        request.input('Full_Name', sql.NVarChar(100), Full_Name);
+        request.input('Post_Name', sql.NVarChar(100), Post_Name);
+        request.input('Fathers_Name', sql.NVarChar(100), Fathers_Name);
+        request.input('Email', sql.NVarChar(100), Email);
+        request.input('Mobile', sql.NVarChar(13), Mobile);
+        request.input('Status', sql.NVarChar(20), Status);
+        request.input('Resume_Path', sql.NVarChar(2000), Resume_Path);
+        request.input('Created_By', sql.NVarChar(20), Created_By);
+        request.input('Modified_By', sql.NVarChar(50), Modified_By);
+        request.input('Delete_Flag', sql.Char(1), Delete_Flag);
+        request.input('Public_IP_Address', sql.NVarChar(20), Public_IP_Address);
+        request.input('Private_IP_Address', sql.NVarChar(20), Private_IP_Address);
+
+        await request.query(insertQuery);
+
+        // Respond with success message
+        res.status(200).json({ message: 'Student application details inserted successfully' });
+    } catch (err) {
+        console.error('Error inserting student application details: ', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
 
 
+
+// for admin api 
+const getVacancyApplyStudentDetails = async(req, res)=>{
+    var request = new sql.Request();
+    var query = "SELECT * FROM dbo.tnp_student_application_details";
+
+    // Execute the SQL query
+    request.query(query, function(err, records) {
+        if (err) {
+            console.log(err);
+            res.status(500).json({ error: 'Error executing the query' });
+            return;
+        }
+        // Send the fetched records as JSON response
+        res.json(records.recordset);
+    });
+
+}
+
+
+
+// this api retun join data
+const VacancyApplicationStudentDetail = async (req, res) => {
+    const eid = req.body.eid; // Assuming 'eid' is a field in the request body
+    console.log(eid);
+
+    try {
+        var request = new sql.Request();
+        request.input('eid', sql.VarChar, eid); // Adjust the SQL data type as necessary
+
+        var query = 'SELECT * FROM dbo.tnp_student_application_details WHERE Student_ID = @eid';
+
+        // Execute the SQL query
+        request.query(query, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            // Send the fetched records as JSON response
+            res.json(result.recordset);
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Unexpected server error' });
+    }
+};
 
 
 
@@ -482,7 +638,7 @@ const getAllStudents = async(req, res)=>{
 
 
 
-const { insertQuery } = require('./queries');
+ 
 
 const registerStudent = async (req, res) => {
     // Access the request body
@@ -644,6 +800,226 @@ const registerStudent = async (req, res) => {
 
 
 
+
+// this api retun join data
+const getstudentdetails = async (req, res) => {
+    const eid = req.body.eid; // Assuming 'eid' is a field in the request body
+    console.log(eid);
+
+    try {
+        var request = new sql.Request();
+        request.input('eid', sql.VarChar, eid); // Adjust the SQL data type as necessary
+
+        var query = 'SELECT * FROM dbo.student_registration WHERE UE_ID = @eid';
+
+        // Execute the SQL query
+        request.query(query, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            // Send the fetched records as JSON response
+            res.json(result.recordset);
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Unexpected server error' });
+    }
+};
+
+
+
+
+// add by anil 29-05-2024
+const uploadfile = async (req, res) => {
+    const file = req.file;
+    const { name, email } = req.body;
+  
+    if (!file) {
+      return res.status(400).send('No file uploaded.');
+    }
+  
+    if (!name || !email) {
+      return res.status(400).send('Name and email are required.');
+    }
+  
+    // Store file metadata and user information in the database
+    const query = `
+      INSERT INTO Users (name, email, photoOriginalName, photoMimeType, photoDestination, photoFileName, photoPath, photoSize)
+      VALUES (@name, @email, @photoOriginalName, @photoMimeType, @photoDestination, @photoFileName, @photoPath, @photoSize)
+    `;
+  
+    try {
+        var request = new sql.Request();
+      request.input('name', sql.VarChar, name);
+      request.input('email', sql.VarChar, email);
+      request.input('photoOriginalName', sql.VarChar, file.originalname);
+      request.input('photoMimeType', sql.VarChar, file.mimetype);
+      request.input('photoDestination', sql.VarChar, file.destination);
+      request.input('photoFileName', sql.VarChar, file.filename);
+      request.input('photoPath', sql.VarChar, file.path);
+      request.input('photoSize', sql.BigInt, file.size);
+  
+      await request.query(query);
+    //   const photoPath = file.path; 
+      const photoPath = file.path; 
+      res.status(200).json({ message: 'User data and file uploaded successfully.', photoPath: photoPath});
+    } catch (err) {
+      console.error('Error inserting data: ', err);
+      res.status(500).send('Server error.');
+    }
+  };
+
+
+
+//  master table api start
+const getGender = async (req, res) => {
+    try {
+        const request = new sql.Request();
+        const selectQuery = `SELECT * FROM dbo.gender;`;
+        
+        request.query(selectQuery, (err, result) => {
+            if (err) {
+                console.error('Error executing the query:', err);
+                if (!res.headersSent) {
+                    res.status(500).json({ error: 'Error executing the query' });
+                }
+                return;
+            }
+            // Send the fetched records as JSON response
+            res.status(200).json(result.recordset);
+        });
+
+    } catch (error) {
+        console.error('Error fetching Gender details: ', error);
+        if (!res.headersSent) {
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
+    }
+};
+
+const getCompany_category = async(req, res)=>{
+    try {
+        const request = new sql.Request();
+        const insertQuery = `SELECT * FROM dbo.company_category;`
+        request.query(insertQuery, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            // Send the fetched records as JSON response
+            res.json(result.recordset);
+            res.status(200).json({ message: 'company category details' });
+        });
+    } catch (error) {
+        console.error('Error company category details: ', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+ 
+const getDegree_program = async(req, res)=>{
+    try {
+        const request = new sql.Request();
+        const insertQuery = `SELECT * FROM dbo.degree_program;`
+        request.query(insertQuery, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            // Send the fetched records as JSON response
+            res.json(result.recordset);
+            res.status(200).json({ message: 'degree program details' });
+        });
+    } catch (error) {
+        console.error('Error degree program details: ', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+const getDegree_type = async(req, res)=>{
+    try {
+        const request = new sql.Request();
+        const insertQuery = `SELECT * FROM dbo.degree_type;`
+        request.query(insertQuery, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            // Send the fetched records as JSON response
+            res.json(result.recordset);
+            res.status(200).json({ message: 'degree type details' });
+        });
+    } catch (error) {
+        console.error('Error degree type details: ', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+const getSubjects = async(req, res)=>{
+    try {
+        const request = new sql.Request();
+        const insertQuery = `SELECT * FROM dbo.subjects;`
+        request.query(insertQuery, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            // Send the fetched records as JSON response
+            res.json(result.recordset);
+            res.status(200).json({ message: 'subjects details' });
+        });
+    } catch (error) {
+        console.error('Error subjects details: ', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+
+//  master table api end
+
+
+
+
+
+
+// get id address 
+function getLocalIpAddress() {
+  const networkInterfaces = os.networkInterfaces();
+  for (const interfaceKey in networkInterfaces) {
+    const networkInterface = networkInterfaces[interfaceKey];
+    for (const address of networkInterface) {
+      if (address.family === 'IPv4' && !address.internal) {
+        return address.address;
+      }
+    }
+  }
+  return '127.0.0.1'; // Default to localhost if no external IP found
+}
+
+console.log('Local IP Address:', getLocalIpAddress());
+
+
+
+function getPrivateIpAddress() {
+    const networkInterfaces = os.networkInterfaces();
+    for (const interfaceKey in networkInterfaces) {
+      const networkInterface = networkInterfaces[interfaceKey];
+      for (const address of networkInterface) {
+        if (address.family === 'IPv6' && !address.internal) {
+          return address.address;
+        }
+      }
+    }
+    return null; // Return null if no private IP found
+  }
+  
+  // Example usage
+  console.log('Private IP Address:', getPrivateIpAddress());
           
 module.exports ={
     getAllStudents,
@@ -653,5 +1029,16 @@ module.exports ={
     getStudents,
     Profile,
     getbasicdetails,
-    postbasicdetails
+    postbasicdetails,
+    VacancyApply,
+    getVacancyApplyStudentDetails,
+    VacancyApplicationStudentDetail,
+    getstudentdetails,
+    uploadfile,
+    // for master table
+    getGender,
+    getSubjects,
+    getDegree_type,
+    getDegree_program,
+    getCompany_category
 }

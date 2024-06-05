@@ -4,9 +4,12 @@
     </button>
     <span class="example-spacer">IGKV Placement</span>
     <button routerLink="" mat-button>Home</button>
+    
     <button [matMenuTriggerFor]="lvl1master"  mat-button>Registration</button>
     <mat-menu #lvl1master="matMenu">
+       
         <button  mat-menu-item routerLink="student_registraion" >Student</button>
+
         <button  mat-menu-item routerLink="company_registraion" >Company</button>
     </mat-menu>
     <button [matMenuTriggerFor]="login" mat-button>Lgoin</button>

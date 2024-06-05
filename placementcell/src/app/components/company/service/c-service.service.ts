@@ -7,7 +7,7 @@ import { JobStatus } from '../c-status/job-status.model';
   providedIn: 'root'
 })
 export class CServiceService {
-  private apiUrl = 'http://localhost:3000/company/vacancies'; 
+  private apiUrl = 'http://localhost:3000/company'; 
   private baseurl = 'http://localhost:3000'; 
   private postapiUrl = 'http://localhost:3000/company/add_vacancy'; 
  
@@ -31,7 +31,7 @@ postsignup(data: any) {
 
 // get vacanvy details from db
   getVacancies(): Observable<JobStatus[]> {
-    return this.http.get<JobStatus[]>(this.apiUrl);
+    return this.http.get<JobStatus[]>(`${this.apiUrl}/vacancies`);
   }
 
 
@@ -41,7 +41,20 @@ getVacancyedata(Vacancy_ID: string): Observable<any> {
   return this.http.post<any>(`${this.baseurl}/company/getdata_update_vacancy`, { Vacancy_ID });
 }
 
-  
+
+
+
+
+
+
+
+
+
+
+
+VacancyApply(data:any){
+  return this.http.post<any>(`${this.baseurl}/student/VacancyApply` ,data);
+}
 
 
 

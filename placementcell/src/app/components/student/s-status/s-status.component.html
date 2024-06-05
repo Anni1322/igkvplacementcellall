@@ -1,38 +1,81 @@
 <div class="container mt-3">
-    <h2>Student Job Application Status</h2>
-    <table class="table">
+  <div class="mat-elevation-z8" id="print-section">
+    
+  </div>
+</div>
+
+
+<!-- <div class="container mt-3">
+  <h2>Student Job Application Status</h2>
+  <table class="table">
+      <thead>
+          <tr>
+              <th>#</th>
+              <th>Job Title</th>
+              <th>Company Name</th>
+              <th>Location</th>
+              <th>Status</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>1</td>
+              <td>Software Engineer Intern</td>
+              <td>ABC Tech Solutions</td>
+              <td>New York</td>
+              <td><span class="badge bg-primary">Pending</span></td>
+          </tr>
+          <tr>
+              <td>2</td>
+              <td>Marketing Intern</td>
+              <td>XYZ Marketing Agency</td>
+              <td>London</td>
+              <td><span class="badge bg-danger">Rejected</span></td>
+          </tr>
+          <tr>
+              <td>3</td>
+              <td>Data Analyst Intern</td>
+              <td>DEF Analytics</td>
+              <td>San Francisco</td>
+              <td><span class="badge bg-success">Approved</span></td>
+          </tr>
+         
+      </tbody>
+  </table>
+</div> -->
+
+<div class="container">
+    <h2>Vacancy Applications</h2>
+    <table class="table table-bordered">
         <thead>
             <tr>
-                <th>#</th>
+                <!-- <th>Company ID</th> -->
                 <th>Job Title</th>
-                <th>Company Name</th>
-                <th>Location</th>
+                <th>Student ID</th>
+                <th>Vacancy ID</th>
+                <!-- <th>Flag</th> -->
+                <th>Submission Date</th>
+                <th>Full Name</th>
+                <th>Father's Name</th>
+                <!-- <th>Mobile</th> -->
+                <th>Email</th>
                 <th>Status</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Software Engineer Intern</td>
-                <td>ABC Tech Solutions</td>
-                <td>New York</td>
-                <td><span class="badge bg-primary">Pending</span></td>
+            <tr *ngFor="let application of vacancyApplications">
+                <!-- <td>{{ application.Company_ID }}</td> -->
+                <td>{{ application.Post_Name }}</td>
+                <td>{{ application.Student_ID }}</td>
+                <td>{{ application.Vacancy_ID }}</td>
+                <!-- <td>{{ application.Flag }}</td> -->
+                <td>{{ application.Application_Submission_Date | date }}</td>
+                <td>{{ application.Full_Name }}</td>
+                <td>{{ application.Fathers_Name }}</td>
+                <!-- <td>{{ application.Mobile }}</td> -->
+                <td>{{ application.Email }}</td>
+                <td>{{ application.Status }}</td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>Marketing Intern</td>
-                <td>XYZ Marketing Agency</td>
-                <td>London</td>
-                <td><span class="badge bg-danger">Rejected</span></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Data Analyst Intern</td>
-                <td>DEF Analytics</td>
-                <td>San Francisco</td>
-                <td><span class="badge bg-success">Approved</span></td>
-            </tr>
-            <!-- Add more rows as needed -->
         </tbody>
     </table>
-</div>
+  </div>

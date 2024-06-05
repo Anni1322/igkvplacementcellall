@@ -243,12 +243,13 @@ const updateJob = async (req, res) => {
 
 
 // API endpoint to get all vacancies
-const getJobs = async (req, res) => {
+const getVacanciesDetils = async (req, res) => {
     try {
         const pool = await sql.connect(); // Connect to the database using the exported sql object
         const request = pool.request(); // Create a request object from the pool
 
-        const result = await request.query('SELECT * FROM tnp_vacancy_details'); // Execute the query
+        const result = await request.query('SELECT * FROM tnp_vacancy_details WHERE Status = \'Aproved\''); // Execute the query
+        // const result = await request.query('SELECT * FROM tnp_vacancy_details where Status = "Aproved'); // Execute the query
 
         res.status(200).send(result.recordset); // Send the result back to the client
     } catch (err) {
@@ -265,24 +266,26 @@ const getJobs = async (req, res) => {
 
 
 
+
 //  jwt token use 
 const login = async (req, res) => {
-    const { username , password } = req.body;
+    const { username , password,role } = req.body;
 
-    console.log(username,password);
+    console.log(username,password,role);
 
     try {
         const request = new sql.Request();
         // const usernameCheckQuery = 'SELECT id, Emp_Id, username, password FROM dbo.login_table WHERE username = @username';
   
         const usernameCheckQuery = `
-        SELECT l.id, l.Emp_Id, l.username, l.password, s.*
+        SELECT l.id, l.Emp_Id, l.username, l.password,l.role s.*
         FROM dbo.login_table AS l
         FULL JOIN student_registration AS s ON l.Emp_Id = s.UE_ID
-        WHERE l.username = @username`;
+        WHERE l.role = @role`;
         
         request.input('username', sql.VarChar, username);
         request.input('password', sql.VarChar, password);  
+        request.input('role', sql.Int, role);  
 
         const result = await request.query(usernameCheckQuery);
 
@@ -621,5 +624,5 @@ module.exports ={
     addjob,
     Updatejobdataget,
     updateJob,
-    getJobs
+    getVacanciesDetils
 }

@@ -151,7 +151,8 @@
                 <p class="text-muted mb-4">{{user?.username}}</p>
                 <p class="text-muted mb-4">{{profiledata?.UE_ID}}</p>
                 <div class="d-flex justify-content-center mb-2">
-                  <a   routerLink="/student/s-basic-details-edit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Update</a>
+                  <!-- <a   routerLink="/student/s-basic-details-edit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Update</a> -->
+                  <a   [routerLink]="'/student/s-basic-details-edit/' + user.eid" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Update</a>
                   <!-- <button  type="button" routerLink="student/s-basic-details-edit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary"></button> -->
                   <!-- <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary ms-1">Message</button> -->
                 </div>
@@ -162,37 +163,62 @@
                 <ul class="list-group list-group-flush rounded-3">
                   <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                     <i class="fas fa-globe fa-lg text-warning"></i>
-                    <p class="mb-0">https://mdbootstrap.com</p>
+                    <p class="mb-0">semple</p>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                     <i class="fab fa-github fa-lg text-body"></i>
-                    <p class="mb-0">mdbootstrap</p>
+                    <p class="mb-0">semple</p>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                     <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                    <p class="mb-0">@mdbootstrap</p>
+                    <p class="mb-0">@semple</p>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                     <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                    <p class="mb-0">mdbootstrap</p>
+                    <p class="mb-0">semple</p>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                     <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                    <p class="mb-0">mdbootstrap</p>
+                    <p class="mb-0">semple</p>
                   </li>
                 </ul>
               </div>
+              
             </div>
+            <!--  -->
+            <div class="card mb-4 mb-lg-0 mt-2">
+            <div class="card-body ">
+              <p class="mb-4"><span class="text-primary font-italic me-1"></span><b>Experience Details</b></p>
+              
+              <!-- Workplace Details -->
+              <p class="mb-1" style="font-size: .77rem;">Workplace Detail ID: <span id="workplaceDetailId"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">Registration No: <span id="registrationNo"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">Organization Name: <span id="organizationName"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">Post Name: <span id="postName"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">Workplace Address: <span id="workplaceAddress"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">Workplace District ID: <span id="workplaceDistrictId"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">Workplace State ID: <span id="workplaceStateId"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">Workplace Country ID: <span id="workplaceCountryId"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">City Name: <span id="cityName"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">Description: <span id="description"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">Period From: <span id="periodFrom"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">Period To: <span id="periodTo"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">Currently Working: <span id="currentlyWorking"></span></p>
+              <p class="mb-1" style="font-size: .77rem;">Salary: <span id="salary"></span></p>
+          </div>
+        </div>
+          <!--  -->
           </div>
           <div class="col-lg-8">
             <div class="card mb-4">
               <div class="card-body">
                 <div class="row">
+                  <p class="mb-4"><span class="text-primary font-italic me-1">Personal Details</span> 
                   <div class="col-sm-3">
                     <p class="mb-0">Full Name</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{{profiledata?.Student_First_Name_E}}</p>
+                    <p class="text-muted mb-0">{{user?.fullname}}</p>
                   </div>
                 </div>
                 <hr>
@@ -201,7 +227,7 @@
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{{profiledata?.Email_Id}}</p>
+                    <p class="text-muted mb-0">{{user?.email}}</p>
                    
                   </div>
                 </div>
@@ -211,7 +237,7 @@
                     <p class="mb-0">Phone</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{{profiledata?.Mobile_No}}</p>
+                    <p class="text-muted mb-0">{{user?.mno}}</p>
                   </div>
                 </div>
                 <hr>
@@ -220,7 +246,7 @@
                     <p class="mb-0">Mobile</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{{profiledata?.Mobile_No}}</p>
+                    <p class="text-muted mb-0">{{user?.mno}}</p>
                   </div>
                 </div>
                 <hr>
@@ -237,41 +263,31 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="card mb-4 mb-md-0">
-                  <div class="card-body">
-                    <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
-                    </p>
-                    <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                    <div class="progress rounded" style="height: 5px;">
-                      <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                    <div class="progress rounded" style="height: 5px;">
-                      <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                    <div class="progress rounded" style="height: 5px;">
-                      <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                    <div class="progress rounded" style="height: 5px;">
-                      <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                    <div class="progress rounded mb-2" style="height: 5px;">
-                      <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
+                <div class="card-body">
+                  <p class="mb-4"><span class="text-primary font-italic me-1"></span><b> Academic Records</b></p>
+                  
+                  <!-- Student Enrollment Details -->
+                  <p class="mb-1" style="font-size: .77rem;">Registration No: <span id="registrationNo"></span></p>
+                  <p class="mb-1" style="font-size: .77rem;">Student Enroll ID: <span id="studentEnrollId"></span></p>
+                  
+                  <!-- Degree Program Details -->
+                  <p class="mb-1" style="font-size: .77rem;">Degree Program Type ID: <span id="degreeProgrammeTypeId"></span></p>
+                  <p class="mb-1" style="font-size: .77rem;">Degree Program ID: <span id="degreeProgrammeId"></span></p>
+                  <p class="mb-1" style="font-size: .77rem;">College Name: <span id="collegeName"></span></p>
+                  <p class="mb-1" style="font-size: .77rem;">Subject ID: <span id="subjectId"></span></p>
+                  <p class="mb-1" style="font-size: .77rem;">OGPA: <span id="ogpa"></span></p>
+                  <p class="mb-1" style="font-size: .77rem;">Year of Admission: <span id="admissionYearId"></span></p>
+                  <p class="mb-1" style="font-size: .77rem;">Year of Passing Out: <span id="passingOutYearId"></span></p>
+                  <p class="mb-1" style="font-size: .77rem;">Marksheet: <a href="#" id="marksheetUrl">View Marksheet</a></p>
+              </div>
+              
+                
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="card mb-4 mb-md-0">
                   <div class="card-body">
-                    <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
+                    <p class="mb-4"><span class="text-primary font-italic me-1">Skills and Competencies</span> 
                     </p>
                     <p class="mb-1" style="font-size: .77rem;">Web Design</p>
                     <div class="progress rounded" style="height: 5px;">
@@ -299,10 +315,40 @@
                         aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
+
+                
                 </div>
+                
               </div>
+                
             </div>
           </div>
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+    <!-- <div class="card-body">
+      <p class="mb-4"><span class="text-primary font-italic me-1"></span><b> Academic Records</b></p>
+      
+      Tenth Grade Details
+      <p class="mb-1" style="font-size: .77rem;">Tenth Grade Institute: <span id="tenInstituteName"></span></p>
+      <p class="mb-1" style="font-size: .77rem;">Major Subject: <span id="tenMajorSubject"></span></p>
+      <p class="mb-1" style="font-size: .77rem;">Year of Passing: <span id="tenYearOfPassing"></span></p>
+      <p class="mb-1" style="font-size: .77rem;">Marks: <span id="tenMarks"></span>%</p>
+      <p class="mb-1" style="font-size: .77rem;">Marksheet: <a href="#" id="tenMarksheetUrl">View Marksheet</a></p>
+      
+      Twelfth Grade Details
+      <p class="mt-4 mb-1" style="font-size: .77rem;">Twelfth Grade Institute: <span id="twelveInstituteName"></span></p>
+      <p class="mt-4 mb-1" style="font-size: .77rem;">Major Subject: <span id="twelveMajorSubject"></span></p>
+      <p class="mt-4 mb-1" style="font-size: .77rem;">Year of Passing: <span id="twelveYearOfPassing"></span></p>
+      <p class="mt-4 mb-1" style="font-size: .77rem;">Marks: <span id="twelveMarks"></span>%</p>
+      <p class="mt-4 mb-1" style="font-size: .77rem;">Marksheet: <a href="#" id="twelveMarksheetUrl">View Marksheet</a></p>
+  </div> -->

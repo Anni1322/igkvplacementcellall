@@ -38,7 +38,16 @@ import { ADashboardComponent } from './components/admin/a-dashboard/a-dashboard.
 import { CEditVacancyDetailsComponent } from './components/company/c-edit-vacancy-details/c-edit-vacancy-details.component';
 import { CBasicDetailsComponent } from './components/company/c-basic-details/c-basic-details.component';
 import { SBasicDetailsEditComponent } from './components/student/s-basic-details-edit/s-basic-details-edit.component';
-import { SApplyJobComponent } from './components/student/s-apply-job/s-apply-job.component';
+import { SVacancyApplyComponent } from './components/student/s-vacancy-apply/s-vacancy-apply.component';
+import { ASApplicationComponent } from './components/admin/a-s-application/a-s-application.component';
+import { ASApplicationEditComponent } from './components/admin/a-s-application-edit/a-s-application-edit.component';
+import { AddProjectComponent } from './components/prac3/add-project/add-project.component';
+import { ForminputComponent } from './components/prac3/forminput/forminput.component';
+import { FileuploadComponent } from './components/prac3/fileupload/fileupload.component';
+import { SAcademicDetailsComponent } from './components/student/s-academic-details/s-academic-details.component';
+import { ACVacancyListComponent } from './components/admin/a-c-vacancy-list/a-c-vacancy-list.component';
+import { ACVacancyListActionComponent } from './components/admin/a-c-vacancy-list-action/a-c-vacancy-list-action.component';
+
  
 
 
@@ -56,6 +65,10 @@ const routes: Routes = [
   {path:'admin', component:AdminComponent,children:[
     {path:'company_registration', component:CompanyregistrationComponentComponent},
     {path:'a-dashboard', component:ADashboardComponent},
+    {path:'s-application', component:ASApplicationComponent},
+    {path:'s-application-edit', component:ASApplicationEditComponent},
+    {path:'c-vacancylist', component:ACVacancyListComponent},
+    {path:'a-c-vacancylist-action/:id', component:ACVacancyListActionComponent},
   ]},
  
   // {path:'student_registraion', component:StudentragistrationComponentComponent},
@@ -64,6 +77,9 @@ const routes: Routes = [
 
   {path:'login', component:LoginComponent},
   {path:'signup', component:SignupComponent},
+  {path:'addproduct', component:AddProjectComponent},
+  {path:'forninput', component:ForminputComponent},
+  {path:'fileupload', component:FileuploadComponent},
  
  
 // header
@@ -73,12 +89,16 @@ const routes: Routes = [
     {path:'student_profile', component:StudentProfileComponent},
     {path:'student_notification', component:StudentNotificationComponent},
     {path:'s-joblist', component:SJoblistComponent},
-    {path:'s-apply_job', component:SApplyJobComponent},
-    {path:'s-status', component:SStatusComponent},
+    {path:'s-vacany-details', component:SVacancyDetailsComponent},
+    {path:'s-vacancy-apply/:id', component:SVacancyApplyComponent},
+
+    {path:'s-status/:id', component:SStatusComponent},
     {path:'s-basic-details', component:SAplicationComponent},
-    {path:'s-basic-details-edit', component:SBasicDetailsEditComponent},
+    {path:'s-acadmic-details', component:SAcademicDetailsComponent},
+    {path:'s-basic-detailss', component:SBasicDetailsComponent},
+    {path:'s-basic-details-edit/:id', component:SBasicDetailsEditComponent},
     {path:'s-basic-form', component:SBasicDetailsComponent},
-    {path:'s-profile', component:SProfileComponent},
+    {path:'s-profile/:id', component:SProfileComponent},
     {path:'s-profile-edit/:id', component:SProfileEditComponent},
     {path:'student_registration', component:StudentragistrationComponentComponent},
 

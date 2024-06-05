@@ -30,6 +30,12 @@ export class StudentService {
   }
 
 
+  // this api is get details from eid with combine table student detils or vacancy details
+  getstudentdetails(eid: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/student/getstudentdetails`, { eid });
+  }
+
+
   //add fot get data from basice details
   getBasicDetails(eid: any){
     return this.http.post<any>(`${this.apiUrl}/student/getbasicdetails`, { eid });
@@ -43,5 +49,31 @@ export class StudentService {
   }
 // end
 
+
+getVacancyApplyStudentDetails(){
+  return this.http.get(`${this.apiUrl}/student/getVacancyApplyStudentDetails`);
+}
+VacancyApplicationStudentDetail(eid: string): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}/student/VacancyApplicationStudentDetail`, { eid });
+}
+
+
+
+
+
+
+
+// add by anil this api for master table
+getGender(){
+  return this.http.get(`${this.apiUrl}/student/getGender`);
+}
+
+
+
+
+
+
   
+
+
 }

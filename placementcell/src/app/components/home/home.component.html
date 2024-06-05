@@ -19,15 +19,44 @@
       <h1>Welcome to Placement Portal</h1>
       <p>Your gateway to job opportunities in rural and tribal areas.</p>
       <div class="cta-buttons">
-        <button routerLink="/job-listings">Find a Job</button>
-        <button routerLink="/hire-candidate">Hire Candidate</button>
+        <button routerLink="/login">Find a Job</button>
+        <button routerLink="/login">Hire Candidate</button>
       </div>
     </div>
   </div>
 
+
+ 
+  <div class="container mt-4">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th>S.NO</th>
+          <th>Vacancy ID</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>View</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let notification of notifications">
+          <td>{{ notification.Notification_ID }}</td>
+          <td>{{ notification.Vacancy_Id }}</td>
+          <td>{{ notification.Notification_Title }}</td>
+          <td>{{ notification.Notification_Description }}</td>
+          <td>{{ notification.Notification_Date | date }}</td>
+          <td><a href="#">{{ notification.view }}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
   
 
 </main>
+
+
   
 <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
 

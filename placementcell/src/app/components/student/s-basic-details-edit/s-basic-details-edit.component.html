@@ -158,14 +158,21 @@
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <label><b>Gender:</b></label>
-                                                        <select class="form-control shadow rounded border-1 border-dark"
+                                                        <!-- <label><b>Gender:</b></label> -->
+                                                        <!-- <select class="form-control shadow rounded border-1 border-dark"
                                                             name="Gender_Id" [(ngModel)]="basicdata.Gender_Id"
                                                             id="Gender_Id">
                                                             <option value="Male">Male</option>
                                                             <option value="Female">Female</option>
                                                             <option value="Other">Other</option>
+                                                        </select> -->
+                                                        <label for="gender">Gender</label>
+                                                        <select id="gender" formControlName="gender" class="form-control shadow rounded border-1 border-dark">
+                                                          <option *ngFor="let g of gender" [value]="g.value">{{ g.Value }}</option>
                                                         </select>
+
+
+
                                                         <!-- <input type="text" class=" form-control shadow rounded border-1 border-dark" id="Gender_Id"  name="Gender_Id" placeholder=" m1 f2"  /> -->
                                                     </div>
                                                 </div>

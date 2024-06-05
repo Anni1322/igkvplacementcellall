@@ -29,6 +29,10 @@
            
         </div>
     </li><hr>
+
+
+
+    
     
     
 
@@ -45,19 +49,19 @@
         </a>
       </li>
       <li>
-        <a routerLink="/student/s-profile" routerLinkActive="active">
+        <a [routerLink]="'/student/s-profile/' + user.eid" routerLinkActive="active">
           <span class="menu-icon material-icons">face</span>
           <span class="menu-text">Profile</span>
         </a>
       </li>
       <li>
-        <a routerLink="/student/s-joblist" routerLinkActive="active">
+        <a routerLink="/student/s-vacany-details" routerLinkActive="active">
           <span class="menu-icon material-icons">search</span>
-          <span class="menu-text">Job List</span>
+          <span class="menu-text">Vacancy Details</span>
         </a>
       </li>
       <li>
-        <a routerLink="/student/s-status" routerLinkActive="active">
+        <a [routerLink]="'/student/s-status/' + user.eid" routerLinkActive="active">
           <span class="menu-icon material-icons">info</span>
           <span class="menu-text">My Appication</span>
         </a>

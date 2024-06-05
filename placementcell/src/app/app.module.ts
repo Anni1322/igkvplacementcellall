@@ -13,11 +13,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatButtonModule} from '@angular/material/button';
 import { MenubarComponent } from './components/menubar/menubar.component';
 import { HomeComponent } from './components/home/home.component';
 import {MatListModule} from '@angular/material/list';
-import {MatCommonModule} from '@angular/material/core';
+import {MatCommonModule, MatOptionModule} from '@angular/material/core';
 import {MatBadgeModule} from '@angular/material/badge';
 import { CompanyregistrationComponentComponent } from './components/registration/companyregistration-component/companyregistration-component.component';
 import { StudentragistrationComponentComponent } from './components/registration/studentragistration-component/studentragistration-component.component';
@@ -86,7 +87,21 @@ import { ADashboardComponent } from './components/admin/a-dashboard/a-dashboard.
 import { CEditVacancyDetailsComponent } from './components/company/c-edit-vacancy-details/c-edit-vacancy-details.component';
 import { CBasicDetailsComponent } from './components/company/c-basic-details/c-basic-details.component';
 import { SBasicDetailsEditComponent } from './components/student/s-basic-details-edit/s-basic-details-edit.component';
-import { SApplyJobComponent } from './components/student/s-apply-job/s-apply-job.component';
+import { SVacancyApplyComponent } from './components/student/s-vacancy-apply/s-vacancy-apply.component';
+
+import { ASApplicationComponent } from './components/admin/a-s-application/a-s-application.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ASApplicationEditComponent } from './components/admin/a-s-application-edit/a-s-application-edit.component';
+import { AddProjectComponent } from './components/prac3/add-project/add-project.component';
+import { ForminputComponent } from './components/prac3/forminput/forminput.component';
+import { FileuploadComponent } from './components/prac3/fileupload/fileupload.component';
+ 
+import {MatDialogModule} from '@angular/material/dialog';
+import { SAcademicDetailsComponent } from './components/student/s-academic-details/s-academic-details.component';
+import { ACVacancyListComponent } from './components/admin/a-c-vacancy-list/a-c-vacancy-list.component';
+
+import { ACVacancyListActionComponent } from './components/admin/a-c-vacancy-list-action/a-c-vacancy-list-action.component';
+
 
 
 
@@ -142,7 +157,18 @@ import { SApplyJobComponent } from './components/student/s-apply-job/s-apply-job
       CEditVacancyDetailsComponent,
       CBasicDetailsComponent,
       SBasicDetailsEditComponent,
-      SApplyJobComponent,
+      SVacancyApplyComponent,
+      ASApplicationComponent,
+      ASApplicationEditComponent,
+      AddProjectComponent,
+      ForminputComponent,
+      FileuploadComponent,
+      SAcademicDetailsComponent,
+      ACVacancyListComponent,
+      ACVacancyListActionComponent,
+
+     
+    
    
   
 
@@ -172,7 +198,13 @@ import { SApplyJobComponent } from './components/student/s-apply-job/s-apply-job
     MatExpansionModule,
     MatStepperModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+
+    NgxPaginationModule,
+    MatProgressBarModule,
+    MatOptionModule,
+    MatDialogModule
+
     
     
   ],
