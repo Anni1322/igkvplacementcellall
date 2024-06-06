@@ -9,6 +9,10 @@ var config = {
         trustedConnection: true
     }
 };
+// anil data base
+
+
+
 
 // Connect to the database
 sql.connect(config, function(err) {
