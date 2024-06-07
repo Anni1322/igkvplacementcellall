@@ -9,6 +9,19 @@ companyRouter.post('/update_vacancy', companyController.updateJob);
 
 companyRouter.get('/vacancies', companyController.getVacanciesDetils);
 
+// added by roshni
+companyRouter.get('/', companyController.getAllCompany);
+companyRouter.get('/registration', companyController.registerCompany);
+
+companyRouter.get('/companycategory', companyController.getCompany_category);
+
+companyRouter.get('/companytype', companyController.getCompany_Type);
+
+companyRouter.get('/state', companyController.getstate);
+
+companyRouter.get('/district', companyController.getdistrict);
+
+companyRouter.get('/block', companyController.getblock);
 
 
 module.exports = companyRouter;

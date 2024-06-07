@@ -872,8 +872,9 @@ const uploadfile = async (req, res) => {
   };
 
 
-
+// added by roshni
 //  master table api start
+//function to fetched data from gender 
 const getGender = async (req, res) => {
     try {
         const request = new sql.Request();
@@ -882,9 +883,7 @@ const getGender = async (req, res) => {
         request.query(selectQuery, (err, result) => {
             if (err) {
                 console.error('Error executing the query:', err);
-                if (!res.headersSent) {
-                    res.status(500).json({ error: 'Error executing the query' });
-                }
+                res.status(500).json({ error: 'Error executing the query' });
                 return;
             }
             // Send the fetched records as JSON response
@@ -892,33 +891,13 @@ const getGender = async (req, res) => {
         });
 
     } catch (error) {
-        console.error('Error fetching Gender details: ', error);
-        if (!res.headersSent) {
-            res.status(500).json({ error: 'Internal Server Error' });
-        }
+        console.error('Error fetching Gender details: ', error);   
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 };
 
-const getCompany_category = async(req, res)=>{
-    try {
-        const request = new sql.Request();
-        const insertQuery = `SELECT * FROM dbo.company_category;`
-        request.query(insertQuery, (err, result) => {
-            if (err) {
-                console.log(err);
-                res.status(500).json({ error: 'Error executing the query' });
-                return;
-            }
-            // Send the fetched records as JSON response
-            res.json(result.recordset);
-            res.status(200).json({ message: 'company category details' });
-        });
-    } catch (error) {
-        console.error('Error company category details: ', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-}
- 
+
+//function to fetched data from degree_program 
 const getDegree_program = async(req, res)=>{
     try {
         const request = new sql.Request();
@@ -937,47 +916,97 @@ const getDegree_program = async(req, res)=>{
         console.error('Error degree program details: ', err);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-}
+};
 
-const getDegree_type = async(req, res)=>{
+//function to fetched data from degree_type
+const getDegree_type = async (req, res) => {
     try {
         const request = new sql.Request();
-        const insertQuery = `SELECT * FROM dbo.degree_type;`
-        request.query(insertQuery, (err, result) => {
+        const selectQuery = `SELECT * FROM dbo.degree_type;`;
+        request.query(selectQuery, (err, result) => {
             if (err) {
-                console.log(err);
+                console.error(err);
                 res.status(500).json({ error: 'Error executing the query' });
                 return;
             }
             // Send the fetched records as JSON response
-            res.json(result.recordset);
-            res.status(200).json({ message: 'degree type details' });
+            res.status(200).json(result.recordset);
         });
     } catch (error) {
-        console.error('Error degree type details: ', err);
+        console.error('Error fetching degree type details: ', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-}
+};
 
+//function to fetched data from subjects 
 const getSubjects = async(req, res)=>{
     try {
         const request = new sql.Request();
-        const insertQuery = `SELECT * FROM dbo.subjects;`
-        request.query(insertQuery, (err, result) => {
+        const selectQuery = `SELECT * FROM dbo.subjects;`
+        request.query(selectQuery, (err, result) => {
             if (err) {
-                console.log(err);
+                console.log(error);
                 res.status(500).json({ error: 'Error executing the query' });
                 return;
             }
             // Send the fetched records as JSON response
-            res.json(result.recordset);
-            res.status(200).json({ message: 'subjects details' });
+            res.status(200).json(result.recordset);
         });
     } catch (error) {
-        console.error('Error subjects details: ', err);
+        console.error('Error fetching subjects details: ', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-}
+};
+
+// added master api 
+
+
+// function to fetched data from salutation_e table 
+const getSalutation_English = async (req, res) => {
+    try {
+        const request = new sql.Request();
+        const selectQuery = `SELECT * FROM dbo.salutation_e;`;
+        request.query(selectQuery, (err, result) => {
+            if (err) {
+                console.error(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            // Send the fetched records as JSON response 
+            res.status(200).json(result.recordset);
+            //res.status(200).json({ message: 'Salutatione details' });
+        });
+    } catch (error) {
+        console.error('Error fetching salutation details', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+
+
+// function to fetched data from salutation_h table 
+const getSalutation_Hindi = async (req, res) => {
+    try {
+        const request = new sql.Request();
+        const selectQuery = 'SELECT * FROM dbo.salutation_h';
+        request.query(selectQuery, (err, result) => {
+            if (err) {
+                console.error(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return; // Stop further execution
+            }
+            
+            // Send the fetched records as JSON response
+            res.status(200).json(result.recordset);
+        });
+
+    } catch (error) {
+        console.error('Error fetching salutationh details: ', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+
 
 
 //  master table api end
@@ -1040,5 +1069,7 @@ module.exports ={
     getSubjects,
     getDegree_type,
     getDegree_program,
-    getCompany_category
+    getSalutation_English,
+    getSalutation_Hindi
+    
 }

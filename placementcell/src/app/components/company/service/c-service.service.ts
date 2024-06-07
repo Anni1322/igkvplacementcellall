@@ -11,6 +11,8 @@ export class CServiceService {
   private baseurl = 'http://localhost:3000'; 
   private postapiUrl = 'http://localhost:3000/company/add_vacancy'; 
  
+  companydetails_Post_Url = "http://localhost:3000/company/registerCompany";
+
   constructor(private http:HttpClient) { }
 
 // post/add vacancy details
@@ -42,21 +44,34 @@ getVacancyedata(Vacancy_ID: string): Observable<any> {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 VacancyApply(data:any){
   return this.http.post<any>(`${this.baseurl}/student/VacancyApply` ,data);
 }
 
 
+//added by roshni
+postCompanyDetails(formValue: any): Observable<any> {
+  return this.http.post(this.apiUrl, formValue);
+}
+
+getcompany_category(){
+  return this.http.get(`${this.baseurl}/company/companycategory`);
+}
+
+getcompany_type(){
+  return this.http.get(`${this.baseurl}/company/companytype`);
+}
+
+getstate(){
+  return this.http.get(`${this.baseurl}/company/state`);
+}
+getdistrict(){
+  return this.http.get(`${this.baseurl}/company/district`);
+}
+
+getblock(){
+  return this.http.get(`${this.baseurl}/company/block`);
+}
 
 // for side bar
   private sidebarVisibilitySubject = new BehaviorSubject<boolean>(true);
