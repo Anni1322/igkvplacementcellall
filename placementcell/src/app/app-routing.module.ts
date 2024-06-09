@@ -47,6 +47,7 @@ import { FileuploadComponent } from './components/prac3/fileupload/fileupload.co
 import { SAcademicDetailsComponent } from './components/student/s-academic-details/s-academic-details.component';
 import { ACVacancyListComponent } from './components/admin/a-c-vacancy-list/a-c-vacancy-list.component';
 import { ACVacancyListActionComponent } from './components/admin/a-c-vacancy-list-action/a-c-vacancy-list-action.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
  
 
@@ -58,7 +59,7 @@ const routes: Routes = [
   // {path:'', redirectTo: 'dashboard', pathMatch : 'full'},
   {path:'dashboard', component:DashboardComponent},
   {path:'abody', component:AdminBodyComponent},
-
+  
 
  
   {path:'', component:HomeComponent},
@@ -80,7 +81,7 @@ const routes: Routes = [
   {path:'addproduct', component:AddProjectComponent},
   {path:'forninput', component:ForminputComponent},
   {path:'fileupload', component:FileuploadComponent},
- 
+  {path:'reset-password', component:ResetPasswordComponent},
  
 // header
  

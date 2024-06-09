@@ -106,6 +106,7 @@ import { ACVacancyListComponent } from './components/admin/a-c-vacancy-list/a-c-
 import { ACVacancyListActionComponent } from './components/admin/a-c-vacancy-list-action/a-c-vacancy-list-action.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 
@@ -171,6 +172,7 @@ import { MatSelectModule } from '@angular/material/select';
       SAcademicDetailsComponent,
       ACVacancyListComponent,
       ACVacancyListActionComponent,
+      ResetPasswordComponent,
 
      
     
