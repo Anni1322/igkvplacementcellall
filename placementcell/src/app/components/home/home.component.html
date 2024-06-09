@@ -1,71 +1,181 @@
+
+  
+<!-- <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav> -->
+
+<!-- <app-body>
+    [collapsed]="isSideNavCollapsed"
+    [screenWidth]="screenWidth"
+</app-body> -->
+
+
 <main>
-<div class=" homebody">
-    <header>
-      <nav>
-        <div class="logo">
-            <img src="https://igkv.ac.in/Images/img/logo_with_name2.png" alt="">
+  <div class="container">
+
+
+    <nav class="navbar navbar-expand-lg ">
+      <div class="container-fluid">
+        <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+        <a class="navbar-brand" href="#">
+          <img src="https://igkv.ac.in/Images/img/logo_with_name2.png" alt="Logo" style="width: 13rem; height: 2rem;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/signup">Signup</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/login">Login</a>
+            </li>
+          </ul>
         </div>
-        <ul class="nav-links">
-          <li><a routerLink="/login">Login</a></li>
-          <li><a routerLink="/signup">Signup</a></li>
-        </ul>
-      </nav>
 
-   
+      </div>
+    </nav>
 
-    </header>
 
-    <div class="content">
+  
+
+    <div class="content text-center mb-4">
       <h1>Welcome to Placement Portal</h1>
       <p>Your gateway to job opportunities in rural and tribal areas.</p>
       <div class="cta-buttons">
-        <button routerLink="/login">Find a Job</button>
-        <button routerLink="/login">Hire Candidate</button>
+        <button class="btn btn-primary" routerLink="/login">Find a Job</button>
+        <button class="btn btn-secondary" routerLink="/login">Hire Candidate</button>
       </div>
     </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+          <tr>
+            <th>S.NO</th>
+            <th>Vacancy ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>View</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let notification of notifications">
+            <td>{{ notification.Notification_ID }}</td>
+            <td>{{ notification.Vacancy_Id }}</td>
+            <td>{{ notification.Notification_Title }}</td>
+            <td>{{ notification.Notification_Description }}</td>
+            <td>{{ notification.Notification_Date | date }}</td>
+            <td><a href="#">{{ notification.view }}</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      
+    <section class="sec-1">
+      <div class="bg container text-center border-radius rounded shadow-sm mx-auto ">
+        <div class="stats d-flex justify-content-center mt-1">
+          <div class="stat-item p-4">
+            <h1>232</h1>
+            <p>Registered Students</p>
+          </div>
+          <div class="stat-item p-4">
+            <h1>521</h1>
+            <p>Registered Companie's</p>
+          </div>
+          <div class="stat-item p-4">
+            <h1>1453</h1>
+            <p>Placed Students</p>
+          </div>
+          <div class="stat-item p-4">
+            <h1>32</h1>
+            <p>Workers</p>
+          </div>
+        </div>
+      </div>
+      </section>
+
+
+
+
+      <div class="about">
+        <div class="stats d-flex justify-content-center mt-2">
+          <div class="stat-item p-4">
+            <h3>232</h3>
+            <p>Student</p>
+          </div>
+          <div class="stat-item p-4">
+            <h3>521</h3>
+            <p>Companies</p>
+          </div>
+          <div class="stat-item p-4">
+            <h3>1453</h3>
+            <p>Placed</p>
+          </div>
+          <div class="stat-item p-4">
+            <h3>32</h3>
+            <p>Workers</p>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <div class="container-sec">
+      
+      <section class="mt-2" >
+        <h1>1</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aliquam maxime dolor magnam non dolore eos eveniet soluta mollitia ipsa dignissimos id ex sit similique obcaecati explicabo, illo enim accusantium.</p>
+      </section >
+      <section class="mt-2">
+        <h1>2</h1>
+      </section>
+      <section class="mt-2">
+         
+      </section>
+      <div class="company">
+        <marquee class="notification_body" behavior="scroll" direction="left" scrollamount="12" scrolldelay="10" onmouseover="this.stop();" onmouseout="this.start();">
+          <div class="row marquee">
+            <div class="col">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLoiV_s-VDWFNJzKtie6-eAvMpy2uk6ngfMQ&s" alt="" width="200px" height="150px">
+                <h5 class="text-center">apple</h5>
+            </div>
+            <div class="col">
+              <img src="https://blog.ipleaders.in/wp-content/uploads/2019/06/company.jpg" alt="" width="200px" height="150px">
+              <h5 class="text-center">google</h5>
+            </div>
+            <div class="col">
+              <img src="https://hmarkets.com/wp-media/2022/08/Biggest-Non-US-companies-by-Market-Capitalisation-2023.png" alt="" width="200px" height="150px">
+              <h5 class="text-center">facebook</h5>
+            </div>
+            <div class="col">
+              <img src="https://feeds.abplive.com/onecms/images/uploaded-images/2023/05/15/e5aa1979416234f8f2f63482187efb641684147734982314_original.jpg" alt="" width="200px" height="150px">
+              <h5 class="text-center">facebook</h5>
+            </div>
+          </div>
+        </marquee>
+      </div>
+   
+    </div>
+
+
   </div>
-
-
- 
-  <div class="container mt-4">
-    <table class="table table-bordered table-hover">
-      <thead class="thead-light">
-        <tr>
-          <th>S.NO</th>
-          <th>Vacancy ID</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Date</th>
-          <th>View</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let notification of notifications">
-          <td>{{ notification.Notification_ID }}</td>
-          <td>{{ notification.Vacancy_Id }}</td>
-          <td>{{ notification.Notification_Title }}</td>
-          <td>{{ notification.Notification_Description }}</td>
-          <td>{{ notification.Notification_Date | date }}</td>
-          <td><a href="#">{{ notification.view }}</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  
-
+  <app-footer></app-footer>
 </main>
 
-
-  
-<app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
-
-<app-body>
-    [collapsed]="isSideNavCollapsed"
-    [screenWidth]="screenWidth"
-</app-body>
-
-
-
-
  
+
+
