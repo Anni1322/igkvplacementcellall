@@ -104,11 +104,16 @@ import { SAcademicDetailsComponent } from './components/student/s-academic-detai
 import { ACVacancyListComponent } from './components/admin/a-c-vacancy-list/a-c-vacancy-list.component';
 
 import { ACVacancyListActionComponent } from './components/admin/a-c-vacancy-list-action/a-c-vacancy-list-action.component';
+<<<<<<< HEAD
+import { FooterComponent } from './m-layout/footer/footer.component';
+ 
+=======
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
+>>>>>>> 6902b768abba9905d4b4ad37a2ba0c2b256e9f12
 
 
 @NgModule({
@@ -123,7 +128,6 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     JoblistComponent,
     LoginComponent,
     SignupComponent,
-
     StudentNotificationComponent,
     StudentProfileComponent,
     MyApplicationTrackingComponent,
@@ -172,8 +176,14 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
       SAcademicDetailsComponent,
       ACVacancyListComponent,
       ACVacancyListActionComponent,
+<<<<<<< HEAD
       ResetPasswordComponent,
 
+=======
+     
+      FooterComponent
+     
+>>>>>>> cf3c79d1b613246a2a527fc020d471e9f0b98db7
      
     
    

@@ -20,11 +20,8 @@ interface Notification {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit  {
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+export class HomeComponent   {
+  
   showFiller = false;
 
   isSideNavCollapsed = false;
