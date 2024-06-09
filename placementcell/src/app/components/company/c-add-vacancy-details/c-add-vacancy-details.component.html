@@ -25,26 +25,29 @@
                                 <div class="card-body">
                                     <div class="row">
 
-                                        <ng-template matStepLabel="content">Vacancy ID</ng-template>
-                                        <h2>Personal_Details</h2>
-                                        <div class="col-lg-4 ">
+                                        <ng-template matStepLabel="content">First_Content</ng-template>
+                                        <h2>Vacancy_Details</h2>
+                                        <div class="col-lg-3 ">
                                             <div class="form-group">
                                                 <label for="Vacancy_ID">Vacancy ID</label>
-                                                <input type="text" class="form-control shadow rounded border-1 border-dark" [(ngModel)]="formData.Vacancy_ID" id="Vacancy_ID"   name="Vacancy_ID" ngModel required>
+                                                <input type="text" class="form-control" [(ngModel)]="formData.Vacancy_ID" id="Vacancy_ID"   name="Vacancy_ID" ngModel required>
                         
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label for="Company_Id">Company ID</label>
                                                 <input type="text" class="form-control" [(ngModel)]="formData.Company_Id"  id="Company_Id" name="Company_Id" ngModel required> 
-
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
                                                 <label for="Company_Registration_No">Company Registration No</label>
                                                 <input type="text" class="form-control" [(ngModel)]="formData.Company_Registration_No" id="Company_Registration_No" name="Company_Registration_No"ngModel>
                                               
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <div class="form-group">
                                                  
                                                 <label for="Job_Title">Job Title</label>
@@ -52,15 +55,15 @@
                                     
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                         <div class="form-group">
                                                
                                                 <label for="Job_Description">Job Description</label>
-                                                <textarea class="form-control" [(ngModel)]="formData.Job_Description" id="Job_Description" name="Job_Description" rows="4" ngModel></textarea>
+                                                <textarea class="form-control" [(ngModel)]="formData.Job_Description" id="Job_Description" name="Job_Description" rows="2" ngModel></textarea>
                     
                                         </div>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <div class="form-group">
                     
                                                 <label for="Job_Selection">Job Selection</label>
@@ -68,7 +71,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <div class="form-group">
                                                 
                                                 <label for="Job_Location">Job Location</label>
@@ -76,7 +79,7 @@
  
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <div class="form-group">
                                                 
                                                 <label for="No_Of_Post">Number of Posts</label>
@@ -84,7 +87,7 @@
             
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <div class="form-group">
                                                 
                                                 <label for="Salary">Salary</label>
@@ -92,7 +95,7 @@
 
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <div class="form-group">
                                                
                                                 <label for="Last_Date_for_apply">Last Date to Apply</label>
@@ -100,39 +103,7 @@
                                                  
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                
-                                                <label for="Min_Experience_in_Year">Minimum Experience (Years)</label>
-                                                <input type="number" class="form-control" [(ngModel)]="formData.Min_Experience_in_Year" id="Min_Experience_in_Year" name="Min_Experience_in_Year" ngModel>
-                                              
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                        <div class="form-group">
-                                                 
-                                                <label for="Maximum_Age">Maximum Age</label>
-                                                <input type="number" class="form-control" [(ngModel)]="formData.Maximum_Age" id="Maximum_Age" name="Maximum_Age" ngModel>
-                                           
-                                                
-
-
-
-                                        </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                 
-                                                <label for="Preferred_Gender">Preferred Gender</label>
-                                                <input type="text" class="form-control" [(ngModel)]="formData.Preferred_Gender" id="Preferred_Gender" name="Preferred_Gender" ngModel> 
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                        <div class="form-group">
-                                                <label for="Prefered_Language">Preferred Language</label>
-                                                <input type="text" class="form-control" [(ngModel)]="formData.Prefered_Language" id="Prefered_Language" name="Prefered_Language" ngModel> 
-                                        </div>
-                                        </div>
+                                        
                                        
 
                                         <button mat-button matStepperNext>Next</button>
@@ -149,158 +120,63 @@
                                         <h2>second</h2>
                                         <ng-template matStepLabel="content">SecondContent</ng-template>
                                          
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                
+                                                <label for="Min_Experience_in_Year">Minimum Experience (Years)</label>
+                                                <input type="number" class="form-control" [(ngModel)]="formData.Min_Experience_in_Year" id="Min_Experience_in_Year" name="Min_Experience_in_Year" ngModel>
+                                              
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                 
+                                                <label for="Maximum_Age">Maximum Age</label>
+                                                <input type="number" class="form-control" [(ngModel)]="formData.Maximum_Age" id="Maximum_Age" name="Maximum_Age" ngModel>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                 
+                                                <label for="Preferred_Gender">Preferred Gender</label>
+                                                <input type="text" class="form-control" [(ngModel)]="formData.Preferred_Gender" id="Preferred_Gender" name="Preferred_Gender" ngModel> 
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                        <div class="form-group">
+                                                <label for="Prefered_Language">Preferred Language</label>
+                                                <input type="text" class="form-control" [(ngModel)]="formData.Prefered_Language" id="Prefered_Language" name="Prefered_Language" ngModel> 
+                                        </div>
+                                        </div>
 
 
-
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label for="Status">Status</label>
                                                 <input type="text" class="form-control" [(ngModel)]="formData.Status" id="Status" name="Status" value="Pending" ngModel>
                                                                                      
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label for="Created_By">Created By</label>
-                                                <input type="text" class="form-control" [(ngModel)]="formData.Created_By" id="Created_By" name="Created_By" ngModel>
-                                                                            
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-lg-4">
+                                        <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label for="Created_Date">Created Date</label>
                                                  <input type="datetime-local" class="form-control" [(ngModel)]="formData.Created_Date" id="Created_Date" name="Created_Date" ngModel>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label for="Modified_By">Modified By</label>
-                                                <input type="text" class="form-control" [(ngModel)]="formData.Modified_By" id="Modified_By" name="Modified_By" ngModel>
-                                            </div>
-                                        </div>
 
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label for="Modified_Date">Modified Date</label>
-                                                <input type="datetime-local" class="form-control" [(ngModel)]="formData.Modified_Date" id="Modified_Date" name="Modified_Date" ngModel>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label for="Delete_Flag">Delete Flag</label>
-                                                <input type="text" class="form-control" [(ngModel)]="formData.Delete_Flag" id="Delete_Flag" name="Delete_Flag" ngModel>                                   
-                                                
-
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label for="Public_IP_Address">Public IP Address</label>
-                                                <input type="text" class="form-control" [(ngModel)]="formData.Public_IP_Address" id="Public_IP_Address" name="Public_IP_Address" ngModel>
-                                                                                          
-                                                
-
-
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label for="Private_IP_Address">Private IP Address</label>
-                                                <input type="text" class="form-control" [(ngModel)]="formData.Private_IP_Address" id="Private_IP_Address" name="Private_IP_Address" ngModel>
-                                                                                           
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                
-                                            </div>
-                                        </div>
-
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                               
-                                            </div>
-                                        </div>
                                         <button mat-button matStepperPrevious>Back</button>
-                                        <button mat-button matStepperNext>Next</button>
+                                        <div
+                                        class="mt-2 d-flex justify-content-evenly pt-4 pb-3 rounded-top bg-white border border-1 border-dark">
+                                        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                                        <button type="submit" class="btn btn-primary"
+                                            (click)="getvalueFromform(NgForm.value)">Submit</button>
+                                    </div>
                                     </div>
                                 </div>
                             </mat-step>
 
-                            <mat-step>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <h2>Other_Details</h2>
-                                        <ng-template matStepLabel="content">Done</ng-template>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                 
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                 
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                 
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                 
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                               
-                                            </div>
-                                        </div>
-                                        <p>submit your registration form</p>
-                                        <button mat-button matStepperPrevious>Back</button>
-                                    </div>
-                                </div>
-                            </mat-step>
                         </mat-stepper>
-                        <div
-                            class="mt-2 d-flex justify-content-evenly pt-4 pb-3 rounded-top bg-white border border-1 border-dark">
-                            <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                            <button type="submit" class="btn btn-primary"
-                                (click)="getvalueFromform(NgForm.value)">Submit</button>
-                        </div>
 
                         <div
                             class="rounded-bottom border border-dark border-1 p-1 text-center m-0 bg-dark text-light fw-bold">

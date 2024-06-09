@@ -2,6 +2,7 @@
 const Student = require('../model/studentModel');
 const bcrypt = require('bcrypt');
 const sql = require('../config/db');
+const { getGender, getSalutation_English, getSalutation_Hindi } = require('./studentController');
 
 
 
@@ -418,18 +419,9 @@ const Signup = async (req, res) => {
     });
 };
 
-
-
-
-
-
-
- 
-
-
-const getCompany = async(req, res)=>{
+const getAllCompany = async(req, res)=>{
     var request = new sql.Request();
-    var query = "SELECT * FROM dbo.student_registration";
+    var query = "SELECT * FROM dbo.company_registration";
 
     // Execute the SQL query
     request.query(query, function(err, records) {
@@ -442,38 +434,33 @@ const getCompany = async(req, res)=>{
         res.json(records.recordset);
     });
 }
-
-
-
-
-
-
-
-
-
-const registerStudent = async (req, res) => {
-    // Access the request body
+ 
+const registerCompany = async (req, res) => {
     const {
-        user_id,
-        Registration_Type,
-        Salutation_E,
-        Salutation_H,
-        Student_First_Name_E,
-        Student_Middle_Name_E,
-        Student_Last_Name_E,
-        Student_First_Name_H,
-        Student_Middle_Name_H,
-        Student_Last_Name_H,
-        DOB,
-        Gender_Id,
-        Mobile_No,
-        Email_Id,
-        Father_Name_E,
-        Mother_Name_E,
-        Father_Name_H,
-        Mother_Name_H,
-        Guardian_Name_E,
-        Spouse_Name_E,
+        Id,
+        Company_Id,
+        Company_Registration_No,
+        Tnp_Registration_No,
+        Company_Name,
+        Company_Type,
+        Company_Category,
+        Company_Email,
+        Company_Phone_Number,
+        Hr_Name,
+        Hr_Contact_No,
+        Hr_Email,
+        Contact_Person,
+        Contact_Person_Email,
+        Contact_Person_Phone,
+        Address,
+        State,
+        District,
+        Block,
+        website,
+        Company_Logo_url,
+        Company_Logo,
+        Company_Broucher,
+        Company_other_Doc_url,
         Created_By,
         Created_Date,
         Modified_By,
@@ -482,131 +469,230 @@ const registerStudent = async (req, res) => {
         Public_IP_Address,
         Private_IP_Address    
     } = req.body;
-    
-    // Validate required fields
-    // if (!name || !email || !age || !gender ) {
-    //     return res.status(400).json({ error: 'All fields are required' });
-    // }
 
-    console.log("this id check"+ user_id);
-    
-    // Create a new request object
-    const request = new sql.Request();
-    
-    // SQL query to check if the email exists in the students table
-    const emailCheckQuery = 'SELECT COUNT(*) AS count FROM dbo.student_registration WHERE Email_Id = @Email_Id';
-    request.input('Email_Id', sql.VarChar(50), Email_Id);
+    try {
+        const request = new sql.Request();
 
-    request.query(emailCheckQuery, (err, result) => {
-        if (err) {
-            console.error('Error checking email existence in SQL Server: ', err);
-            return res.status(500).json({ error: 'Internal Server Error' });
-        }
+        const insertQuery = `
+            INSERT INTO dbo.company_registration (
+                Id,
+                Company_Id,
+                Company_Registration_No,
+                Tnp_Registration_No,
+                Company_Name,
+                Company_Type,
+                Company_Category,
+                Company_Email,
+                Company_Phone_Number,
+                Hr_Name,
+                Hr_Contact_No,
+                Hr_Email,
+                Contact_Person,
+                Contact_Person_Email,
+                Contact_Person_Phone,
+                Address,
+                State,
+                District,
+                Block,
+                website,
+                Company_Logo_url,
+                Company_Logo,
+                Company_Broucher,
+                Company_other_Doc_url,
+                Created_By,
+                Created_Date,
+                Modified_By,
+                Modified_Date,
+                Delete_Flag,
+                Public_IP_Address,
+                Private_IP_Address  
+            ) VALUES (
+                @Id,
+                @Company_Id,
+                @Company_Registration_No,
+                @Tnp_Registration_No,
+                @Company_Name,
+                @Company_Type,
+                @Company_Category,
+                @Company_Email,
+                @Company_Phone_Number,
+                @Hr_Name,
+                @Hr_Contact_No,
+                @Hr_Email,
+                @Contact_Person,
+                @Contact_Person_Email,
+                @Contact_Person_Phone,
+                @Address,
+                @State,
+                @District,
+                @Block,
+                @website,
+                @Company_Logo_url,
+                @Company_Logo,
+                @Company_Broucher,
+                @Company_other_Doc_url,
+                @Created_By,
+                @Created_Date,
+                @Modified_By,
+                @Modified_Date,
+                @Delete_Flag,
+                @Public_IP_Address,
+                @Private_IP_Address  
+            )
+        `;
 
-        // If count is greater than 0, email exists
-        if (result.recordset[0].count > 0) {
-            // Email exists, return an error
-            return res.status(400).json({ error: 'Email already exists' });
-        } else {
-            // Email doesn't exist, proceed with inserting data
-            
-            // Insert data into SQL Server
-            const insertQuery = `INSERT INTO dbo.student_registration (
-                    UE_ID,
-                    Registration_Type,
-                    Salutation_E,
-                    Salutation_H,
-                    Student_First_Name_E,
-                    Student_Middle_Name_E,
-                    Student_Last_Name_E,
-                    Student_First_Name_H,
-                    Student_Middle_Name_H,
-                    Student_Last_Name_H,
-                    DOB,
-                    Gender_Id,
-                    Mobile_No,
-                    Email_Id,
-                    Father_Name_E,
-                    Mother_Name_E,
-                    Father_Name_H,
-                    Mother_Name_H,
-                    Guardian_Name_E,
-                    Spouse_Name_E,
-                    Created_By,
-                    Created_Date,
-                    Modified_By,
-                    Modified_Date,
-                    Delete_Flag,
-                    Public_IP_Address,
-                    Private_IP_Address
-                ) VALUES (
-                    @UE_ID,
-                    @Registration_Type,
-                    @Salutation_E,
-                    @Salutation_H,
-                    @Student_First_Name_E,
-                    @Student_Middle_Name_E,
-                    @Student_Last_Name_E,
-                    @Student_First_Name_H,
-                    @Student_Middle_Name_H,
-                    @Student_Last_Name_H,
-                    @DOB,
-                    @Gender_Id,
-                    @Mobile_No,
-                    @Email_Id,
-                    @Father_Name_E,
-                    @Mother_Name_E,
-                    @Father_Name_H,
-                    @Mother_Name_H,
-                    @Guardian_Name_E,
-                    @Spouse_Name_E,
-                    @Created_By,
-                    @Created_Date,
-                    @Modified_By,
-                    @Modified_Date,
-                    @Delete_Flag,
-                    @Public_IP_Address,
-                    @Private_IP_Address
-                )`;
-                    request.input('UE_ID', sql.VarChar(50), user_id);
-                    request.input('Registration_Type', sql.Char, Registration_Type);
-                    request.input('Salutation_E', sql.TinyInt, Salutation_E);
-                    request.input('Salutation_H', sql.TinyInt, Salutation_H);
-                    request.input('Student_First_Name_E', sql.VarChar(50), Student_First_Name_E);
-                    request.input('Student_Middle_Name_E', sql.VarChar(50), Student_Middle_Name_E);
-                    request.input('Student_Last_Name_E', sql.VarChar(50), Student_Last_Name_E);
-                    request.input('Student_First_Name_H', sql.VarChar(50), Student_First_Name_H);
-                    request.input('Student_Middle_Name_H', sql.VarChar(50), Student_Middle_Name_H);
-                    request.input('Student_Last_Name_H', sql.VarChar(50), Student_Last_Name_H);
-                    request.input('DOB', sql.Date, DOB);
-                    request.input('Gender_Id', sql.Char, Gender_Id);
-                    request.input('Mobile_No', sql.VarChar(12), Mobile_No);
-                   
-                    request.input('Father_Name_E', sql.VarChar(50), Father_Name_E);
-                    request.input('Mother_Name_E', sql.VarChar(50), Mother_Name_E);
-                    request.input('Father_Name_H', sql.VarChar(50), Father_Name_H);
-                    request.input('Mother_Name_H', sql.VarChar(50), Mother_Name_H);
-                    request.input('Guardian_Name_E', sql.VarChar(50), Guardian_Name_E);
-                    request.input('Spouse_Name_E', sql.VarChar(50), Spouse_Name_E);
-                    request.input('Created_By', sql.VarChar(20), Created_By);
-                    request.input('Created_Date', sql.DateTime, Created_Date);
-                    request.input('Modified_By', sql.VarChar(20), Modified_By);
-                    request.input('Modified_Date', sql.DateTime, Modified_Date);
-                    request.input('Delete_Flag', sql.Char, Delete_Flag);
-                    request.input('Public_IP_Address', sql.VarChar(20), Public_IP_Address);
-                    request.input('Private_IP_Address', sql.VarChar(20), Private_IP_Address);
+        request.input('Id', sql.BigInt, Id);
+        request.input('Company_Id', sql.VarChar, Company_Id);
+        request.input('Company_Registration_No', sql.VarChar, Company_Registration_No);
+        request.input('Tnp_Registration_No', sql.VarChar, Tnp_Registration_No);
+        request.input('Company_Name', sql.VarChar(50), Company_Name);
+        request.input('Company_Type', sql.SmallInt, Company_Type);
+        request.input('Company_Category', sql.SmallInt, Company_Category);
+        request.input('Company_Email', sql.VarChar(50), Company_Email);
+        request.input('Company_Phone_Number', sql.VarChar(50), Company_Phone_Number);
+        request.input('Hr_Name', sql.VarChar(50), Hr_Name);
+        request.input('Hr_Contact_No', sql.VarChar, Hr_Contact_No);
+        request.input('Hr_Email', sql.VarChar, Hr_Email);
+        request.input('Contact_Person', sql.VarChar(50), Contact_Person);
+        request.input('Contact_Person_Email', sql.VarChar(50), Contact_Person_Email);
+        request.input('Contact_Person_Phone', sql.VarChar(50), Contact_Person_Phone);
 
-            request.query(insertQuery, (err, results) => {
-                if (err) {
-                    console.error('Error inserting into SQL Server: ', err);
-                    return res.status(500).json({ error: 'Internal Server Error' });
-                }
-                // Handle successful insertion
-                res.status(200).json({ message: 'Student registered successfully' });
-            });
-        }
-    });
+        request.input('Address', sql.VarChar(100), Address);
+        request.input('State', sql.SmallInt, State);
+        request.input('District', sql.SmallInt, District);
+        request.input('Block', sql.SmallInt, Block);
+        request.input('website', sql.VarChar(5000), website);
+        request.input('Company_Logo_url', sql.VarChar(50), Company_Logo_url);
+        request.input('Company_Logo', sql.VarChar(50), Company_Logo);
+        request.input('Company_Broucher', sql.VarChar(50), Company_Broucher);
+        request.input('Company_other_Doc_url', sql.VarChar(50), Company_other_Doc_url);
+        request.input('Created_By', sql.VarChar(20), Created_By);
+        request.input('Created_Date', sql.DateTime, Created_Date);
+        request.input('Modified_By', sql.VarChar(20), Modified_By);
+        request.input('Modified_Date', sql.DateTime, Modified_Date);
+        request.input('Delete_Flag', sql.Char, Delete_Flag);
+        request.input('Public_IP_Address', sql.VarChar(20), Public_IP_Address);
+        request.input('Private_IP_Address', sql.VarChar(20), Private_IP_Address);
+
+        await request.query(insertQuery);
+
+        res.status(200).json({ message: 'Company registered successfully' });
+    } catch (err) {
+        console.error('Error inserting into SQL Server: ', err);
+        res.status(500).json({ error: 'Internal Server Error', details: err.message });
+    }
 };
+
+
+const getCompany_category = async (req, res) => {
+    try {
+        const request = new sql.Request();
+        const selectQuery = `SELECT * FROM dbo.company_category;`;
+        request.query(selectQuery, (err, result) => {
+            if (err) {
+                console.error(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            // Send the fetched records as JSON response
+            res.status(200).json(result.recordset);
+        });
+    } catch (error) {
+        console.error('Error fetching company category details: ', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+const getCompany_Type = async (req, res) => {
+    try {
+        const request = new sql.Request();
+        const selectQuery = 'SELECT * FROM dbo.company_type';
+        request.query(selectQuery, (err, result) => {
+            if (err) {
+                console.error(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            // Send the fetched records as JSON response
+            res.status(200).json(result.recordset);
+        });
+    } catch (error) {
+        console.error('Error fetching company type details: ', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+
+
+const getstate = async(req, res)=> {
+    try {
+        const request = new sql.Request();
+        const selectQuery = 'SELECT * FROM dbo.state';
+        request.query(selectQuery, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            //send the fetched records as JSON response 
+            res.status(200).json(result.recordset);
+        });
+
+    } catch (error) {
+        console.error('Error fetching state details: ', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+const getdistrict = async (req, res)=> {
+    try {
+        const request = new sql.Request();
+        const selectQuery = 'SELECT * FROM dbo.district';
+        request.query(selectQuery, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            //Send the fetched records as JSON response 
+            res.status(200).json(result.recordset);
+
+        });
+
+    } catch (error) {
+        console.error('Error district details: ', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+const getblock = async (req, res)=> {
+    try {
+        const request = new sql.Request();
+        const selectQuery = 'SELECT * FROM dbo.block';
+        request.query(selectQuery, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            //Send the fetched records as JSON response 
+            res.status(200).json(result.recordset);
+        });
+
+    } catch (error) {
+        console.error('Error fetching block details: ', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+
+
+
+
+ 
+
+
+
 
 
 
@@ -616,13 +702,22 @@ const registerStudent = async (req, res) => {
 
           
 module.exports ={
-    getCompany,
-    registerStudent,
     Signup,
     login,
     
     addjob,
     Updatejobdataget,
     updateJob,
-    getVacanciesDetils
+    getVacanciesDetils,
+    getAllCompany ,
+    registerCompany,
+    getGender,
+    getSalutation_English,
+    getSalutation_Hindi,
+    getstate,
+    getCompany_Type,
+    getCompany_category,
+    getdistrict,
+    getblock
+    
 }

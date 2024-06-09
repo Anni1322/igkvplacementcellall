@@ -100,8 +100,11 @@ router.get('/getGender',studentController.getGender);
 router.get('/getSubjects',studentController.getSubjects);
 router.get('/getDegree_type',studentController.getDegree_type);
 router.get('/getDegree_program',studentController.getDegree_program);
-router.get('/getCompany_category',studentController.getCompany_category);
 
+//added by roshni
+router.get('/salutationenglish', studentController.getSalutation_English);
+router.get('/salutationhindi', studentController.getSalutation_Hindi);
+router.get('/registrationtype', studentController.getRegistrationType);
 
 
 // router.post('/add', studentController.postAddstudent);
