@@ -1006,6 +1006,27 @@ const getSalutation_Hindi = async (req, res) => {
     }
 };
 
+//function to fetch data from registration type table
+const getRegistrationType = async (req, res) => {
+    try {
+        const request = new sql.Request();
+        const query = 'SELECT * FROM dbo.registration_type';
+
+        request.query(query, (err, result) => {
+            if (err) {
+                console.error('Error executing the query: ', err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            // Send the fetched records as JSON response
+            res.status(200).json(result.recordset);
+        });
+
+    } catch (error) {
+        console.error('Error fetching Registrationtype details: ', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
 
 
 
@@ -1070,6 +1091,7 @@ module.exports ={
     getDegree_type,
     getDegree_program,
     getSalutation_English,
-    getSalutation_Hindi
+    getSalutation_Hindi,
+    getRegistrationType
     
 }

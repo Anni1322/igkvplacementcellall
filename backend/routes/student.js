@@ -104,7 +104,7 @@ router.get('/getDegree_program',studentController.getDegree_program);
 //added by roshni
 router.get('/salutationenglish', studentController.getSalutation_English);
 router.get('/salutationhindi', studentController.getSalutation_Hindi);
-
+router.get('/registrationtype', studentController.getRegistrationType);
 
 
 // router.post('/add', studentController.postAddstudent);

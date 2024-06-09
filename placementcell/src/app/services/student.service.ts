@@ -77,5 +77,8 @@ getSalutation_Hindi(){
   return this.http.get(`${this.apiUrl}/student/salutationhindi`);
 }
 
+getRegistrationType(){
+  return this.http.get(`${this.apiUrl}/student/registrationtype`);
+}
 
 }

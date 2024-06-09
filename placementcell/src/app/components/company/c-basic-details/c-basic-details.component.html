@@ -7,7 +7,6 @@
     </div>
 
     <div class="container main-con mt-2 bg-white-subtle p-1  rounded">
-        <!--<form class="form" #NgForm="ngForm" enctype="multipart/form-data">-->
             <div class="row basic-row ">
                 <div class="#">
                     <div class="card row">
@@ -246,11 +245,6 @@
                                                     {{c.District_Name}}
                                                 </mat-option>
                                             </mat-select>
-                                            <!--<mat-select formControlName="District">
-                                                <mat-option *ngFor="let c of district;" [value]="c.District_Name">
-                                                    {{c.District_Name}}
-                                                </mat-option>
-                                            </mat-select>-->
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -266,11 +260,6 @@
                                                     {{c.Block_Name}}
                                                 </mat-option>
                                             </mat-select>
-                                            <!--<mat-select formControlName="Block">
-                                                <mat-option *ngFor="let c of block;" [value]="c.Block_Name">
-                                                    {{c.Block_Name}}
-                                                </mat-option>
-                                            </mat-select>-->
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -332,16 +321,6 @@
                               <div class="col-md-3">
                                 <div class="form-group">
                                     <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Created_By">
-                                            Created By:
-                                        </mat-label>
-                                        <input matInput placeholder="" formControlName="Created_By">
-                                    </mat-form-field>
-                                </div>
-                              </div>
-                              <div class="col-md-3">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
                                         <mat-label for="Created_Date">
                                             Created Date:
                                         </mat-label>
@@ -349,56 +328,7 @@
                                     </mat-form-field>
                                 </div>
                               </div>
-                              <div class="col-md-3">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Modified_By">
-                                             Modified By:
-                                        </mat-label>
-                                        <input matInput placeholder="" formControlName="Modified_By">
-                                    </mat-form-field>
-                                </div>
-                              </div>
-                              <div class="col-md-3">
-                                <div class="form-group"> 
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Modified_Date">
-                                            Modified Date:
-                                        </mat-label>
-                                        <input matInput type="date" placeholder="" formControlName="Modified_Date">
-                                    </mat-form-field>
-                                </div>
-                              </div>
-                              <div class="col-md-3">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Delete_Flag">
-                                            Delete Flag:
-                                        </mat-label>
-                                        <input matInput placeholder="" formControlName="Delete_Flag">
-                                    </mat-form-field>
-                                </div>
-                              </div>
-                              <div class="col-md-3">
-                                <div class="from-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Public_IP_Address">
-                                            Public IP Address:
-                                        </mat-label>
-                                        <input matInput placeholder="" formControlName="Public_IP_Address">
-                                    </mat-form-field>
-                                </div>
-                              </div>
-                              <div class="col-md-3">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Private_IP_Address">
-                                            Private_IP_Address:
-                                        </mat-label>
-                                        <input matInput placeholder="" formControlName="Private_IP_Address">
-                                    </mat-form-field>
-                                </div>
-                              </div>
+                             
                               <p>You are now done.</p>
                               <div>
                                 <button mat-button matStepperPrevious>Back</button>

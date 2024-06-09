@@ -21,10 +21,10 @@
                 <form [formGroup]="studentregistrationForm" (ngSubmit)="onSubmit()">
                 <br>
                 <fieldset class="scheduler-border">
-                    <legend class="scheduler-border">Student Details</legend>
+                    
                     <div class="control-group">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
                                     <mat-label for="UE_ID">
@@ -34,18 +34,28 @@
                                 </mat-form-field>
                                  </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="username"> 
+                                            Username:
+                                        </mat-label>
+                                        <input matInput placeholder="user name" formControlName="Username">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
                                     <mat-label for="Registration_Type">
                                         Registration Type :
                                     </mat-label>
-                                    <input matInput placeholder=" Registration_Type" formControlName="Registration_Type">
-                                    <!--<mat-select formcontrolName="Registration_Type">
-                                        <mat-option *ngFor="let c of registrationt;" [value]="c.Value">
+                                    <!--<input matInput placeholder=" Registration_Type" formControlName="Registration_Type">-->
+                                    <mat-select formcontrolName="Registration_Type">
+                                        <mat-option *ngFor="let c of registrationtype;" [value]="c.Registration_Id">
                                             {{c.Value}}
                                         </mat-option>
-                                    </mat-select>-->
+                                    </mat-select>
                                 </mat-form-field>
                                 </div>
                             </div>

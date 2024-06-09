@@ -14,8 +14,8 @@ export class SAplicationComponent implements OnInit  {
   genderoption: any ;
   salutationenglish: any ;
   salutationhindi: any;
- // registrationt: any;
- // subject: any;
+  registrationtype: any;
+ 
 
 
   constructor(private fb: FormBuilder, private studentService: StudentService, private studentds:StudentService) {
@@ -115,10 +115,21 @@ export class SAplicationComponent implements OnInit  {
     //get for salutation_h table
     this.studentds.getSalutation_Hindi().subscribe(
       (response) => {
-        console.log('dd',response);
+       // console.log('dd',response);
         
         this.salutationhindi = response;
         console.log('salutation hindi details: ', this.salutationhindi);
+      },
+      (error) => {
+        console.log('Error: ', error);
+      }
+    );
+
+    //get for registrationtype table 
+    this.studentds.getRegistrationType().subscribe(
+      (response) => {
+        this.registrationtype = response;
+        console.log(`registration type details: `, this.registrationtype);
       },
       (error) => {
         console.log('Error: ', error);
