@@ -14,23 +14,45 @@
     
       <div class="card">
         <div class="signup-container">
-          <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-            <div class="form-group">
-              <label for="username">Username</label>
-              <input type="text" id="username" name="username" [(ngModel)]="loginData.username" required>
-            </div>
 
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" id="password" name="password" [(ngModel)]="loginData.password" required>
-            </div>
-            <div class="text-center m-3">
-              <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
-              <button type="button" routerLink="/" class="btn btn-primary ">Home</button>
-            </div>
-          </form>
+
+     <!-- your-component.component.html -->
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" id="username" formControlName="username" required>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" formControlName="password" required>
+  </div>
+
+  <div class="form-group">
+    <img [src]="captchaImage" alt="CAPTCHA" />
+    <button type="button" (click)="loadCaptcha()">Refresh CAPTCHA</button>
+  </div>
+
+  <div class="form-group">
+    <label for="captcha">CAPTCHA</label>
+    <input id="captcha" formControlName="captcha" type="text" required>
+  </div>
+
+  <div class="text-center m-3">
+    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+    <button type="button" routerLink="/" class="btn btn-primary">Home</button>
+  </div>
+</form>
+
+
+
+
+
         </div>
       </div>
+   
+   
+   
     </div>
 
 

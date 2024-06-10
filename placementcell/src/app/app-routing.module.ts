@@ -47,9 +47,13 @@ import { FileuploadComponent } from './components/prac3/fileupload/fileupload.co
 import { SAcademicDetailsComponent } from './components/student/s-academic-details/s-academic-details.component';
 import { ACVacancyListComponent } from './components/admin/a-c-vacancy-list/a-c-vacancy-list.component';
 import { ACVacancyListActionComponent } from './components/admin/a-c-vacancy-list-action/a-c-vacancy-list-action.component';
+<<<<<<< HEAD
 //<<<<<<< HEAD
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 //=======
+=======
+import { CaptchacodeComponent } from './prac/captchacode/captchacode.component';
+>>>>>>> 6ce31a405b0244281b427f7c616984720fa6f48e
  
 //>>>>>>> cf3c79d1b613246a2a527fc020d471e9f0b98db7
 
@@ -67,6 +71,7 @@ const routes: Routes = [
 
  
  
+  // {path:'', component:CaptchacodeComponent},
   {path:'', component:HomeComponent},
   {path:'admin', component:AdminComponent,children:[
     {path:'company_registration', component:CompanyregistrationComponentComponent},

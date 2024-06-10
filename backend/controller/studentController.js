@@ -2,6 +2,9 @@
 const Student = require('../model/studentModel');
 const bcrypt = require('bcrypt');
 const sql = require('../config/db');
+
+
+
  
 // get ip
 const os = require('os');
@@ -20,12 +23,35 @@ const os = require('os');
 // const empNum = 1;
 // const empId = generateEmpId(empNum);
 // console.log(empId); // Output: igkv01
+//  get captcha code 
+const svgCaptcha = require('svg-captcha');
+const session = require('express-session');
+const express = require('express');
+const app = express();
+
+// Set up express-session middleware
+app.use(session({
+    secret: 'your_secret_key', // Change this to a long random string
+    resave: false,
+    saveUninitialized: true
+}));
 
 
 
+// Generate CAPTCHA
+// Generate CAPTCHA
+const captcha = async (req, res) => {
+    console.log(req.session); // Add this line to debug
 
- 
+    // Generate CAPTCHA code
+    const captcha = svgCaptcha.create();
 
+    // Store CAPTCHA code in session
+    req.session = captcha.text;
+
+    // Send CAPTCHA image to the client
+    res.json({ image: captcha.data });
+};
  
 
 
@@ -1092,6 +1118,7 @@ module.exports ={
     getDegree_program,
     getSalutation_English,
     getSalutation_Hindi,
-    getRegistrationType
+    getRegistrationType,
+    captcha
     
 }

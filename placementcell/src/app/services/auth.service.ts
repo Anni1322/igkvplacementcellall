@@ -13,6 +13,14 @@ export class AuthService {
     private http: HttpClient
     ) {}
 
+
+    getcaptcha(){
+      return this.http.get(`${this.apiUrl}/captcha`);
+    }
+// add by anil this api for master table
+ 
+
+
   login(loginData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/login`, loginData).pipe(
       map(response => {
