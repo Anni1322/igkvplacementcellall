@@ -7,6 +7,7 @@ const path = require('path');
 const fs = require('fs');
 
 
+
 // // Configure multer for file upload
 // const upload = multer({ dest: 'uploads/' });
 student_route.use(express.static('public'));
@@ -47,6 +48,15 @@ const upload = multer({ storage: storage });
 
 
 
+
+
+
+
+router.get('/captcha',studentController.captcha)
+
+
+
+
 router.get('/', studentController.getAllStudents);
 router.get('/student', studentController.getStudents);
 
@@ -57,6 +67,16 @@ router.post('/registration', studentController.registerStudent);
 router.get('/student_List', studentController.getAllStudents);
 
 router.post('/signup',studentController.Signup);
+
+
+
+
+
+
+
+
+
+
 
 router.post('/login',studentController.login);
 

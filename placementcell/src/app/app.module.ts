@@ -104,16 +104,16 @@ import { SAcademicDetailsComponent } from './components/student/s-academic-detai
 import { ACVacancyListComponent } from './components/admin/a-c-vacancy-list/a-c-vacancy-list.component';
 
 import { ACVacancyListActionComponent } from './components/admin/a-c-vacancy-list-action/a-c-vacancy-list-action.component';
-<<<<<<< HEAD
+ 
 import { FooterComponent } from './m-layout/footer/footer.component';
  
-=======
+ 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { CaptchacodeComponent } from './prac/captchacode/captchacode.component';
 
 
->>>>>>> 6902b768abba9905d4b4ad37a2ba0c2b256e9f12
-
+ 
 
 @NgModule({
   declarations: [
@@ -176,7 +176,8 @@ import { MatSelectModule } from '@angular/material/select';
       ACVacancyListComponent,
       ACVacancyListActionComponent,
      
-      FooterComponent
+      FooterComponent,
+             CaptchacodeComponent
      
      
     
@@ -216,8 +217,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatOptionModule,
     MatDialogModule,
     MatInputModule,
-    MatFormFieldModule,
-    MatSelectModule,
+    MatSelectModule
+  
 
     
     

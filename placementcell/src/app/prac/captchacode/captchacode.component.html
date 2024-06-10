@@ -1,0 +1,22 @@
+<p>captchacode works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="username">Username</label>
+      <input id="username" formControlName="username" type="text" />
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" type="password" />
+    </div>
+    <div>
+      <img [src]="captchaImage" alt="CAPTCHA" />
+      <button type="button" (click)="loadCaptcha()">Refresh CAPTCHA</button>
+    </div>
+    <div>
+      <label for="captcha">CAPTCHA</label>
+      <input id="captcha" formControlName="captcha" type="text" />
+    </div>
+    <button type="submit">Login</button>
+  </form>
+  
+  
