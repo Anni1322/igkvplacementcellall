@@ -115,7 +115,7 @@ const routes: Routes = [
 
     {path:'s-skill-details', component:SSkillDetailsComponent},
     {path:'s-experience-details', component:SExperienceDetailsComponent},
-    {path:'s-acadmic-details', component:SAcademicDetailsComponent},
+    {path:'s-academic-details', component:SAcademicDetailsComponent},
 
   ]},
  

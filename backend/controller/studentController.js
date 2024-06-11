@@ -1630,6 +1630,8 @@ const SkillDetails = async (req, res) => {
       sql.close();
     }
   };
+
+  
   
 
   const AcademicDetails = async (req, res) => {
@@ -1648,27 +1650,22 @@ const SkillDetails = async (req, res) => {
       Created_Date
     } = req.body;
   
-    let pool;
-  
     try {
       // Create a new connection
-      pool = await sql.connect();
-  
-      // Perform the query
-      const result = await pool.request()
-        .input('Registration_No', sql.VarChar(50), Registration_No)
-        .input('Student_Enroll_Id', sql.VarChar(1), Student_Enroll_Id)
-        .input('Degree_Programme_Type_Id', sql.TinyInt, Degree_Programme_Type_Id)
-        .input('Degree_programme_Id', sql.SmallInt, Degree_programme_Id)
-        .input('College_Name', sql.VarChar(50), College_Name)
-        .input('Subject_Id', sql.SmallInt, Subject_Id)
-        .input('OGPA', sql.Float, OGPA)
-        .input('Marksheet_Url', sql.VarChar(1000), Marksheet_Url)
-        .input('Admission_Year_Id', sql.SmallInt, Admission_Year_Id)
-        .input('Passingout_Year_Id', sql.SmallInt, Passingout_Year_Id)
-        .input('Student_Id', sql.VarChar(50), Student_Id)
-        .input('Created_Date', sql.DateTime, Created_Date)
-        .query(`
+      var request = new sql.Request();
+      request.input('Registration_No', sql.VarChar(50), Registration_No)
+      request.input('Student_Enroll_Id', sql.VarChar(1), Student_Enroll_Id)
+      request.input('Degree_Programme_Type_Id', sql.TinyInt, Degree_Programme_Type_Id)
+      request.input('Degree_programme_Id', sql.SmallInt, Degree_programme_Id)
+      request.input('College_Name', sql.VarChar(50), College_Name)
+      request.input('Subject_Id', sql.SmallInt, Subject_Id)
+      request.input('OGPA', sql.Float, OGPA)
+      request.input('Marksheet_Url', sql.VarChar(1000), Marksheet_Url)
+      request.input('Admission_Year_Id', sql.SmallInt, Admission_Year_Id)
+      request.input('Passingout_Year_Id', sql.SmallInt, Passingout_Year_Id)
+      request.input('Student_Id', sql.VarChar(50), Student_Id)
+      request.input('Created_Date', sql.DateTime, Created_Date)
+      const result = await request.query(`
           INSERT INTO tnp_student_academic_details_array (
             Registration_No,
             Student_Enroll_Id,
@@ -1707,13 +1704,9 @@ const SkillDetails = async (req, res) => {
     } catch (error) {
       console.error('Error inserting academic details:', error);
       return res.status(500).json({ message: 'Failed to submit academic details', error });
-    } finally {
-      // Close the connection
-      if (pool) {
-        pool.close().catch(err => console.error('Error closing the SQL connection:', err));
-      }
     }
   };
+  
 
 //end 
 
