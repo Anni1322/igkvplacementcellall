@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-s-academic-details',
@@ -7,9 +8,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./s-academic-details.component.scss']
 })
 export class SAcademicDetailsComponent {
+  user: any;
   academicDetailsForm: FormGroup;
+  //degreeprogramtypeid: any;
+ 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private Studentservice: StudentService, private studentds:StudentService) {
     this.academicDetailsForm = this.fb.group({
       registrationNo: ['', Validators.required],
       studentEnrollId: ['', Validators.required],
@@ -22,6 +26,30 @@ export class SAcademicDetailsComponent {
       passingOutYearId: ['', Validators.required],
       marksheetUrl: ['', Validators.required]
     });
+
+   
+  }
+
+  //form submitting 
+  getvalueFromform(value: any) {
+    const formValue = this.academicDetailsForm.value;
+    console.log('Form Data:', formValue);
+
+    this.Studentservice.postAcademicDetails(formValue).subscribe(
+      () => {
+        alert('Form submitted successfully!');
+        this.academicDetailsForm.reset(); // Reset the form after successful submission
+      },
+      (error: { status: number; message: any; }) => {
+        console.error('Error submitting form:', error);
+        alert('An error occurred while submitting the form. Please try again later.');
+        if (error.status === 500) {
+          console.error('Internal Server Error: Please contact support.');
+        } else {
+          console.error(`Error: ${error.message}`);
+        }
+      }
+    );
   }
 
   onSubmit() {
@@ -30,5 +58,9 @@ export class SAcademicDetailsComponent {
     } else {
       console.log('Form is invalid');
     }
+  }
+
+  onclear(){
+    this.academicDetailsForm.reset();
   }
 }

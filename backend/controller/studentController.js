@@ -2,7 +2,7 @@
 const Student = require('../model/studentModel');
 const bcrypt = require('bcrypt');
 const sql = require('../config/db');
-
+//const svgCaptcha = require('svg-captcha');
 
 
  
@@ -1058,9 +1058,220 @@ const getRegistrationType = async (req, res) => {
 
 //  master table api end
 
+//post api/added by roshni 
+
+const SkillDetails = async (req, res) => {
+    const {
+      student_ID,
+      Registration_No,
+      Skill_Id,
+      Skill_Cetificate_Url,
+      Created_Date
+    } = req.body;
+  
+    try {
+      // Create a new connection
+      const pool = await sql.connect();
+      //const pool = await sql.connect(); // Connect to the database using the exported sql object
+     // const request = pool.request(); // Create a request object from the pool
+      // Perform the query
+      const result = await pool.request()
+        .input('student_ID', sql.VarChar, student_ID)
+        .input('Registration_No', sql.VarChar, Registration_No)
+        .input('Skill_Id', sql.VarChar, Skill_Id)
+        .input('Skill_Cetificate_Url', sql.VarChar, Skill_Cetificate_Url)
+        .input('Created_Date', sql.Date, Created_Date)
+        .query(`
+          INSERT INTO tnp_student_skills (student_ID, Registration_No, Skill_Id, Skill_Cetificate_Url, Created_Date)
+          VALUES (@student_ID, @Registration_No, @Skill_Id, @Skill_Cetificate_Url, @Created_Date);
+        `);
+
+     // Check if any rows were affected
+    if (result.rowsAffected[0] > 0) {
+        return res.status(200).json({ message: 'Skill details submitted successfully!' });
+      } else {
+        return res.status(500).json({ message: 'Failed to submit skill details' });
+      }
+    } catch (error) {
+      console.error('Error inserting skill details:', error);
+      return res.status(500).json({ message: 'Failed to submit skill details', error });
+    } finally {
+      sql.close();
+    }
+  };
 
 
+  const ExperienceDetails = async (req, res) => {
+    const {
+      Registration_No,
+      Organization_Name,
+      Post_Name,
+      WorkPlace_Address,
+      WorkPlace_District_Id,
+      WorkPlace_State_Id,
+      WorkPlace_Country_Id,
+      City_Name,
+      Description,
+      Period_From,
+      Period_To,
+      Is_Currently_working_YN,
+      Salary,
+      Created_Date
+    } = req.body;
+  
+    try {
+      // Create a new connection
+      const pool = await sql.connect();
+  
+       // Perform the query
+      const result = await pool.request()
+        .input('Registration_No', sql.NVarChar(20), Registration_No)
+        .input('Organization_Name', sql.VarChar(20), Organization_Name)
+        .input('Post_Name', sql.VarChar(100), Post_Name)
+        .input('WorkPlace_Address', sql.VarChar(250), WorkPlace_Address)
+        .input('WorkPlace_District_Id', sql.SmallInt, WorkPlace_District_Id)
+        .input('WorkPlace_State_Id', sql.SmallInt, WorkPlace_State_Id)
+        .input('WorkPlace_Country_Id', sql.VarChar(50), WorkPlace_Country_Id)
+        .input('City_Name', sql.VarChar(50), City_Name)
+        .input('Description', sql.VarChar(250), Description)
+        .input('Period_From', sql.Date, Period_From)
+        .input('Period_To', sql.Date, Period_To)
+        .input('Is_Currently_working_YN', sql.Char(1), Is_Currently_working_YN)
+        .input('Salary', sql.Decimal(10,2), Salary)
+        .input('Created_Date', sql.DateTime, Created_Date)
+        .query(`
+          INSERT INTO tnp_student_experience (
+            Registration_No,
+            Organization_Name,
+            Post_Name,
+            WorkPlace_Address,
+            WorkPlace_District_Id,
+            WorkPlace_State_Id,
+            WorkPlace_Country_Id,
+            City_Name,
+            Description,
+            Period_From,
+            Period_To,
+            Is_Currently_working_YN,
+            Salary,
+            Created_Date
+          ) VALUES (
+            @Registration_No,
+            @Organization_Name,
+            @Post_Name,
+            @WorkPlace_Address,
+            @WorkPlace_District_Id,
+            @WorkPlace_State_Id,
+            @WorkPlace_Country_Id,
+            @City_Name,
+            @Description,
+            @Period_From,
+            @Period_To,
+            @Is_Currently_working_YN,
+            @Salary,
+            @Created_Date
+          );
+        `);
+  
+      // Check if any rows were affected
+      if (result.rowsAffected[0] > 0) {
+        return res.status(200).json({ message: 'Experience details submitted successfully!' });
+      } else {
+        return res.status(500).json({ message: 'Failed to submit experience details' });
+      }
+    } catch (error) {
+      console.error('Error inserting experience details:', error);
+      return res.status(500).json({ message: 'Failed to submit experience details', error });
+    } finally {
+      sql.close();
+    }
+  };
+  
 
+  const AcademicDetails = async (req, res) => {
+    const {
+      Registration_No,
+      Student_Enroll_Id,
+      Degree_Programme_Type_Id,
+      Degree_programme_Id,
+      College_Name,
+      Subject_Id,
+      OGPA,
+      Marksheet_Url,
+      Admission_Year_Id,
+      Passingout_Year_Id,
+      Student_Id,
+      Created_Date
+    } = req.body;
+  
+    let pool;
+  
+    try {
+      // Create a new connection
+      pool = await sql.connect();
+  
+      // Perform the query
+      const result = await pool.request()
+        .input('Registration_No', sql.VarChar(50), Registration_No)
+        .input('Student_Enroll_Id', sql.VarChar(1), Student_Enroll_Id)
+        .input('Degree_Programme_Type_Id', sql.TinyInt, Degree_Programme_Type_Id)
+        .input('Degree_programme_Id', sql.SmallInt, Degree_programme_Id)
+        .input('College_Name', sql.VarChar(50), College_Name)
+        .input('Subject_Id', sql.SmallInt, Subject_Id)
+        .input('OGPA', sql.Float, OGPA)
+        .input('Marksheet_Url', sql.VarChar(1000), Marksheet_Url)
+        .input('Admission_Year_Id', sql.SmallInt, Admission_Year_Id)
+        .input('Passingout_Year_Id', sql.SmallInt, Passingout_Year_Id)
+        .input('Student_Id', sql.VarChar(50), Student_Id)
+        .input('Created_Date', sql.DateTime, Created_Date)
+        .query(`
+          INSERT INTO tnp_student_academic_details_array (
+            Registration_No,
+            Student_Enroll_Id,
+            Degree_Programme_Type_Id,
+            Degree_programme_Id,
+            College_Name,
+            Subject_Id,
+            OGPA,
+            Marksheet_Url,
+            Admission_Year_Id,
+            Passingout_Year_Id,
+            Student_Id,
+            Created_Date
+          ) VALUES (
+            @Registration_No,
+            @Student_Enroll_Id,
+            @Degree_Programme_Type_Id,
+            @Degree_programme_Id,
+            @College_Name,
+            @Subject_Id,
+            @OGPA,
+            @Marksheet_Url,
+            @Admission_Year_Id,
+            @Passingout_Year_Id,
+            @Student_Id,
+            @Created_Date
+          );
+        `);
+  
+      // Check if any rows were affected
+      if (result.rowsAffected[0] > 0) {
+        return res.status(200).json({ message: 'Academic details submitted successfully!' });
+      } else {
+        return res.status(500).json({ message: 'Failed to submit academic details' });
+      }
+    } catch (error) {
+      console.error('Error inserting academic details:', error);
+      return res.status(500).json({ message: 'Failed to submit academic details', error });
+    } finally {
+      // Close the connection
+      if (pool) {
+        pool.close().catch(err => console.error('Error closing the SQL connection:', err));
+      }
+    }
+  };
+
+//end 
 
 
 // get id address 
@@ -1119,6 +1330,10 @@ module.exports ={
     getSalutation_English,
     getSalutation_Hindi,
     getRegistrationType,
-    captcha
+    captcha,
+    //
+    SkillDetails,
+    ExperienceDetails,
+    AcademicDetails
     
 }

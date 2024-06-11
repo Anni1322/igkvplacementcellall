@@ -1,0 +1,309 @@
+
+
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="experiencedetailsform" (ngSubmit)="onSubmit()">
+          <p class="mb-4"><span class="text-primary font-italic me-1"></span><b>Experience Detials</b></p>
+  
+          <!-- Grid Layout -->
+          <div class="row">
+            
+            <div class="col-md-3">
+              <div class="form-group mb-1">
+                <label for="Regisration_No" >Registration No:</label>
+                <input id="Registration_No" formControlName="Registration_No" class="form-control"  />
+              </div>
+            </div>
+            
+            <div class="col-md-3">
+              <div class="form-group mb-1">
+                <label for="Organization_Name" >Organization Name:</label>
+                <input id="Organization_Name" formControlName="Organization_Name" class="form-control" />
+              </div>
+            </div>
+  
+            <div class="col-md-3">
+              <div class="form-group mb-1">
+                <label for="Post_Name" >Post Name:</label>
+                <input id="Post_Name" formControlName="Post_Name" class="form-control"  />
+              </div>
+            </div>
+
+            <!--WorkPlace Details-->
+            <div class="col-md-3">
+              <div class="form-group mb-1">
+                <label for="WorkPlace_Address" >WorkPlace Address:</label>
+                <input id="WorkPlace_Address" formControlName="WorkPlace_Address" class="form-control"  />
+              </div>
+            </div>
+  
+            <div class="col-md-3">
+              <div class="form-group mb-1">
+                <label for="WorkPlace_District_Id" >WorkPlace District Id:</label>
+                <input id="WorkPlace_District_Id" formControlName="WorkPlace_District_Id" class="form-control" />
+              </div>
+            </div>
+  
+            <div class="col-md-3">
+              <div class="form-group mb-1">
+                <label for="WorkPlace_State_Id" >WorkPlace State Id:</label>
+                <input id="WorkPlace_State_Id" formControlName="WorkPlace_State_Id" class="form-control" />
+              </div>
+            </div>
+  
+            <div class="col-md-3">
+              <div class="form-group mb-1">
+                <label for="WorkPlace_Country_Id" >WorkPlace Country Id:</label>
+                <input id="WorkPlace_Country_Id" formControlName="WorkPlace_Country_Id"  class="form-control" />
+              </div>
+            </div>
+  
+            <div class="col-md-3">
+              <div class="form-group mb-1">
+                <label for="City_Name" >City Name:</label>
+                <input id="City_Name" formControlName="City_Name" class="form-control" />
+              </div>
+            </div>
+  
+            <div class="col-md-3">
+              <div class="form-group mb-1">
+                <label for="Description" >Description:</label>
+                <input id="Description" formControlName="Description" class="form-control" />
+              </div>
+            </div>
+  
+            <div class="col-md-3">
+              <div class="form-group mb-1">
+                <label for="Period_From" >Period Form:</label>
+                <input type="date" id="Period_From" formControlName="Period_From" class="form-control" />
+              </div>
+            </div>
+
+          <div class="col-md-3">
+            <div class="form-group mb-1">
+                <label for="Period_To" >Period To:</label>
+                <input type="date" id="Period_To" formControlName="Period_To" class="form-control" />
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group mb-1">
+                <label for="Is_Currently_working_YN" >Is Currently Working YN:</label>
+                <input id="Is_Currently_working_YN" formControlName="Is_Currently_working_YN" class="form-control" />
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group mb-1">
+                <label for="Salary" >Salary:</label>
+                <input id="Salary" formControlName="Salary" class="form-control" />
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="form-group mb-1">
+                <label for="Created_Date" >Created Date:</label>
+                <input type="date" id="Created_Date" formControlName="Created_Date" class="form-control" />
+            </div>
+          </div>
+        </div>
+  
+          <button type="submit" class="btn btn-primary mt-3">Submit</button>
+          <button type="clear" class="btn btn-primary mt-3" onclick="onclear()">Clear</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+<!--<div class=" container container-flude mt-2 mb-3 p-0 user-select-none">
+    <div class="container page-heading text-center p-0 bg-white rounded shadow">
+        <h3 style="background-color: #3aaaff"
+            class="card-header p-2 text-light rounded border border-end-0 border-bottom-0 border-start-0 border-5 border-dark">
+            <strong>Add Experience Details</strong>
+        </h3>
+    </div>
+
+    <div class="container main-con mt-2 bg-white-subtle p-1  rounded">
+            <div class="row basic-row ">
+                <div class="#">
+                    <div class="card">
+                        <div class="card-header p-1" style="background-color: #3aaaff">
+                            <h5 class="ms-1 mt-1 text-white"><b>Basic Information / मूलभूत जानकारी</b></h5>
+                        </div>
+
+                        
+    <div class="container-fluid" id="addexperience">
+        <mat-card>
+            <div class="container">
+                <form [formGroup]="experiencedetailsform" (ngSubmit)="onSubmit()">
+                <br>
+                <fieldset class="scheduler-border">
+                    
+                    <div class="control-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="Registration_No">
+                                            Registration No:
+                                        </mat-label>
+                                        <input matInput type="text" placeholder="Registration_No" formControlName="Registration_No">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="Organization_Name"> 
+                                            Organization Name:
+                                        </mat-label>
+                                        <input matInput type="text" placeholder="Organization Name" formControlName="Organization_Name">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                <mat-form-field appearance="outline" class="inputfieldsize">
+                                    <mat-label for="Post_Name">
+                                        Post Name:
+                                    </mat-label>
+                                    <input matInput type="text" placeholder="Post name" formControlName="Post_Name">
+                                </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="WorkPlace_Address">
+                                            WorkPlace Address:
+                                        </mat-label>
+                                        <input matInput type="text" placeholder="Enter Address" formControlName="WorkPlace_Address">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="WorkPlace_District_Id">
+                                            WorkPlace District Id:
+                                        </mat-label>
+                                        <input matInput type="text" placeholder="Enter District Id" formControlName="WorkPlace_District_Id">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="WorkPlace_State_Id">
+                                            WorkPlace State Id:
+                                        </mat-label>
+                                        <input matInput type="text" placeholder="Enter State Id" formControlName="WorkPlace_State_Id">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="WorkPlace_Country_Id">
+                                            WorkPlace Country Id:
+                                        </mat-label>
+                                        <input matInput type="text" placeholder="Enter Country Id" formControlName="WorkPlace_Country_Id">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="City_Name">
+                                            City Name:
+                                        </mat-label>
+                                        <input matInput type="text" placeholder="city name" formControlName="City_Name">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="Description">
+                                            Description:
+                                        </mat-label>
+                                        <input matInput type="text" placeholder="Description" formControlName="Description">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="Period_Form">
+                                            Period Form:
+                                        </mat-label>
+                                        <input matInput type="date" placeholder="Period form" formControlName="Period_Form">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="Period_To">
+                                            Period To:
+                                        </mat-label>
+                                        <input matInput type="date" placeholder="Period to" formControlName="Period_To">
+                                    </mat-form-field>
+                                </div>  
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="Is_Currently_Working_YN">
+                                            Is_Currently_Working_YN:
+                                        </mat-label>
+                                        <input matInput type="text" placeholder="Yes/No" formControlName="Is_Currently_Working_YN">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <mat-form-field appearance="outline" class="inputfieldsize">
+                                        <mat-label for="Created_Date">
+                                            Created Date:
+                                        </mat-label>
+                                        <input matInput type="date" placeholder="Enter date" formControlName="Created_Date">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                   
+                    <div class="row">
+                        <div class="col offset-5">
+                            <button mat-raised-button  type="button" (click)="onClear()">
+                                Clear
+                            </button> &nbsp;&nbsp; 
+                        <button mat-raised-button color="primary"  (click)="onSubmit()" type="submit">
+                            Submit
+                        </button>
+                     //<button mat-raised-button color="primary"  *ngIf="iseditmode" (click)="onupdate()" type="button">
+                            Update
+                        </button>-->
+        
+                         <!--</div>
+                    </div>
+                </fieldset>
+            </form>  
+            </div>
+        </mat-card>
+    </div> 
+    <br> <br>
+
+    </div>
+
+</div>-->
+
+

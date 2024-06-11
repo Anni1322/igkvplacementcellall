@@ -126,6 +126,10 @@ router.get('/salutationenglish', studentController.getSalutation_English);
 router.get('/salutationhindi', studentController.getSalutation_Hindi);
 router.get('/registrationtype', studentController.getRegistrationType);
 
+//11/06/2024
+router.post('/SkillDetails', studentController.SkillDetails);
+router.post('/ExperienceDetails', studentController.ExperienceDetails);
+router.post('/AcademicDetails', studentController.AcademicDetails);
 
 // router.post('/add', studentController.postAddstudent);
 // router.get('/edit/:id', studentController.getEditstudent);
