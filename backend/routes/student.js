@@ -104,8 +104,6 @@ router.post('/VacancyApply',upload.single('file'),studentController.VacancyApply
 
 // this api is return join data 
 router.post('/getstudentdetails',studentController.getstudentdetails);
-
-
 // router.get('/users',studentController.users);
 
 

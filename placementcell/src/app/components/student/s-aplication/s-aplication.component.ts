@@ -15,6 +15,7 @@ export class SAplicationComponent implements OnInit  {
   salutationenglish: any ;
   salutationhindi: any;
   registrationtype: any;
+  studentdetails: any;
  
 
 
@@ -41,6 +42,7 @@ export class SAplicationComponent implements OnInit  {
       Mother_Name_H: [null],
       Gaurdian_Name_E: [null],
       Spouse_Name_E: [null],
+
       Created_By: [null],
       Created_Date: [null],
       Modified_By: [null],
@@ -86,6 +88,38 @@ export class SAplicationComponent implements OnInit  {
     }
   
     //for master table 
+
+    // get data from already store 
+    this.studentds.getBasicDetails(this.user.eid).subscribe(
+      (response) => {
+        this.studentdetails = response;
+        console.log('studentdetails details:', this.studentdetails);
+        
+        this.studentregistrationForm.patchValue({
+          Student_First_Name_E: this.studentdetails.Student_First_Name_E,
+          Student_Middle_Name_E: this.studentdetails.Student_Middle_Name_E,
+          Student_Last_Name_E: this.studentdetails.Student_Last_Name_E,
+          Student_First_Name_H: this.studentdetails.Student_First_Name_H,
+          Student_Middle_Name_H: this.studentdetails.Student_Middle_Name_H,
+          Student_Last_Name_H: this.studentdetails.Student_Last_Name_H,
+          Email_Id:this.studentdetails.Email_Id,
+          Mobile_No:this.studentdetails.Mobile_No,
+          Father_Name_E:this.studentdetails.Father_Name_E ,
+          Mother_Name_E:this.studentdetails.Mother_Name_E,
+          Father_Name_H:this.studentdetails.Father_Name_H ,
+          Mother_Name_H:this.studentdetails.Mother_Name_H,
+          Gaurdian_Name_E:this.studentdetails.Gaurdian_Name_E ,
+          Spouse_Name_E:this.studentdetails.Spouse_Name_E,
+        });
+
+      },
+      (error) => {
+        console.log('Error: ', error);
+      }
+    );
+
+
+
 
     //get for gender
     this.studentds.getGender().subscribe(
@@ -139,36 +173,68 @@ export class SAplicationComponent implements OnInit  {
   }
   
   //for form data collect    
-  getvalueFromform(formValue: any) {
-    console.log('Form Data:', formValue);
-    this.studentService.postStudentDetails(formValue).subscribe(
-      () => {
-        alert('Form submitted successfully!');
-        this.studentregistrationForm.reset(); // Reset the form after successful submission
-      },
-      (error) => {
-        console.error('Error submitting form:', error);
-        // Display a more user-friendly message
-        alert('An error occurred while submitting the form. Please try again later.');
-        // Optionally, handle specific error scenarios based on status code
-        if (error.status === 500) {
-          console.error('Internal Server Error: Please contact support.');
-        } else {
-          console.error(`Error: ${error.message}`);
-        }
-      }
-    );
-  }
-  
-  
-  
-  onSubmit() {
+  // getvalueFromform(formValue: any) {
+  //   console.log('Form Data:', formValue.value);
+  //   const userdata = formValue.value
+  //   this.studentService.postStudentDetails(formValue).subscribe(
+  //     () => {
+  //       alert('Form submitted successfully!');
+  //       this.studentregistrationForm.reset(); // Reset the form after successful submission
+  //     },
+  //     (error) => {
+  //       console.error('Error submitting form:', error);
+  //       // Display a more user-friendly message
+  //       alert('An error occurred while submitting the form. Please try again later.');
+  //       // Optionally, handle specific error scenarios based on status code
+  //       if (error.status === 500) {
+  //         console.error('Internal Server Error: Please contact support.');
+  //       } else {
+  //         console.error(`Error: ${error.message}`);
+  //       }
+  //     }
+  //   );
+  // }
+
+  onSubmit(): void {
     if (this.studentregistrationForm.valid) {
-      this.getvalueFromform(this.studentregistrationForm.value);
-    } else {
-      console.log('Form is not valid');
+      console.log('Form Submitted!', this.studentregistrationForm.value);
+      // form submission here
+      const userData = this.studentregistrationForm.value
+      this.studentService.postStudentDetails(userData).subscribe(
+        () => {
+          alert('Form submitted successfully!');
+          this.studentregistrationForm.reset(); 
+        },
+        (error) => {
+          console.error('Error submitting form:', error);
+          // Display a more user-friendly message
+          alert('An error occurred while submitting the form. Please try again later.');
+          // Optionally, handle specific error scenarios based on status code
+          if (error.status === 500) {
+            console.error('Internal Server Error: Please contact support.');
+          } else {
+            console.error(`Error: ${error.message}`);
+          }
+        }
+      );
+
+
     }
+    
   }
+
+
+
+  
+  
+  
+  // onSubmit() {
+  //   if (this.studentregistrationForm.valid) {
+  //     this.getvalueFromform(this.studentregistrationForm.value);
+  //   } else {
+  //     console.log('Form is not valid');
+  //   }
+  // }
   
   onClear() {
     this.studentregistrationForm.reset();

@@ -32,8 +32,6 @@ export interface DialogData {
 
 export class ASApplicationComponent implements OnInit, AfterViewInit {
 
-
-
   displayedColumns: string[] = [
     'S.No.', 
     'Student_Application_ID', 
@@ -159,6 +157,15 @@ export class ASApplicationComponent implements OnInit, AfterViewInit {
 
 
 
+
+  enableEditing(row: any) {
+    row.editing = true;
+  }
+
+  saveEditing(row: any) {
+    row.editing = false;
+ 
+  }
 
   // excel
 

@@ -24,7 +24,7 @@
                     
                     <div class="control-group">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
                                     <mat-label for="UE_ID">
@@ -34,7 +34,7 @@
                                 </mat-form-field>
                                  </div>
                             </div>
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <div class="form-group">
                                     <mat-form-field appearance="outline" class="inputfieldsize">
                                         <mat-label for="username"> 
@@ -43,26 +43,31 @@
                                         <input matInput placeholder="user name" formControlName="Username">
                                     </mat-form-field>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
+                            </div> -->
+
+                            <!-- hide  -->
+
+                            <!-- <div class="col-md-4">
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
                                     <mat-label for="Registration_Type">
                                         Registration Type :
                                     </mat-label>
-                                    <!--<input matInput placeholder=" Registration_Type" formControlName="Registration_Type">-->
+                                
                                     <mat-select formcontrolName="Registration_Type">
                                         <mat-option *ngFor="let c of registrationtype;" [value]="c.Registration_Id">
-                                            {{c.Value}}
+                                            {{c.Name}}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
                                 </div>
-                            </div>
+                            </div> -->
+
+
                             <div class="col-md-3">
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
-                                    <mat-label for="Salutation_E">Salutation E: </mat-label>
+                                    <mat-label for="Salutation_E"> Mr/Mrs</mat-label>
                                     <!--<input matInput placeholder="Salutation_E" formControlName="Salutation_E">-->
                                     <mat-select formControlName="Salutation_E">
                                         <mat-option *ngFor="let c of salutationenglish;" [value]="c.Salutation_Id" >
@@ -76,7 +81,7 @@
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
                                     <mat-label for="Student_First_Name_E">
-                                        Student First Name:
+                                        First Name
                                     </mat-label>
                                     <input matInput type="text" placeholder="First_Name" formControlName="Student_First_Name_E">
                                     <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
@@ -87,7 +92,7 @@
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
                                     <mat-label for="Student_Middle_Name_E">
-                                        Student Middle Name:
+                                        Middle Name
                                     </mat-label>
                                     <input matInput type="text" placeholder=" Middle_Name" formControlName="Student_Middle_Name_E">
                                    <!-- <mat-icon matsuffix>sentiment_very_satisfied</mat-icon>-->
@@ -98,7 +103,7 @@
                                 <div>
                                 <mat-form-field appearance="outline" class="inputfieldsize">
                                     <mat-label for="Student_Last_Name_E">
-                                        Student Last Name:
+                                        Last Name
                                     </mat-label>
                                     <input matInput type="text" placeholder="Last_Name" formControlName="Student_Last_Name_E">
                                    <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
@@ -109,12 +114,12 @@
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
                                     <mat-label for="Salutation_H">
-                                        Salutation H:
+                                        Mr/Mrs Hindi
                                     </mat-label>
                                     <!--<input matInput type="text" placeholder="salutation" formControlName="Salutation_H">-->
                                     <mat-select formControlName="Salutation_H">
-                                        <mat-option *ngFor="let c of salutationhindi" [value]="c.ID">
-                                            {{c.SalutationName}}
+                                        <mat-option *ngFor="let c of salutationhindi" [value]="c.Salutation_Id">
+                                            {{c.Value}}
                                         </mat-option>
                                     </mat-select>
                                    <!-- <mat-icon matsuffix>sentiment_very_satisfied</mat-icon> for mat icon -->

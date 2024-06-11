@@ -20,9 +20,16 @@ export class StudentService {
     return this.http.get(this.studentDetail_Get_Url);
   }
 
-  postStudentDetails(data: any) {
-    return this.http.post(this.studentDetail_Post_Url, data);  
-  }
+  // postStudentDetails(data: any) {
+  //   return this.http.post(this.studentDetail_Post_Url, data);  
+  // }
+//add fot get data from basice details
+postStudentDetails(data: any) {
+  // return this.http.post(this.studentDetail_Post_Url, data);  
+  return this.http.post<any>(`${this.apiUrl}/student/registration`, data);
+}
+// end
+
 
 
   getProfiledata(eid: string): Observable<any> {

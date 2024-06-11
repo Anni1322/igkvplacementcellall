@@ -70,41 +70,66 @@ if (userString !== null) {
   // Proceed only if userString is not null
   this.usereid = JSON.parse(userString); 
   console.log('student details:', this.usereid);
-  this.getstudentdetails(this.usereid.eid);
-  // Set the Student_ID form control value
-  this.vacancyApplydata.patchValue({ Student_ID: this.usereid.eid });
-  this.vacancyApplydata.patchValue({ Email: this.usereid.email });
-  this.vacancyApplydata.patchValue({ Mobile: this.usereid.mno });
-  this.vacancyApplydata.patchValue({ Fathers_Name: this.usereid.fname });
-  this.vacancyApplydata.patchValue({ Full_Name: this.usereid.fullname });
-  // this.vacancyApplydata.patchValue({ Student_ID: this.usereid.eid });
-}
-
+  // this.getstudentdetails(this.usereid.eid);
+  this.vacancyApplydata.patchValue({
+    Full_Name: this.usereid.fullname 
+ });
 
 }
+
+      // get data form student table
+       // get data from already store 
+       this.studentds.getBasicDetails(this.usereid.eid).subscribe(
+        (response) => {
+          this.studentdetails = response;
+          console.log('studentdetails details:', this.studentdetails);
+          
+          this.vacancyApplydata.patchValue({
+             Student_ID: this.studentdetails.UE_ID,
+             Email: this.studentdetails.Email_Id,
+             Mobile: this.studentdetails.Mobile_No ,
+             Fathers_Name: this.studentdetails.Father_Name_E ,
+             Full_Name: this.studentdetails.Student_First_Name_E + ' ' + this.studentdetails.Student_Middle_Name_E + ' ' + this.studentdetails.Student_Last_Name_E
+          });
+  
+        },
+        (error) => {
+          console.log('Error: ', error);
+        }
+      );
+  }
+    
+
+
+  
+
+
+
+
+
 
 
 // this for unique student get
-getstudentdetails(eid:any){
-  console.log('eid :', eid)
-  this.studentds.getstudentdetails(eid).subscribe(
-    (response) => {
-      // console.log('Raw Response:', response);
-      this.studentdetails = response;
-      console.log('student details:', this.studentdetails);
+// getstudentdetails(eid:any){
+//   console.log('eid :', eid)
+//   this.studentds.getstudentdetails(eid).subscribe(
+//     (response) => {
+//       // console.log('Raw Response:', response);
+//       this.studentdetails = response;
+//       console.log('student details:', this.studentdetails);
 
-      if (this.vacancydata) {
-        console.log('UE_ID:', this.studentdetails.UE_ID);
-        // console.log('username:', this.profiledata.username);
-      } else {
-        console.log('No eid  data received.');
-      }
-    },
-    (error) => {
-      console.log('Error:', error);
-    }
-  );
-  }
+//       if (this.vacancydata) {
+//         console.log('UE_ID:', this.studentdetails.UE_ID);
+//         // console.log('username:', this.profiledata.username);
+//       } else {
+//         console.log('No eid  data received.');
+//       }
+//     },
+//     (error) => {
+//       console.log('Error:', error);
+//     }
+//   );
+//   }
 
 
 
@@ -124,8 +149,6 @@ getstudentdetails(eid:any){
       this.vacancyApplydata.patchValue({ Vacancy_ID: this.vacancydata.Vacancy_ID });
       this.vacancyApplydata.patchValue({ Job_Title: this.vacancydata.Job_Title });
       // end patch
-
-
 
         if (this.vacancydata) {
           console.log('Vacancy_ID:', this.vacancydata.Vacancy_ID);
@@ -192,8 +215,10 @@ getstudentdetails(eid:any){
           console.error('Error submitting form', error);
         }
       );
-    }
-  }
+
+
+
+
 
 
 
@@ -203,15 +228,8 @@ getstudentdetails(eid:any){
 
 }
 
-
-
-
- 
-
-
-
- 
-
+}
+}
 
  
 
