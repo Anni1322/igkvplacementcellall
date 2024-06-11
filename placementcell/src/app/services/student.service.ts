@@ -88,4 +88,17 @@ getRegistrationType(){
   return this.http.get(`${this.apiUrl}/student/registrationtype`);
 }
 
+postaddskill(data: any) {
+  // return this.http.post(this.studentDetail_Post_Url, data);  
+  return this.http.post<any>(`${this.apiUrl}/student/SkillDetails`, data);
+}
+
+postAddExperience(data: any): Observable<any> {
+  return this.http.post<any>(`${this.apiUrl}/student/ExperienceDetails`, data);
+}
+
+postAcademicDetails(data: any){
+  return this.http.post<any>(`${this.apiUrl}/student/AcademicDetails`, data);
+}
+
 }

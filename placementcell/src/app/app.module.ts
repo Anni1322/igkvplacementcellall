@@ -104,13 +104,17 @@ import { SAcademicDetailsComponent } from './components/student/s-academic-detai
 import { ACVacancyListComponent } from './components/admin/a-c-vacancy-list/a-c-vacancy-list.component';
 
 import { ACVacancyListActionComponent } from './components/admin/a-c-vacancy-list-action/a-c-vacancy-list-action.component';
- 
+
 import { FooterComponent } from './m-layout/footer/footer.component';
  
- 
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+
 import { CaptchacodeComponent } from './prac/captchacode/captchacode.component';
+import { SSkillDetailsComponent } from './components/student/s-skill-details/s-skill-details.component';
+import { SExperienceDetailsComponent } from './components/student/s-experience-details/s-experience-details.component';
 
 
  
@@ -175,10 +179,15 @@ import { CaptchacodeComponent } from './prac/captchacode/captchacode.component';
       SAcademicDetailsComponent,
       ACVacancyListComponent,
       ACVacancyListActionComponent,
+
+      ResetPasswordComponent,
      
       FooterComponent,
-             CaptchacodeComponent
+      CaptchacodeComponent,
+      SSkillDetailsComponent,
+      SExperienceDetailsComponent
      
+
      
     
    
@@ -202,7 +211,8 @@ import { CaptchacodeComponent } from './prac/captchacode/captchacode.component';
 
     MatInputModule,
     ReactiveFormsModule,
- 
+    MatFormFieldModule,
+
 
     FormsModule,
     HttpClientModule,
@@ -218,7 +228,8 @@ import { CaptchacodeComponent } from './prac/captchacode/captchacode.component';
     MatDialogModule,
     MatInputModule,
     MatSelectModule
-  
+    
+
 
     
     
