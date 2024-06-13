@@ -14,7 +14,14 @@ export class AdminService {
   constructor(private http:HttpClient) { }
 
 
-   
+ 
+  //add fot get data from basice details
+  getBasicDetails(eid: any){
+    return this.http.post<any>(`${this.baseurl}/student/getbasicdetails`, { eid });
+  }
+  // end
+  
+
 
   getVacancyApply(): Observable<StudentApplicationDetails[]> {
     return this.http.get<StudentApplicationDetails[]>(`${this.baseurl}/VacancyApply`);

@@ -243,10 +243,41 @@ const getVacanciesDetils = async (req, res) => {
 };
 
 
+
+
+
+
+const getstudentdetails = async (req, res) => {
+    const eid = req.body.eid; // Assuming 'eid' is a field in the request body
+    console.log(eid);
+
+    try {
+        var request = new sql.Request();
+        request.input('eid', sql.VarChar, eid); // Adjust the SQL data type as necessary
+
+        var query = 'SELECT * FROM dbo.login_table WHERE UE_ID = @eid';
+
+        // Execute the SQL query
+        request.query(query, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            // Send the fetched records as JSON response
+            res.json(result.recordset);
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Unexpected server error' });
+    }
+};
+
 module.exports ={
   getVacancyApply,
   update_by_adminVacancyApply,
-  getVacanciesDetils
+  getVacanciesDetils,
+  getstudentdetails
 }
 
 

@@ -51,6 +51,8 @@ export class SignupComponent implements OnInit {
      
       this.router.navigate(['/login']);
     }, (error) => {
+      alert('Username Allready Exist');
+      this.router.navigate(['/login']);
       console.error('Error submitting form:', error);
     })
     }

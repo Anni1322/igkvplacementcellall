@@ -61,6 +61,24 @@ export class ACVacancyListComponent implements OnInit, AfterViewInit {
 
 
 
+
+
+
+
+  // Method to get the CSS class based on the status value
+  getStatusClass(status: string) {
+    switch (status) {
+      case 'Approved':
+        return 'status-approved';
+      case 'Rejected':
+        return 'status-rejected';
+      case 'Pending':
+        return 'status-pending';
+      default:
+        return '';
+    }
+  }
+
 }
 
  

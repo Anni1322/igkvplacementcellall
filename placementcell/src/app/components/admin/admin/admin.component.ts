@@ -27,6 +27,13 @@ export class AdminComponent  implements OnInit  {
     
   }
 ngOnInit(): void {
+  // Retrieve data from local storage
+  const userString = localStorage.getItem('currentUser');
+  if (userString !== null) {
+    // Proceed only if userString is not null
+    this.user = JSON.parse(userString); 
+    console.log('User ID:', userString);
+  }
 
 }
 

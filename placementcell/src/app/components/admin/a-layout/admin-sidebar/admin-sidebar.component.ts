@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { navbarData } from './nav-data';
+import { AuthService } from 'src/app/services/auth.service';
 
 interface SideNavToggle{
   screenWidth : number;
@@ -12,6 +13,20 @@ interface SideNavToggle{
   styleUrls: ['./admin-sidebar.component.scss']
 })
 export class AdminSidebarComponent {
+
+  constructor(private auth:AuthService ){
+    
+  }
+
+
+
+
+
+
+
+
+
+
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   collapsed =false;

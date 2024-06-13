@@ -1,0 +1,102 @@
+.status-approved {
+    background-color: green;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+  .status-rejected {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+  .status-pending {
+    background-color: yellow;
+    color: black;
+    padding: 5px;
+    border-radius: 4px;
+  }
+  
+
+
+
+
+
+
+
+//   
+.search-form-field {
+  border: 1px solid #3aaaff;
+  border-radius: 4px;
+  padding: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  width: 100%;
+}
+
+.search-form-field:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-form-field.mat-form-field {
+  margin-bottom: 16px;
+  background-color: #fff;
+}
+
+.search-form-field input {
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: calc(100% - 16px);
+}
+
+.search-form-field.mat-focused {
+  border-color: #007bff;
+}
+
+.search-form-field mat-label {
+  color: #007bff;
+  font-weight: bold;
+}
+
+
+
+/* your-component.component.css */
+
+// .search-form-field {
+//     border: 1px solid #3aaaff;
+//     border-radius: 4px;
+//     padding: 8px;
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+//     transition: box-shadow 0.3s ease;
+//     width: 100%;
+//   }
+  
+//   .search-form-field:hover {
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+//   }
+  
+//   .search-form-field.mat-form-field {
+//     margin-bottom: 16px;
+//     background-color: #fff;
+//   }
+  
+//   .search-form-field input {
+//     border: none;
+//     outline: none;
+//     padding: 8px;
+//     width: calc(100% - 16px);
+//   }
+  
+  .search-form-field.mat-focused {
+    border-color: #007bff;
+    height: 50px;
+  }
+  
+  .search-form-field mat-label {
+    color: #007bff;
+    font-weight: bold;
+  }
+  

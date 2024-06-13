@@ -1,24 +1,36 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" style="background-color: rgb(255, 255, 255);">
     <mat-sidenav #drawer class="sidenav">
 
        
       <mat-toolbar>
-        <div class="item">
-          <img src="../../../../../assets/images/images (8).jpeg" [width]="size" [height]="size" class="hy-profile-image user-img" />
+        <!-- <div class="item">
+          <img src="../../../../../assets/images/images (8).jpeg" width="20px" height="30px" class="hy-profile-image user-img" />
           <h2>Admin anni</h2>
-        </div>
-
+        </div> -->
+        <div class="circle row align-items-center" style="margin-top: 100px;">
+          <div class="col-auto">
+              <img src="https://thumbs.dreamstime.com/b/vector-illustration-avatar-dummy-logo-collection-image-icon-stock-isolated-object-set-symbol-web-137160339.jpg" class="img-fluid rounded-circle" alt="Profile Picture" style="width: 50px; height: 50px;">
+          </div>
+          <div class="col"  >
+              <span class="name" > {{user.username}} </span><br>
+              <span class="name">{{user.eid}}</span><br>
+              <span class="name" style="color: blue;"><a href="#">Logout</a> </span><br>
+              <!-- <span class="name">ID: {{ user.eid }}</span><br> -->
+              <!-- <button class="" >Logout</button> -->
+          </div>
+      </div>
      
       </mat-toolbar>
-      <mat-nav-list style="margin-top: 100px;">
+
+      <mat-nav-list style="margin-top: 100px; ">
         <li class="nav-item" style="margin-left: 3px;">
-          <button mat-button routerLink="">
+          <button mat-button routerLink="/admin/a-dashboard">
             <mat-icon>home</mat-icon>
-            <span>Home</span>
+            <span >Dashboard</span>
           </button>
         </li>
         <li class="nav-item">
-          <mat-expansion-panel style="border-radius: 0%; background-color: rgb(241, 225, 232);" class="mat-elevation-z0">
+          <mat-expansion-panel style="border-radius: 0%; background-color: rgb(248, 255, 155);" class="mat-elevation-z0">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <button mat-button style="margin-left: -11px;">
@@ -29,15 +41,14 @@
             </mat-expansion-panel-header>
             <mat-nav-list>
               <a mat-list-item routerLink="/admin/a-dashboard">Dashboard</a>
-              
-              <a mat-list-item routerLink="approveuser">Students</a>
-              <a mat-list-item routerLink="approvecompany">Company</a>
-              <a mat-list-item routerLink="approvevacancy">Vacancy</a>
+              <a mat-list-item routerLink="approveuser">Students Application</a>
+              <a mat-list-item routerLink="approvecompany">Company Vacancy</a>
+          
             </mat-nav-list>
           </mat-expansion-panel>
         </li>
         <li class="nav-item">
-          <mat-expansion-panel style="border-radius: 0%; background-color: rgb(241, 225, 232);" class="mat-elevation-z0">
+          <mat-expansion-panel style="border-radius: 0%; background-color: rgb(248, 255, 155);" class="mat-elevation-z0">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <button mat-button style="margin-left: -11px;">
@@ -63,7 +74,7 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <mat-toolbar class="nav sticky-top" color="primary">
+      <mat-toolbar class="nav sticky-top shadow" style="background-color: rgb(255, 255, 255);">
         <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
