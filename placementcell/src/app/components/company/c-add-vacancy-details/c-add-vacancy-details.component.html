@@ -7,7 +7,7 @@
     <div class="container page-heading text-center p-0 bg-white rounded shadow">
         <h3 style="background-color: #3aaaff"
             class="card-header p-2 text-light rounded border border-end-0 border-bottom-0 border-start-0 border-5 border-dark">
-            <strong>Add Vacancy</strong>
+            <strong>Add Vacancy Details</strong>
         </h3>
     </div>
 
@@ -29,138 +29,112 @@
                                         <h2>Vacancy_Details</h2>
                                         <div class="col-lg-3 ">
                                             <div class="form-group">
-                                                <label for="Vacancy_ID">Vacancy ID</label>
+                                                <label for="Vacancy_ID">Vacancy ID: </label>
                                                 <input type="text" class="form-control" [(ngModel)]="formData.Vacancy_ID" id="Vacancy_ID"   name="Vacancy_ID" ngModel required>
                         
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-group">
-                                                <label for="Company_Id">Company ID</label>
+                                                <label for="Company_Id">Company ID: </label>
                                                 <input type="text" class="form-control" [(ngModel)]="formData.Company_Id"  id="Company_Id" name="Company_Id" ngModel required> 
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-group">
-                                                <label for="Company_Registration_No">Company Registration No</label>
-                                                <input type="text" class="form-control" [(ngModel)]="formData.Company_Registration_No" id="Company_Registration_No" name="Company_Registration_No"ngModel>
-                                              
+                                                <label for="Company_Registration_No">Company Registration No: </label>
+                                                <input type="text" class="form-control" [(ngModel)]="formData.Company_Registration_No" id="Company_Registration_No" name="Company_Registration_No" ngModel required>
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                            <div class="form-group">
-                                                 
-                                                <label for="Job_Title">Job Title</label>
+                                            <div class="form-group"> 
+                                                <label for="Job_Title">Job Title: </label>
                                                 <input type="text" class="form-control" [(ngModel)]="formData.Job_Title" id="Job_Title" name="Job_Title" ngModel>
-                                    
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                        <div class="form-group">
-                                               
-                                                <label for="Job_Description">Job Description</label>
+                                            <div class="form-group">       
+                                                <label for="Job_Description">Job Description: </label>
                                                 <textarea class="form-control" [(ngModel)]="formData.Job_Description" id="Job_Description" name="Job_Description" rows="2" ngModel></textarea>
-                    
-                                        </div>
+                                            </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-group">
-                    
-                                                <label for="Job_Selection">Job Selection</label>
+                                                <label for="Job_Selection">Job Selection: </label>
                                                 <input type="text" class="form-control" [(ngModel)]="formData.Job_Selection" id="Job_Selection" name="Job_Selection" ngModel>
-
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                            <div class="form-group">
-                                                
-                                                <label for="Job_Location">Job Location</label>
+                                            <div class="form-group">            
+                                                <label for="Job_Location">Job Location: </label>
                                                 <input type="text" class="form-control" [(ngModel)]="formData.Job_Location" id="Job_Location" name="Job_Location" ngModel>                             
- 
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                            <div class="form-group">
-                                                
-                                                <label for="No_Of_Post">Number of Posts</label>
-                                                <input type="number" class="form-control" [(ngModel)]="formData.No_Of_Post" id="No_Of_Post" name="No_Of_Post" ngModel>
-            
+                                            <div class="form-group">                                    
+                                                <label for="No_Of_Post">Number of Posts: </label>
+                                                <input type="number" class="form-control" [(ngModel)]="formData.No_Of_Post" id="No_Of_Post" name="No_Of_Post" ngModel>            
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                            <div class="form-group">
-                                                
-                                                <label for="Salary">Salary</label>
+                                            <div class="form-group">                                                
+                                                <label for="Salary">Salary: </label>
                                                 <input type="text" class="form-control" [(ngModel)]="formData.Salary" id="Salary" name="Salary" ngModel>
-
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                            <div class="form-group">
-                                               
-                                                <label for="Last_Date_for_apply">Last Date to Apply</label>
-                                                <input type="date" class="form-control" [(ngModel)]="formData.Last_Date_for_apply" id="Last_Date_for_apply" name="Last_Date_for_apply" ngModel>
-                                                 
+                                            <div class="form-group">   
+                                                <label for="Last_Date_for_apply">Last Date to Apply: </label>
+                                                <input type="date"  class="form-control" [(ngModel)]="formData.Last_Date_for_apply" id="Last_Date_for_apply" name="Last_Date_for_apply" ngModel>     
                                             </div>
                                         </div>
                                         
-                                       
-
                                         <button mat-button matStepperNext>Next</button>
 
                                     </div>
                                 </div>
                             </mat-step>
 
-
                             <!-- stap second -->
                             <mat-step>
                                 <div class="card-body">
                                     <div class="row">
-                                        <h2>second</h2>
-                                        <ng-template matStepLabel="content">SecondContent</ng-template>
+                                        <h2>Other details</h2>
+                                        <ng-template matStepLabel="content">Second_Content</ng-template>
                                          
                                         <div class="col-lg-3">
-                                            <div class="form-group">
-                                                
-                                                <label for="Min_Experience_in_Year">Minimum Experience (Years)</label>
-                                                <input type="number" class="form-control" [(ngModel)]="formData.Min_Experience_in_Year" id="Min_Experience_in_Year" name="Min_Experience_in_Year" ngModel>
-                                              
+                                            <div class="form-group">      
+                                                <label for="Min_Experience_in_Year">Minimum Experience (Years): </label>
+                                                <input type="number"  class="form-control" [(ngModel)]="formData.Min_Experience_in_Year" id="Min_Experience_in_Year" name="Min_Experience_in_Year" ngModel>      
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                            <div class="form-group">
-                                                 
-                                                <label for="Maximum_Age">Maximum Age</label>
-                                                <input type="number" class="form-control" [(ngModel)]="formData.Maximum_Age" id="Maximum_Age" name="Maximum_Age" ngModel>
-
+                                            <div class="form-group">    
+                                                <label for="Maximum_Age">Maximum Age: </label>
+                                                <input type="number"  class="form-control" [(ngModel)]="formData.Maximum_Age" id="Maximum_Age" name="Maximum_Age" ngModel>
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                            <div class="form-group">
-                                                 
-                                                <label for="Preferred_Gender">Preferred Gender</label>
+                                            <div class="form-group">  
+                                                <label for="Preferred_Gender">Preferred Gender: </label>
                                                 <input type="text" class="form-control" [(ngModel)]="formData.Preferred_Gender" id="Preferred_Gender" name="Preferred_Gender" ngModel> 
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
-                                        <div class="form-group">
-                                                <label for="Prefered_Language">Preferred Language</label>
-                                                <input type="text" class="form-control" [(ngModel)]="formData.Prefered_Language" id="Prefered_Language" name="Prefered_Language" ngModel> 
-                                        </div>
-                                        </div>
-
-
-                                        <div class="col-lg-3">
                                             <div class="form-group">
-                                                <label for="Status">Status</label>
-                                                <input type="text" class="form-control" [(ngModel)]="formData.Status" id="Status" name="Status" value="Pending" ngModel>
-                                                                                     
+                                                <label for="Prefered_Language">Prefered Language: </label>
+                                                <input type="text"  class="form-control" [(ngModel)]="formData.Prefered_Language" id="Prefered_Language" name="Prefered_Language" ngModel> 
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-group">
-                                                <label for="Created_Date">Created Date</label>
+                                                <label for="Status">Status: </label>
+                                                <input type="text" placeholder="status" class="form-control" [(ngModel)]="formData.Status" id="Status" name="Status" value="Pending" ngModel>                     
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                                <label for="Created_Date">Created Date: </label>
                                                  <input type="datetime-local" class="form-control" [(ngModel)]="formData.Created_Date" id="Created_Date" name="Created_Date" ngModel>
                                             </div>
                                         </div>

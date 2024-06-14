@@ -249,7 +249,7 @@ const getVacanciesDetils = async (req, res) => {
         const pool = await sql.connect(); // Connect to the database using the exported sql object
         const request = pool.request(); // Create a request object from the pool
 
-        const result = await request.query('SELECT * FROM tnp_vacancy_details WHERE Status = \'Aproved\''); // Execute the query
+        const result = await request.query('SELECT * FROM tnp_vacancy_details WHERE Status = \'Approved\''); // Execute the query
         // const result = await request.query('SELECT * FROM tnp_vacancy_details where Status = "Aproved'); // Execute the query
 
         res.status(200).send(result.recordset); // Send the result back to the client
@@ -711,9 +711,7 @@ module.exports ={
     getVacanciesDetils,
     getAllCompany ,
     registerCompany,
-    getGender,
-    getSalutation_English,
-    getSalutation_Hindi,
+    
     getstate,
     getCompany_Type,
     getCompany_category,

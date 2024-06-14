@@ -2,7 +2,7 @@
     <div class="container page-heading text-center p-0 bg-white rounded shadow">
         <h3 style="background-color: #3aaaff"
             class="card-header p-2 text-light rounded border border-end-0 border-bottom-0 border-start-0 border-5 border-dark">
-            <strong>Company Registration</strong>
+            <strong>Company Registration Details</strong>
         </h3>
     </div>
 
@@ -14,14 +14,14 @@
                             <h5 class="ms-1 mt-1 text-white"><b>Basic Information / मूलभूत जानकारी</b></h5>
                         </div>
                         
-                        <form [formGroup]="companyregistrationForm" >
+                        <form [formGroup]="companyregistrationForm" (ngSubmit)="onSubmit()">
                             
                         <mat-stepper #stepper>
                             <mat-step [stepControl]="companyregistrationForm" >
                                 
                             <form [formGroup]="companyregistrationForm">
 
-                                <ng-template matStepLabel>First content</ng-template>
+                                <ng-template matStepLabel>First_content</ng-template>
                                 <div class="card-body">
                                     <div class="row">
                                 <div class="col-md-3">
@@ -40,7 +40,7 @@
                                             <mat-label for="Company_Id">
                                                 Company Id:
                                             </mat-label>
-                                            <input matInput placeholder="" formControlName="Company_Id">
+                                            <input matInput placeholder="company id" formControlName="Company_Id">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -48,9 +48,9 @@
                                     <div class="form-group">
                                         <mat-form-field appearance="outline" class="inputfieldsize">
                                             <mat-label for="Company_Registration_No">
-                                                Company registration No:
+                                                Company Registration No:
                                             </mat-label>
-                                            <input matInput placeholder="" formControlName="Company_Registration_No">
+                                            <input matInput placeholder="registration no" formControlName="Company_Registration_No">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
                                             <mat-label for="Tnp_Registration_No">
                                                 Tnp registration no:
                                             </mat-label>
-                                            <input matInput placeholder="" formControlName="Tnp_Registration_No">
+                                            <input matInput placeholder="tnp registration no" formControlName="Tnp_Registration_No">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                             <mat-label for="Company_Name">
                                                 Company Name:
                                             </mat-label>
-                                            <input matInput type="text" placeholder="name" formControlName="Company_Name">
+                                            <input matInput type="text" placeholder="company name" formControlName="Company_Name">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@
                                             </mat-label>
                                             <!--<input matInput placeholder="" formControlName="Company_Type">-->
                                             <mat-select formControlName="Company_Type">
-                                                <mat-option *ngFor="let c of companytype;" [value]="c.Category_Type_Id">
+                                                <mat-option *ngFor="let c of companytype;" [value]="c.Company_Id">
                                                     {{c.Company_Type}}
                                                 </mat-option>
                                             </mat-select>
@@ -93,11 +93,11 @@
                                     <div class="form-group">
                                         <mat-form-field appearance="outline" class="inputfieldsize">
                                             <mat-label for="Company_Category">
-                                                Company category:
+                                                Company Category:
                                             </mat-label>
                                             <!--<input matInput type="text" placeholder="" formControlName="Company_Category">-->
                                             <mat-select formControlName="Company_Category">
-                                                <mat-option *ngFor="let c of companycategory;" [value]="c.Company_Id">
+                                                <mat-option *ngFor="let c of companycategory;" [value]="c.Category_Type_Id">
                                                     {{c.Category_Name}}
                                                 </mat-option>
                                             </mat-select>
@@ -120,7 +120,7 @@
                                             <mat-label for="Company_Phone_Number">
                                                 Company Phone No:
                                             </mat-label>
-                                            <input matInput type="number" placeholder="" formControlName="Company_Phone_Number">
+                                            <input matInput type="number" placeholder="phone no" formControlName="Company_Phone_Number">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@
                                             <mat-label for="Hr_Name">
                                                 Hr Name:
                                             </mat-label>
-                                            <input matInput type="text" placeholder="" formControlName="Hr_Name">
+                                            <input matInput type="text" placeholder="Hr name" formControlName="Hr_Name">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@
                                             <mat-label for="Hr_Contact_No">
                                                 Hr Contact No:
                                             </mat-label>
-                                            <input matInput type="number" placeholder="enter number" formControlName="Hr_Contact_No">
+                                            <input matInput type="number" placeholder="enter hr no" formControlName="Hr_Contact_No">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@
                                             <mat-label for="Hr_Email">
                                                 Hr Email:
                                             </mat-label>
-                                            <input matInput type="email" placeholder="enter email" formControlName="Hr_Email">
+                                            <input matInput type="email" placeholder="enter hr email" formControlName="Hr_Email">
                                         </mat-form-field>
                                     </div>
                                 </div> 
@@ -160,7 +160,7 @@
                                             <mat-label for="Contact_Person">
                                                 Contact Person Name:
                                             </mat-label>
-                                            <input matInput type="text" placeholder="" formControlName="Contact_Person">
+                                            <input matInput type="text" placeholder="contact person name" formControlName="Contact_Person">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -170,7 +170,7 @@
                                             <mat-label for="Contact_Person_Email">
                                                 Contact Person Email:
                                             </mat-label>
-                                            <input matInput type="email" placeholder="" formControlName="Contact_Person_Email">
+                                            <input matInput type="email" placeholder="enter email" formControlName="Contact_Person_Email">
                                         </mat-form-field>
                                     </div>
                                 </div> 
@@ -180,7 +180,7 @@
                                             <mat-label for="Contact_Person_Phone">
                                                 Contact Person Phone No:
                                             </mat-label>
-                                            <input matInput type="number" placeholder="" formControlName="Contact_Person_Phone">
+                                            <input matInput type="number" placeholder="enter no" formControlName="Contact_Person_Phone">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -190,7 +190,7 @@
                                             <mat-label for="Company_Short_Name">
                                                 Company Short Name:
                                             </mat-label>
-                                            <input matInput placeholder="" formControlName="Company_Short_Name">
+                                            <input matInput placeholder="company short name" formControlName="Company_Short_Name">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -214,7 +214,7 @@
                                             <mat-label for="Address">
                                                 Address: 
                                             </mat-label>
-                                            <input matInput placeholder="" formControlName="Address">
+                                            <input matInput placeholder="address" formControlName="Address">
                                          </mat-form-field>
                                      </div>
                                 </div>
@@ -269,7 +269,7 @@
                                             <mat-label for="Website">
                                                 Website:
                                             </mat-label>
-                                            <input matInput placeholder="" formControlName="Website">
+                                            <input matInput placeholder="website name" formControlName="Website">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -279,7 +279,7 @@
                                             <mat-label for="Company_Logo_Url">
                                                 Company Logo Url:
                                             </mat-label>
-                                            <input matInput placeholder="" formControlName="Company_Logo_Url">
+                                            <input matInput placeholder="logo url" formControlName="Company_Logo_Url">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -289,7 +289,7 @@
                                             <mat-label for="Company_Broucher">
                                                 Company Broucher:
                                             </mat-label>
-                                            <input matInput placeholder="" formControlName="Company_Broucher">
+                                            <input matInput placeholder="Broucher" formControlName="Company_Broucher">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -299,7 +299,7 @@
                                             <mat-label for="Company_Other_Doc_Url">
                                                 Company Other doc url:
                                             </mat-label>
-                                            <input matInput placeholder="" formControlName="Company_Other_Doc_Url">
+                                            <input matInput placeholder="other doc url" formControlName="Company_Other_Doc_Url">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -324,12 +324,12 @@
                                         <mat-label for="Created_Date">
                                             Created Date:
                                         </mat-label>
-                                        <input matInput type="date" placeholder="" formControlName="Created_Date">
+                                        <input matInput type="date" placeholder="date" formControlName="Created_Date">
                                     </mat-form-field>
                                 </div>
                               </div>
                              
-                              <p>You are now done.</p>
+                              
                               <div>
                                 <button mat-button matStepperPrevious>Back</button>
                                 <button mat-button (click)="stepper.reset()">Reset</button>

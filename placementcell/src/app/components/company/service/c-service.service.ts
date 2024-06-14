@@ -50,8 +50,13 @@ VacancyApply(data:any){
 
 
 //added by roshni
-postCompanyDetails(formValue: any): Observable<any> {
-  return this.http.post(this.apiUrl, formValue);
+//postCompanyDetails(formValue: any): Observable<any> {
+//  return this.http.post(this.companydetails_Post_Url, formValue);
+//}
+
+postCompanyDetails(data: any) {
+  // return this.http.post(this.studentDetail_Post_Url, data);  
+  return this.http.post<any>(`${this.baseurl}/company/registration`, data);
 }
 
 getcompany_category(){
@@ -62,9 +67,11 @@ getcompany_type(){
   return this.http.get(`${this.baseurl}/company/companytype`);
 }
 
+//get for master table
 getstate(){
   return this.http.get(`${this.baseurl}/company/state`);
 }
+
 getdistrict(){
   return this.http.get(`${this.baseurl}/company/district`);
 }
