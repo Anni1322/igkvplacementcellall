@@ -711,9 +711,7 @@ module.exports ={
     getVacanciesDetils,
     getAllCompany ,
     registerCompany,
-    getGender,
-    getSalutation_English,
-    getSalutation_Hindi,
+    
     getstate,
     getCompany_Type,
     getCompany_category,

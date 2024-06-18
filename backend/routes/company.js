@@ -11,7 +11,8 @@ companyRouter.get('/vacancies', companyController.getVacanciesDetils);
 
 // added by roshni
 companyRouter.get('/', companyController.getAllCompany);
-companyRouter.get('/registration', companyController.registerCompany);
+
+companyRouter.post('/registration', companyController.registerCompany);
 
 companyRouter.get('/companycategory', companyController.getCompany_category);
 

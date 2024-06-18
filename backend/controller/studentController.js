@@ -37,8 +37,6 @@ app.use(session({
 }));
 
 
-
-// Generate CAPTCHA
 // Generate CAPTCHA
 const captcha = async (req, res) => {
     console.log(req.session); // Add this line to debug
@@ -1395,7 +1393,7 @@ const getGender = async (req, res) => {
 };
 
 
-//function to fetched data from degree_program 
+//function to fetched data from degree_program table
 const getDegree_program = async(req, res)=>{
     try {
         const request = new sql.Request();
@@ -1407,8 +1405,7 @@ const getDegree_program = async(req, res)=>{
                 return;
             }
             // Send the fetched records as JSON response
-            res.json(result.recordset);
-            res.status(200).json({ message: 'degree program details' });
+            res.status(500).json(result.recordset);
         });
     } catch (error) {
         console.error('Error degree program details: ', err);
@@ -1416,7 +1413,7 @@ const getDegree_program = async(req, res)=>{
     }
 };
 
-//function to fetched data from degree_type
+//function to fetched data from degree_type table
 const getDegree_type = async (req, res) => {
     try {
         const request = new sql.Request();
@@ -1526,7 +1523,27 @@ const getRegistrationType = async (req, res) => {
     }
 };
 
+const Admissionyear = async (req, res) => {
+    try {
+        const request = new sql.Request();
+        const query = 'SELECT * FROM dbo.admission_session';
 
+        request.query(query, (err, result) => {
+            if (err) {
+                console.error('Error executing the query: ', err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            //Send the fetched record as JSON response 
+            res.status(200).json(result.recordset);
+        });
+
+    } catch (error) {
+        console.error('Error fetching Admission year details: ', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+
+    } 
+};
 
 //  master table api end
 
@@ -1534,7 +1551,7 @@ const getRegistrationType = async (req, res) => {
 
 const SkillDetails = async (req, res) => {
     const {
-      student_ID,
+      Student_ID,
       Registration_No,
       Skill_Id,
       Skill_Cetificate_Url,
@@ -1543,19 +1560,15 @@ const SkillDetails = async (req, res) => {
   
     try {
       // Create a new connection
-      const pool = await sql.connect();
-      //const pool = await sql.connect(); // Connect to the database using the exported sql object
-     // const request = pool.request(); // Create a request object from the pool
-      // Perform the query
-      const result = await pool.request()
-        .input('student_ID', sql.VarChar, student_ID)
-        .input('Registration_No', sql.VarChar, Registration_No)
-        .input('Skill_Id', sql.VarChar, Skill_Id)
-        .input('Skill_Cetificate_Url', sql.VarChar, Skill_Cetificate_Url)
-        .input('Created_Date', sql.Date, Created_Date)
-        .query(`
-          INSERT INTO tnp_student_skills (student_ID, Registration_No, Skill_Id, Skill_Cetificate_Url, Created_Date)
-          VALUES (@student_ID, @Registration_No, @Skill_Id, @Skill_Cetificate_Url, @Created_Date);
+      var request = new sql.Request();
+        request.input('Student_ID', sql.VarChar, Student_ID)
+        request.input('Registration_No', sql.VarChar, Registration_No)
+        request.input('Skill_Id', sql.VarChar, Skill_Id)
+        request.input('Skill_Cetificate_Url', sql.VarChar, Skill_Cetificate_Url)
+        request.input('Created_Date', sql.Date, Created_Date)
+        const result = await request.query(`
+          INSERT INTO tnp_student_skills (Student_ID, Registration_No, Skill_Id, Skill_Cetificate_Url, Created_Date)
+          VALUES (@Student_ID, @Registration_No, @Skill_Id, @Skill_Cetificate_Url, @Created_Date);
         `);
 
      // Check if any rows were affected
@@ -1567,11 +1580,10 @@ const SkillDetails = async (req, res) => {
     } catch (error) {
       console.error('Error inserting skill details:', error);
       return res.status(500).json({ message: 'Failed to submit skill details', error });
-    } finally {
-      sql.close();
-    }
+    } 
   };
 
+ 
 
   const ExperienceDetails = async (req, res) => {
     const {
@@ -1593,25 +1605,22 @@ const SkillDetails = async (req, res) => {
   
     try {
       // Create a new connection
-      const pool = await sql.connect();
-  
-       // Perform the query
-      const result = await pool.request()
-        .input('Registration_No', sql.NVarChar(20), Registration_No)
-        .input('Organization_Name', sql.VarChar(20), Organization_Name)
-        .input('Post_Name', sql.VarChar(100), Post_Name)
-        .input('WorkPlace_Address', sql.VarChar(250), WorkPlace_Address)
-        .input('WorkPlace_District_Id', sql.SmallInt, WorkPlace_District_Id)
-        .input('WorkPlace_State_Id', sql.SmallInt, WorkPlace_State_Id)
-        .input('WorkPlace_Country_Id', sql.VarChar(50), WorkPlace_Country_Id)
-        .input('City_Name', sql.VarChar(50), City_Name)
-        .input('Description', sql.VarChar(250), Description)
-        .input('Period_From', sql.Date, Period_From)
-        .input('Period_To', sql.Date, Period_To)
-        .input('Is_Currently_working_YN', sql.Char(1), Is_Currently_working_YN)
-        .input('Salary', sql.Decimal(10,2), Salary)
-        .input('Created_Date', sql.DateTime, Created_Date)
-        .query(`
+      var request = new sql.Request();
+        request.input('Registration_No', sql.NVarChar(20), Registration_No)
+        request.input('Organization_Name', sql.VarChar(20), Organization_Name)
+        request.input('Post_Name', sql.VarChar(100), Post_Name)
+        request.input('WorkPlace_Address', sql.VarChar(250), WorkPlace_Address)
+        request.input('WorkPlace_District_Id', sql.SmallInt, WorkPlace_District_Id)
+        request.input('WorkPlace_State_Id', sql.SmallInt, WorkPlace_State_Id)
+        request.input('WorkPlace_Country_Id', sql.VarChar(50), WorkPlace_Country_Id)
+        request.input('City_Name', sql.VarChar(50), City_Name)
+        request.input('Description', sql.VarChar(250), Description)
+        request.input('Period_From', sql.Date, Period_From)
+        request.input('Period_To', sql.Date, Period_To)
+        request.input('Is_Currently_working_YN', sql.Char(1), Is_Currently_working_YN)
+        request.input('Salary', sql.Decimal(10,2), Salary)
+        request.input('Created_Date', sql.DateTime, Created_Date)
+        const result = await request.query(`
           INSERT INTO tnp_student_experience (
             Registration_No,
             Organization_Name,
@@ -1654,9 +1663,7 @@ const SkillDetails = async (req, res) => {
     } catch (error) {
       console.error('Error inserting experience details:', error);
       return res.status(500).json({ message: 'Failed to submit experience details', error });
-    } finally {
-      sql.close();
-    }
+    } 
   };
 
   
@@ -1735,6 +1742,75 @@ const SkillDetails = async (req, res) => {
     }
   };
   
+//function to fetch data from skill details table 
+    const getskill = async (req, res) => {
+        try {
+            const request = new sql.Request();
+            const query = 'SELECT * FROM dbo.tnp_student_skills';
+
+            request.query(query, (err, result) => {
+                if (err) {
+                    console.error('Error executing the query: ', err);
+                    res.status(500).json({ error: 'Error executing the query' });
+                    return;
+                }
+                //Send the fetched record as JSON response 
+                res.status(200).json(result.recordset);
+            });
+
+        } catch (error) {
+            console.error('Error fetching skills details: ', error);
+            res.status(500).json({ error: 'Internal Server Error' });
+
+       } 
+    };
+
+//function to fetch data from experience details table
+    const getexperience = async (req, res) => {
+        try {
+            const request = new sql.Request();
+            const query = 'SELECT * FROM dbo.tnp_student_experience';
+
+            request.query(query, (err, result) => {
+                if (err) {
+                    console.error('Error executing the query: ', err);
+                    res.status(500).json({ error: 'Error executing the query' });
+                    return;
+                }
+                //Send the fetched records as JSON response
+                res.status(200).json(result.recordset);
+            });
+        
+        } catch (error) {
+            console.error( 'Error fetching experience details: ', error);
+            res.status(500).json({ error: 'Internal Server Error' });
+
+        }
+    };
+
+   
+//function to fetch data from academic details table 
+    const getacademic = async (req, res) => {
+        try {
+            const request = new sql.Request();
+            const query = 'SELECT * FROM dbo.tnp_student_academic_details_array';
+
+            request.query(query, (err, result) => {
+                if (err) {
+                    console.error('Error executing the query: ', err);
+                    res.status(500).json({ error: 'Error executing the query' });
+                    return;
+                }
+                //Send the fetched records as JSON response
+                res.status(500).json(result.recordset);
+            });
+
+        } catch (error) {
+            console.error( 'Error fetching academic details: ', error);
+            res.status(500).json({ error: 'Internal Server Error' });
+
+        }
+    };
 
 //end 
 
@@ -1799,6 +1875,11 @@ module.exports ={
     //
     SkillDetails,
     ExperienceDetails,
-    AcademicDetails
+    AcademicDetails,
+    Admissionyear,
+
+    getskill,
+    getexperience,
+    getacademic
     
 }

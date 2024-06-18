@@ -9,6 +9,7 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class SAcademicDetailsComponent  implements OnInit {
   academicDetailsForm!: FormGroup;
+  admissionyear: any;
 
   constructor(private fb: FormBuilder , private studentds:StudentService) { }
 
@@ -27,8 +28,11 @@ export class SAcademicDetailsComponent  implements OnInit {
       Marksheet_Url: [''],
       Created_Date: ['']
     });
+
+   
   }
 
+  //submit form
   onSubmit(): void {
     console.log(this.academicDetailsForm.value);
     const formdata = this.academicDetailsForm.value
@@ -39,12 +43,13 @@ export class SAcademicDetailsComponent  implements OnInit {
       console.error('Error submitting form:', error);
     }
     );
-    
-    
 
   }
 
+  
   onClear(): void {
     this.academicDetailsForm.reset();
   }
 }
+
+//form submission to the academic details but the clear button is not working properly 

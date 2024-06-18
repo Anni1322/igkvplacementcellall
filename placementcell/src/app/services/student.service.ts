@@ -65,11 +65,6 @@ VacancyApplicationStudentDetail(eid: string): Observable<any> {
 }
 
 
-
-
-
-
-
 // add by anil this api for master table
 getGender(){
   return this.http.get(`${this.apiUrl}/student/getGender`);
@@ -99,6 +94,10 @@ postAddExperience(data: any): Observable<any> {
 
 postAcademicDetails(data: any){
   return this.http.post<any>(`${this.apiUrl}/student/AcademicDetails`, data);
+}
+
+getAdmissionyear(){
+  return this.http.get(`${this.apiUrl}/student/admissionyear`);
 }
 
 }

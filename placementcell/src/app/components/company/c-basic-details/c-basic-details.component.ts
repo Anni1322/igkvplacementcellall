@@ -122,16 +122,49 @@ export class CBasicDetailsComponent implements OnInit{
   }
 
 //for formcontrolName data collect to the database 
-  getvalueFromform(formValue: any) {
-    console.log('Form Data:', formValue);
-    this.CServices.postCompanyDetails(formValue).subscribe(
+//  getvalueFromform(formValue: any) {
+//    console.log('Form Data:', formValue);
+//    this.CServices.postCompanyDetails(formValue).subscribe(
+//      () => {
+//        alert('Form submitted successfully!');
+//        this.companyregistrationForm.reset(); // Reset the form after successful submission
+//      },
+//      (error) => {
+//        console.error('Error submitting form:', error);
+        // Display a more user-friendly message 
+//        alert('An error occurred while submitting the form. Please try again later.');
+        // Optionally, handle specific error scenarios based on status code
+//        if (error.status === 500) {
+//          console.error('Internal Server Error: Please contact support.');
+//        } else {
+//          console.error(`Error: ${error.message}`);
+//        }
+//      }
+//    );
+//  }
+ 
+//  onSubmit() {
+//    if (this.companyregistrationForm.valid) {
+//      this.getvalueFromform(this.companyregistrationForm.value);
+ //   } else {
+//      console.log('Form is not valid');
+//    }
+//  }
+  
+//for submit the form 
+onSubmit(): void {
+  if (this.companyregistrationForm.valid) {
+    console.log('Form Submitted!', this.companyregistrationForm.value);
+    // form submission here
+    const userData = this.companyregistrationForm.value
+    this.CServices.postCompanyDetails(userData).subscribe(
       () => {
         alert('Form submitted successfully!');
-        this.companyregistrationForm.reset(); // Reset the form after successful submission
+        this.companyregistrationForm.reset(); 
       },
       (error) => {
         console.error('Error submitting form:', error);
-        // Display a more user-friendly message 
+        // Display a more user-friendly message
         alert('An error occurred while submitting the form. Please try again later.');
         // Optionally, handle specific error scenarios based on status code
         if (error.status === 500) {
@@ -141,16 +174,12 @@ export class CBasicDetailsComponent implements OnInit{
         }
       }
     );
-  }
- 
-  onSubmit() {
-    if (this.companyregistrationForm.valid) {
-      this.getvalueFromform(this.companyregistrationForm.value);
-    } else {
-      console.log('Form is not valid');
-    }
+
   }
   
+}
+
+// on clear the form details
   onClear() {
     this.companyregistrationForm.reset();
   }

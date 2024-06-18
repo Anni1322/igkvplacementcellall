@@ -34,7 +34,7 @@
                                 </mat-form-field>
                                  </div>
                             </div>
-                            <!-- <div class="col-md-4">
+                            <!-- <div class="col-md-3">
                                 <div class="form-group">
                                     <mat-form-field appearance="outline" class="inputfieldsize">
                                         <mat-label for="username"> 
@@ -45,15 +45,22 @@
                                 </div>
                             </div> -->
 
-                            <!-- hide  -->
+                            <!-- hide 
+                             <div class="col-md-3">
+                                <div claas='form-group'>
+                                    <mat-form-field apperance="outline" class="inputfieldsize">
+                                        <mat-label for="Name">Name:</mat-label>
+                                        <input matinput placeholder="name" formcontrolName="Name">
+                                    </mat-form-field>
+                                </div>
+                            </div>-->
 
-                            <!-- <div class="col-md-4">
+                            <!-- <div class="col-md-3">
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
                                     <mat-label for="Registration_Type">
                                         Registration Type :
                                     </mat-label>
-                                
                                     <mat-select formcontrolName="Registration_Type">
                                         <mat-option *ngFor="let c of registrationtype;" [value]="c.Registration_Id">
                                             {{c.Name}}
@@ -63,7 +70,7 @@
                                 </div>
                             </div> -->
 
-
+                            <!--Personal details-->
                             <div class="col-md-3">
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
@@ -84,7 +91,6 @@
                                         First Name
                                     </mat-label>
                                     <input matInput type="text" placeholder="First_Name" formControlName="Student_First_Name_E">
-                                    <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                             </div>
@@ -94,8 +100,7 @@
                                     <mat-label for="Student_Middle_Name_E">
                                         Middle Name
                                     </mat-label>
-                                    <input matInput type="text" placeholder=" Middle_Name" formControlName="Student_Middle_Name_E">
-                                   <!-- <mat-icon matsuffix>sentiment_very_satisfied</mat-icon>-->
+                                    <input matInput type="text" placeholder=" Middle_Name" formControlName="Student_Middle_Name_E">                                   
                                 </mat-form-field>
                             </div>
                             </div>
@@ -106,7 +111,6 @@
                                         Last Name
                                     </mat-label>
                                     <input matInput type="text" placeholder="Last_Name" formControlName="Student_Last_Name_E">
-                                   <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                             </div>
@@ -119,10 +123,9 @@
                                     <!--<input matInput type="text" placeholder="salutation" formControlName="Salutation_H">-->
                                     <mat-select formControlName="Salutation_H">
                                         <mat-option *ngFor="let c of salutationhindi" [value]="c.Salutation_Id">
-                                            {{c.Value}}
+                                            {{c.SalutationName}}
                                         </mat-option>
                                     </mat-select>
-                                   <!-- <mat-icon matsuffix>sentiment_very_satisfied</mat-icon> for mat icon -->
                                 </mat-form-field>
                             </div>
                             </div>
@@ -133,7 +136,6 @@
                                         विद्यार्थी का प्रथम नाम:
                                     </mat-label>
                                     <input matInput type="text" placeholder="प्रथम नाम" formControlName="Student_First_Name_H">
-                                    <!--<mat-icon matsuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                             </div>
@@ -144,7 +146,6 @@
                                         विद्यार्थी का मध्य नाम:
                                     </mat-label>
                                     <input matInput type="text" placeholder="मध्य नाम" formControlName="Student_Middle_Name_H">
-                                   <!-- <mat-icon matsuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                             </div>
@@ -155,7 +156,6 @@
                                         विद्यार्थी का अंतिम नाम:
                                     </mat-label>
                                     <input matInput type="text" placeholder="अंतिम नाम" formControlName="Student_Last_Name_H">
-                                    <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                             </div>
@@ -166,7 +166,6 @@
                                         Date Of Birth:
                                     </mat-label>
                                     <input matInput type="date" placeholder="dob" formControlName="DOB">
-                                    <!--<mat-icon matsuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                             </div>
@@ -182,7 +181,6 @@
                                             {{c.Value}}
                                         </mat-option>
                                     </mat-select>
-                                    <!--<mat-icon matsuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                             </div>
@@ -192,8 +190,7 @@
                                     <mat-label for="Mobile_No">
                                         Mobile No:
                                     </mat-label>
-                                    <input matInput type="" placeholder="Mobile no" formControlName="Mobile_No">
-                                    <!--<mat-icon matsuffix>Phone</mat-icon>-->
+                                    <input matInput type="text" placeholder="Mobile no" formControlName="Mobile_No">
                                 </mat-form-field>
                             </div>
                             </div>
@@ -204,10 +201,10 @@
                                         Email Id:
                                     </mat-label>
                                     <input matInput type="email" placeholder="igkv@gmail.com" formControlName="Email_Id">
-                                    <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                             </div>
+                            <!--Parents details-->
                             <div class="col-md-3">
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
@@ -215,7 +212,6 @@
                                         Father Name E:
                                     </mat-label>
                                     <input matInput type="text" placeholder="Father_Name" formControlName="Father_Name_E">
-                                   <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> //mat-icon in the father name field-->
                                 </mat-form-field> 
                             </div>
                             </div> 
@@ -226,7 +222,6 @@
                                         Mother Name E:
                                     </mat-label>
                                     <input matInput type="text" placeholder="Mother_Name" formControlName="Mother_Name_E">
-                                   <!-- <mat-icon matsuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                             </div>
@@ -234,10 +229,9 @@
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
                                     <mat-label for="Father_Name_H">
-                                        Father Name H:
+                                        Father Name Hindi:
                                     </mat-label>
                                     <input matInput type="text" placeholder="Father_Name" formControlName="Father_Name_H">
-                                   <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                         </div>
@@ -245,10 +239,9 @@
                                 <div class="form-group">
                                 <mat-form-field appearance="outline" class="inputfieldsize">
                                     <mat-label for="Mother_Name_H">
-                                        Mother Name H:
+                                        Mother Name Hindi:
                                     </mat-label>
                                     <input matInput type="text" placeholder="Mother_Name" formControlName="Mother_Name_H">
-                                    <!--<mat-icon matsuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                             </div>
@@ -259,7 +252,6 @@
                                         Gaurdian Name E:
                                     </mat-label>
                                     <input matInput type="text" placeholder="Gaurdian_Name" formControlName="Gaurdian_Name_E">
-                                    <!--<mat-icon matsuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                             </div>
@@ -270,17 +262,17 @@
                                         Spouse Name E:
                                     </mat-label>
                                     <input matInput type="text" placeholder="Spouse_Name" formControlName="Spouse_Name_E">
-                                    <!--<mat-icon matsuffix>sentiment_very_satisfied</mat-icon>-->
                                 </mat-form-field>
                             </div>
                             </div>
+                            <!--other details-->
                             <div class="col-md-3">
                                 <div class="form-group"> 
                                 <mat-form-field appearance="outline" class="inputfieldsize">
                                     <mat-label for="Created_Date">
                                         Created Date:
                                     </mat-label>
-                                    <input matInput type="date" placeholder="" formControlName="Created_Date">
+                                    <input matInput type="date" placeholder="created date" formControlName="Created_Date">
                                 </mat-form-field>
                             </div>
                             </div>

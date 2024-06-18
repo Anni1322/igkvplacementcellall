@@ -28,7 +28,7 @@ export class SExperienceDetailsComponent implements OnInit{
       Is_Currently_working_YN: [null],
       Salary: [null],
       Created_Date: [null],
-
+      
     });
 
     //for master table 
@@ -37,6 +37,7 @@ export class SExperienceDetailsComponent implements OnInit{
 
   }
 
+  //experience details form submission 
   getvalueFromform(value: any) {
     const formValue = this.experiencedetailsform.value;
     console.log('Form Data:', formValue);
@@ -58,6 +59,7 @@ export class SExperienceDetailsComponent implements OnInit{
     );
   }
 
+  
   onSubmit() {
     if (this.experiencedetailsform.valid) {
       this.getvalueFromform(this.experiencedetailsform.value);
