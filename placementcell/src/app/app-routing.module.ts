@@ -88,7 +88,7 @@ const routes: Routes = [
   {path:'addproduct', component:AddProjectComponent},
   {path:'forninput', component:ForminputComponent},
   {path:'fileupload', component:FileuploadComponent},
-  {path:'reset-password', component:ResetPasswordComponent},
+  {path:'settings', component:ResetPasswordComponent},
  
 // header
  

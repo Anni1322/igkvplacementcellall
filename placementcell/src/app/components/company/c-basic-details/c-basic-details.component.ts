@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CServiceService } from '../service/c-service.service';
-import { FormBuilder, FormControl, FormGroup , Validators} from '@angular/forms';
+import { FormBuilder, FormGroup , Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-c-basic-details',
@@ -24,38 +24,37 @@ export class CBasicDetailsComponent implements OnInit{
 
   ngOnInit(): void {
     this.companyregistrationForm = this.fb.group({
-      Id: ['', Validators.required],
-      Company_Id: ['', Validators.required],
-      Company_Registration_No: ['', Validators.required],
-      Tnp_Registration_No: ['', Validators.required],
-      Company_Name: ['', Validators.required],
-      Company_Type: ['', Validators.required],
-      Company_Category: ['', Validators.required],
-      Company_Email: ['', [Validators.required, Validators.email]],
-      Company_Phone_Number: ['', Validators.required],
-      Hr_Name: ['', Validators.required],
-      Hr_Contact_No: ['', Validators.required],
-      Hr_Email: ['', [Validators.required, Validators.email]],
-      Contact_Person: ['', Validators.required],
-      Contact_Person_Email: ['', [Validators.required, Validators.email]],
-      Contact_Person_Phone: ['', Validators.required],
-      Company_Short_Name: ['', Validators.required],
-      Address: ['', Validators.required],
-      State: ['', Validators.required],
-      District: ['', Validators.required],
-      Block: ['', Validators.required],
-      Website: ['', Validators.required],
-      Company_Logo_Url: ['', Validators.required],
-      Company_Logo: ['', Validators.required],
-      Company_Broucher: ['', Validators.required],
-      Company_Other_Doc_Url: ['', Validators.required],
-      Created_By: ['', Validators.required],
-      Created_Date: ['', Validators.required],
-      Modified_By: ['', Validators.required],
-      Modified_Date: ['', Validators.required],
-      Delete_Flag: ['', Validators.required],
-      Public_IP_Address: ['', Validators.required],
-      Private_IP_Address: ['', Validators.required]
+      Company_Id: [null],
+      Company_Registration_No: [null],
+      Tnp_Registration_No: [null],
+      Company_Name: [null],
+      Company_Type: [null],
+      Company_Category: [null],
+      Company_Email: [null],
+      Company_Phone_Number: [null],
+      Hr_Name: [null],
+      Hr_Contact_No: [null],
+      Hr_Email: [null],
+      Contact_Person: [null],
+      Contact_Person_Email: [null],
+      Contact_Person_Phone: [null],
+      Company_Short_Name: [null],
+      Address: [null],
+      State: [null],
+      District: [null],
+      Block: [null],
+      Website: [null],
+      Company_Logo_Url: [null],
+      Company_Logo: [null],
+      Company_Broucher: [null],
+      Company_Other_Doc_Url: [null],
+      Created_By: [null],
+      Created_Date: [null],
+      Modified_By: [null],
+      Modified_Date: [null],
+      Delete_Flag: [null],
+      Public_IP_Address: [null],
+      Private_IP_Address: [null]
     });
     
   //get for company category field

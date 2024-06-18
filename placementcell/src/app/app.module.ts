@@ -117,6 +117,7 @@ import { SSkillDetailsComponent } from './components/student/s-skill-details/s-s
 import { SExperienceDetailsComponent } from './components/student/s-experience-details/s-experience-details.component';
 
 
+
  
 
 @NgModule({
@@ -185,7 +186,8 @@ import { SExperienceDetailsComponent } from './components/student/s-experience-d
       FooterComponent,
       CaptchacodeComponent,
       SSkillDetailsComponent,
-      SExperienceDetailsComponent
+      SExperienceDetailsComponent,
+     
      
 
      
