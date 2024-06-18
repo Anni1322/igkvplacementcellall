@@ -11,7 +11,6 @@ export class CServiceService {
   private baseurl = 'http://localhost:3000'; 
   private postapiUrl = 'http://localhost:3000/company/add_vacancy'; 
  
-  companydetails_Post_Url = "http://localhost:3000/company/registerCompany";
 
   constructor(private http:HttpClient) { }
 
@@ -54,9 +53,8 @@ VacancyApply(data:any){
 //  return this.http.post(this.companydetails_Post_Url, formValue);
 //}
 
-postCompanyDetails(data: any) {
-  // return this.http.post(this.studentDetail_Post_Url, data);  
-  return this.http.post<any>(`${this.baseurl}/company/registration`, data);
+postCompanyDetails(data:any){
+  return this.http.post<any>(`${this.baseurl}/company/registerCompany`, data);
 }
 
 getcompany_category(){

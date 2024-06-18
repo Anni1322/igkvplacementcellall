@@ -435,9 +435,9 @@ const getAllCompany = async(req, res)=>{
     });
 }
  
+// Function to register a company
 const registerCompany = async (req, res) => {
     const {
-        Id,
         Company_Id,
         Company_Registration_No,
         Tnp_Registration_No,
@@ -452,30 +452,28 @@ const registerCompany = async (req, res) => {
         Contact_Person,
         Contact_Person_Email,
         Contact_Person_Phone,
+        Company_Short_Name,
         Address,
         State,
         District,
         Block,
-        website,
-        Company_Logo_url,
+        Company_Profile,
+        Website,
+        Company_Logo_Url,
         Company_Logo,
         Company_Broucher,
-        Company_other_Doc_url,
-        Created_By,
-        Created_Date,
-        Modified_By,
-        Modified_Date,
-        Delete_Flag,
-        Public_IP_Address,
-        Private_IP_Address    
+        Company_Other_Doc_Url,
+        Created_Date
     } = req.body;
 
     try {
+        // Connect to SQL Server
+       // await sql.connect();
         const request = new sql.Request();
 
+        // Define the insert query
         const insertQuery = `
             INSERT INTO dbo.company_registration (
-                Id,
                 Company_Id,
                 Company_Registration_No,
                 Tnp_Registration_No,
@@ -490,24 +488,19 @@ const registerCompany = async (req, res) => {
                 Contact_Person,
                 Contact_Person_Email,
                 Contact_Person_Phone,
+                Company_Short_Name,
                 Address,
                 State,
                 District,
                 Block,
-                website,
-                Company_Logo_url,
+                Company_Profile,
+                Website,
+                Company_Logo_Url,
                 Company_Logo,
                 Company_Broucher,
-                Company_other_Doc_url,
-                Created_By,
-                Created_Date,
-                Modified_By,
-                Modified_Date,
-                Delete_Flag,
-                Public_IP_Address,
-                Private_IP_Address  
+                Company_Other_Doc_Url,
+                Created_Date
             ) VALUES (
-                @Id,
                 @Company_Id,
                 @Company_Registration_No,
                 @Tnp_Registration_No,
@@ -522,58 +515,50 @@ const registerCompany = async (req, res) => {
                 @Contact_Person,
                 @Contact_Person_Email,
                 @Contact_Person_Phone,
+                @Company_Short_Name,
                 @Address,
                 @State,
                 @District,
                 @Block,
-                @website,
-                @Company_Logo_url,
+                @Company_Profile,
+                @Website,
+                @Company_Logo_Url,
                 @Company_Logo,
                 @Company_Broucher,
-                @Company_other_Doc_url,
-                @Created_By,
-                @Created_Date,
-                @Modified_By,
-                @Modified_Date,
-                @Delete_Flag,
-                @Public_IP_Address,
-                @Private_IP_Address  
+                @Company_Other_Doc_Url,
+                @Created_Date
             )
         `;
 
-        request.input('Id', sql.BigInt, Id);
-        request.input('Company_Id', sql.VarChar, Company_Id);
-        request.input('Company_Registration_No', sql.VarChar, Company_Registration_No);
-        request.input('Tnp_Registration_No', sql.VarChar, Tnp_Registration_No);
+        // Add inputs to the request
+        request.input('Company_Id', sql.VarChar(99), Company_Id);
+        request.input('Company_Registration_No', sql.VarChar(50), Company_Registration_No);
+        request.input('Tnp_Registration_No', sql.VarChar(50), Tnp_Registration_No);
         request.input('Company_Name', sql.VarChar(50), Company_Name);
         request.input('Company_Type', sql.SmallInt, Company_Type);
         request.input('Company_Category', sql.SmallInt, Company_Category);
         request.input('Company_Email', sql.VarChar(50), Company_Email);
-        request.input('Company_Phone_Number', sql.VarChar(50), Company_Phone_Number);
-        request.input('Hr_Name', sql.VarChar(50), Hr_Name);
-        request.input('Hr_Contact_No', sql.VarChar, Hr_Contact_No);
-        request.input('Hr_Email', sql.VarChar, Hr_Email);
+        request.input('Company_Phone_Number', sql.VarChar(20), Company_Phone_Number);
+        request.input('Hr_Name', sql.VarChar(30), Hr_Name);
+        request.input('Hr_Contact_No', sql.VarChar(30), Hr_Contact_No);
+        request.input('Hr_Email', sql.VarChar(50), Hr_Email);
         request.input('Contact_Person', sql.VarChar(50), Contact_Person);
         request.input('Contact_Person_Email', sql.VarChar(50), Contact_Person_Email);
-        request.input('Contact_Person_Phone', sql.VarChar(50), Contact_Person_Phone);
-
+        request.input('Contact_Person_Phone', sql.VarChar(12), Contact_Person_Phone);
+        request.input('Company_Short_Name', sql.VarChar(20), Company_Short_Name);
         request.input('Address', sql.VarChar(100), Address);
         request.input('State', sql.SmallInt, State);
         request.input('District', sql.SmallInt, District);
         request.input('Block', sql.SmallInt, Block);
-        request.input('website', sql.VarChar(5000), website);
-        request.input('Company_Logo_url', sql.VarChar(50), Company_Logo_url);
-        request.input('Company_Logo', sql.VarChar(50), Company_Logo);
-        request.input('Company_Broucher', sql.VarChar(50), Company_Broucher);
-        request.input('Company_other_Doc_url', sql.VarChar(50), Company_other_Doc_url);
-        request.input('Created_By', sql.VarChar(20), Created_By);
-        request.input('Created_Date', sql.DateTime, Created_Date);
-        request.input('Modified_By', sql.VarChar(20), Modified_By);
-        request.input('Modified_Date', sql.DateTime, Modified_Date);
-        request.input('Delete_Flag', sql.Char, Delete_Flag);
-        request.input('Public_IP_Address', sql.VarChar(20), Public_IP_Address);
-        request.input('Private_IP_Address', sql.VarChar(20), Private_IP_Address);
+        request.input('Company_Profile', sql.VarChar(1000), Company_Profile);
+        request.input('Website', sql.VarChar(5000), Website);
+        request.input('Company_Logo_Url', sql.VarChar(6000), Company_Logo_Url);
+        request.input('Company_Logo', sql.VarChar(500), Company_Logo);
+        request.input('Company_Broucher', sql.VarChar(500), Company_Broucher);
+        request.input('Company_Other_Doc_Url', sql.VarChar(500), Company_Other_Doc_Url);
+        request.input('Created_Date', sql.DateTime, Created_Date || new Date());
 
+        // Execute the query
         await request.query(insertQuery);
 
         res.status(200).json({ message: 'Company registered successfully' });
