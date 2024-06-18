@@ -3,6 +3,7 @@ import { ServiceService } from 'src/app/services/service.service';
 import { SignupService } from 'src/app/services/signup.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -12,13 +13,15 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors }
 })
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
+  captchaImage!: string;
 
   
   constructor(
     private fb: FormBuilder,
     private ds: ServiceService, 
     private router: Router,
-    private singup: SignupService
+    private singup: SignupService,
+    private auth:AuthService,
     ) {}  
 
 
@@ -30,7 +33,26 @@ export class SignupComponent implements OnInit {
       rePassword: ['', [Validators.required, Validators.minLength(6)]],
       role: ['1', Validators.required]
     }, { validators: this.passwordMatchValidator });
+
+    this.loadCaptcha();
   }
+
+
+
+
+
+  loadCaptcha() {
+    this.auth.getcaptcha().subscribe((data: any) => {
+      this.captchaImage = `data:image/svg+xml;base64,${btoa(data.image)}`;
+      console.log(this.captchaImage);
+    });
+  }
+
+
+
+
+
+
 
   passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password');
