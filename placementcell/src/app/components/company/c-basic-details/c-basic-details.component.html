@@ -82,7 +82,7 @@
                                             </mat-label>
                                             <!--<input matInput placeholder="" formControlName="Company_Type">-->
                                             <mat-select formControlName="Company_Type">
-                                                <mat-option *ngFor="let c of companytype;" [value]="c.Category_Type_Id">
+                                                <mat-option *ngFor="let c of companytype;" [value]="c.Company_Id">
                                                     {{c.Company_Type}}
                                                 </mat-option>
                                             </mat-select>
@@ -97,7 +97,7 @@
                                             </mat-label>
                                             <!--<input matInput type="text" placeholder="" formControlName="Company_Category">-->
                                             <mat-select formControlName="Company_Category">
-                                                <mat-option *ngFor="let c of companycategory;" [value]="c.Company_Id">
+                                                <mat-option *ngFor="let c of companycategory;" [value]="c.Category_Type_Id">
                                                     {{c.Category_Name}}
                                                 </mat-option>
                                             </mat-select>

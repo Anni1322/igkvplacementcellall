@@ -126,7 +126,20 @@ function generateEmpId(empNum) {
     // Format empNum to have leading zeros if necessary
     const paddedEmpNum = empNum.toString().padStart(2, '0');
     // Concatenate 'igkv' with paddedEmpNum
-    const empId = 'igkv' + paddedEmpNum;
+    const empId = 'IGKV' + paddedEmpNum;
+    return empId;
+}
+function generateEmpIdcompay(empNum) {
+    // Check if empNum is null or undefined
+    if (empNum === null || empNum === undefined) {
+        console.error("empNum is null or undefined");
+        return null; 
+    }
+
+    // Format empNum to have leading zeros if necessary
+    const paddedEmpNum = empNum.toString().padStart(2, '0');
+    // Concatenate 'igkv' with paddedEmpNum
+    const empId = 'COM' + paddedEmpNum;
     return empId;
 }
 
@@ -172,6 +185,21 @@ const Signup = async (req, res) => {
 
         // Generate employee ID using maxId
         const empId = generateEmpId(maxId + 1);
+
+        // if company register
+        if(role == 2){
+        const empId = generateEmpIdcompay(maxId + 1);   
+        // Insert user into the database
+        const insertQuery = 'INSERT INTO dbo.login_table (name, username, password, Emp_Id, role) VALUES (@name, @username, @password, @Emp_Id, @role)';
+        request.input('name', sql.VarChar, name);
+        request.input('password', sql.VarChar, hashedPassword);
+        request.input('Emp_Id', sql.VarChar, empId);
+        request.input('role', sql.Int, role);
+
+        await request.query(insertQuery);
+        res.status(200).json({ empId: empId, message: 'User registered successfully' });
+        }
+
         console.log("Generated Emp Id:", empId);
 
         // Insert user into the database
