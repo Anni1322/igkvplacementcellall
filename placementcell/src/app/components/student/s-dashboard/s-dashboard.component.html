@@ -43,11 +43,11 @@
       </div>
 
     <div class="row mt-2">
-        <div class="col-md-4 mb-4">
+        <!-- <div class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Selected</h4>
-                    <!-- <p class="card-text">Some example text.</p> -->
+                    <p class="card-text">Some example text.</p>
                     <a href="#" class="btn btn-primary">Click</a>
                   </div>
             </div>
@@ -56,7 +56,7 @@
             <div class="card bg-success text-white bg-opacity-25">
                 <div class="card-body">
                     <h4 class="card-title">Interview date</h4>
-                    <!-- <p class="card-text">Some example text.</p> -->
+                    <p class="card-text">Some example text.</p>
                     <a href="#" class="btn btn-primary">Click</a>
                   </div>
             </div>
@@ -65,7 +65,7 @@
             <div class="card bg-primary text-white bg-opacity-25">
                 <div class="card-body">
                     <h4 class="card-title">Joining</h4>
-                    <!-- <p class="card-text">Some example text.</p> -->
+                    <p class="card-text">Some example text.</p>
                     <a href="#" class="btn btn-warning ">Click</a>
                   </div>
             </div>
@@ -75,18 +75,19 @@
             <div class="card bg-warning text-white bg-opacity-25">
                 <div class="card-body">
                     <h4 class="card-title">Rejected</h4>
-                    <!-- <p class="card-text">Some example text.</p> -->
+                    <p class="card-text">Some example text.</p>
                     <a href="#" class="btn btn-warning">Click</a>
                   </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="col-md-4 mb-4">
             <div class="card bg-info text-white bg-opacity-25">
                 <div class="card-body">
                     <h4 class="card-title">My Application</h4>
                     <!-- <p class="card-text">Some example text.</p> -->
-                    <a href="#" class="btn btn-warning">View</a>
+                    <!-- <a href="#" class="btn btn-warning">View</a> -->
+                    <a [routerLink]="'/student/s-status/' + user.eid" class="btn btn-warning">View</a>
                   </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ import { AdminService } from '../../admin/service/admin.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ExcelExportService } from '../../admin/service/excel-export.service';
 import { CSApplicationActionComponent } from '../c-s-application-action/c-s-application-action.component';
-
+ 
 @Component({
   selector: 'app-c-s-application',
   templateUrl: './c-s-application.component.html',
