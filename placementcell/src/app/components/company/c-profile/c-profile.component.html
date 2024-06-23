@@ -3,19 +3,36 @@
     <div class="row">
         <div class="col-md-3">
             <!-- Company Logo -->
-            <img src="company-logo.png" alt="Company Logo" class="img-fluid">
+            <img src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?size=338&ext=jpg&ga=GA1.1.1480204119.1718755200&semt=sph" alt="Company Logo" class="img-fluid">
         </div>
         <div class="col-md-9">
             <!-- Company Information -->
-            <h3>Company Name</h3>
-            <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer et est in elit tempus hendrerit.</p>
+            <!-- <h1>{{companydata.Company_Name}}</h1> -->
+    
             <p><strong>Contact Information:</strong></p>
             <ul>
-                <li>Email: infocompany.com</li>
-                <li>Phone: +1 123-456-7890</li>
-                <li>Address: 123 Street, City, Country</li>
+                <li>Email: {{companydata.Company_Email}}</li>
+                <li>Phone: {{companydata.Company_Phone_Number}}</li>
+                <li>Address: {{companydata.Address}}</li>
             </ul>
-            <p><strong>Website:</strong> <a href="http://www.company.com">www.company.com</a></p>
+            <p><strong>Website:</strong> <a href="http://www.company.com">{{companydata.Website}}</a></p>
         </div>
+        
+       
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="col-md-9 mt-2">
+              <!-- Company Information -->
+              <!-- <label for="logo">upload logo</label> -->
+              <input type="file" formControlName="logo" (change)="onFileChange($event)">
+              
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Update Logo</button>
+          </form>
+          
+
+        
+          
+          
     </div>
 </div>

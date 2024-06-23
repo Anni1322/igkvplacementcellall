@@ -21,7 +21,7 @@
                                 
                             <form [formGroup]="companyregistrationForm">
 
-                                <ng-template matStepLabel>First_content</ng-template>
+                                <ng-template matStepLabel>Basic Details</ng-template>
                                 <div class="card-body">
                                     <div class="row">
                                 <!--<div class="col-md-3">
@@ -195,7 +195,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                  <button mat-button matStepperNext>Next</button>
+                                  <button mat-button matStepperNext class="btn text-center bg-primary mt-2">Next</button>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +205,7 @@
                             <mat-step [stepControl]="companyregistrationForm">
                                 
                                 <form [formGroup]="companyregistrationForm">
-                                <ng-template matStepLabel>Second content</ng-template>
+                                <ng-template matStepLabel>Address Section </ng-template>
                                 <div class="card-body">
                                     <div class="row">
                                 <div class="col-md-3">
@@ -264,7 +264,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="form-group">
+                                    <div class="form-group mb-3">
                                         <mat-form-field appearance="outline" class="inputfieldsize">
                                             <mat-label for="Website">
                                                 Website:
@@ -273,40 +273,51 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
+
+                       
+                                <!-- 
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <mat-form-field appearance="outline" class="inputfieldsize">
                                             <mat-label for="Company_Logo_Url">
                                                 Company Logo Url:
                                             </mat-label>
-                                            <input matInput placeholder="logo url" formControlName="Company_Logo_Url">
+                                            <input  matInput placeholder="logo url" formControlName="Company_Logo_Url">
                                         </mat-form-field>
                                     </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <mat-form-field appearance="outline" class="inputfieldsize">
-                                            <mat-label for="Company_Broucher">
-                                                Company Broucher:
-                                            </mat-label>
-                                            <input matInput placeholder="Broucher" formControlName="Company_Broucher">
-                                        </mat-form-field>
+                                </div> -->
+
+                                <div class="col-lg-4">
+                                    <div class="form-group mb-3">
+                                        <label for="Company_Logo_Url">Company Logo</label>
+                                        <input type="file" id="Company_Logo_Url" (change)="onFileSelected($event, 'Company_Logo_Url')" placeholder="resume path" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                                    </div>
+                                </div>  
+                                
+                                <div class="col-lg-4">
+                                    <div class="form-group mb-3">
+                                        <label for="Company_Broucher">Company Broucher</label>
+                                        <input type="file" id="Company_Broucher" (change)="onFileSelected($event, 'Company_Broucher')" placeholder="Company_Broucher path" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                                    </div>
+                                </div>  
+                                
+                                <div class="col-lg-4">
+                                    <div class="form-group mb-3">
+                                        <label for="Company_Other_Doc_Url">Company Other doc</label>
+                                        <input type="file" id="Company_Other_Doc_Url" (change)="onFileSelected($event, 'Company_Other_Doc_Url')" placeholder="Company_Other_Doc_Url path" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="from-group">
-                                        <mat-form-field appearance="outline" class="inputfieldsize">
-                                            <mat-label for="Company_Other_Doc_Url">
-                                                Company Other doc url:
-                                            </mat-label>
-                                            <input matInput placeholder="other doc url" formControlName="Company_Other_Doc_Url">
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div>
-                                 
-                                  <button mat-button matStepperPrevious>Back</button>
-                                  <button mat-button matStepperNext>Next</button>
+                                
+
+
+
+                                
+
+
+                                <div class="text-white">
+
+                                  <button mat-button matStepperPrevious class="btn text-center bg-primary " style="margin-right: 8px;">Back</button>
+                                  <button mat-button matStepperNext class="btn text-center bg-primary">Next</button>
                                 </div>
                             </div>
                         </div>
@@ -316,29 +327,33 @@
                             <mat-step>
                                 <div class="card-body">
                                     <div class="row">
-                              <ng-template matStepLabel>Third content</ng-template>
+                              <ng-template matStepLabel>Submition section</ng-template>
                              
-                              <div class="col-md-3">
+                             
+                             
+                              <!-- <div class="col-md-3">
                                 <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Created_Date">
-                                            Created Date:
-                                        </mat-label>
-                                        <input matInput type="date" placeholder="date" formControlName="Created_Date">
-                                    </mat-form-field>
+                                  <mat-form-field appearance="outline" class="inputfieldsize">
+                                    <mat-label for="Created_Date">Created Date:</mat-label>
+                                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="Created_Date">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker touchUi #picker></mat-datepicker>
+                                  </mat-form-field>
                                 </div>
-                              </div>
+                              </div> -->
+                              
                              
                               
-                              <div>
-                                <button mat-button matStepperPrevious>Back</button>
-                                <button mat-button (click)="stepper.reset()">Reset</button>
+                              <div class="text-white">
+                                <button mat-button matStepperPrevious class="btn text-center bg-primary " style="margin-right: 8px;">Back</button>
+                                <button mat-button (click)="stepper.reset()" class="btn text-center bg-primary ">Reset</button>
+                                
                                 <!--<button mat-button matStepperNext >Next</button>>-->
                               </div>
                               <div
                                 class="mt-2 d-flex justify-content-evenly pt-4 pb-3 rounded-top bg-white border border-1 border-dark">
                              <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                                <button type="submit" class="btn btn-primary" >Submit</button>
+                                <button type="submit" class="btn btn-primary text-center" >Submit</button>
                             </div>
                             </div>
                             </div>
@@ -391,11 +406,11 @@
                     <div
                             class="rounded-bottom border border-dark border-1 p-1 text-center m-0 bg-dark text-light fw-bold">
 
-                            <a class="text-light" href="#">User Manual</a> ||
-                            <a class="text-light" href="#">User Instruction</a> ||
-                            <small class="text-primary register-text">If Already have an account !..
-                            </small>
-                            <a class="text-warning" routerLink="/login" href="#"><b>Login</b></a>
+                            <!-- <a class="text-light" href="#">User Manual</a> || -->
+                            <!-- <a class="text-light" href="#">User Instruction</a> || -->
+                            <!-- <small class="text-primary register-text">If Already have an account !.. -->
+                            <!-- </small> -->
+                            <!-- <a class="text-warning" routerLink="/login" href="#"><b>Login</b></a> -->
                         </div>
 
                     </div>

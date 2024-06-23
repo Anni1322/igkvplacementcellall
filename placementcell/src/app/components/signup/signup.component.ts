@@ -4,7 +4,7 @@ import { SignupService } from 'src/app/services/signup.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-signup',
@@ -15,15 +15,13 @@ export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
   captchaImage!: string;
 
-  
   constructor(
     private fb: FormBuilder,
     private ds: ServiceService, 
     private router: Router,
-    private singup: SignupService,
-    private auth:AuthService,
-    ) {}  
-
+    private signup: SignupService,
+    private auth: AuthService,
+  ) {}
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
@@ -37,9 +35,10 @@ export class SignupComponent implements OnInit {
     this.loadCaptcha();
   }
 
-
-
-
+  encryptPassword(password: string): string {
+    const secretKey = 'your-256-bit-secret';
+    return CryptoJS.AES.encrypt(password, secretKey).toString();
+  }
 
   loadCaptcha() {
     this.auth.getcaptcha().subscribe((data: any) => {
@@ -47,12 +46,6 @@ export class SignupComponent implements OnInit {
       console.log(this.captchaImage);
     });
   }
-
-
-
-
-
-
 
   passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password');
@@ -65,21 +58,31 @@ export class SignupComponent implements OnInit {
 
   onSubmit(): void {
     if (this.signupForm.valid) {
-      console.log('Form Submitted!', this.signupForm.value);
-      // form submission here
-      const userData = this.signupForm.value
-    this.singup.postsignup(userData).subscribe( () => {
-      alert('Form submitted successfully!');
-     
-      this.router.navigate(['/login']);
-    }, (error) => {
-      alert('Username Allready Exist');
-      this.router.navigate(['/login']);
-      console.error('Error submitting form:', error);
-    })
+      const formValue = this.signupForm.value;
+      // const encryptedPassword = this.encryptPassword(formValue.password);
+      // const encryptedRePassword = this.encryptPassword(formValue.rePassword);
+
+      // const encryptedFormValue = {
+      //   name:formValue.name,
+      //   username:formValue.username,
+      //   role:formValue.role,
+      //   password: encryptedPassword,
+      //   // rePassword: encryptedRePassword
+      // };
+
+      this.signup.postsignup(formValue).subscribe(
+        () => {
+          alert('Form submitted successfully!');
+          this.router.navigate(['/login']);
+        },
+        (error) => {
+          alert('Username already exists');
+          console.error('Error submitting form:', error);
+        }
+      );
     }
-    
   }
+}
 
 
 
@@ -110,4 +113,4 @@ export class SignupComponent implements OnInit {
 
 
 
-}
+

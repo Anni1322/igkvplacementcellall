@@ -54,6 +54,11 @@ import { CaptchacodeComponent } from './prac/captchacode/captchacode.component';
 import { SSkillDetailsComponent } from './components/student/s-skill-details/s-skill-details.component';
 import { SExperienceDetailsComponent } from './components/student/s-experience-details/s-experience-details.component';
 import { SAcademicDetailsComponent } from './components/student/s-academic-details/s-academic-details.component';
+import { CSApplicationComponent } from './components/company/c-s-application/c-s-application.component';
+import { CSShortlistComponent } from './components/company/c-s-shortlist/c-s-shortlist.component';
+import { CSCallInterviewComponent } from './components/company/c-s-call-interview/c-s-call-interview.component';
+import { CSSelectedComponent } from './components/company/c-s-selected/c-s-selected.component';
+import { CSRejectComponent } from './components/company/c-s-reject/c-s-reject.component';
  
 
 
@@ -130,6 +135,14 @@ const routes: Routes = [
     {path:'c-profile', component:CProfileComponent},
     {path:'c-add-vacancy', component:CAddVacancyDetailsComponent},
     {path:'c-edit-vacancy/:id', component:CEditVacancyDetailsComponent},
+
+
+    {path:'s-application', component:CSApplicationComponent},
+    {path:'s-rejectlist', component:CSRejectComponent},
+    {path:'s-shortlist', component:CSShortlistComponent},
+    {path:'s-interviewlist', component:CSCallInterviewComponent},
+    {path:'s-selected', component:CSSelectedComponent},
+
   
   ]},
 

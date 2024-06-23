@@ -28,18 +28,16 @@
                 Company_ID is required.
                 </div>
             </div>
-            <div class="col-lg-4">
-              <div class="form-group mb-2">
-              <label for="Student_ID">Student ID: </label>
-              <input type="text" id="Student_ID" placeholder="student id"  formControlName="Student_ID" class="form-control" >
-              </div>
+
+
+            <div class="form-group mb-2" >
+              <label for="Full_Name">Full Name: </label>
+              <input type="text" id="Full_Name" placeholder="full name" formControlName="Full_Name" class="form-control" >
             </div>
-            <div class="col-lg-4">
-              <div class="form-group">
-                <label for="Vacancy_ID">Vacancy ID: </label>
-                <input type="text" id="Vacancy_ID" placeholder="vacancy id" formControlName="Vacancy_ID" class="form-control" >
-              </div>
-            </div>
+
+
+           
+          
             <div class="col-lg-4">
               <div class="form-group mb-2" hidden>
               <!-- <div class="form-group mb-2" > -->
@@ -55,31 +53,45 @@
               </div>
             </div> 
 
-            <div class="col-lg-4">
-              <div class="form-group mb-3">
-                <label for="Resume_Path">Resume Upload: </label>
-                <input type="file" id="Resume_Path" (change)="onFileSelected($event)" placeholder="resume path" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
-              </div>
-            </div>  
+             
+
+            
             </div>
             <div class="col-lg-4">
-              <div class="form-group mb-2" >
-                <label for="Full_Name">Full Name: </label>
-                <input type="text" id="Full_Name" placeholder="full name" formControlName="Full_Name" class="form-control" >
+
+              <div class="form-group mb-2">
+              <label for="Student_ID">Student ID: </label>
+              <input type="text" id="Student_ID" placeholder="student id"  formControlName="Student_ID" class="form-control" >
               </div>
-            </div>
-            <div class="col-lg-4">
+
+
               <div class="form-group">
                 <label for="Fathers_Name">Fathers Name: </label>
                     <input type="text" id="Fathers_Name" placeholder="father name" formControlName="Fathers_Name" class="form-control" >
               </div>
+
+
+              
             </div>
-            <div class="col=lg-4">
+            <div class="col-lg-4">
+
               <div class="form-group">
-                <label for="Job_Title">Post Name: </label>
-                <input type="text" id="Job_Title" placeholder="job title" formControlName="Job_Title" class="form-control" >
+                <label for="Vacancy_ID">Vacancy ID: </label>
+                <input type="text" id="Vacancy_ID" placeholder="vacancy id" formControlName="Vacancy_ID" class="form-control" >
               </div>
+
+
+              <div class="form-group mb-3">
+                <label for="Resume_Path">Resume Upload: </label>
+                <input type="file" id="Resume_Path" (change)="onFileSelected($event)" placeholder="resume path" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+              </div>
+
+           
+             
             </div>
+
+
+           
             <div class="col-lg-4">
               <div class="form-group">
                 <label for="Mobile">Mobile Number: </label>
@@ -90,6 +102,12 @@
               <div class="form-group">
                 <label for="Email">Email: </label>
                 <input type="Email" id="Email" placeholder="email" class="form-control" formControlName="Email" >
+              </div>
+            </div>  
+            <div class="col-lg-4">      
+              <div class="form-group mb-2">
+                <label for="Job_Title">Post Name: </label>
+                <input type="text" id="Job_Title" placeholder="job title" formControlName="Job_Title" class="form-control" >
               </div>
             </div>  
             <div class="col-lg-4">

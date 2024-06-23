@@ -6,7 +6,7 @@
             <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
               <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">User</a></li>
+                <li class="breadcrumb-item"><a href="#">studentdetails</a></li>
                 <li class="breadcrumb-item active" aria-current="page">User Profile</li>
               </ol>
             </nav>
@@ -146,13 +146,20 @@
               <div class="card-body text-center">
                 <img src=" " alt="avatar"
                   class="rounded-circle img-fluid" style="width: 150px;">
-                <h5 class="my-3">{{user?.username}}</h5>
+                <h5 class="my-3">{{studentdetails?.username}}</h5>
                 <p class="text-muted mb-1">Full Stack Developer</p>
-                <p class="text-muted mb-4">{{user?.username}}</p>
+                <p class="text-muted mb-4">{{studentdetails?.username}}</p>
                 <p class="text-muted mb-4">{{profiledata?.UE_ID}}</p>
                 <div class="d-flex justify-content-center mb-2">
+
+ 
+                  <a href="student/s-basic-details" class="btn btn-primary">Update</a>
+
                   <!-- <a   routerLink="/student/s-basic-details-edit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Update</a> -->
-                  <a   [routerLink]="'/student/s-basic-details-edit/' + user.eid" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Update</a>
+                  <!-- <a   [routerLink]="'/student/s-basic-details-edit/' + user.eid" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Update</a> -->
+                  
+              
+
                   <!-- <button  type="button" routerLink="student/s-basic-details-edit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary"></button> -->
                   <!-- <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary ms-1">Message</button> -->
                 </div>
@@ -218,7 +225,7 @@
                     <p class="mb-0">Full Name</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{{user?.fullname}}</p>
+                    <p class="text-muted mb-0">{{studentdetails?.Student_First_Name_E}} {{studentdetails?.Student_Middle_Name_E}} {{studentdetails?.Student_Last_Name_E}}</p>
                   </div>
                 </div>
                 <hr>
@@ -227,7 +234,7 @@
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{{user?.email}}</p>
+                    <p class="text-muted mb-0">{{studentdetails?.Email_Id}}</p>
                    
                   </div>
                 </div>
@@ -237,7 +244,7 @@
                     <p class="mb-0">Phone</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{{user?.mno}}</p>
+                    <p class="text-muted mb-0">{{studentdetails?.Mobile_No}}</p>
                   </div>
                 </div>
                 <hr>
@@ -246,7 +253,7 @@
                     <p class="mb-0">Mobile</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{{user?.mno}}</p>
+                    <p class="text-muted mb-0">{{studentdetails?.Mobile_No}}</p>
                   </div>
                 </div>
                 <hr>
@@ -255,7 +262,7 @@
                     <p class="mb-0">Address</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0">{{user?.mno}}</p>
+                    <p class="text-muted mb-0">{{studentdetails?.mno}}</p>
                   </div>
                 </div>
               </div>
