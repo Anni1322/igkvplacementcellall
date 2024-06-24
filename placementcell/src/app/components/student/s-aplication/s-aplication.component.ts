@@ -195,6 +195,9 @@ export class SAplicationComponent implements OnInit  {
   //   );
   // }
 
+
+
+
   onSubmit(): void {
     if (this.studentregistrationForm.valid) {
       console.log('Form Submitted!', this.studentregistrationForm.value);
@@ -208,7 +211,7 @@ export class SAplicationComponent implements OnInit  {
         (error) => {
           console.error('Error submitting form:', error);
           // Display a more user-friendly message
-          alert('An error occurred while submitting the form. Please try again later.');
+          // alert('.');
           // Optionally, handle specific error scenarios based on status code
           if (error.status === 500) {
             console.error('Internal Server Error: Please contact support.');

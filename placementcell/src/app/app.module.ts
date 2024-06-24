@@ -18,7 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MenubarComponent } from './components/menubar/menubar.component';
 import { HomeComponent } from './components/home/home.component';
 import {MatListModule} from '@angular/material/list';
-import {MatCommonModule, MatOptionModule} from '@angular/material/core';
+import {MatCommonModule, MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatBadgeModule} from '@angular/material/badge';
 import { CompanyregistrationComponentComponent } from './components/registration/companyregistration-component/companyregistration-component.component';
 import { StudentragistrationComponentComponent } from './components/registration/studentragistration-component/studentragistration-component.component';
@@ -121,8 +121,14 @@ import { SExperienceViewComponent } from './components/student/s-experience-view
 import { SSkillViewComponent } from './components/student/s-skill-view/s-skill-view.component';
 import { SAcademicViewComponent } from './components/student/s-academic-view/s-academic-view.component';
 
-
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CSApplicationComponent } from './components/company/c-s-application/c-s-application.component';
+import { CSShortlistComponent } from './components/company/c-s-shortlist/c-s-shortlist.component';
+import { CSCallInterviewComponent } from './components/company/c-s-call-interview/c-s-call-interview.component';
+import { CSSelectedComponent } from './components/company/c-s-selected/c-s-selected.component';
+import { CSRejectComponent } from './components/company/c-s-reject/c-s-reject.component';
+import { CSApplicationActionComponent } from './components/company/c-s-application-action/c-s-application-action.component';
+ 
  
 
 @NgModule({
@@ -192,11 +198,6 @@ import { SAcademicViewComponent } from './components/student/s-academic-view/s-a
       CaptchacodeComponent,
       SSkillDetailsComponent,
       SExperienceDetailsComponent,
-      AboutComponent,
-      ContactComponent,
-      SExperienceViewComponent,
-      SSkillViewComponent,
-      SAcademicViewComponent,
      
      
 
@@ -239,7 +240,12 @@ import { SAcademicViewComponent } from './components/student/s-academic-view/s-a
     MatOptionModule,
     MatDialogModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+
+    MatDatepickerModule,
+    MatNativeDateModule,
+    
+   
     
 
 

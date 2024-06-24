@@ -11,8 +11,9 @@
 <main>
   <div class="container">
 
+  
 
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="navbar navbar-expand-lg bg-danger">
       <div class="container-fluid">
         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
         <a class="navbar-brand" href="#">
@@ -47,19 +48,73 @@
     </nav>
 
 
-  
-
-    <div class="content text-center mb-4">
-      <h1>Welcome to Placement Portal</h1>
-      <p>Your gateway to job opportunities in rural and tribal areas.</p>
-      <div class="cta-buttons">
-        <button class="btn btn-primary" routerLink="/login">Find a Job</button>
-        <button class="btn btn-secondary" routerLink="/login">Hire Candidate</button>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="https://igkv.ac.in/_Attachment/web/Section_Content/Home_Main_Slider/2024/0/Home_Main_Slider_20240621065717239.jpg" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="https://igkv.ac.in/_Attachment/web/Section_Content/Home_Main_Slider/2024/0/Home_Main_Slider_20240618115805633.jpg" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="https://igkv.ac.in/_Attachment/web/Section_Content/Home_Main_Slider/2024/0/Home_Main_Slider_20240614115226916.jpg" alt="Third slide">
+        </div>
       </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
 
+    <div class="content text-center mb-4">
+
+      <!-- <h1>Welcome to Placement Portal</h1> -->
+      <!-- <p class="text-center bg-white" style="color: black;">Your gateway to job opportunities in rural and tribal areas.</p> -->
+      <!-- <div class="cta-buttons">
+        <button class="btn btn-primary" routerLink="/login">Find a Job</button>
+        <button class="btn btn-secondary" routerLink="/login">Hire Candidate</button>
+      </div> -->
+
+
+     
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="table-responsive">
-      <table class="table table-bordered table-hover">
+
+      <!-- <table class="table table-bordered table-hover">
         <thead class="thead-light">
           <tr>
             <th>S.NO</th>
@@ -80,7 +135,7 @@
             <td><a href="#">{{ notification.view }}</a></td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
 
       
     <section class="sec-1">
@@ -107,6 +162,30 @@
       </section>
 
 
+
+      <div class="notification-section mt-3">
+        <div class="container page-heading text-center p-0 bg-white rounded shadow">
+          <h3 style="background-color: #3aaaff"
+              class="card-header p-2 text-light rounded border border-end-0 border-bottom-0 border-start-0 border-5 border-dark">
+              <strong>Notification</strong>
+          </h3>
+      </div>
+      <div class="card">
+        <marquee class="notification_body " style="margin: 20px;" behavior="scroll" direction="up" scrollamount="1" scrolldelay="10" onmouseover="this.stop();" onmouseout="this.start();">
+            <div class="col-md-4" *ngFor="let vacancy of data">
+                <!-- <h5 class="card-title  ">Post Name: {{ vacancy.Job_Title }} <a routerLink="/student/s-vacany-details">More</a> </h5> -->
+                <h2 class="card-subtitle mb-2 text-muted" hidden>VID: {{ vacancy.Vacancy_ID }}</h2>
+                <h4 class="card-title">Post- {{ vacancy.Job_Title }}</h4>
+                <h4 class="card-title">Company- {{ vacancy.Company_Id }}</h4>
+                <h4 class="card-title">Post No- {{ vacancy.Vacancy_ID }}</h4>
+                <h5>
+                    <a [routerLink]="['/student/s-vacancy-apply', vacancy.Vacancy_ID]" class="card-link">Apply Now</a> <br>
+                    <a [routerLink]="['/student/s-vacany-details', vacancy.Vacancy_ID]" class="card-link">More</a>
+                </h5>
+            </div>
+        </marquee>
+    </div>
+  </div>
 
 
       <div class="about">
@@ -136,16 +215,7 @@
 
     <div class="container-sec">
       
-      <section class="mt-2" >
-        <h1>1</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aliquam maxime dolor magnam non dolore eos eveniet soluta mollitia ipsa dignissimos id ex sit similique obcaecati explicabo, illo enim accusantium.</p>
-      </section >
-      <section class="mt-2">
-        <h1>2</h1>
-      </section>
-      <section class="mt-2">
-         
-      </section>
+  
       <div class="company">
         <marquee class="notification_body" behavior="scroll" direction="left" scrollamount="12" scrolldelay="10" onmouseover="this.stop();" onmouseout="this.start();">
           <div class="row marquee">

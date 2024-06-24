@@ -21,6 +21,25 @@ main{
 //     padding: 20px;
 //   }
   
+
+.notification-section {
+  width: 50%;
+  
+  // height: 50%;
+  background-color: #8dadf6ad;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.notification-section .card{
+ 
+  height: 222px;
+  // background-color: #8dadf6ad;
+  // padding: 20px;
+  // border: 1px solid #ddd;
+  // border-radius: 5px;
+}
+
  
   nav {
     display: flex;
@@ -75,7 +94,7 @@ main{
   }
   
   button:hover {
-    background-color: #a4deff;
+    background-color: #00a2ff;
   }
   
   

@@ -16,7 +16,7 @@ export class CServiceService {
 
 // post/add vacancy details
 postVacancies(vdata: any) {
-  return this.http.post(this.postapiUrl, vdata)
+  return this.http.post(`${this.baseurl}/company/add_vacancy`, vdata)
 }
 
 // update vacancy 
@@ -34,6 +34,16 @@ postsignup(data: any) {
   getVacancies(): Observable<JobStatus[]> {
     return this.http.get<JobStatus[]>(`${this.apiUrl}/vacancies`);
   }
+
+
+// get data form vacancy id 
+getVacancyedataCompanyid(Company_Id: string): Observable<any> {
+  return this.http.post<any>(`${this.baseurl}/company/getdata_All_Company_id`, { Company_Id });
+}
+
+// getVacancyedataCompanyid(Company_id: any) {
+//   return this.http.post(this.apiUrl+'/getdata_All_Company_id', {Company_id});  
+// }
 
 
 
@@ -55,6 +65,11 @@ VacancyApply(data:any){
 
 postCompanyDetails(data:any){
   return this.http.post<any>(`${this.baseurl}/company/registerCompany`, data);
+}
+
+
+getCompanyDetails(cid:any){
+  return this.http.post<any>(`${this.baseurl}/company/getcompanyinformation`, {cid});
 }
 
 getcompany_category(){

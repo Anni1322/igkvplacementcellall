@@ -25,6 +25,7 @@ export class ACVacancyListComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.vacancyService.getVacancies().subscribe(data => {
       this.dataSource.data = data;
+      console.log(this.dataSource.data);
     });
   }
 

@@ -12,6 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 export class SProfileComponent implements OnInit{
 
 
+  studentdetails:any;
+
   constructor(
     private auth:AuthService,
     private router:Router,
@@ -43,6 +45,18 @@ export class SProfileComponent implements OnInit{
       // console.log("from router",this.studentId);
 
       
+
+
+
+
+
+
+
+      this.ds.getBasicDetails(this.user.eid).subscribe(
+        (response) => {
+          this.studentdetails = response;
+          console.log('studentdetails details:', this.studentdetails);
+          });
 
   }
 

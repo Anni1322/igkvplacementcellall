@@ -227,21 +227,38 @@ const update_by_adminVacancyApply = async (req, res) => {
 
 // get all vac
 
+// const getVacanciesDetils = async (req, res) => {
+//     try {
+//         const pool = await sql.connect(); // Connect to the database using the exported sql object
+//         const request = pool.request(); // Create a request object from the pool
+
+//         const result = await request.query('SELECT * FROM tnp_vacancy_details'); // Execute the query
+//         // const result = await request.query('SELECT * FROM tnp_vacancy_details where Status = "Aproved'); // Execute the query
+
+//         res.status(200).send(result.recordset); // Send the result back to the client
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).send({ message: 'Error fetching vacancies', error: err.message });
+//     }
+// };
+
+
+
 const getVacanciesDetils = async (req, res) => {
     try {
-        const pool = await sql.connect(); // Connect to the database using the exported sql object
-        const request = pool.request(); // Create a request object from the pool
-
-        const result = await request.query('SELECT * FROM tnp_vacancy_details'); // Execute the query
-        // const result = await request.query('SELECT * FROM tnp_vacancy_details where Status = "Aproved'); // Execute the query
-
-        res.status(200).send(result.recordset); // Send the result back to the client
-    } catch (err) {
-        console.error(err);
-        res.status(500).send({ message: 'Error fetching vacancies', error: err.message });
+        const pool = await sql.connect();
+        const request = pool.request();
+        const query = `SELECT * FROM tnp_vacancy_details`;
+        const result = await request.query(query);
+        const records = result.recordset;
+        
+        // Respond with the fetched records
+        res.status(200).json(records);
+    } catch (error) {
+        console.error('Error fetching student application details:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
-};
-
+  };
 
 
 

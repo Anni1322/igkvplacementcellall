@@ -72,12 +72,6 @@ router.post('/signup',studentController.Signup);
 
 
 
-
-
-
-
-
-
 router.post('/login',studentController.login);
 
 router.post('/search',studentController.Profile);
@@ -94,6 +88,7 @@ router.post('/postbasicdetails',studentController.postbasicdetails);
 // for admin api 
 router.get('/getVacancyApplyStudentDetails',studentController.getVacancyApplyStudentDetails);
 router.post('/VacancyApplicationStudentDetail',studentController.VacancyApplicationStudentDetail);
+
 router.post('/VacancyApply',upload.single('file'),studentController.VacancyApply);
 
 

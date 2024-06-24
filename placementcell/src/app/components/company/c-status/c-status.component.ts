@@ -20,16 +20,46 @@ export class CStatusComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private vacancyService: CServiceService) {}
+
+  vacacnyid:any;
+  constructor(
+    private vacancyService: CServiceService
+
+    ) {
+
+    }
  
   ngOnInit() {
-    this.vacancyService.getVacancies().subscribe(data => {
-      this.dataSource.data = data;
-    });
+      // Retrieve user data from localStorage
+      const vacacnyData = localStorage.getItem('currentUser');
+      // Check if vacacnyData data exists
+      if (vacacnyData) {
+        // Parse vacacnyData data from JSON and assign it to the vacacnyData variable
+        this.vacacnyid = JSON.parse(vacacnyData);
+        console.log("Data",this.vacacnyid.eid)
+        
+       this.getvacancyDataByCompany_Id(this.vacacnyid.eid);
+      }
+     
+
+      // this.vacancyService.getVacancies().subscribe(data => {
+      //   this.dataSource.data = data;
+      // });
   }
 
 
+  // get vacacny
+  getvacancyDataByCompany_Id(Company_Id:any){
+    console.log("id",Company_Id);
+    this.vacancyService.getVacancyedataCompanyid(Company_Id).subscribe(data => {
+      console.log("iiiid",data);
+        this.dataSource.data = data;
+      });
+  }
 
+ 
+
+  
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

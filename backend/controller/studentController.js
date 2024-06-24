@@ -1,6 +1,7 @@
 // controller.js
 const Student = require('../model/studentModel');
 const bcrypt = require('bcrypt');
+const CryptoJS = require('crypto-js');
 const sql = require('../config/db');
 //const svgCaptcha = require('svg-captcha');
 
@@ -31,7 +32,7 @@ const app = express();
 
 // Set up express-session middleware
 app.use(session({
-    secret: 'your_secret_key', // Change this to a long random string
+    secret: 'your_secret_key',  
     resave: false,
     saveUninitialized: true
 }));
@@ -53,10 +54,40 @@ const captcha = async (req, res) => {
  
 
 
+
+// // for decription 
+function decryptData(encryptedData,secretKey ) {    
+    try {
+        const bytes = CryptoJS.AES.decrypt(encryptedData, secretKey);
+        const originalText = bytes.toString(CryptoJS.enc.Utf8);
+        return originalText;
+    } catch (error) {
+        console.error('Error decrypting data:', error);
+        return null;
+    }
+};
+
+
+
+
+ 
+
+
 //  jwt token use 
 const login = async (req, res) => {
     const { username, password } = req.body;
-    console.log(username, password);
+    console.log("this is from frontend",username, password);
+
+        // drcipt start
+           
+            // const secretKey = 'anil';  
+            // const decryptedData = decryptData(password, secretKey);
+            // if (decryptedData) {
+            //     res.status(200).json({ decryptedData });
+            // } else {
+            //     res.status(400).json({ error: 'Failed to decrypt data' });
+            // }
+        // drcipt end
 
     try {
         const request = new sql.Request();
@@ -75,6 +106,8 @@ const login = async (req, res) => {
         if (result.recordset.length > 0) {
             const user = result.recordset[0];
             const isPasswordValid = await bcrypt.compare(password, user.password);
+
+            console.log(isPasswordValid);
 
             if (isPasswordValid) {
                 // Password matches, return success along with user details
@@ -106,6 +139,101 @@ const login = async (req, res) => {
         return res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+
+
+
+
+
+
+
+// Decrypt function
+// function decryptData(encryptedData, secretKey) {    
+//     try {
+//         const bytes = CryptoJS.AES.decrypt(encryptedData, secretKey);
+//         const originalText = bytes.toString(CryptoJS.enc.Utf8);
+//         return originalText;
+//     } catch (error) {
+//         console.error('Error decrypting data:', error);
+//         return null;
+//     }
+// }
+
+// Login function
+// const login = async (req, res) => {
+//     const { username, password } = req.body;
+//     console.log("Received from frontend:", username, password);
+
+//     // Decrypt the password from the frontend
+//     const secretKey = 'anil';  
+//     const decryptedPassword = decryptData(password, secretKey);
+
+//     if (!decryptedPassword) {
+//         return res.status(400).json({ error: 'Failed to decrypt data' });
+//     }
+
+//     console.log("Decrypted password:", decryptedPassword);
+
+//     try {
+//         const request = new sql.Request();
+//         const usernameCheckQuery = `
+//         SELECT l.id, l.Emp_Id, l.username, l.password, l.role, 
+//                s.Student_First_Name_E, s.Student_Middle_Name_E, s.Student_Last_Name_E, 
+//                s.Father_Name_E, s.Mobile_No, s.Email_Id, s.DOB
+//         FROM dbo.login_table AS l
+//         FULL JOIN student_registration AS s ON l.Emp_Id = s.UE_ID
+//         WHERE l.username = @username`;
+
+//         request.input('username', sql.VarChar, username);
+
+//         const result = await request.query(usernameCheckQuery);
+
+//         if (result.recordset.length > 0) {
+//             const user = result.recordset[0];
+//             const isPasswordValid = await bcrypt.compare(decryptedPassword, user.password);
+
+//             if (isPasswordValid) {
+//                 // Password matches, return success along with user details
+//                 return res.status(200).json({
+//                     id: user.id,
+//                     username: user.username,
+//                     role: user.role,
+//                     eid: user.Emp_Id,
+//                     fname: user.Student_First_Name_E,
+//                     mname: user.Student_Middle_Name_E,
+//                     lname: user.Student_Last_Name_E,
+//                     FatherName: user.Father_Name_E,
+//                     mno: user.Mobile_No,
+//                     email: user.Email_Id,
+//                     dob: user.DOB,
+//                     fullname: `${user.Student_First_Name_E} ${user.Student_Middle_Name_E} ${user.Student_Last_Name_E}`,
+//                     message: 'Username login successful'
+//                 });
+//             } else {
+//                 // Password does not match
+//                 return res.status(400).json({ error: 'Incorrect password' });
+//             }
+//         } else {
+//             // Username does not exist
+//             return res.status(400).json({ error: 'Username does not exist' });
+//         }
+//     } catch (error) {
+//         console.error('Error checking username existence in SQL Server:', error);
+//         return res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -214,6 +342,14 @@ const Signup = async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+
+
+
+
+
+
+
+
 
 
 const Profile = async (req, res) => {
@@ -852,6 +988,13 @@ const getAllStudents = async(req, res)=>{
 //     });
 // };
 
+
+
+
+
+
+
+
 // update
 // const registerStudent = async (req, res) => {
 //     // Access the request body
@@ -1072,62 +1215,428 @@ const getAllStudents = async(req, res)=>{
 
 
 // add by anil for registration user 
+// const registerStudent = async (req, res) => {
+//     // Access the request body
+//     const {
+//         UE_ID,
+//         Registration_Type,
+//         Salutation_E,
+//         Salutation_H,
+//         Student_First_Name_E,
+//         Student_Middle_Name_E,
+//         Student_Last_Name_E,
+//         Student_First_Name_H,
+//         Student_Middle_Name_H,
+//         Student_Last_Name_H,
+//         DOB,
+//         Gender_Id,
+//         Mobile_No,
+//         Email_Id,
+//         Father_Name_E,
+//         Mother_Name_E,
+//         Father_Name_H,
+//         Mother_Name_H,
+//         Guardian_Name_E,
+//         Spouse_Name_E,
+//         Created_By,
+//         Created_Date,
+//         Modified_By,
+//         Modified_Date,
+//         Delete_Flag,
+//         Public_IP_Address,
+//         Private_IP_Address    
+//     } = req.body;
+    
+//     // Validate required fields
+//     // if (!name || !email || !age || !gender ) {
+//     //     return res.status(400).json({ error: 'All fields are required' });
+//     // }
+
+//     console.log("this id check "+ UE_ID);
+    
+//     // Create a new request object
+//     const request = new sql.Request();
+    
+//     // SQL query to check if the email exists in the students table
+//     const emailCheckQuery = 'SELECT COUNT(*) AS count FROM dbo.student_registration WHERE UE_ID = @UE_ID';
+//     request.input('UE_ID', sql.VarChar(50), UE_ID);
+
+//     request.query(emailCheckQuery, async (err, result) => {
+//         if (err) {
+//             console.error('Error checking user_id existence in SQL Server: ', err);
+//             return res.status(500).json({ error: 'Internal Server Error' });
+//         }
+
+//         // If count is greater than 0, email exists
+//         if (result.recordset[0].count > 0) {
+//             // user_id exists, return an error
+
+//             const updateQuery = `
+//                 UPDATE dbo.student_registration
+//                 SET
+//                     Registration_Type = @Registration_Type,
+//                     Salutation_E = @Salutation_E,
+//                     Salutation_H = @Salutation_H,
+//                     Student_First_Name_E = @Student_First_Name_E,
+//                     Student_Middle_Name_E = @Student_Middle_Name_E,
+//                     Student_Last_Name_E = @Student_Last_Name_E,
+//                     Student_First_Name_H = @Student_First_Name_H,
+//                     Student_Middle_Name_H = @Student_Middle_Name_H,
+//                     Student_Last_Name_H = @Student_Last_Name_H,
+//                     DOB = @DOB,
+//                     Gender_Id = @Gender_Id,
+//                     Mobile_No = @Mobile_No,
+//                     Email_Id = @Email_Id,
+//                     Father_Name_E = @Father_Name_E,
+//                     Mother_Name_E = @Mother_Name_E,
+//                     Father_Name_H = @Father_Name_H,
+//                     Mother_Name_H = @Mother_Name_H,
+//                     Guardian_Name_E = @Guardian_Name_E,
+//                     Spouse_Name_E = @Spouse_Name_E,
+//                     Created_By = @Created_By,
+//                     Created_Date = @Created_Date,
+//                     Modified_By = @Modified_By,
+//                     Modified_Date = @Modified_Date,
+//                     Delete_Flag = @Delete_Flag,
+//                     Public_IP_Address = @Public_IP_Address,
+//                     Private_IP_Address = @Private_IP_Address
+//                 WHERE UE_ID = @UE_ID
+//             `;
+
+//             request.input('Registration_Type', sql.Char, Registration_Type);
+//             request.input('Salutation_E', sql.TinyInt, Salutation_E);
+//             request.input('Salutation_H', sql.TinyInt, Salutation_H);
+//             request.input('Student_First_Name_E', sql.VarChar(50), Student_First_Name_E);
+//             request.input('Student_Middle_Name_E', sql.VarChar(50), Student_Middle_Name_E);
+//             request.input('Student_Last_Name_E', sql.VarChar(50), Student_Last_Name_E);
+//             request.input('Student_First_Name_H', sql.VarChar(50), Student_First_Name_H);
+//             request.input('Student_Middle_Name_H', sql.VarChar(50), Student_Middle_Name_H);
+//             request.input('Student_Last_Name_H', sql.VarChar(50), Student_Last_Name_H);
+//             request.input('DOB', sql.Date, DOB);
+//             request.input('Gender_Id', sql.Char, Gender_Id);
+//             request.input('Mobile_No', sql.VarChar(12), Mobile_No);
+//             request.input('Email_Id', sql.VarChar(50), Email_Id);
+//             request.input('Father_Name_E', sql.VarChar(50), Father_Name_E);
+//             request.input('Mother_Name_E', sql.VarChar(50), Mother_Name_E);
+//             request.input('Father_Name_H', sql.VarChar(50), Father_Name_H);
+//             request.input('Mother_Name_H', sql.VarChar(50), Mother_Name_H);
+//             request.input('Guardian_Name_E', sql.VarChar(50), Guardian_Name_E);
+//             request.input('Spouse_Name_E', sql.VarChar(50), Spouse_Name_E);
+//             request.input('Created_By', sql.VarChar(20), Created_By);
+//             request.input('Created_Date', sql.DateTime, Created_Date);
+//             request.input('Modified_By', sql.VarChar(20), Modified_By);
+//             request.input('Modified_Date', sql.DateTime, Modified_Date);
+//             request.input('Delete_Flag', sql.Char, Delete_Flag);
+//             request.input('Public_IP_Address', sql.VarChar(20), Public_IP_Address);
+//             request.input('Private_IP_Address', sql.VarChar(20), Private_IP_Address);
+
+//             await request.query(updateQuery);
+//             res.status(200).json({ message: 'Student updated successfully' });
+
+//         } else {
+//             // Email doesn't exist, proceed with inserting data
+            
+//             // Insert data into SQL Server
+//             const insertQuery = `INSERT INTO dbo.student_registration (
+//                     UE_ID,
+//                     Registration_Type,
+//                     Salutation_E,
+//                     Salutation_H,
+//                     Student_First_Name_E,
+//                     Student_Middle_Name_E,
+//                     Student_Last_Name_E,
+//                     Student_First_Name_H,
+//                     Student_Middle_Name_H,
+//                     Student_Last_Name_H,
+//                     DOB,
+//                     Gender_Id,
+//                     Mobile_No,
+//                     Email_Id,
+//                     Father_Name_E,
+//                     Mother_Name_E,
+//                     Father_Name_H,
+//                     Mother_Name_H,
+//                     Guardian_Name_E,
+//                     Spouse_Name_E,
+//                     Created_By,
+//                     Created_Date,
+//                     Modified_By,
+//                     Modified_Date,
+//                     Delete_Flag,
+//                     Public_IP_Address,
+//                     Private_IP_Address
+//                 ) VALUES (
+//                     @UE_ID,
+//                     @Registration_Type,
+//                     @Salutation_E,
+//                     @Salutation_H,
+//                     @Student_First_Name_E,
+//                     @Student_Middle_Name_E,
+//                     @Student_Last_Name_E,
+//                     @Student_First_Name_H,
+//                     @Student_Middle_Name_H,
+//                     @Student_Last_Name_H,
+//                     @DOB,
+//                     @Gender_Id,
+//                     @Mobile_No,
+//                     @Email_Id,
+//                     @Father_Name_E,
+//                     @Mother_Name_E,
+//                     @Father_Name_H,
+//                     @Mother_Name_H,
+//                     @Guardian_Name_E,
+//                     @Spouse_Name_E,
+//                     @Created_By,
+//                     @Created_Date,
+//                     @Modified_By,
+//                     @Modified_Date,
+//                     @Delete_Flag,
+//                     @Public_IP_Address,
+//                     @Private_IP_Address
+//                 )`;
+//                     request.input('UE_ID', sql.VarChar(50), UE_ID);
+//                     request.input('Registration_Type', sql.Char, Registration_Type);
+//                     request.input('Salutation_E', sql.TinyInt, Salutation_E);
+//                     request.input('Salutation_H', sql.TinyInt, Salutation_H);
+//                     request.input('Student_First_Name_E', sql.VarChar(50), Student_First_Name_E);
+//                     request.input('Student_Middle_Name_E', sql.VarChar(50), Student_Middle_Name_E);
+//                     request.input('Student_Last_Name_E', sql.VarChar(50), Student_Last_Name_E);
+//                     request.input('Student_First_Name_H', sql.VarChar(50), Student_First_Name_H);
+//                     request.input('Student_Middle_Name_H', sql.VarChar(50), Student_Middle_Name_H);
+//                     request.input('Student_Last_Name_H', sql.VarChar(50), Student_Last_Name_H);
+//                     request.input('DOB', sql.Date, DOB);
+//                     request.input('Gender_Id', sql.Char, Gender_Id);
+//                     request.input('Mobile_No', sql.VarChar(12), Mobile_No);
+                   
+//                     request.input('Father_Name_E', sql.VarChar(50), Father_Name_E);
+//                     request.input('Mother_Name_E', sql.VarChar(50), Mother_Name_E);
+//                     request.input('Father_Name_H', sql.VarChar(50), Father_Name_H);
+//                     request.input('Mother_Name_H', sql.VarChar(50), Mother_Name_H);
+//                     request.input('Guardian_Name_E', sql.VarChar(50), Guardian_Name_E);
+//                     request.input('Spouse_Name_E', sql.VarChar(50), Spouse_Name_E);
+//                     request.input('Created_By', sql.VarChar(20), Created_By);
+//                     request.input('Created_Date', sql.DateTime, Created_Date);
+//                     request.input('Modified_By', sql.VarChar(20), Modified_By);
+//                     request.input('Modified_Date', sql.DateTime, Modified_Date);
+//                     request.input('Delete_Flag', sql.Char, Delete_Flag);
+//                     request.input('Public_IP_Address', sql.VarChar(20), Public_IP_Address);
+//                     request.input('Private_IP_Address', sql.VarChar(20), Private_IP_Address);
+
+//             request.query(insertQuery, (err, results) => {
+//                 if (err) {
+//                     console.error('Error inserting into SQL Server: ', err);
+//                     return res.status(500).json({ error: 'Internal Server Error' });
+//                 }
+//                 // Handle successful insertion
+//                 res.status(200).json({ message: 'Student registered successfully' });
+//             });
+//         }
+//     });
+// };
+
+
+
+
+ 
+// const registerStudent = async (req, res) => {
+//     try {
+//         const {
+//             UE_ID,
+//             Registration_Type,
+//             Salutation_E,
+//             Salutation_H,
+//             Student_First_Name_E,
+//             Student_Middle_Name_E,
+//             Student_Last_Name_E,
+//             Student_First_Name_H,
+//             Student_Middle_Name_H,
+//             Student_Last_Name_H,
+//             DOB,
+//             Gender_Id,
+//             Mobile_No,
+//             Email_Id,
+//             Father_Name_E,
+//             Mother_Name_E,
+//             Father_Name_H,
+//             Mother_Name_H,
+//             Guardian_Name_E,
+//             Spouse_Name_E,
+//             Created_By,
+//             Created_Date,
+//             Modified_By,
+//             Modified_Date,
+//             Delete_Flag,
+//             Private_IP_Address,
+//             Public_IP_Address,
+//             user_id,
+//             username,
+//             RegistrationType
+//         } = req.body;
+
+//         const request = new sql.Request();
+
+//         // SQL query to check if the UE_ID exists in the students table
+//         const checkQuery = 'SELECT COUNT(*) AS count FROM dbo.student_registration WHERE UE_ID = @UE_ID';
+//         request.input('UE_ID', sql.VarChar(50), UE_ID);
+
+//         const checkResult = await request.query(checkQuery);
+
+//         if (checkResult.recordset[0].count > 0) {
+//             // UE_ID exists, return an error
+//             return res.status(400).json({ error: 'UE_ID already exists' });
+//         }
+
+//         // Insert the record if UE_ID does not exist
+//         const insertQuery = `INSERT INTO dbo.student_registration (
+//             UE_ID,
+//             Registration_Type,
+//             Salutation_E,
+//             Salutation_H,
+//             Student_First_Name_E,
+//             Student_Middle_Name_E,
+//             Student_Last_Name_E,
+//             Student_First_Name_H,
+//             Student_Middle_Name_H,
+//             Student_Last_Name_H,
+//             DOB,
+//             Gender_Id,
+//             Mobile_No,
+//             Email_Id,
+//             Father_Name_E,
+//             Mother_Name_E,
+//             Father_Name_H,
+//             Mother_Name_H,
+//             Guardian_Name_E,
+//             Spouse_Name_E,
+//             Created_By,
+//             Created_Date,
+//             Modified_By,
+//             Modified_Date,
+//             Delete_Flag,
+//             Private_IP_Address,
+//             Public_IP_Address,
+//             user_id,
+//             username,
+//             RegistrationType
+//         ) VALUES (
+//             @UE_ID,
+//             @Registration_Type,
+//             @Salutation_E,
+//             @Salutation_H,
+//             @Student_First_Name_E,
+//             @Student_Middle_Name_E,
+//             @Student_Last_Name_E,
+//             @Student_First_Name_H,
+//             @Student_Middle_Name_H,
+//             @Student_Last_Name_H,
+//             @DOB,
+//             @Gender_Id,
+//             @Mobile_No,
+//             @Email_Id,
+//             @Father_Name_E,
+//             @Mother_Name_E,
+//             @Father_Name_H,
+//             @Mother_Name_H,
+//             @Guardian_Name_E,
+//             @Spouse_Name_E,
+//             @Created_By,
+//             @Created_Date,
+//             @Modified_By,
+//             @Modified_Date,
+//             @Delete_Flag,
+//             @Private_IP_Address,
+//             @Public_IP_Address,
+//             @user_id,
+//             @username,
+//             @RegistrationType
+//         )`;
+
+//         request.input('Registration_Type', sql.Char, Registration_Type);
+//         request.input('Salutation_E', sql.TinyInt, Salutation_E);
+//         request.input('Salutation_H', sql.TinyInt, Salutation_H);
+//         request.input('Student_First_Name_E', sql.VarChar(50), Student_First_Name_E);
+//         request.input('Student_Middle_Name_E', sql.VarChar(50), Student_Middle_Name_E);
+//         request.input('Student_Last_Name_E', sql.VarChar(50), Student_Last_Name_E);
+//         request.input('Student_First_Name_H', sql.VarChar(50), Student_First_Name_H);
+//         request.input('Student_Middle_Name_H', sql.VarChar(50), Student_Middle_Name_H);
+//         request.input('Student_Last_Name_H', sql.VarChar(50), Student_Last_Name_H);
+//         request.input('DOB', sql.Date, DOB);
+//         request.input('Gender_Id', sql.Char, Gender_Id);
+//         request.input('Mobile_No', sql.VarChar(12), Mobile_No);
+//         request.input('Email_Id', sql.VarChar(50), Email_Id);
+//         request.input('Father_Name_E', sql.VarChar(50), Father_Name_E);
+//         request.input('Mother_Name_E', sql.VarChar(50), Mother_Name_E);
+//         request.input('Father_Name_H', sql.VarChar(50), Father_Name_H);
+//         request.input('Mother_Name_H', sql.VarChar(50), Mother_Name_H);
+//         request.input('Guardian_Name_E', sql.VarChar(50), Guardian_Name_E);
+//         request.input('Spouse_Name_E', sql.VarChar(50), Spouse_Name_E);
+//         request.input('Created_By', sql.VarChar(20), Created_By);
+//         request.input('Created_Date', sql.DateTime, Created_Date);
+//         request.input('Modified_By', sql.VarChar(20), Modified_By);
+//         request.input('Modified_Date', sql.DateTime, Modified_Date);
+//         request.input('Delete_Flag', sql.Char, Delete_Flag);
+//         request.input('Private_IP_Address', sql.VarChar(20), Private_IP_Address);
+//         request.input('Public_IP_Address', sql.VarChar(20), Public_IP_Address);
+//         request.input('user_id', sql.VarChar(50), user_id);
+//         request.input('username', sql.VarChar(50), username);
+//         request.input('RegistrationType', sql.Char, RegistrationType);
+
+//         await request.query(insertQuery);
+//         res.status(200).json({ message: 'Student registered successfully' });
+
+//     } catch (err) {
+//         console.error('Error in registerStudent:', err);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// };
+
+ 
+
+
+
+
+
 const registerStudent = async (req, res) => {
-    // Access the request body
-    const {
-        UE_ID,
-        Registration_Type,
-        Salutation_E,
-        Salutation_H,
-        Student_First_Name_E,
-        Student_Middle_Name_E,
-        Student_Last_Name_E,
-        Student_First_Name_H,
-        Student_Middle_Name_H,
-        Student_Last_Name_H,
-        DOB,
-        Gender_Id,
-        Mobile_No,
-        Email_Id,
-        Father_Name_E,
-        Mother_Name_E,
-        Father_Name_H,
-        Mother_Name_H,
-        Guardian_Name_E,
-        Spouse_Name_E,
-        Created_By,
-        Created_Date,
-        Modified_By,
-        Modified_Date,
-        Delete_Flag,
-        Public_IP_Address,
-        Private_IP_Address    
-    } = req.body;
-    
-    // Validate required fields
-    // if (!name || !email || !age || !gender ) {
-    //     return res.status(400).json({ error: 'All fields are required' });
-    // }
+    try {
+        const {
+            UE_ID,
+            Registration_Type,
+            Salutation_E,
+            Salutation_H,
+            Student_First_Name_E,
+            Student_Middle_Name_E,
+            Student_Last_Name_E,
+            Student_First_Name_H,
+            Student_Middle_Name_H,
+            Student_Last_Name_H,
+            DOB,
+            Gender_Id,
+            Mobile_No,
+            Email_Id,
+            Father_Name_E,
+            Mother_Name_E,
+            Father_Name_H,
+            Mother_Name_H,
+            Guardian_Name_E,
+            Spouse_Name_E,
+            Created_By,
+            Created_Date,
+            Modified_By,
+            Modified_Date,
+            Delete_Flag,
+            Public_IP_Address,
+            Private_IP_Address    
+        } = req.body;
 
-    console.log("this id check"+ UE_ID);
-    
-    // Create a new request object
-    const request = new sql.Request();
-    
-    // SQL query to check if the email exists in the students table
-    const emailCheckQuery = 'SELECT COUNT(*) AS count FROM dbo.student_registration WHERE UE_ID = @UE_ID';
-    request.input('UE_ID', sql.VarChar(50), UE_ID);
+        const request = new sql.Request();
 
-    request.query(emailCheckQuery, async (err, result) => {
-        if (err) {
-            console.error('Error checking user_id existence in SQL Server: ', err);
-            return res.status(500).json({ error: 'Internal Server Error' });
-        }
+        // Check if the UE_ID already exists
+        const emailCheckQuery = 'SELECT COUNT(*) AS count FROM dbo.student_registration WHERE UE_ID = @UE_ID';
+        request.input('UE_ID', sql.VarChar(50), UE_ID);
+        const emailCheckResult = await request.query(emailCheckQuery);
 
-        // If count is greater than 0, email exists
-        if (result.recordset[0].count > 0) {
-            // user_id exists, return an error
-
+        if (emailCheckResult.recordset[0].count > 0) {
+            // UE_ID exists, update the record
             const updateQuery = `
                 UPDATE dbo.student_registration
                 SET
@@ -1159,7 +1668,7 @@ const registerStudent = async (req, res) => {
                     Private_IP_Address = @Private_IP_Address
                 WHERE UE_ID = @UE_ID
             `;
-
+            
             request.input('Registration_Type', sql.Char, Registration_Type);
             request.input('Salutation_E', sql.TinyInt, Salutation_E);
             request.input('Salutation_H', sql.TinyInt, Salutation_H);
@@ -1189,107 +1698,104 @@ const registerStudent = async (req, res) => {
 
             await request.query(updateQuery);
             res.status(200).json({ message: 'Student updated successfully' });
-
         } else {
-            // Email doesn't exist, proceed with inserting data
-            
-            // Insert data into SQL Server
+            // UE_ID doesn't exist, insert the record
             const insertQuery = `INSERT INTO dbo.student_registration (
-                    UE_ID,
-                    Registration_Type,
-                    Salutation_E,
-                    Salutation_H,
-                    Student_First_Name_E,
-                    Student_Middle_Name_E,
-                    Student_Last_Name_E,
-                    Student_First_Name_H,
-                    Student_Middle_Name_H,
-                    Student_Last_Name_H,
-                    DOB,
-                    Gender_Id,
-                    Mobile_No,
-                    Email_Id,
-                    Father_Name_E,
-                    Mother_Name_E,
-                    Father_Name_H,
-                    Mother_Name_H,
-                    Guardian_Name_E,
-                    Spouse_Name_E,
-                    Created_By,
-                    Created_Date,
-                    Modified_By,
-                    Modified_Date,
-                    Delete_Flag,
-                    Public_IP_Address,
-                    Private_IP_Address
-                ) VALUES (
-                    @UE_ID,
-                    @Registration_Type,
-                    @Salutation_E,
-                    @Salutation_H,
-                    @Student_First_Name_E,
-                    @Student_Middle_Name_E,
-                    @Student_Last_Name_E,
-                    @Student_First_Name_H,
-                    @Student_Middle_Name_H,
-                    @Student_Last_Name_H,
-                    @DOB,
-                    @Gender_Id,
-                    @Mobile_No,
-                    @Email_Id,
-                    @Father_Name_E,
-                    @Mother_Name_E,
-                    @Father_Name_H,
-                    @Mother_Name_H,
-                    @Guardian_Name_E,
-                    @Spouse_Name_E,
-                    @Created_By,
-                    @Created_Date,
-                    @Modified_By,
-                    @Modified_Date,
-                    @Delete_Flag,
-                    @Public_IP_Address,
-                    @Private_IP_Address
-                )`;
-                    request.input('UE_ID', sql.VarChar(50), user_id);
-                    request.input('Registration_Type', sql.Char, Registration_Type);
-                    request.input('Salutation_E', sql.TinyInt, Salutation_E);
-                    request.input('Salutation_H', sql.TinyInt, Salutation_H);
-                    request.input('Student_First_Name_E', sql.VarChar(50), Student_First_Name_E);
-                    request.input('Student_Middle_Name_E', sql.VarChar(50), Student_Middle_Name_E);
-                    request.input('Student_Last_Name_E', sql.VarChar(50), Student_Last_Name_E);
-                    request.input('Student_First_Name_H', sql.VarChar(50), Student_First_Name_H);
-                    request.input('Student_Middle_Name_H', sql.VarChar(50), Student_Middle_Name_H);
-                    request.input('Student_Last_Name_H', sql.VarChar(50), Student_Last_Name_H);
-                    request.input('DOB', sql.Date, DOB);
-                    request.input('Gender_Id', sql.Char, Gender_Id);
-                    request.input('Mobile_No', sql.VarChar(12), Mobile_No);
-                   
-                    request.input('Father_Name_E', sql.VarChar(50), Father_Name_E);
-                    request.input('Mother_Name_E', sql.VarChar(50), Mother_Name_E);
-                    request.input('Father_Name_H', sql.VarChar(50), Father_Name_H);
-                    request.input('Mother_Name_H', sql.VarChar(50), Mother_Name_H);
-                    request.input('Guardian_Name_E', sql.VarChar(50), Guardian_Name_E);
-                    request.input('Spouse_Name_E', sql.VarChar(50), Spouse_Name_E);
-                    request.input('Created_By', sql.VarChar(20), Created_By);
-                    request.input('Created_Date', sql.DateTime, Created_Date);
-                    request.input('Modified_By', sql.VarChar(20), Modified_By);
-                    request.input('Modified_Date', sql.DateTime, Modified_Date);
-                    request.input('Delete_Flag', sql.Char, Delete_Flag);
-                    request.input('Public_IP_Address', sql.VarChar(20), Public_IP_Address);
-                    request.input('Private_IP_Address', sql.VarChar(20), Private_IP_Address);
+                UE_ID,
+                Registration_Type,
+                Salutation_E,
+                Salutation_H,
+                Student_First_Name_E,
+                Student_Middle_Name_E,
+                Student_Last_Name_E,
+                Student_First_Name_H,
+                Student_Middle_Name_H,
+                Student_Last_Name_H,
+                DOB,
+                Gender_Id,
+                Mobile_No,
+                Email_Id,
+                Father_Name_E,
+                Mother_Name_E,
+                Father_Name_H,
+                Mother_Name_H,
+                Guardian_Name_E,
+                Spouse_Name_E,
+                Created_By,
+                Created_Date,
+                Modified_By,
+                Modified_Date,
+                Delete_Flag,
+                Public_IP_Address,
+                Private_IP_Address
+            ) VALUES (
+                @UE_ID,
+                @Registration_Type,
+                @Salutation_E,
+                @Salutation_H,
+                @Student_First_Name_E,
+                @Student_Middle_Name_E,
+                @Student_Last_Name_E,
+                @Student_First_Name_H,
+                @Student_Middle_Name_H,
+                @Student_Last_Name_H,
+                @DOB,
+                @Gender_Id,
+                @Mobile_No,
+                @Email_Id,
+                @Father_Name_E,
+                @Mother_Name_E,
+                @Father_Name_H,
+                @Mother_Name_H,
+                @Guardian_Name_E,
+                @Spouse_Name_E,
+                @Created_By,
+                @Created_Date,
+                @Modified_By,
+                @Modified_Date,
+                @Delete_Flag,
+                @Public_IP_Address,
+                @Private_IP_Address
+            )`;
 
-            request.query(insertQuery, (err, results) => {
-                if (err) {
-                    console.error('Error inserting into SQL Server: ', err);
-                    return res.status(500).json({ error: 'Internal Server Error' });
-                }
-                // Handle successful insertion
-                res.status(200).json({ message: 'Student registered successfully' });
-            });
+            request.input('Registration_Type', sql.Char, Registration_Type);
+            request.input('Salutation_E', sql.TinyInt, Salutation_E);
+            request.input('Salutation_H', sql.TinyInt, Salutation_H);
+            request.input('Student_First_Name_E', sql.VarChar(50), Student_First_Name_E);
+            request.input('Student_Middle_Name_E', sql.VarChar(50), Student_Middle_Name_E);
+            request.input('Student_Last_Name_E', sql.VarChar(50), Student_Last_Name_E);
+            request.input('Student_First_Name_H', sql.VarChar(50), Student_First_Name_H);
+            request.input('Student_Middle_Name_H', sql.VarChar(50), Student_Middle_Name_H);
+            request.input('Student_Last_Name_H', sql.VarChar(50), Student_Last_Name_H);
+            request.input('DOB', sql.Date, DOB);
+            request.input('Gender_Id', sql.Char, Gender_Id);
+            request.input('Mobile_No', sql.VarChar(12), Mobile_No);
+            request.input('Email_Id', sql.VarChar(50), Email_Id);
+            request.input('Father_Name_E', sql.VarChar(50), Father_Name_E);
+            request.input('Mother_Name_E', sql.VarChar(50), Mother_Name_E);
+            request.input('Father_Name_H', sql.VarChar(50), Father_Name_H);
+            request.input('Mother_Name_H', sql.VarChar(50), Mother_Name_H);
+            request.input('Guardian_Name_E', sql.VarChar(50), Guardian_Name_E);
+            request.input('Spouse_Name_E', sql.VarChar(50), Spouse_Name_E);
+            request.input('Created_By', sql.VarChar(20), Created_By);
+            request.input('Created_Date', sql.DateTime, Created_Date);
+            request.input('Modified_By', sql.VarChar(20), Modified_By);
+            request.input('Modified_Date', sql.DateTime, Modified_Date);
+            request.input('Delete_Flag', sql.Char, Delete_Flag);
+            request.input('Public_IP_Address', sql.VarChar(20), Public_IP_Address);
+            request.input('Private_IP_Address', sql.VarChar(20), Private_IP_Address);
+
+            await request.query(insertQuery);
+            res.status(200).json({ message: 'Student registered successfully' });
         }
-    });
+    } catch (err) {
+        console.error('Error in registerStudent:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 };
+
+
+
 
 
 
