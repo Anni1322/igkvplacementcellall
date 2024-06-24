@@ -6,7 +6,7 @@
         <h2>Notifications</h2>
   
         <div class="card">
-            <marquee class="notification_body " style="margin: 20px;" behavior="scroll" direction="up" scrollamount="1" scrolldelay="10" onmouseover="this.stop();" onmouseout="this.start();">
+            <marquee class="notification_body " style="margin: 20px;" behavior="scroll" direction="up" scrollamount="3" scrolldelay="10" onmouseover="this.stop();" onmouseout="this.start();">
                 <div class="col-md-4" *ngFor="let vacancy of data">
                     <!-- <h5 class="card-title  ">Post Name: {{ vacancy.Job_Title }} <a routerLink="/student/s-vacany-details">More</a> </h5> -->
                     <h2 class="card-subtitle mb-2 text-muted" hidden>VID: {{ vacancy.Vacancy_ID }}</h2>
