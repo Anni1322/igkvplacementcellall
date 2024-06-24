@@ -55,17 +55,17 @@ const captcha = async (req, res) => {
 
 
 
-// // for decription 
-function decryptData(encryptedData,secretKey ) {    
-    try {
-        const bytes = CryptoJS.AES.decrypt(encryptedData, secretKey);
-        const originalText = bytes.toString(CryptoJS.enc.Utf8);
-        return originalText;
-    } catch (error) {
-        console.error('Error decrypting data:', error);
-        return null;
-    }
-};
+// // // for decription 
+ function decryptData(encryptedData,secretKey ) {    
+     try {
+         const bytes = CryptoJS.AES.decrypt(encryptedData, secretKey);
+         const originalText = bytes.toString(CryptoJS.enc.Utf8);
+         return originalText;
+     } catch (error) {
+         console.error('Error decrypting data:', error);
+         return null;
+     }
+ };
 
 
 

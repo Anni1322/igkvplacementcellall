@@ -73,6 +73,8 @@ import { CSShortlistComponent } from './components/company/c-s-shortlist/c-s-sho
 import { CSCallInterviewComponent } from './components/company/c-s-call-interview/c-s-call-interview.component';
 import { CSSelectedComponent } from './components/company/c-s-selected/c-s-selected.component';
 import { CSRejectComponent } from './components/company/c-s-reject/c-s-reject.component';
+import { AStudentViewComponent } from './components/admin/a-student-view/a-student-view.component';
+import { ACompanyViewComponent } from './components/admin/a-company-view/a-company-view.component';
 
  
 
@@ -97,6 +99,8 @@ const routes: Routes = [
     {path:'s-application-edit', component:ASApplicationEditComponent},
     {path:'c-vacancylist', component:ACVacancyListComponent},
     {path:'a-c-vacancylist-action/:id', component:ACVacancyListActionComponent},
+    {path:'a-student-view', component:AStudentViewComponent},
+    {path:'a-company-view', component:ACompanyViewComponent},
   ]},
  
   // {path:'student_registraion', component:StudentragistrationComponentComponent},
@@ -171,7 +175,6 @@ const routes: Routes = [
  {path:'s-header', component:SHeaderComponent},
  {path:'contact', component:ContactComponent},
  {path:'about', component:AboutComponent},
-
  
   // {path:'userprofile', component:},
 

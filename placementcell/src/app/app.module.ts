@@ -128,7 +128,10 @@ import { CSCallInterviewComponent } from './components/company/c-s-call-intervie
 import { CSSelectedComponent } from './components/company/c-s-selected/c-s-selected.component';
 import { CSRejectComponent } from './components/company/c-s-reject/c-s-reject.component';
 import { CSApplicationActionComponent } from './components/company/c-s-application-action/c-s-application-action.component';
- 
+import { ACompanyViewComponent } from './components/admin/a-company-view/a-company-view.component';
+import { AStudentViewComponent } from './components/admin/a-student-view/a-student-view.component';
+
+
  
 
 @NgModule({
@@ -193,11 +196,25 @@ import { CSApplicationActionComponent } from './components/company/c-s-applicati
       ACVacancyListActionComponent,
 
       
-     
+
       FooterComponent,
       CaptchacodeComponent,
       SSkillDetailsComponent,
       SExperienceDetailsComponent,
+    
+      AboutComponent,
+      ContactComponent,
+      SExperienceViewComponent,
+      SSkillViewComponent,
+      SAcademicViewComponent,
+      CSApplicationComponent,
+      CSShortlistComponent,
+      CSCallInterviewComponent,
+      CSSelectedComponent,
+      CSRejectComponent,
+      CSApplicationActionComponent,
+      ACompanyViewComponent,
+      AStudentViewComponent,
      
      
 

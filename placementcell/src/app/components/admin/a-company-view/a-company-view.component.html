@@ -1,0 +1,103 @@
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> S No. </th>
+      <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+    </ng-container>
+  
+    <!-- company id Column -->
+    <ng-container matColumnDef="Company_Id">
+        <th mat-header-cell *matHeaderCellDef> Company Id</th>
+        <td mat-cell *matCellDef="let element"> {{element.Company_Id}} </td>
+      </ng-container>
+
+    <!-- registration no Column -->
+    <ng-container matColumnDef="Company_Registration_No">
+      <th mat-header-cell *matHeaderCellDef> Company_Registration_No</th>
+      <td mat-cell *matCellDef="let element"> {{element.Company_Registration_No}} </td>
+    </ng-container>
+  
+    <!-- company name Column -->
+    <ng-container matColumnDef="Company_Name">
+      <th mat-header-cell *matHeaderCellDef> Company_Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.Company_Name}} </td>
+    </ng-container>
+  
+    <!-- Company type Column -->
+    <ng-container matColumnDef="Company_Type">
+      <th mat-header-cell *matHeaderCellDef> Company_Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.Company_Type}} </td>
+    </ng-container>
+
+    <!--Company category column-->
+    <ng-container matColumnDef="Company_Category">
+        <th mat-header-cell *matHeaderCellDef> Company_Category </th>
+        <td mat-cell *matCellDef="let element"> {{element.Company_Category}} </td>
+    </ng-container>
+
+    <!--Company_Email column-->
+    <ng-container matColumnDef="Company_Email"_> 
+        <th mat-header-cell *matHeaderCellDef > Company_Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.Company_Email}} </td>
+    </ng-container>
+
+    <!--Company phone no column -->
+    <ng-container matColumnDef="Company_Phone_No">
+        <th mat-header-cell *matHeaderCellDef> Company phone no </th>
+        <td mat-cell *matCellDef="let element"> {{element.Company_Phone_No}} </td>
+    </ng-container>
+
+    <!--Hr name column-->
+    <ng-container matColumnDef="Hr_Name">
+        <th mat-header-cell *matHeaderCellDef> Hr_Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.Hr_Name}} </td>
+    </ng-container>
+
+    <!--Hr contact no column-->
+    <ng-container matColumnDef="Hr_Contact_No">
+        <th mat-header-cell *matHeaderCellDef> Hr_Contact_No </th>
+        <td mat-cell *matCellDef="let element"> {{element.Hr_Contact_No}} </td>
+    </ng-container>
+
+    <!--Hr email column-->
+    <ng-container matColumnDef="Hr_Email">
+        <th mat-header-cell *matHeaderCellDef> Hr_Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.Hr_Email}} </td>
+    </ng-container>
+
+    <!--Contact person name-->
+    <ng-container matColumnDef="Contact_Person_Name">
+        <th mat-header-cell *matHeaderCellDef>  Contact_Person_Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.Contact_Person_Name}} </td>
+    </ng-container>
+
+    <!--Contact person email-->
+    <ng-container matColumnDef="Contact_Person_Email">
+        <th mat-header-cell *matHeaderCellDef> Contact_Person_Email</th>
+        <td mat-cell *matCellDef="let element"> {{element.Contact_Person_Email}} </td>
+    </ng-container>
+
+    <!--company short name-->
+    <ng-container matColumnDef="Company_Short_Name">
+        <th mat-header-cell *matHeaderCellDef> Company_Short_Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.Company_Short_Name}} </td>
+    </ng-container>
+
+    <!--Address-->
+    <ng-container matColumnDef="Address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>  
+        <td mat-cell *matCellDef="let element"> {{element.Address}} </td>  
+    </ng-container>
+
+    <!--Website-->
+    <ng-container matColumnDef="Website">
+        <th mat-header-cell *matHeaderCellDef> Website </th>
+        <td mat-cell *matCellDef="let element"> {{element.Website}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  

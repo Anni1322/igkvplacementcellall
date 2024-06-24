@@ -27,7 +27,7 @@
           </div>
           <div class="form-group mb-2">
             <label for="Company_ID">Company ID</label>
-            <input type="text" id="Company_ID" formControlName="Company_ID" class="form-control" [ngClass]="{ 'is-invalid': vacancyApplydata.controls['Company_ID'].invalid && vacancyApplydata.controls['Company_ID'].touched }">
+            <!--<input type="text" id="Company_ID" formControlName="Company_ID" class="form-control" [ngClass]="{ 'is-invalid': vacancyApplydata.controls['Company_ID'].invalid && vacancyApplydata.controls['Company_ID'].touched }">-->
             <div class="invalid-feedback" *ngIf="vacancyApplydata.controls['Company_ID'].invalid && vacancyApplydata.controls['Company_ID'].touched">
               Company_ID is required.
             </div>

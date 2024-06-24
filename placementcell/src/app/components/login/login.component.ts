@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
-import * as CryptoJS from 'crypto-js';
+//import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',

@@ -9,6 +9,8 @@ import { JobStatus } from '../a-c-vacancy-list/a-c-vacancy-list.component';
 })
 export class AdminService {
 
+  apiurl = 'http://localhost:3000'
+
    baseurl = 'http://localhost:3000/admin'
 
   constructor(private http:HttpClient) { }
@@ -47,7 +49,12 @@ getVacancies(): Observable<JobStatus[]> {
   return this.http.get<JobStatus[]>(`${this.baseurl}/vacancies`);
 }
 
+getAllCompany():Observable<any[]> {
+  return this.http.get<any[]>(`${this.apiurl}/company`);
+}
 
- 
+getAllStudents():Observable<any[]>{
+  return this.http.get<any[]>( `${this.apiurl}/student`);
+}
 
 }

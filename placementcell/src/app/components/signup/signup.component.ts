@@ -4,7 +4,7 @@ import { SignupService } from 'src/app/services/signup.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import * as CryptoJS from 'crypto-js';
+//import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-signup',
@@ -35,10 +35,10 @@ export class SignupComponent implements OnInit {
     this.loadCaptcha();
   }
 
-  encryptPassword(password: string): string {
-    const secretKey = 'your-256-bit-secret';
-    return CryptoJS.AES.encrypt(password, secretKey).toString();
-  }
+  // encryptPassword(password: string): string {
+  //   const secretKey = 'your-256-bit-secret';
+  //   return CryptoJS.AES.encrypt(password, secretKey).toString();
+  // }
 
   loadCaptcha() {
     this.auth.getcaptcha().subscribe((data: any) => {
