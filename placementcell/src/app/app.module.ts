@@ -110,11 +110,16 @@ import { FooterComponent } from './m-layout/footer/footer.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+
 
 import { CaptchacodeComponent } from './prac/captchacode/captchacode.component';
 import { SSkillDetailsComponent } from './components/student/s-skill-details/s-skill-details.component';
 import { SExperienceDetailsComponent } from './components/student/s-experience-details/s-experience-details.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { SExperienceViewComponent } from './components/student/s-experience-view/s-experience-view.component';
+import { SSkillViewComponent } from './components/student/s-skill-view/s-skill-view.component';
+import { SAcademicViewComponent } from './components/student/s-academic-view/s-academic-view.component';
 
 
 
@@ -181,12 +186,17 @@ import { SExperienceDetailsComponent } from './components/student/s-experience-d
       ACVacancyListComponent,
       ACVacancyListActionComponent,
 
-      ResetPasswordComponent,
+      
      
       FooterComponent,
       CaptchacodeComponent,
       SSkillDetailsComponent,
       SExperienceDetailsComponent,
+      AboutComponent,
+      ContactComponent,
+      SExperienceViewComponent,
+      SSkillViewComponent,
+      SAcademicViewComponent,
      
      
 

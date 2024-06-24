@@ -100,4 +100,16 @@ getAdmissionyear(){
   return this.http.get(`${this.apiUrl}/student/admissionyear`);
 }
 
+getskill(): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/student/getskill`);
+}
+
+getexperience(): Observable<any>{
+  return this.http.get<any>(`${this.apiUrl}/student/getexperience`);
+}
+
+getacademic(): Observable<any>{
+  return this.http.get<any>(`${this.apiUrl}/student/getacademic`);
+}
+
 }

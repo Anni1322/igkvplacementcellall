@@ -1790,27 +1790,24 @@ const SkillDetails = async (req, res) => {
 
    
 //function to fetch data from academic details table 
-    const getacademic = async (req, res) => {
-        try {
-            const request = new sql.Request();
-            const query = 'SELECT * FROM dbo.tnp_student_academic_details_array';
-
-            request.query(query, (err, result) => {
-                if (err) {
-                    console.error('Error executing the query: ', err);
-                    res.status(500).json({ error: 'Error executing the query' });
-                    return;
-                }
-                //Send the fetched records as JSON response
-                res.status(500).json(result.recordset);
-            });
-
-        } catch (error) {
-            console.error( 'Error fetching academic details: ', error);
-            res.status(500).json({ error: 'Internal Server Error' });
-
-        }
-    };
+const getacademic = async (req, res) => {
+    try {
+        const request = new sql.Request();
+        const selectQuery = `SELECT * FROM dbo.tnp_student_academic_details_array;`;
+        request.query(selectQuery, (err, result) => {
+            if (err) {
+                console.error(err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            // Send the fetched records as JSON response
+            res.status(200).json(result.recordset);
+        });
+    } catch (error) {
+        console.error('Error fetching academic details: ', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
 
 //end 
 

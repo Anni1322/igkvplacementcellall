@@ -13,7 +13,7 @@
         <!-- Sno Column -->
         <ng-container matColumnDef="S.No.">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> S.No. </th>
-          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+          <td mat-cell *matCellDef="let i = index" data-label="S No."> {{i + 1}} </td>
         </ng-container>
 
         <!-- ID Column -->

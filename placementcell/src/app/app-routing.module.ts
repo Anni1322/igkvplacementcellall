@@ -48,12 +48,17 @@ import { FileuploadComponent } from './components/prac3/fileupload/fileupload.co
 import { ACVacancyListComponent } from './components/admin/a-c-vacancy-list/a-c-vacancy-list.component';
 import { ACVacancyListActionComponent } from './components/admin/a-c-vacancy-list-action/a-c-vacancy-list-action.component';
 
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+
 
 import { CaptchacodeComponent } from './prac/captchacode/captchacode.component';
 import { SSkillDetailsComponent } from './components/student/s-skill-details/s-skill-details.component';
 import { SExperienceDetailsComponent } from './components/student/s-experience-details/s-experience-details.component';
 import { SAcademicDetailsComponent } from './components/student/s-academic-details/s-academic-details.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { AboutComponent } from './components/about/about.component';
+import { SExperienceViewComponent } from './components/student/s-experience-view/s-experience-view.component';
+import { SSkillViewComponent } from './components/student/s-skill-view/s-skill-view.component';
+import { SAcademicViewComponent } from './components/student/s-academic-view/s-academic-view.component';
  
 
 
@@ -88,8 +93,9 @@ const routes: Routes = [
   {path:'addproduct', component:AddProjectComponent},
   {path:'forninput', component:ForminputComponent},
   {path:'fileupload', component:FileuploadComponent},
-  {path:'settings', component:ResetPasswordComponent},
+
  
+
 // header
  
   {path:'student', component:StudentComponent,children:[
@@ -116,7 +122,9 @@ const routes: Routes = [
     {path:'s-skill-details', component:SSkillDetailsComponent},
     {path:'s-experience-details', component:SExperienceDetailsComponent},
     {path:'s-academic-details', component:SAcademicDetailsComponent},
-
+    {path:'skill-view', component:SSkillViewComponent},
+    {path:'experience-view', component:SExperienceViewComponent},
+    {path:'academic-view', component:SAcademicViewComponent},
   ]},
  
 
@@ -138,8 +146,8 @@ const routes: Routes = [
 
  {path:'logpra', component:LoginpageComponent},
  {path:'s-header', component:SHeaderComponent},
-
- 
+ {path:'contact', component:ContactComponent},
+ {path:'about', component:AboutComponent},
 
  
   // {path:'userprofile', component:},
