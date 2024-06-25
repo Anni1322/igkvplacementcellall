@@ -172,17 +172,28 @@
       </div>
       <div class="card">
         <marquee class="notification_body " style="margin: 20px;" behavior="scroll" direction="up" scrollamount="1" scrolldelay="10" onmouseover="this.stop();" onmouseout="this.start();">
+          <div class="row">
             <div class="col-md-4" *ngFor="let vacancy of data">
-                <!-- <h5 class="card-title  ">Post Name: {{ vacancy.Job_Title }} <a routerLink="/student/s-vacany-details">More</a> </h5> -->
-                <h2 class="card-subtitle mb-2 text-muted" hidden>VID: {{ vacancy.Vacancy_ID }}</h2>
-                <h4 class="card-title">Post- {{ vacancy.Job_Title }}</h4>
-                <h4 class="card-title">Company- {{ vacancy.Company_Id }}</h4>
-                <h4 class="card-title">Post No- {{ vacancy.Vacancy_ID }}</h4>
-                <h5>
-                    <a [routerLink]="['/student/s-vacancy-apply', vacancy.Vacancy_ID]" class="card-link">Apply Now</a> <br>
-                    <a [routerLink]="['/student/s-vacany-details', vacancy.Vacancy_ID]" class="card-link">More</a>
-                </h5>
+                <!-- <span class="card-title">Post Name: {{ vacancy.Job_Title }} <a routerLink="/student/s-vacany-details">More</a> </span> -->
+                <span class="card-subtitle mb-2 text-muted" hidden>VID: {{ vacancy.Vacancy_ID }}</span>
+                <div class="row">
+                    <div class="col-12">
+                        <span class="card-title">Post: {{ vacancy.Job_Title }}</span>
+                    </div>
+                    <div class="col-12">
+                        <span class="card-title">Company: {{ vacancy.Company_Id }}</span>
+                    </div>
+                    <div class="col-12">
+                        <span class="card-title">Post No: {{ vacancy.Vacancy_ID }}</span>
+                    </div>
+                    <div class="col-12">
+                        <a [routerLink]="['/student/s-vacancy-apply', vacancy.Vacancy_ID]" class="card-link">Apply Now</a> <br>
+                        <a [routerLink]="['/student/s-vacany-details', vacancy.Vacancy_ID]" class="card-link">More</a>
+                    </div>
+                </div>
             </div>
+        </div>
+        
         </marquee>
     </div>
   </div>
