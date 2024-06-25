@@ -57,7 +57,7 @@ export class CSSelectedComponent implements OnInit, AfterViewInit {
     
 
   ngOnInit() {
-    this.applicationService.getVacancyApply().subscribe(data => {
+    this.applicationService.getSelected().subscribe(data => {
       this.dataSource.data = data;
       console.log("response",this.dataSource.data);
     });

@@ -29,16 +29,20 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+ 
 
-companyRouter.post('/registerCompany', 
-upload.fields([
-    { name: 'Company_Logo_Url', maxCount: 1 },
-    { name: 'Company_Logo', maxCount: 1 },
-    { name: 'Company_Broucher', maxCount: 1 },
-    { name: 'Company_Other_Doc_Url', maxCount: 1 }
+// Endpoint to register a company
+companyRouter.post('/registerCompany', upload.fields([
+    { name: 'companyLogo', maxCount: 1 },
+    { name: 'companyBroucher', maxCount: 1 },
+    { name: 'companyOtherDoc', maxCount: 1 }
 ]), companyController.registerCompany);
 
- 
+
+
+// companyRouter.post('/postCompanyDetails', upload.single('companyLogo'), upload.single('companyBroucher'), upload.single('companyOtherDoc'), companyController.registerCompany);
+
+
 
 
 
@@ -54,13 +58,13 @@ companyRouter.post('/getdata_All_Company_id',companyController.getdata_All_Compa
 // added by roshni
 companyRouter.get('/', companyController.getAllCompany);
 
-companyRouter.post('/registerCompany', 
-upload.fields([
-    { name: 'Company_Logo_Url', maxCount: 1 },
-    { name: 'Company_Logo', maxCount: 1 },
-    { name: 'Company_Broucher', maxCount: 1 },
-    { name: 'Company_Other_Doc_Url', maxCount: 1 }
-]), companyController.registerCompany);
+// companyRouter.post('/registerCompany', 
+// upload.fields([
+//     { name: 'Company_Logo_Url', maxCount: 1 },
+//     { name: 'Company_Logo', maxCount: 1 },
+//     { name: 'Company_Broucher', maxCount: 1 },
+//     { name: 'Company_Other_Doc_Url', maxCount: 1 }
+// ]), companyController.registerCompany);
 
 companyRouter.post('/getcompanyinformation',companyController.getcompanyinformation);
 

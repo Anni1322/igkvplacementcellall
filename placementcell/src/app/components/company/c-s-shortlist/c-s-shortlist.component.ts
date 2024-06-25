@@ -36,7 +36,7 @@ export class CSShortlistComponent implements OnInit, AfterViewInit {
     // 'Modified_By', 
     // 'Modified_Date', 
     // 'Delete_Flag', 
-    'Flag', 
+    // 'Flag', 
     // 'Public_IP_Address', 
     // 'Private_IP_Address',
     'edit'
@@ -57,13 +57,21 @@ export class CSShortlistComponent implements OnInit, AfterViewInit {
  
     
 
-  ngOnInit() {
-    this.applicationService.getVacancyApply().subscribe(data => {
-      this.dataSource.data = data;
-      console.log("response",this.dataSource.data);
-    });
-  }
-
+    ngOnInit() {
+      this.applicationService.getSelected().subscribe(
+        (response: any) => {
+          // Assuming response from API contains both records and selectedCount
+          this.dataSource.data = response.records;
+          console.log("Response:", response.records);
+          console.log("Selected Count:", response.selectedCount);
+        },
+        error => {
+          console.error('Error fetching selected applications:', error);
+          // Handle error as needed
+        }
+      );
+    }
+    
  
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

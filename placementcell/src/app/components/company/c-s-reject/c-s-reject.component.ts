@@ -56,7 +56,7 @@ export class CSRejectComponent implements OnInit, AfterViewInit {
     
 
   ngOnInit() {
-    this.applicationService.getVacancyApply().subscribe(data => {
+    this.applicationService.getReject().subscribe(data => {
       this.dataSource.data = data;
       console.log("response",this.dataSource.data);
     });

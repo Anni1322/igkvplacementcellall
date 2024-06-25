@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CServiceService } from '../company/service/c-service.service';
 
 
+
 interface SideNavToggle{
   screenWidth : number;
   collapsed: boolean;

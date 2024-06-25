@@ -56,9 +56,9 @@
        
 
 
-          <div class="form-group mb-3">
+          <div class="form-group mb-3" hidden>
               <label for="Resume_Path">Resume Upload</label>
-              <input type="file" id="Resume_Path" (change)="onFileSelected($event)" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+              <input type="text" id="Resume_Path" formControlName="Resume_Path" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
             </div>
       </div>  
       

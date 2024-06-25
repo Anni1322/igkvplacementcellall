@@ -29,6 +29,16 @@ export class AdminService {
     return this.http.get<StudentApplicationDetails[]>(`${this.baseurl}/VacancyApply`);
   }
 
+  getshortlist(): Observable<StudentApplicationDetails[]> {
+    return this.http.get<StudentApplicationDetails[]>(`${this.baseurl}/getshortlist`);
+  }
+  getReject(): Observable<StudentApplicationDetails[]> {
+    return this.http.get<StudentApplicationDetails[]>(`${this.baseurl}/getReject`);
+  }
+  getSelected(): Observable<StudentApplicationDetails[]> {
+    return this.http.get<StudentApplicationDetails[]>(`${this.baseurl}/getSelected`);
+  }
+
 // start function for pass data on compo. to anthercompo.
 // this api for data pass to one component to anathor component
 

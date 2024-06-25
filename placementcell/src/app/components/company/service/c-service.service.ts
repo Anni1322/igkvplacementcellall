@@ -64,6 +64,7 @@ VacancyApply(data:any){
 //}
 
 postCompanyDetails(data:any){
+  console.log("hudi baba",data)
   return this.http.post<any>(`${this.baseurl}/company/registerCompany`, data);
 }
 

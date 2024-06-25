@@ -34,7 +34,7 @@ export class CSApplicationComponent implements OnInit, AfterViewInit {
     // 'Modified_By', 
     // 'Modified_Date', 
     // 'Delete_Flag', 
-    'Flag', 
+    // 'Flag', 
     // 'Public_IP_Address', 
     // 'Private_IP_Address',
     'edit'
@@ -83,6 +83,13 @@ export class CSApplicationComponent implements OnInit, AfterViewInit {
 
 
   
+
+  // Example method for handling page change
+  onPageChange(event: any) {
+    this.p = event; // Update current page number
+     // Reload data for the new page
+  }
+
 
 
   printTable() {
@@ -172,7 +179,7 @@ export interface StudentApplicationDetails {
   Email?: string;
   Mobile?: string;
   Status?: string;  // Optional with default value
-  // Resume_Path?: string;
+  Resume_Path?: string;
   // Created_By?: string;
   // Created_Date?: Date;  // Optional with default value
   // Modified_By?: string;

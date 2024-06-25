@@ -14,14 +14,14 @@
                             <h5 class="ms-1 mt-1 text-white"><b>Basic Information / मूलभूत जानकारी</b></h5>
                         </div>
                         
-                        <form [formGroup]="companyregistrationForm" (ngSubmit)="onSubmit()">
+                        <form [formGroup]="companyregistrationForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
                             
                         <mat-stepper #stepper>
                             <mat-step [stepControl]="companyregistrationForm" >
                                 
                             <form [formGroup]="companyregistrationForm">
 
-                                <ng-template matStepLabel>Company Section</ng-template>
+                                <ng-template matStepLabel>Basic Details</ng-template>
                                 <div class="card-body">
                                     <div class="row">
                                 <!--<div class="col-md-3">
@@ -293,6 +293,9 @@
                                         <input type="file" id="Company_Logo_Url" (change)="onFileSelected($event, 'Company_Logo_Url')" placeholder="resume path" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
                                     </div>
                                 </div>  
+
+ 
+                    
                                 
                                 <div class="col-lg-4">
                                     <div class="form-group mb-3">
@@ -317,19 +320,56 @@
                                 <div class="text-white">
 
                                   <button mat-button matStepperPrevious class="btn text-center bg-primary " style="margin-right: 8px;">Back</button>
-                                  <button mat-button (click)="stepper.reset()" class="btn text-center bg-primary ">Reset</button>
+                                  <button mat-button matStepperNext class="btn text-center bg-primary">Next</button>
                                 </div>
-                                <div
-                                class="mt-2 d-flex justify-content-evenly pt-4 pb-3 rounded-top bg-white border border-1 border-dark">
-                             <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-                                <button type="submit" class="btn btn-primary text-center" >Submit</button>
-                            </div>
                             </div>
                         </div>
                               </form>
                               
                             </mat-step>
+                            <mat-step>
+                                <div class="card-body">
+                                    <div class="row">
+                              <ng-template matStepLabel>Submition section</ng-template>
+                             
+                             
+                             
+                              <!-- <div class="col-md-3">
+                                <div class="form-group">
+                                  <mat-form-field appearance="outline" class="inputfieldsize">
+                                    <mat-label for="Created_Date">Created Date:</mat-label>
+                                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="Created_Date">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker touchUi #picker></mat-datepicker>
+                                  </mat-form-field>
+                                </div>
+                              </div> -->
+                              
+                             
+                              
+                              <div class="text-white">
+
+                                <!-- <button mat-button (click)="stepper.reset()" class="btn text-center bg-primary mb-2 ">Reset</button>  
+                                <button type="submit" class="btn btn-primary text-center mb-2" >Submit</button> -->
+
+
+
+                                <!-- <button mat-button matStepperPrevious class="btn text-center bg-primary " style="margin-right: 8px;">Back</button> -->
+                                <!-- <button mat-button (click)="stepper.reset()" class="btn text-center bg-primary ">Reset</button> -->
+                                
+                                <!--<button mat-button matStepperNext >Next</button>>-->
+                              </div>
+                              <div
+                                class="mt-2 d-flex justify-content-evenly pt-4 pb-3 rounded-top bg-white border border-1 border-dark">
+                             <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+                             <button mat-button matStepperPrevious class="btn text-center bg-primary " style="margin-right: 8px;">Back</button>
+                             <button mat-button (click)="stepper.reset()" class="btn text-center bg-primary ">Reset</button>    
+                             <button type="submit" class="btn btn-primary text-center" >Submit</button>
+                            </div>
+                            </div>
+                            </div>
                            
+                    </mat-step>
                     <!--<mat-step>
                         <ng-template matStepLabel="content">Done</ng-template>
                             <div class="col-lg-3">

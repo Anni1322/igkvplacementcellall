@@ -169,6 +169,7 @@ if (userString !== null) {
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile)
   }
 
   
@@ -229,6 +230,7 @@ if (userString !== null) {
 }
 
 }
+
 }
 
  

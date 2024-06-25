@@ -45,11 +45,13 @@ const captcha = async (req, res) => {
     // Generate CAPTCHA code
     const captcha = svgCaptcha.create();
 
+    console.log(captcha.text);
+
     // Store CAPTCHA code in session
     req.session = captcha.text;
 
     // Send CAPTCHA image to the client
-    res.json({ image: captcha.data });
+    res.json({ image: captcha.data, capvalue: captcha.text });
 };
  
 
@@ -75,8 +77,19 @@ const captcha = async (req, res) => {
 
 //  jwt token use 
 const login = async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password   } = req.body;
     console.log("this is from frontend",username, password);
+
+
+
+    // if (captcha !== req.session) {
+    //     return res.status(400).json({ error: 'CAPTCHA validation failed' });
+    //   }
+
+
+
+
+
 
         // drcipt start
            
@@ -273,7 +286,7 @@ function generateEmpIdcompay(empNum) {
 const Signup = async (req, res) => {
     try {
         // Access the request body
-        const { name,username, password, role } = req.body;
+        const { name, username, password, role } = req.body;
         console.log("Data=>", name, username, password, role);
 
         // Validate required fields
@@ -292,11 +305,10 @@ const Signup = async (req, res) => {
 
         // Set up SQL request
         const request = new sql.Request();
-        const usernameCheckQuery = 'SELECT COUNT(*) AS count FROM dbo.login_table WHERE username = @username';
-        request.input('username', sql.VarChar, username);
-        
 
         // Check if username already exists
+        const usernameCheckQuery = 'SELECT COUNT(*) AS count FROM dbo.login_table WHERE username = @username';
+        request.input('username', sql.VarChar, username);
         const usernameResult = await request.query(usernameCheckQuery);
         if (usernameResult.recordset[0].count > 0) {
             return res.status(400).json({ error: 'Username already exists' });
@@ -305,43 +317,37 @@ const Signup = async (req, res) => {
         // Retrieve the maximum id from login_table
         const maxIdQuery = 'SELECT MAX(id) AS max_id FROM dbo.login_table';
         const maxIdResult = await request.query(maxIdQuery);
-
         const maxId = maxIdResult.recordset[0].max_id || 0;
         console.log("Max ID:", maxId);
 
-        // Generate employee ID using maxId
-        const empId = generateEmpId(maxId + 1);
+        let empId;
 
-        // if company register
-        if(role == 2){
-        const empId = generateEmpIdcompay(maxId + 1);   
-        // Insert user into the database
-        const insertQuery = 'INSERT INTO dbo.login_table (name, username, password, Emp_Id, role) VALUES (@name, @username, @password, @Emp_Id, @role)';
-        request.input('name', sql.VarChar, name);
-        request.input('password', sql.VarChar, hashedPassword);
-        request.input('Emp_Id', sql.VarChar, empId);
-        request.input('role', sql.Int, role);
-
-        await request.query(insertQuery);
-        res.status(200).json({ empId: empId, message: 'User registered successfully' });
+        if (role == 2) {
+            empId = generateEmpIdcompay(maxId + 1); // Assuming this function generates company employee ID
+        } else {
+            empId = generateEmpId(maxId + 1); // Assuming this function generates regular employee ID
         }
 
         console.log("Generated Emp Id:", empId);
 
-        // Insert user into the database
+        // Create a new instance of sql.Request() for the insert operation
+        const insertRequest = new sql.Request();
         const insertQuery = 'INSERT INTO dbo.login_table (name, username, password, Emp_Id, role) VALUES (@name, @username, @password, @Emp_Id, @role)';
-        request.input('name', sql.VarChar, name);
-        request.input('password', sql.VarChar, hashedPassword);
-        request.input('Emp_Id', sql.VarChar, empId);
-        request.input('role', sql.Int, role);
+        insertRequest.input('name', sql.VarChar, name);
+        insertRequest.input('username', sql.VarChar, username); // Use insertRequest here, not request
+        insertRequest.input('password', sql.VarChar, hashedPassword);
+        insertRequest.input('Emp_Id', sql.VarChar, empId);
+        insertRequest.input('role', sql.Int, role);
 
-        await request.query(insertQuery);
+        await insertRequest.query(insertQuery);
         res.status(200).json({ empId: empId, message: 'User registered successfully' });
+
     } catch (err) {
         console.error('Error: ', err);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+
 
 
 

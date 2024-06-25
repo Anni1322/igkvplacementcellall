@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
   captchaImage!: string;
+  captchaValue:any;
 
   constructor(
     private fb: FormBuilder,
@@ -29,7 +30,9 @@ export class SignupComponent implements OnInit {
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       rePassword: ['', [Validators.required, Validators.minLength(6)]],
-      role: ['1', Validators.required]
+      role: ['1', Validators.required],
+      captcha: ['', Validators.required]
+
     }, { validators: this.passwordMatchValidator });
 
     this.loadCaptcha();
@@ -41,10 +44,18 @@ export class SignupComponent implements OnInit {
   // }
 
   loadCaptcha() {
-    this.auth.getcaptcha().subscribe((data: any) => {
-      this.captchaImage = `data:image/svg+xml;base64,${btoa(data.image)}`;
-      console.log(this.captchaImage);
-    });
+    this.auth.getcaptcha().subscribe(
+      (data: any) => {
+        this.captchaImage = `data:image/svg+xml;base64,${btoa(data.image)}`;
+        // console.log(this.captchaImage);
+        // Assuming you want to store captcha value in a variable
+        this.captchaValue = data.capvalue;
+        // console.log(this.captchaValue); // Log captcha value
+      },
+      (error) => {
+        console.error('Error loading CAPTCHA:', error);
+      }
+    );
   }
 
   passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
@@ -59,6 +70,17 @@ export class SignupComponent implements OnInit {
   onSubmit(): void {
     if (this.signupForm.valid) {
       const formValue = this.signupForm.value;
+
+      // console.log(formValue.captcha);
+
+     // Check if CAPTCHA matches
+     if (formValue.captcha !== this.captchaValue) {
+      alert('CAPTCHA does not match. Please try again.');
+      return;
+    }
+
+
+
       // const encryptedPassword = this.encryptPassword(formValue.password);
       // const encryptedRePassword = this.encryptPassword(formValue.rePassword);
 

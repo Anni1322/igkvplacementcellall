@@ -618,6 +618,8 @@ const getAllCompany = async(req, res)=>{
  
 // Function to register a company
 const registerCompany = async (req, res) => {
+
+     
     const {
         Company_Id,
         Company_Registration_No,
@@ -640,26 +642,21 @@ const registerCompany = async (req, res) => {
         Block,
         Company_Profile,
         Website,
-        Created_Date
+        Created_Date,
+        Company_Logo_Url,
+        Company_Logo,
+        Company_Broucher,
+        Company_Other_Doc_Url
+
     } = req.body;
 
-    // Initialize file paths
-
-    // Get file paths from request
-    // const Company_Logo_Url = req.files['Company_Logo_Url'] ? req.files['Company_Logo_Url'][0].path : null;
-    // const Company_Logo = req.files['Company_Logo'] ? req.files['Company_Logo'][0].path : null;
-    // const Company_Broucher = req.files['Company_Broucher'] ? req.files['Company_Broucher'][0].path : null;
-    // const Company_Other_Doc_Url = req.files['Company_Other_Doc_Url'] ? req.files['Company_Other_Doc_Url'][0].path : null;
+  
+ 
+    // console.log("path this is",Company_Logo.file.name,Company_Broucher,Company_Other_Doc_Url)
 
 
-
-     // Ensure req.files and specific fields exist or set to null
-    const Company_Logo_Url = req.files && req.files['Company_Logo_Url'] ? req.files['Company_Logo_Url'][0].path : null;
-    const Company_Logo = req.files && req.files['Company_Logo'] ? req.files['Company_Logo'][0].path : null;
-    const Company_Broucher = req.files && req.files['Company_Broucher'] ? req.files['Company_Broucher'][0].path : null;
-    const Company_Other_Doc_Url = req.files && req.files['Company_Other_Doc_Url'] ? req.files['Company_Other_Doc_Url'][0].path : null;
-
-    console.log("path this is",Company_Logo_Url)
+    
+    // console.log("path this is",Company_Logo)
 
 
 

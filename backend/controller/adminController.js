@@ -29,6 +29,76 @@ const getVacancyApply = async (req, res) => {
   }
 };
 
+
+// for short list
+const getshortlist = async (req, res) => {
+  try {
+      const pool = await sql.connect();
+      const request = pool.request();
+      const query = `SELECT * FROM tnp_student_application_details WHERE Status = 'Short Listed'`;
+      const result = await request.query(query);
+      const records = result.recordset;
+      
+      // Respond with the fetched records
+      res.status(200).json(records);
+  } catch (error) {
+      console.error('Error fetching student application details:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+// for getReject
+const getReject = async (req, res) => {
+  try {
+      const pool = await sql.connect();
+      const request = pool.request();
+      const query = `SELECT * FROM tnp_student_application_details WHERE Status = 'Not Seleted'`;
+      const result = await request.query(query);
+      const records = result.recordset;
+      
+      // Respond with the fetched records
+      res.status(200).json(records);
+  } catch (error) {
+      console.error('Error fetching student application details:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+
+// for getReject
+const getSelected = async (req, res) => {
+    try {
+      const pool = await sql.connect();
+      const request = pool.request();
+  
+      // Query to fetch selected records
+      const query = `SELECT * FROM tnp_student_application_details WHERE Status = 'Selected'`;
+      const result = await request.query(query);
+      const records = result.recordset;
+  
+      // Query to fetch count of selected records
+      const countQuery = `SELECT COUNT(*) AS SelectedCount FROM tnp_student_application_details WHERE Status = 'Selected'`;
+      const countResult = await request.query(countQuery);
+      const selectedCount = countResult.recordset[0].SelectedCount;
+  
+      // Respond with both records and selectedCount
+      res.status(200).json(records );
+    } catch (error) {
+      console.error('Error fetching student application details:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+  
+  
+
+
+
+
+
+
+
+
+
 // for update student application details 
 // const update_by_adminVacancyApply = async(req, res)=>{
 //   try {
@@ -186,7 +256,7 @@ const update_by_adminVacancyApply = async (req, res) => {
               Mobile = @Mobile,
               Flag=@Flag,
               Status = @Status,
-              Resume_Path = @Resume_Path,
+         
               Created_By = @Created_By,
               Modified_By = @Modified_By,
               Delete_Flag = @Delete_Flag,
@@ -207,7 +277,7 @@ const update_by_adminVacancyApply = async (req, res) => {
       request.input('Mobile', sql.NVarChar(13), Mobile);
       request.input('Flag', sql.Char(1), Flag);
       request.input('Status', sql.NVarChar(20), Status);
-      request.input('Resume_Path', sql.NVarChar(2000), Resume_Path);
+     
       request.input('Created_By', sql.NVarChar(20), Created_By);
       request.input('Modified_By', sql.NVarChar(50), Modified_By);
       request.input('Delete_Flag', sql.Char(1), Delete_Flag);
@@ -294,7 +364,10 @@ module.exports ={
   getVacancyApply,
   update_by_adminVacancyApply,
   getVacanciesDetils,
-  getstudentdetails
+  getstudentdetails,
+  getshortlist,
+  getSelected,
+  getReject
 }
 
 
