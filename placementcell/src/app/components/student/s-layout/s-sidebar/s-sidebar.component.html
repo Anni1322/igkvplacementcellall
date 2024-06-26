@@ -24,7 +24,8 @@
             <div class="col"style="margin-top: 15px;">
                 <span class="name" style="font-size: 25px; margin-top: 15px;">{{ user.username }}</span><br>
                 <span class="name">ID: {{ user.eid }}</span><br>
-                <button class="btn" (click)="logout()">Logout</button>
+
+                
             </div>
            
         </div>
@@ -66,9 +67,15 @@
           <span class="menu-text">My Appication</span>
         </a>
       </li>
+      <li>
+        <a  >
+          <span class="menu-icon material-icons">logout</span>
+          <span class="shadow" (click)="logout()" style="font-size: 15px;">Logout</span>
+        </a>
+      </li>
 
       <li>
-        <a routerLink="/student/settings" routerLinkActive="active">
+        <!-- <a routerLink="/student/settings" routerLinkActive="active"> -->
 
       <!-- <li>
         <a routerLink="/settings" routerLinkActive="active">

@@ -2,7 +2,7 @@
 
 /* Define a mixin for common styles */
 @mixin menu-item {
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -19,12 +19,18 @@
     //   // font-weight: bold;
     // }
   }
-  
+  .circle{
+    color: #ffffff;
+  }
   .sidebar {
    
     // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-
-    background-color: #b3deff;
+    
+    background-color: #3541BB;
+    // background-color: linear-gradient(
+    //   #3541BB,
+    //   rgba(53, 65, 187, 0.5)
+    // );
 
     //background-color: #ffffff;
 

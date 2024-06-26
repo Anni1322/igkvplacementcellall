@@ -3,3 +3,14 @@
 table {
     width: 100%;
   }
+
+  .mat-table-wrapper {
+    box-shadow: 0 4px 8px rgba(225, 225, 225, 0.1); /* Adjust the values as needed */
+    border-radius: 8px; /* Optional: Adds rounded corners */
+    overflow: hidden; /* Optional: Ensures shadow is not clipped */
+  }
+  
+  .mat-table {
+    width: 100%; /* Ensure table takes full width of its container */
+    /* Additional styles can be applied here */
+  }

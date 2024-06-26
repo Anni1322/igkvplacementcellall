@@ -56,11 +56,11 @@
                 <!-- <th>Flag</th> -->
                 <th>Submission Date</th>
                 <th>Full Name</th>
-                <th>Father's Name</th>
+                <!-- <th>Father's Name</th> -->
                 <!-- <th>Mobile</th> -->
-                <th>Email</th>
+                <!-- <th>Email</th> -->
                 <th>Status</th>
-                <th>Next Round</th>
+                <th>Next Round Apply</th>
             </tr>
         </thead>
         <tbody>
@@ -72,12 +72,22 @@
                 <!-- <td>{{ application.Flag }}</td> -->
                 <td>{{ application.Application_Submission_Date | date }}</td>
                 <td>{{ application.Full_Name }}</td>
-                <td>{{ application.Fathers_Name }}</td>
+                <!-- <td>{{ application.Fathers_Name }}</td> -->
                 <!-- <td>{{ application.Mobile }}</td> -->
-                <td>{{ application.Email }}</td>
+                <!-- <td>{{ application.Email }}</td> -->
                 <td>{{ application.Status }}</td>
-                <td> <a href="#">{{ application.Status }}</a> </td>
+                <td>
+                    <ng-container *ngIf="application.Status === 'Short Listed'; else blankCell">
+                        <a href="#">Application fill</a>
+                    </ng-container>
+                    <ng-container *ngIf="application.Status === 'Not Seleted'; else blankCell">
+                        <a href="#"> See Reason</a>
+                    </ng-container>
+                    <ng-template #blankCell></ng-template>
+                </td>
             </tr>
         </tbody>
     </table>
+
+    
   </div>

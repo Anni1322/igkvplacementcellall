@@ -1,5 +1,8 @@
-<div class="sidebar" [ngClass]="{ 'showSidebar': isSidebarVisible, 'hideSidebar': !isSidebarVisible }" [@fadeInOut]>
-    <ul>
+
+
+    <div  class="sidebar" [ngClass]="{ 'showSidebar': isSidebarVisible, 'hideSidebar': !isSidebarVisible }" [@fadeInOut] >
+      <div >
+      <ul>
 
       <!-- <li>
         <a routerLinkActive="active" (click)="toggleSubmenu()">
@@ -17,14 +20,14 @@
       </li> -->
 
       <li>
-        <div class="circle row align-items-center">
+        <div class="circle row align-items-center" >
             <div class="col-auto">
                 <img src="https://thumbs.dreamstime.com/b/vector-illustration-avatar-dummy-logo-collection-image-icon-stock-isolated-object-set-symbol-web-137160339.jpg" class="img-fluid rounded-circle" alt="Profile Picture" style="width: 50px; height: 50px;">
             </div>
             <div class="col"style="margin-top: 15px;">
                 <span class="name" style="font-size: 25px; margin-top: 15px;">{{ user.username }}</span><br>
                 <span class="name">ID: {{ user.eid }}</span><br>
-                <button class="btn" (click)="logout()">Logout</button>
+                <!-- <button class="btn" (click)="logout()">Logout</button> -->
             </div>
            
         </div>
@@ -62,6 +65,14 @@
           <span class="menu-text">Status</span>
         </a>
       </li>
+
+      <li>
+        <a >
+          <span class="menu-icon material-icons">logout</span>
+          <span class="shadow" (click)="logout()" style="font-size: 15px;">Logout</span>
+        </a>
+      </li>
+
       <!-- <li>
         <a routerLink="/company/settings" routerLinkActive="active">
           <span class="menu-icon material-icons">settings</span>
@@ -69,5 +80,6 @@
         </a>
       </li> -->
     </ul>
+    </div>
   </div>
-
+ 

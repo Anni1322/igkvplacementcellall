@@ -2,7 +2,7 @@
 
 /* Define a mixin for common styles */
 @mixin menu-item {
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -24,8 +24,9 @@
    
     // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     // background-color: #ffffff;
-    background-color: #90c6ef;
-    color: white;
+    // background-color: #90c6ef;
+    background-color: #8C69CD;
+    color: rgb(255, 255, 255);
     width: 200px;
     padding: 20px;
     position: fixed;

@@ -42,4 +42,9 @@ sendstudentid(eid:any){
       console.log('Error:', error);
     })
   }
+
+
+
+  // for pagination 
+  
 }

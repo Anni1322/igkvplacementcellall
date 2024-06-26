@@ -58,12 +58,12 @@ export class CSShortlistComponent implements OnInit, AfterViewInit {
     
 
     ngOnInit() {
-      this.applicationService.getSelected().subscribe(
+      this.applicationService.getshortlist().subscribe(
         (response: any) => {
           // Assuming response from API contains both records and selectedCount
-          this.dataSource.data = response.records;
-          console.log("Response:", response.records);
-          console.log("Selected Count:", response.selectedCount);
+          this.dataSource.data = response;
+          console.log("Response:", response);
+          // console.log("Selected Count:", response.selectedCount);
         },
         error => {
           console.error('Error fetching selected applications:', error);

@@ -7,8 +7,8 @@
         </h3>
       </div>
 
-      <div class="card">
-        <div class="signup-container">
+      <div class="card loginbg "data-aos="fade-down"  data-aos-duration="2000">
+        <div class="signup-container mt-3 ">
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
               <label for="username">Username</label>
@@ -34,8 +34,8 @@
             </div>
 
             <div class="text-center m-3">
-              <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary mb-4 m-3">Login</button>
-              <button type="button" routerLink="/" class="btn btn-primary mb-4 m-3">Home</button>
+              <button type="submit" [disabled]="loginForm.invalid" class="btn   mb-4 m-3" style="background-color: rgb(255, 255, 255);color: black">Login</button>
+              <button type="button" routerLink="/" class="btn   mb-4 m-3" style="background-color: rgb(255, 255, 255); color: black;">Home</button>
             </div>
           </form>
         </div>

@@ -83,7 +83,7 @@ this.adminService.getRowData().subscribe(data => {
   this.vacancyApplydata.patchValue({Application_Submission_Date:data.Application_Submission_Date})
   this.vacancyApplydata.patchValue({Full_Name:data.Full_Name})
   this.vacancyApplydata.patchValue({Fathers_Name:data.Fathers_Name})
-  this.vacancyApplydata.patchValue({Job_Title:data.Post_Name})
+  this.vacancyApplydata.patchValue({Post_Name:data.Post_Name})
   this.vacancyApplydata.patchValue({Mobile:data.Mobile})
   this.vacancyApplydata.patchValue({Email:data.Email})
   this.vacancyApplydata.patchValue({Status:data.Status})
