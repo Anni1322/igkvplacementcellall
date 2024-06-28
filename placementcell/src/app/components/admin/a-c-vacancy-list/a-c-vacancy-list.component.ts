@@ -36,6 +36,8 @@ export class ACVacancyListComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+
+//apply filter 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

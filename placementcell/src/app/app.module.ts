@@ -130,6 +130,9 @@ import { CSRejectComponent } from './components/company/c-s-reject/c-s-reject.co
 import { CSApplicationActionComponent } from './components/company/c-s-application-action/c-s-application-action.component';
 import { ACompanyViewComponent } from './components/admin/a-company-view/a-company-view.component';
 import { AStudentViewComponent } from './components/admin/a-student-view/a-student-view.component';
+import { SVacancyNextroundApplyComponent } from './components/student/s-vacancy-nextround-apply/s-vacancy-nextround-apply.component';
+import { CommonModule } from '@angular/common';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
  
@@ -215,6 +218,8 @@ import { AStudentViewComponent } from './components/admin/a-student-view/a-stude
       CSApplicationActionComponent,
       ACompanyViewComponent,
       AStudentViewComponent,
+      SVacancyNextroundApplyComponent,
+   
      
      
 
@@ -261,7 +266,8 @@ import { AStudentViewComponent } from './components/admin/a-student-view/a-stude
 
     MatDatepickerModule,
     MatNativeDateModule,
-    
+    CommonModule,
+   // FontAwesomeModule
    
     
 

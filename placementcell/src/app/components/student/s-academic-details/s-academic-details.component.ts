@@ -10,6 +10,7 @@ import { StudentService } from 'src/app/services/student.service';
 export class SAcademicDetailsComponent  implements OnInit {
   academicDetailsForm!: FormGroup;
   admissionyear: any;
+  user: any;
 
   constructor(private fb: FormBuilder , private studentds:StudentService) { }
 
@@ -17,7 +18,7 @@ export class SAcademicDetailsComponent  implements OnInit {
     this.academicDetailsForm = this.fb.group({
       Registration_No: [''],
       Student_Enroll_Id: [''],
-      Student_Id: [''],
+      Student_ID: [''],
       Degree_Programme_Type_Id: [''],
       Degree_Programme_Id: [''],
       College_Name: [''],
@@ -28,9 +29,22 @@ export class SAcademicDetailsComponent  implements OnInit {
       Marksheet_Url: [''],
       Created_Date: ['']
     });
+    
+    const userData = localStorage.getItem('currentUser');
+    console.log("profiledata"+ userData)
 
+    // Check if user data exists
+    if (userData) {
+        // Parse user data from JSON and assign it to the user variable
+        this.user = JSON.parse(userData);
+        this.academicDetailsForm.patchValue({
+          Student_ID:this.user.eid
+        })
+        console.log("id"+ this.user.eid)
+    
    
   }
+}
 
   //submit form
   onSubmit(): void {
@@ -47,9 +61,9 @@ export class SAcademicDetailsComponent  implements OnInit {
   }
 
   
-  onClear(): void {
-    this.academicDetailsForm.reset();
-  }
+  // onClear(): void {
+  //   this.academicDetailsForm.reset();
+  // }
 }
 
 //form submission to the academic details but the clear button is not working properly 

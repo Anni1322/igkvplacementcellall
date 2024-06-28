@@ -23,6 +23,22 @@ export class SSkillDetailsComponent implements OnInit{
       Created_Date:[null],
 
     });
+
+    const userData = localStorage.getItem('currentUser');
+    console.log("profiledata"+ userData)
+
+    // Check if user data exists
+    if (userData) {
+        // Parse user data from JSON and assign it to the user variable
+        this.user = JSON.parse(userData);
+        this.skilldetailsform.patchValue({
+          Student_ID:this.user.eid
+        })
+        console.log("idddd"+ this.user.eid)
+        // id pass 
+        // this.getdata(this.user.eid);
+    }
+
   }
 
   //form submission 

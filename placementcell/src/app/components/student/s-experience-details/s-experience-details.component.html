@@ -8,6 +8,13 @@
   
           <!-- Grid Layout -->
           <div class="row">
+
+            <div class="col-md-3">
+                <div class="form-group mb-1">
+                    <label for="Student_ID" style="font-size: .77rem;">Student ID</label>
+                    <input id="Student_ID"  formControlName="Student_ID" class="form-control"  style="font-size: .77rem;"/>
+                </div>
+            </div>
             
             <div class="col-md-3">
               <div class="form-group mb-1">
@@ -110,7 +117,7 @@
         </div>
   
           <button type="submit" class="btn btn-primary mt-3" >Submit</button>
-          <button type="clear" class="btn btn-primary mt-3" onclick="onClear()">Clear</button>
+          <!--<button type="clear" class="btn btn-primary mt-3" onclick="onClear()">Clear</button>-->
 
         </form>
       </div>
@@ -120,190 +127,6 @@
 
 
 
-<!--<div class=" container container-flude mt-2 mb-3 p-0 user-select-none">
-    <div class="container page-heading text-center p-0 bg-white rounded shadow">
-        <h3 style="background-color: #3aaaff"
-            class="card-header p-2 text-light rounded border border-end-0 border-bottom-0 border-start-0 border-5 border-dark">
-            <strong>Add Experience Details</strong>
-        </h3>
-    </div>
-
-    <div class="container main-con mt-2 bg-white-subtle p-1  rounded">
-            <div class="row basic-row ">
-                <div class="#">
-                    <div class="card">
-                        <div class="card-header p-1" style="background-color: #3aaaff">
-                            <h5 class="ms-1 mt-1 text-white"><b>Basic Information / मूलभूत जानकारी</b></h5>
-                        </div>
-
-                        
-    <div class="container-fluid" id="addexperience">
-        <mat-card>
-            <div class="container">
-                <form [formGroup]="experiencedetailsform" (ngSubmit)="onSubmit()">
-                <br>
-                <fieldset class="scheduler-border">
-                    
-                    <div class="control-group">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Registration_No">
-                                            Registration No:
-                                        </mat-label>
-                                        <input matInput type="text" placeholder="Registration_No" formControlName="Registration_No">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Organization_Name"> 
-                                            Organization Name:
-                                        </mat-label>
-                                        <input matInput type="text" placeholder="Organization Name" formControlName="Organization_Name">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                <mat-form-field appearance="outline" class="inputfieldsize">
-                                    <mat-label for="Post_Name">
-                                        Post Name:
-                                    </mat-label>
-                                    <input matInput type="text" placeholder="Post name" formControlName="Post_Name">
-                                </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="WorkPlace_Address">
-                                            WorkPlace Address:
-                                        </mat-label>
-                                        <input matInput type="text" placeholder="Enter Address" formControlName="WorkPlace_Address">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="WorkPlace_District_Id">
-                                            WorkPlace District Id:
-                                        </mat-label>
-                                        <input matInput type="text" placeholder="Enter District Id" formControlName="WorkPlace_District_Id">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="WorkPlace_State_Id">
-                                            WorkPlace State Id:
-                                        </mat-label>
-                                        <input matInput type="text" placeholder="Enter State Id" formControlName="WorkPlace_State_Id">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="WorkPlace_Country_Id">
-                                            WorkPlace Country Id:
-                                        </mat-label>
-                                        <input matInput type="text" placeholder="Enter Country Id" formControlName="WorkPlace_Country_Id">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="City_Name">
-                                            City Name:
-                                        </mat-label>
-                                        <input matInput type="text" placeholder="city name" formControlName="City_Name">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Description">
-                                            Description:
-                                        </mat-label>
-                                        <input matInput type="text" placeholder="Description" formControlName="Description">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Period_Form">
-                                            Period Form:
-                                        </mat-label>
-                                        <input matInput type="date" placeholder="Period form" formControlName="Period_Form">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Period_To">
-                                            Period To:
-                                        </mat-label>
-                                        <input matInput type="date" placeholder="Period to" formControlName="Period_To">
-                                    </mat-form-field>
-                                </div>  
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Is_Currently_Working_YN">
-                                            Is_Currently_Working_YN:
-                                        </mat-label>
-                                        <input matInput type="text" placeholder="Yes/No" formControlName="Is_Currently_Working_YN">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <mat-form-field appearance="outline" class="inputfieldsize">
-                                        <mat-label for="Created_Date">
-                                            Created Date:
-                                        </mat-label>
-                                        <input matInput type="date" placeholder="Enter date" formControlName="Created_Date">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                   
-                    <div class="row">
-                        <div class="col offset-5">
-                            <button mat-raised-button  type="button" (click)="onClear()">
-                                Clear
-                            </button> &nbsp;&nbsp; 
-                        <button mat-raised-button color="primary"  (click)="onSubmit()" type="submit">
-                            Submit
-                        </button>
-                     //<button mat-raised-button color="primary"  *ngIf="iseditmode" (click)="onupdate()" type="button">
-                            Update
-                        </button>-->
-        
-                         <!--</div>
-                    </div>
-                </fieldset>
-            </form>  
-            </div>
-        </mat-card>
-    </div> 
-    <br> <br>
-
-    </div>
-
-</div>-->
+  
 
 
