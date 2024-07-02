@@ -202,15 +202,19 @@ p {
 	.company{
 		margin: -20px -90px;
 	}
+
 }
+
+
 
 /* for mobile screen view */
 
 @media screen and (max-width: 660px) {
-	.company{
+	.container{
 		margin: -20px -20px;
 	}
-	.footer-items {
+	.carousel{
+    margin-top: 20px;
 		width: 100%;
 	}
 }

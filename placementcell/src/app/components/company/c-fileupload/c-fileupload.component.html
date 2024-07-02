@@ -1,0 +1,91 @@
+<p>c-fileupload works!</p>
+
+<div class=" container container-flude mt-2 mb-3 p-0 user-select-none">
+    <div class="container page-heading text-center p-0 bg-white rounded shadow">
+
+    </div>
+
+    <div class="container card main-con mt-2 bg-white-subtle p-4  rounded">
+        
+        <form [formGroup]="filesuploadsform" (ngSubmit)="onSubmit()" novalidate>
+            
+            <div class="row">
+            <div class="col-lg-4">
+            <div class="form-group mb-2">
+              <label for="Company_ID">Company ID: </label>
+              <input type="text" id="Company_ID" formControlName="Company_ID" class="form-control" [ngClass]="{ 'is-invalid': filesuploadsform.controls['Company_ID'].invalid && filesuploadsform.controls['Company_ID'].touched }">
+                <div class="invalid-feedback" *ngIf="filesuploadsform.controls['Company_ID'].invalid && filesuploadsform.controls['Company_ID'].touched">
+                Company_ID is required.
+                </div>
+            </div>
+ 
+            <div class="col-lg-4">  
+              <div class="form-group" hidden>
+              <!-- <div class="form-group" > -->
+                <label for="Application_Submission_Date">Application Submission Date: </label>
+                <input type="date" id="Application_Submission_Date" placeholder="submission date" formControlName="Application_Submission_Date" class="form-control" >
+              </div>
+            </div>             
+            </div>
+   
+            <div class="col-lg-4">
+              <div class="form-group mb-3">
+                <label for="Resume_Path">Resume Upload: </label>
+                <input type="file" id="Resume_Path" (change)="onFileSelected($event)" placeholder="resume path" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+              </div>
+            </div>
+        </div>
+            <button type="submit" class="btn btn-primary btn-block" [disabled]="filesuploadsform.invalid">Submit</button>
+          
+          
+          
+            <div class="row fileupload" >
+
+              <div class="col" style="margin-top: 5px; margin-bottom: 5px;">
+                  <div>Upload Company Logo(image)</div>
+                  <input type="file"  required>
+                  <!-- <input type="file"  (change)="selectLogo($event)" required> -->
+              </div>
+              <div class="col" style="margin-top: 20px;">
+                  <div></div>
+                  <button mat-raised-button color="primary" type="button" (click)="uploadLogo()">Upload</button>
+              </div>
+          </div>
+          
+          
+          </form>
+    </div>
+
+
+ 
+      
+    
+</div>
+ 
+<div *ngIf="filedata && filedata.length > 0; else noFiles">
+  <ul>
+    <li *ngFor="let file of filedata">
+      <div>
+        <strong>Application Submission Date:</strong> {{ file.Application_Submission_Date | date:'medium' }}
+      </div>
+      <div>
+        <strong>Company ID:</strong> {{ file.Company_ID }}
+      </div>
+      <div>
+        <strong>Resume Path:</strong>
+  
+        <a target="_blank" href="{{ file.Resume_Path }}" *ngIf="!isImage(file.Resume_Path)">Open Document</a>
+      </div>
+      <div>
+        <strong>view Resume :</strong> <a href="{{ file.Resume_Path }}" target="_blank" rel="noopener noreferrer">view</a>
+        <strong>File ID:</strong> {{ file.files_Id }}
+      </div>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noFiles>
+  <p>No files available.</p>
+</ng-template>
+
+ 

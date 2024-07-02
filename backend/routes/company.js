@@ -6,28 +6,47 @@ const companyController = require('../controller/companyController');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-companyRouter.use(express.static('public'));
+
 const bodyParser = require('body-parser');
 companyRouter.use(bodyParser.json());
 companyRouter.use(bodyParser.urlencoded({extended:true}))
 
 //  Ensure the directory exists
-const uploadDir = path.join(__dirname, '../public/company');
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-}
+// const uploadDir = path.join(__dirname, '../public/com');
+// if (!fs.existsSync(uploadDir)) {
+//     fs.mkdirSync(uploadDir, { recursive: true });
+// }
+ 
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, uploadDir);
-    },
-    filename: function (req, file, cb) {
-        const name = Date.now() + '-' + file.originalname;
-        cb(null, name);
-    }
-});
+companyRouter.use(express.static('public'));
 
-const upload = multer({ storage: storage });
+// const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, 'uploads/resumes');
+//     },
+//     filename: function (req, file, cb) {
+//         // const name = Date.now() + '-' + file.originalname;
+//         const name = Date.now() + path.extname(file.originalname);
+//         cb(null, name);
+//     }
+// });
+
+// const upload = multer({ storage: storage });
+
+// doa
+const upload = multer({    
+    storage: multer.diskStorage({
+      destination: function (req, file, cb) {    
+        cb(null, "uploads");  
+      },
+      filename: function (req, file, cb) {
+        cb(null, Date.now()+path.extname(file.originalname));  
+      }
+      
+    }),
+    // limits:{fileSize:10000000}   
+  });     
+// doa
 
  
 
@@ -80,6 +99,32 @@ companyRouter.get('/state', companyController.getstate);
 companyRouter.get('/district', companyController.getdistrict);
 
 companyRouter.get('/block', companyController.getblock);
+
+
+
+companyRouter.post('/fileupload',upload.single('file'),companyController.fileupload);
+companyRouter.get('/fileupload',companyController.getfiles);
+
+
+
+
+
+
+
+
+
+
+
+// another api 
+       
+// Logog File End point
+companyRouter.post('/uploadLogo',upload.single('Company_Logo_Url'),companyController.uploadLogo);
+companyRouter.post('/uploadBroucher',upload.single('Company_Logo_Url'),companyController.uploadBroucher);
+companyRouter.post('/uploadOtherDoc',upload.single('Company_Logo_Url'),companyController.uploadOtherDoc);
+
+
+// another api  
+
 
 
 module.exports = companyRouter;

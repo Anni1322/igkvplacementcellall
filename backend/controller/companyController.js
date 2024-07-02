@@ -899,11 +899,92 @@ const getblock = async (req, res)=> {
 
 
 
+// post api for file upload
+const fileupload = async (req, res) => {
+
+    const {
+        Company_ID
+    } = req.body;
+
+    // console.log(Post_Name);
+
+    const file = req.file; // Get the file from the request
+    const Resume_Path = file.filename
+    // console.log(file);
+    // console.log(file);
+    console.log("im",file.filename);
+    try {
+        const pool = await sql.connect();  
+        const request = pool.request();  
+
+
+        // Insert new student application details
+        const insertQuery = `
+            INSERT INTO fileuploads 
+                (Company_ID, Resume_Path)
+            VALUES 
+                (@Company_ID, @Resume_Path)`;
+
+        // Bind the remaining values
+        request.input('Company_ID', sql.NVarChar(50), Company_ID);
+        request.input('Resume_Path', sql.NVarChar(2000), Resume_Path);
+    
+
+        await request.query(insertQuery);
+
+        // Respond with success message
+        res.status(200).json({ message: 'Uploading successfully' });
+    } catch (err) {
+        console.error('Error inserting student photos details: ', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+
+const getfiles = async (req, res) => {
+    try {
+        const pool = await sql.connect();  
+        const request = pool.request();  
+
+        const query = 'SELECT * FROM fileuploads';
+        const result = await request.query(query);
+
+        res.status(200).json(result.recordset);
+    } catch (err) {
+        console.error('Error fetching file paths: ', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
 
 
 
 
+const uploadLogo = async (req, resp,next) => {  
+    const file = req.file;
+    if(!file){
+      return next("no file found")
+    }
+    resp.json({Company_Logo_Url: `/logo/images/${req.file.filename}`})
+  }
 
+const uploadBroucher = async (req, resp,next) => {  
+    const file = req.file;
+    if(!file){
+      return next("no file found")
+    }
+    resp.json({Company_Broucher: `/broucher/images/${req.file.filename}`})
+  }
+
+
+const uploadOtherDoc = async (req, resp,next) => {  
+    const file = req.file;
+    if(!file){
+      return next("no file found")
+    }
+    resp.json({Company_Other_Doc_Url: `/other/images/${req.file.filename}`})
+  }
+
+ 
 
 
           
@@ -924,6 +1005,14 @@ module.exports ={
     getCompany_Type,
     getCompany_category,
     getdistrict,
-    getblock
+    getblock,
+
+
+    fileupload,
+    getfiles,
+    uploadLogo,
+    uploadBroucher,
+    uploadOtherDoc
+
     
 }

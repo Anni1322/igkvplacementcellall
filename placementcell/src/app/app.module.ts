@@ -130,6 +130,8 @@ import { CSRejectComponent } from './components/company/c-s-reject/c-s-reject.co
 import { CSApplicationActionComponent } from './components/company/c-s-application-action/c-s-application-action.component';
 import { ACompanyViewComponent } from './components/admin/a-company-view/a-company-view.component';
 import { AStudentViewComponent } from './components/admin/a-student-view/a-student-view.component';
+import { CFileuploadComponent } from './components/company/c-fileupload/c-fileupload.component';
+import { TopheaderComponent } from './componets/prac/topheader/topheader.component';
 
 
  
@@ -215,6 +217,8 @@ import { AStudentViewComponent } from './components/admin/a-student-view/a-stude
       CSApplicationActionComponent,
       ACompanyViewComponent,
       AStudentViewComponent,
+      CFileuploadComponent,
+      TopheaderComponent,
      
      
 
