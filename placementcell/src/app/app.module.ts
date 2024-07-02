@@ -130,8 +130,14 @@ import { CSRejectComponent } from './components/company/c-s-reject/c-s-reject.co
 import { CSApplicationActionComponent } from './components/company/c-s-application-action/c-s-application-action.component';
 import { ACompanyViewComponent } from './components/admin/a-company-view/a-company-view.component';
 import { AStudentViewComponent } from './components/admin/a-student-view/a-student-view.component';
+<<<<<<< HEAD
 import { CFileuploadComponent } from './components/company/c-fileupload/c-fileupload.component';
 import { TopheaderComponent } from './componets/prac/topheader/topheader.component';
+=======
+import { SVacancyNextroundApplyComponent } from './components/student/s-vacancy-nextround-apply/s-vacancy-nextround-apply.component';
+import { CommonModule } from '@angular/common';
+//import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+>>>>>>> 07e1586e00a1079bd01fa8f1971e118034593ac0
 
 
  
@@ -217,8 +223,13 @@ import { TopheaderComponent } from './componets/prac/topheader/topheader.compone
       CSApplicationActionComponent,
       ACompanyViewComponent,
       AStudentViewComponent,
+<<<<<<< HEAD
       CFileuploadComponent,
       TopheaderComponent,
+=======
+      SVacancyNextroundApplyComponent,
+   
+>>>>>>> 07e1586e00a1079bd01fa8f1971e118034593ac0
      
      
 
@@ -265,7 +276,8 @@ import { TopheaderComponent } from './componets/prac/topheader/topheader.compone
 
     MatDatepickerModule,
     MatNativeDateModule,
-    
+    CommonModule,
+   // FontAwesomeModule
    
     
 

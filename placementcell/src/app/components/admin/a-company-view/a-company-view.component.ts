@@ -9,9 +9,8 @@ import { AdminService } from '../service/admin.service';
 export class ACompanyViewComponent implements OnInit{
   displayedColumns: string[] = [
     'position', 'Company_Id', 'Company_Registration_No', 'Company_Name', 
-     'Company_Email', 'Company_Phone_No', 
-    'Hr_Name', 'Hr_Contact_No', 'Hr_Email', 
-    'Address', 'Website'
+    'Company_Email', 'Company_Phone_Number','Hr_Name', 'Hr_Contact_No',
+    'Hr_Email', 'Address', 'Website'
   ];
   dataSource: any[] = [];
 
@@ -20,6 +19,7 @@ export class ACompanyViewComponent implements OnInit{
   ngOnInit(): void {
     this.adminservice.getAllCompany().subscribe(data => {
       this.dataSource = data;
+      console.log(data);
     });
   }
 }

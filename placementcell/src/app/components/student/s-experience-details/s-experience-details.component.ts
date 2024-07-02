@@ -14,6 +14,7 @@ export class SExperienceDetailsComponent implements OnInit{
   constructor(private fb:FormBuilder, private Stuedentservice:StudentService, private studentds:StudentService){ }
   ngOnInit(): void {
     this.experiencedetailsform = this.fb.group({
+      Student_ID: [null],
       Registration_No: [null],
       Organization_Name: [null],
       Post_Name: [null],
@@ -27,12 +28,25 @@ export class SExperienceDetailsComponent implements OnInit{
       Period_To: [null],
       Is_Currently_working_YN: [null],
       Salary: [null],
-      Created_Date: [null],
+      Created_Date: [null]
       
     });
 
     //for master table 
+    const userData = localStorage.getItem('currentUser');
+    console.log("profiledata"+ userData)
 
+    // Check if user data exists
+    if (userData) {
+        // Parse user data from JSON and assign it to the user variable
+        this.user = JSON.parse(userData);
+        this.experiencedetailsform.patchValue({
+          Student_ID:this.user.eid
+        })
+        console.log("idddd"+ this.user.eid)
+        // id pass 
+        // this.getdata(this.user.eid);
+    }
     
 
   }
@@ -68,9 +82,9 @@ export class SExperienceDetailsComponent implements OnInit{
     }
   }
   
-  onClear() {
-    this.experiencedetailsform.reset();
-  }
+  // onClear() {
+  //   this.experiencedetailsform.reset();
+  // }
 
 
 }

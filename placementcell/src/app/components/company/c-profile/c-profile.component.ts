@@ -60,7 +60,7 @@ onSubmit(): void {
 
 
 
-
+//for get the data to the company
 getCompanydata(cid:any) {
   console.log('cID:', cid);
   this.companyds.getCompanyDetails(cid).subscribe(

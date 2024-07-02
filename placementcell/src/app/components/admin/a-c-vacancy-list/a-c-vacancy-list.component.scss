@@ -1,32 +1,24 @@
+
+//for status columns 
 .status-approved {
-    background-color: green;
-    color: white;
+    color: green;
     padding: 5px;
     border-radius: 4px;
   }
   
   .status-rejected {
-    background-color: red;
-    color: white;
+    color: red;
     padding: 5px;
     border-radius: 4px;
   }
   
   .status-pending {
-    background-color: yellow;
-    color: black;
+    color: blue;
     padding: 5px;
     border-radius: 4px;
   }
-  
 
-
-
-
-
-
-
-//   
+//Search field
 .search-form-field {
   border: 1px solid #3aaaff;
   border-radius: 4px;

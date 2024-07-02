@@ -40,7 +40,7 @@ export class SAplicationComponent implements OnInit  {
       Mother_Name_E: [null],
       Father_Name_H: [null],
       Mother_Name_H: [null],
-      Gaurdian_Name_E: [null],
+      Guardian_Name_E: [null],
       Spouse_Name_E: [null],
 
       Created_By: [null],
@@ -96,19 +96,23 @@ export class SAplicationComponent implements OnInit  {
         console.log('studentdetails details:', this.studentdetails);
         
         this.studentregistrationForm.patchValue({
+          Salutation_E:this.studentdetails.Salutation_E,
           Student_First_Name_E: this.studentdetails.Student_First_Name_E,
           Student_Middle_Name_E: this.studentdetails.Student_Middle_Name_E,
           Student_Last_Name_E: this.studentdetails.Student_Last_Name_E,
+          Salutation_H:this.studentdetails.Salutation_H,
           Student_First_Name_H: this.studentdetails.Student_First_Name_H,
           Student_Middle_Name_H: this.studentdetails.Student_Middle_Name_H,
           Student_Last_Name_H: this.studentdetails.Student_Last_Name_H,
           Email_Id:this.studentdetails.Email_Id,
+          DOB:this.studentdetails.DOB,
           Mobile_No:this.studentdetails.Mobile_No,
+          Gender_Id:this.studentdetails.Gender_Id,
           Father_Name_E:this.studentdetails.Father_Name_E ,
           Mother_Name_E:this.studentdetails.Mother_Name_E,
           Father_Name_H:this.studentdetails.Father_Name_H ,
           Mother_Name_H:this.studentdetails.Mother_Name_H,
-          Gaurdian_Name_E:this.studentdetails.Gaurdian_Name_E ,
+          Guardian_Name_E:this.studentdetails.Guardian_Name_E ,
           Spouse_Name_E:this.studentdetails.Spouse_Name_E,
         });
 

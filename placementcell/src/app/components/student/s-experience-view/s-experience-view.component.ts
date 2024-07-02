@@ -11,7 +11,7 @@ export class SExperienceViewComponent implements OnInit{
   displayedColumns: string[] = [
     'S.no', 'Registration_No', 'Organization_Name', 'Post_Name', 'WorkPlace_Address',
     'WorkPlace_District_Id', 'WorkPlace_State_Id', 'WorkPlace_Country_Id', 'City_Name',
-    'Description', 'Period_Form', 'Period_To', 'Is_Currently_Working_YN', 'Salary'
+    'Description', 'Period_From', 'Period_To', 'Is_Currently_working_YN', 'Salary'
   ];
   dataSource = new MatTableDataSource();
 

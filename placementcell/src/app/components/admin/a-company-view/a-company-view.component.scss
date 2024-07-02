@@ -1,80 +1,75 @@
 .demo-table {
   width: 100%;
-  overflow: auto;
   border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 0.875rem;
-  min-width: 400px;
+  font-family: 'Arial, sans-serif';
+  margin: 30px 0;
+  font-size: 0.9rem;
 
   th, td {
-    padding: 2px 3px;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
     text-align: left;
   }
 
   th {
-    background-color: #f4f4f4;
-    color: #333;
-    font-weight: bold;
-    border-bottom: 1px solid #ddd;
-  }
-
-  td {
-    border-bottom: 1px solid #ddd;
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #343a40;
   }
 
   tr:nth-of-type(even) {
-    background-color: #f9f9f9;
+    background-color: #f8f9fa;
   }
 
   tr:hover {
-    background-color: #f1f1f1;
+    background-color: #e9ecef;
   }
 
-  /* Responsive design */
-  @media (max-width: 1200px) {
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
     th, td {
-      font-size: 0.75rem;
-      padding: 5px 8px;
+      padding: 6px 8px;
+      font-size: 0.8rem;
     }
   }
 
-  @media (max-width: 960px) {
-    th, td {
-      font-size: 0.7rem;
-      padding: 4px 6px;
-    }
-  }
-
-  @media (max-width: 600px) {
-    display: block;
-
+  /* Mobile Optimization: Collapsible rows */
+  @media screen and (max-width: 480px) {
     th, td {
       display: block;
-      text-align: left;
       width: 100%;
       box-sizing: border-box;
     }
 
     th {
-      background: #f4f4f4;
+      background-color: transparent;
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    tr {
+      margin-bottom: 10px;
+      display: block;
+      border: 1px solid #ddd;
     }
 
     td {
+      display: flex;
+      justify-content: space-between;
       padding-left: 50%;
       position: relative;
+      text-align: right;
+      border: none;
     }
 
-    td::before {
+    td:before {
       content: attr(data-label);
       position: absolute;
-      left: 0;
-      width: 50%;
-      padding-left: 10px;
-      font-weight: bold;
-      background-color: #f4f4f4;
-      height: 100%;
-      display: flex;
-      align-items: center;
+      left: 10px;
+      width: calc(50% - 20px);
+      text-align: left;
+      font-weight: 600;
     }
   }
 }

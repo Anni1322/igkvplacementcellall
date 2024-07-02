@@ -1,16 +1,137 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-table {
-    width: 100%;
+// table {
+//     width: 100%;
+//   }
+
+//   .mat-table-wrapper {
+//     box-shadow: 0 4px 8px rgba(225, 225, 225, 0.1); /* Adjust the values as needed */
+//     border-radius: 8px; /* Optional: Adds rounded corners */
+//     overflow: hidden; /* Optional: Ensures shadow is not clipped */
+//   }
+  
+//   .mat-table {
+//     width: 100%; /* Ensure table takes full width of its container */
+//     /* Additional styles can be applied here */
+//   }
+
+
+.container {
+  margin-top: 1rem;
+
+  h2 {
+    margin-bottom: 1rem;
   }
 
-  .mat-table-wrapper {
-    box-shadow: 0 4px 8px rgba(225, 225, 225, 0.1); /* Adjust the values as needed */
-    border-radius: 8px; /* Optional: Adds rounded corners */
-    overflow: hidden; /* Optional: Ensures shadow is not clipped */
+  .form-group {
+    margin-bottom: 1rem;
+    .mat-form-field {
+      width: 100%;
+    }
   }
-  
-  .mat-table {
-    width: 100%; /* Ensure table takes full width of its container */
-    /* Additional styles can be applied here */
+
+  #print-section {
+    .mat-elevation-z8 {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th, td {
+        padding: 0.8rem;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f1f1f1;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+
+      td {
+        &:last-child {
+          text-align: center;
+        }
+
+        &.badge {
+          background-color: #007bff;
+          color: white;
+          border-radius: 0.25rem;
+          padding: 0.25rem 0.5rem;
+          display: inline-block;
+        }
+      }
+
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+
+      .mat-row {
+        &.mat-no-data-row {
+          td {
+            text-align: center;
+            font-style: italic;
+            color: #999;
+          }
+        }
+      }
+    }
   }
+
+  .btn {
+    margin-top: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    .form-group {
+      .mat-form-field {
+        width: 100%;
+      }
+    }
+
+    #print-section {
+      table {
+        th, td {
+          padding: 0.5rem;
+        }
+        td {
+          display: block;
+          width: 100%;
+          box-sizing: border-box;
+          text-align: right;
+          &::before {
+            content: attr(data-label);
+            float: left;
+            font-weight: bold;
+            text-transform: capitalize;
+          }
+          &.badge {
+            display: inline-block;
+            //float: right;
+          }
+        }
+        tr {
+          display: block;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}

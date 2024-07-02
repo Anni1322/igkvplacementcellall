@@ -104,12 +104,26 @@ getskill(): Observable<any> {
   return this.http.get<any>(`${this.apiUrl}/student/getskill`);
 }
 
+getskillid(eid: any){
+  console.log('service'  ,eid);
+  return this.http.post<any>(`${this.apiUrl}/student/getskillid`, { eid });
+}
+
 getexperience(): Observable<any>{
   return this.http.get<any>(`${this.apiUrl}/student/getexperience`);
 }
 
+getexperienceid(eid: any) {
+  return this.http.post<any>(`${this.apiUrl}/student/getexperienceid`, { eid });
+}
+
+
 getacademic(): Observable<any>{
   return this.http.get<any>(`${this.apiUrl}/student/getacademic`);
+}
+
+getacademicid(eid: any){
+  return this.http.post<any>(`${this.apiUrl}/student/getacademicid`, { eid });
 }
 
 }
