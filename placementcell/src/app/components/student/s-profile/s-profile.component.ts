@@ -19,9 +19,9 @@ export class SProfileComponent implements OnInit{
   studentdetails:any;
   studentservice: any;
 
-  //skills: any;
+  Skills: any;
  
-  //experience: any;
+  Experience: any;
 
 
  
@@ -54,11 +54,11 @@ export class SProfileComponent implements OnInit{
           console.log("idddd"+ this.user.eid)
           // id pass 
           // this.getdata(this.user.eid);
-          //this.getskill(this.user.eid) 
+          this.getskill(this.user.eid) 
 
           //this.getacademic(this.user.eid)
 
-          // this.getexperience(this.user.eid)
+          this.getexperience(this.user.eid)
       }
 
       // get id form param
@@ -124,16 +124,16 @@ export class SProfileComponent implements OnInit{
 
 
 //for skills details
-  // getskill(eid:any){
-  //   console.log( 'skill id', eid)
-  //    this.ds.getskillid(eid).subscribe(
-  //     (response) => {
-  //       this.skills = response;
-  //       console.log('skills details:', this.skills);
+  getskill(eid:any){
+    console.log( 'skill id', eid)
+     this.ds.getskillid(eid).subscribe(
+      (response) => {
+        this.Skills = response;
+        console.log('skills details:', this.Skills);
 
-  //     }
-  //   )
-  // }
+      }
+    )
+  }
 
   // async getskill(eid: any) {
   //   console.log('skill id', eid);
@@ -148,16 +148,16 @@ export class SProfileComponent implements OnInit{
   // }
   
 //for experience details
-  // getexperience(eid:any){
-  //   console.log( 'experience id', eid);
-  //   this.ds.getexperienceid(eid).subscribe(
-  //     (response) => {
-  //       this.experience = response;
-  //       console.log('experience details:', this.experience);
+  getexperience(eid:any){
+    console.log( 'experience id', eid);
+    this.ds.getexperienceid(eid).subscribe(
+      (response) => {
+        this.Experience = response;
+        console.log('experience details:', this.Experience);
 
-  //     }
-  //   )
-  // }
+      }
+    )
+  }
 
   // async getexperience(eid: any) {
   //   try {

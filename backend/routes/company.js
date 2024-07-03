@@ -58,6 +58,10 @@ companyRouter.post('/getdata_All_Company_id',companyController.getdata_All_Compa
 // added by roshni
 companyRouter.get('/', companyController.getAllCompany);
 
+
+//companyRouter.post('/getdata_update_vacancyNext', companyController.UpdateNextjobdataget);
+
+
 // companyRouter.post('/registerCompany', 
 // upload.fields([
 //     { name: 'Company_Logo_Url', maxCount: 1 },

@@ -75,6 +75,7 @@ import { CSSelectedComponent } from './components/company/c-s-selected/c-s-selec
 import { CSRejectComponent } from './components/company/c-s-reject/c-s-reject.component';
 import { AStudentViewComponent } from './components/admin/a-student-view/a-student-view.component';
 import { ACompanyViewComponent } from './components/admin/a-company-view/a-company-view.component';
+import { SVacancyNextroundApplyComponent } from './components/student/s-vacancy-nextround-apply/s-vacancy-nextround-apply.component';
 
 
  
@@ -145,6 +146,7 @@ const routes: Routes = [
     {path:'skill-view', component:SSkillViewComponent},
     {path:'experience-view', component:SExperienceViewComponent},
     {path:'academic-view', component:SAcademicViewComponent},
+    {path:'s-vacancy-nextround-apply', component:SVacancyNextroundApplyComponent},
   ]},
  
 

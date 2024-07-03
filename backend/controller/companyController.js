@@ -281,6 +281,36 @@ const Updatejobdataget = async (req, res) => {
 };
 
 
+//
+// const UpdateNextjobdataget = async (req, res) => {
+//     const { Vacancy_ID } = req.body;
+
+//     if (!Vacancy_ID) {
+//         return res.status(400).json({ error: 'Vacancy_ID is required' });
+//     }
+
+//     try {
+//         const pool = await sql.connect(/* your database config */);
+//         const request = pool.request();
+//         request.input('Vacancy_ID', sql.VarChar(50), Vacancy_ID);
+
+//         const query = 'SELECT * FROM dbo.tnp_vacancy_details WHERE Vacancy_ID = @Vacancy_ID';
+//         console.log('Executing query:', query, 'with Vacancy_ID:', Vacancy_ID);
+
+//         const result = await request.query(query);
+
+//         if (result.recordset.length > 0) {
+//             res.json(result.recordset[0]);
+//         } else {
+//             return res.status(404).json({ error: 'vacancy not found' });
+//         }
+//     } catch (error) {
+//         console.error('Error checking existence in SQL Server: ', error);
+//         return res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// };
+
+
 const getdata_All_Company_id = async (req, res) => {
     const { Company_Id } = req.body;
     // Company_Id = "COM04"
@@ -924,6 +954,8 @@ module.exports ={
     getCompany_Type,
     getCompany_category,
     getdistrict,
-    getblock
+    getblock,
+
+    //UpdateNextjobdataget
     
 }

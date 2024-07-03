@@ -40,3 +40,41 @@ main{
       }
     }
   }
+  .about {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #0a2e87; /* Adjust background color to match the one in the image */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+  
+  .official {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.official img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.info {
+    margin-top: 10px;
+}
+
+.info h2 {
+    font-size: 18px;
+    color: #003399; /* Adjust text color to match the one in the image */
+    margin: 10px 0 5px;
+}
+
+.info p {
+    font-size: 14px;
+    color: #003399; /* Adjust text color to match the one in the image */
+}

@@ -1,4 +1,146 @@
-<section style="background-color: #eee;">
+
+<div class="container">
+  <div class="row">
+      <div class="col-lg-4 col-xl-4">
+          <div class="card-box text-center">
+              <img src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
+  
+              <h4 class="mb-0">{{user.username}}</h4>
+              <p class="text-muted">{{user.eid}}</p>
+  
+              <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light" routerLink="/student/s-basic-details">Update</button>
+            <!--Basic information-->
+              <div class="text-left mt-3">
+                  <h4 class="font-13 text-uppercase">About Me :</h4>
+                 
+                  <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ml-2">{{studentdetails?.Student_First_Name_E}}</span></p>
+  
+                  <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ml-2">{{studentdetails?.Mobile_No}}</span></p>
+  
+                  <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ml-2 ">{{studentdetails?.Email_Id}}</span></p>
+  
+                  <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ml-2"></span></p>
+              </div>
+  
+              <ul class="social-list list-inline mt-3 mb-0">
+                  <li class="list-inline-item">
+                      <a href="javascript: void(0);" class="social-list-item border-purple text-purple"><i class="fab fa-facebook"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="fab fa-google"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="fab fa-twitter"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="fab fa-github"></i></a>
+                  </li>
+              </ul>
+          </div> <!-- end card-box -->
+          <!--Skill details-->
+          <div class="card-box">
+              <h2 class="header-title">SKILLS</h2>
+              <button class="btn btn-primary" routerLink="/student/s-skill-details">Add</button>
+              <ng-container *ngIf="Skills">
+              <mat-card class="mat-elevation-z8 demo-card">
+                <mat-card-content >
+                  <p><strong>Registration No:</strong> {{Skills.Registration_No}}</p>
+                  <p><strong>Skill ID:</strong> {{Skills.Skill_Id}}</p>
+                  <p><strong>Skill Certificate URL:</strong> {{Skills.Skill_Certificate_Url}}</p>
+                </mat-card-content>
+              </mat-card>
+            </ng-container>
+              
+          </div> <!-- end card-box-->
+          
+      </div> <!-- end col-->
+      
+      <div class="col-lg-8 col-xl-8">
+          <div class="card-box">
+              <ul class="nav nav-pills navtab-bg">
+                  <li class="nav-item">
+                      <a href="#about-me" data-toggle="tab" aria-expanded="true" class="nav-link ml-0 active">
+                          <i class="mdi mdi-face-profile mr-1"></i>Basic Information
+                      </a>
+                  </li>
+              </ul>
+            
+              <div class="tab-content">
+                  
+                  <div class="tab-pane show active" id="about-me">
+                    <!--Experience details-->
+                  
+                      <h2 class="mb-4 text-uppercase"><i class="fa-solid fa-briefcase"></i>
+                          EXPERIENCES</h2>
+                      <button class="btn btn-primary" routerLink="/student/s-experience-details">Add</button>
+  
+                      <ul class="list-unstyled timeline-sm">
+                          <li class="timeline-sm-item" *ngIf="Experience">
+                              <span class="timeline-sm-date"><strong>Reg.No:</strong>{{Experience.Registration_No}}</span>
+                             <!-- <h5 class="mt-0 mb-1">Lead designer / Developer</h5>-->
+                              <p><strong>Organization Name: </strong>{{Experience.Organization_Name}}</p>
+                              <p><strong>Post Name: </strong>{{Experience.Post_Name}}</p>
+                              <p><strong>Workplace Address: </strong>{{Experience.WorkPlace_Address}}</p>
+                              <p class="text-muted mt-2">Everyone realizes why a new common language
+                                  would be desirable: one could refuse to pay expensive translators.
+                                  To achieve this, it would be necessary to have uniform grammar,
+                                  pronunciation and more common words.</p>
+  
+                          </li>
+                          
+                      </ul>
+                      <!--Academic details-->
+                      <h2 class="mb-3 mt-4 text-uppercase"><i class="fa-solid fa-book"></i>
+                          ACADEMIC DETAILS</h2>
+                      <button class="btn btn-primary" routerLink="/student/s-academic-details">Add</button>
+                      <div class="table-responsive">
+                          <table class="table table-borderless mb-0">
+                              <thead class="thead-light">
+                                  <tr>
+                                      <th>Subject Id</th>
+                                      <th>Registration No</th>
+                                      <th>Degree program type</th>
+                                      <th>Student enroll id</th>
+                                      <th>College Name</th>
+                                      <th>marksheetUrl</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                    <td><span class="badge badge-info">igkv04</span></td>
+                                      <td>12546</td>
+                                      <td>Ug</td>
+                                      <td>25463</td>
+                                      <td>SG College</td>
+                                      <td>Marksheet.com</td>
+                                  </tr>
+                                  
+  
+                              </tbody>
+                          </table>
+                      </div>
+  
+                  </div>
+                  <!-- end timeline content-->
+  
+                  
+                    
+                  </div>
+                 
+  
+              </div> <!-- end tab-content -->
+          </div> <!-- end card-box-->
+  
+      </div> <!-- end col -->
+  </div>
+
+
+
+
+
+
+
+<!--<section style="background-color: #eee;">
   <div class="container ">
     <div class="row">
       <div class="col">
@@ -25,7 +167,7 @@
             <div class="d-flex justify-content-center mb-2">
 
 
-              <a href="student/s-basic-details" class="btn btn-primary">Update</a>
+              <a href="student/s-basic-details" class="btn btn-primary">Update</a>-->
 
               <!-- <a   routerLink="/student/s-basic-details-edit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Update</a> -->
               <!-- <a   [routerLink]="'/student/s-basic-details-edit/' + user.eid" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary">Update</a> -->
@@ -34,7 +176,7 @@
 
               <!-- <button  type="button" routerLink="student/s-basic-details-edit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary"></button> -->
               <!-- <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary ms-1">Message</button> -->
-            </div>
+           <!--</div>
           </div>
         </div>
         <div class="card mb-4 mb-lg-0">
@@ -63,7 +205,7 @@
             </ul>
           </div>
           
-        </div>
+        </div>-->
         <!--  
         <div class="card mb-4 mb-lg-0 mt-2">
         <div class="card-body ">
@@ -87,7 +229,7 @@
       </div>
     </div>-->
         
-      </div>
+     <!--<div>
       <div class="col-lg-8">
         <div class="card mb-4">
           <div class="card-body">
@@ -138,7 +280,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!--<div class="row">
           <div class="col-md-6">
             <div class="card mb-4 mb-md-0">
@@ -195,7 +337,7 @@
                 </div>
               </div>-->
 
-              <div class="row mb-6">
+             <!-- <div class="row mb-6">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Skill Details</h4>
@@ -231,7 +373,7 @@
             </div>
           </div>
        
-</section>
+</section>-->
 
 
 

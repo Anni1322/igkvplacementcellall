@@ -57,6 +57,9 @@ VacancyApply(data:any){
   return this.http.post<any>(`${this.baseurl}/student/VacancyApply` ,data);
 }
 
+getVacancyNextdata(Vacancy_ID: string): Observable<any> {
+  return this.http.post<any>(`${this.baseurl}/company/getdata_update_vacancyNext`, { Vacancy_ID })
+}
 
 //added by roshni
 //postCompanyDetails(formValue: any): Observable<any> {

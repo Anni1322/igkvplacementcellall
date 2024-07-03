@@ -11,6 +11,12 @@ export class SAcademicDetailsComponent  implements OnInit {
   academicDetailsForm!: FormGroup;
   admissionyear: any;
   user: any;
+  college: any;
+  DegreeType: any;
+  DegreeProgram: any;
+  Subject: any;
+  AdmissionSession: any;
+  PassingYear: any;
 
   constructor(private fb: FormBuilder , private studentds:StudentService) { }
 
@@ -44,20 +50,110 @@ export class SAcademicDetailsComponent  implements OnInit {
     
    
   }
+
+  //for college name
+  this.studentds.getCollege().subscribe(
+    (response) => {
+      //console.log('Raw response: ', response);
+      this.college = response;
+      console.log('college details:', this.college);
+    },
+    (error) => {
+      console.log('Error: ', error);
+    }
+  );
+
+  //
+  this.studentds.getDegreeType().subscribe(
+    (response) => {
+      this.DegreeType = response;
+      console.log('Degree type details: ', this.DegreeType);
+    },
+    (error) => {
+      console.log('Error: ', error);
+    }
+  );
+
+  this.studentds.getDegreeProgram().subscribe(
+    (response) => {
+      this.DegreeProgram = response;
+      console.log('Degree program details: ', this.DegreeProgram);
+    },
+    (error) => {
+      console.log('Error: ', error);
+    }
+  );
+
+  this.studentds.getSubject().subscribe(
+    (response) => {
+      this.Subject = response;
+      console.log('Subject details: ', this.Subject);
+    },
+    (error) => {
+      console.log('Error: ', error);
+    }
+  );
+
+  this.studentds.getAdmissionyear().subscribe(
+    (response) => {
+      this.AdmissionSession = response;
+      console.log('Admission year details: ', this.AdmissionSession);
+    },
+    (error) => {
+      console.log('Error: ', error);
+    }
+  );
+
+  this.studentds.getPassingOutYear().subscribe(
+    (response) => {
+      this.PassingYear = response;
+      console.log('Passing out year details: ', this.PassingYear);
+    },
+    (error) => {
+      console.log('Error: ', error);
+    }
+  );
+
+
 }
 
   //submit form
-  onSubmit(): void {
-    console.log(this.academicDetailsForm.value);
-    const formdata = this.academicDetailsForm.value
-    this.studentds.postAcademicDetails(formdata).subscribe(() => {
-      alert('Form submitted successfully!');
-      // form.reset(); // Reset the form after successful submission
-    }, (error) => {
-      console.error('Error submitting form:', error);
-    }
-    );
+  // onSubmit(): void {
+  //   console.log(this.academicDetailsForm.value);
+  //   const formdata = this.academicDetailsForm.value
+  //   this.studentds.postAcademicDetails(formdata).subscribe(() => {
+  //     alert('Form submitted successfully!');
+  //     // form.reset(); // Reset the form after successful submission
+  //   }, (error) => {
+  //     console.error('Error submitting form:', error);
+  //   }
+  //   );
 
+  // }
+
+  onSubmit(): void {
+    if (this.academicDetailsForm.valid) {
+      console.log('Form Submitted!', this.academicDetailsForm.value);
+      // form submission here
+      const userData = this.academicDetailsForm.value
+      this.studentds.postAcademicDetails(userData).subscribe(
+        () => {
+          alert('Form submitted successfully!');
+          this.academicDetailsForm.reset(); 
+        },
+        (error) => {
+          console.error('Error submitting form:', error);
+          // Display a more user-friendly message
+          // alert('.');
+          // Optionally, handle specific error scenarios based on status code
+          if (error.status === 500) {
+            console.error('Internal Server Error: Please contact support.');
+          } else {
+            console.error(`Error: ${error.message}`);
+          }
+        }
+      );
+    }
   }
 
   

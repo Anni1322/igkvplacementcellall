@@ -24,7 +24,7 @@ export class CSRejectComponent implements OnInit, AfterViewInit {
     'Application_Submission_Date', 
     'Full_Name', 
     'Post_Name', 
-    'Fathers_Name', 
+   // 'Fathers_Name', 
     'Email', 
     'Mobile', 
     'Status', 
@@ -168,7 +168,7 @@ export interface StudentApplicationDetails {
   Application_Submission_Date?: Date;  // Optional with default value
   Full_Name?: string;
   Post_Name?: string;
-  Fathers_Name?: string;
+ // Fathers_Name?: string;
   Email?: string;
   Mobile?: string;
   Status?: string;  // Optional with default value

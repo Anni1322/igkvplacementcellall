@@ -96,16 +96,12 @@ postAcademicDetails(data: any){
   return this.http.post<any>(`${this.apiUrl}/student/AcademicDetails`, data);
 }
 
-getAdmissionyear(){
-  return this.http.get(`${this.apiUrl}/student/admissionyear`);
-}
-
 getskill(): Observable<any> {
   return this.http.get<any>(`${this.apiUrl}/student/getskill`);
 }
 
 getskillid(eid: any){
-  console.log('service'  ,eid);
+ // console.log('service'  ,eid);
   return this.http.post<any>(`${this.apiUrl}/student/getskillid`, { eid });
 }
 
@@ -124,6 +120,30 @@ getacademic(): Observable<any>{
 
 getacademicid(eid: any){
   return this.http.post<any>(`${this.apiUrl}/student/getacademicid`, { eid });
+}
+
+getDegreeProgram(){
+  return this.http.get(`${this.apiUrl}/student/getDegree_program`);
+}
+
+getDegreeType() {
+  return this.http.get(`${this.apiUrl}/student/getDegree_type`);
+}
+
+getSubject() {
+  return this.http.get(`${this.apiUrl}/student/getSubjects`);
+}
+
+getAdmissionyear(){
+  return this.http.get(`${this.apiUrl}/student/admissionyear`);
+}
+
+getCollege() {
+  return this.http.get(`${this.apiUrl}/student/college`);
+}
+
+getPassingOutYear() {
+  return this.http.get(`${this.apiUrl}/student/passingoutyear`);
 }
 
 }

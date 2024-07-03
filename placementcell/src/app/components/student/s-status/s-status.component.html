@@ -78,7 +78,7 @@
                 <td>{{ application.Status }}</td>
                 <td>
                     <ng-container *ngIf="application.Status === 'Short Listed'; else blankCell">
-                        <a href="#">Application fill</a>
+                        <a href="#" routerLink="/student/s-vacancy-nextround-apply">Application fill</a>
                     </ng-container>
                     <ng-container *ngIf="application.Status === 'Not Seleted'; else blankCell">
                         <a href="#"> See Reason</a>

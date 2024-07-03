@@ -63,8 +63,11 @@ export class CSidebarComponent implements OnInit {
 
 // logout 
 logout() {
+  const confirmation = confirm("Are you sure you want to logout?");
+  if (confirmation) {
   this.auth.logout();
   this.router.navigate(['/login']);
+}
 }
 // logout end
 }

@@ -14,7 +14,7 @@
                             <h5 class="ms-1 mt-1 text-white"><b>Basic Information / मूलभूत जानकारी</b></h5>
                         </div>
                         
-                        <form [formGroup]="companyregistrationForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+                        <form [formGroup]="companyregistrationForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data" autocomplete="off">
                             
                         <mat-stepper #stepper>
                             <mat-step [stepControl]="companyregistrationForm" >
