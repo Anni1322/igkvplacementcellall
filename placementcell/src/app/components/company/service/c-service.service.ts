@@ -97,6 +97,22 @@ getblock(){
   return this.http.get(`${this.baseurl}/company/block`);
 }
 
+
+
+ 
+getFiles(): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/fileupload`);
+}
+
+
+
+
+
+
+
+
+
+
 // for side bar
   private sidebarVisibilitySubject = new BehaviorSubject<boolean>(true);
   sidebarVisibility$ = this.sidebarVisibilitySubject.asObservable();

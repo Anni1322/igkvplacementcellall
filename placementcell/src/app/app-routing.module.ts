@@ -75,7 +75,12 @@ import { CSSelectedComponent } from './components/company/c-s-selected/c-s-selec
 import { CSRejectComponent } from './components/company/c-s-reject/c-s-reject.component';
 import { AStudentViewComponent } from './components/admin/a-student-view/a-student-view.component';
 import { ACompanyViewComponent } from './components/admin/a-company-view/a-company-view.component';
+import { TopheaderComponent } from './componets/prac/topheader/topheader.component';
 import { SVacancyNextroundApplyComponent } from './components/student/s-vacancy-nextround-apply/s-vacancy-nextround-apply.component';
+import { CFileuploadComponent } from './components/company/c-fileupload/c-fileupload.component';
+
+
+
 
 
  
@@ -115,6 +120,9 @@ const routes: Routes = [
   {path:'forninput', component:ForminputComponent},
   {path:'fileupload', component:FileuploadComponent},
 
+
+ {path:'cap', component:CaptchacodeComponent},
+ {path:'tophead', component:TopheaderComponent},
  
 
 // header
@@ -167,6 +175,8 @@ const routes: Routes = [
     {path:'s-shortlist', component:CSShortlistComponent},
     {path:'s-interviewlist', component:CSCallInterviewComponent},
     {path:'s-selected', component:CSSelectedComponent},
+
+    {path:'c-uploads', component:CFileuploadComponent},
 
   
   ]},
