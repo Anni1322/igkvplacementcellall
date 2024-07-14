@@ -127,12 +127,13 @@ router.post('/AcademicDetails', studentController.AcademicDetails);
 router.get('/admissionyear', studentController.Admissionyear);
 
 router.get('/getskill', studentController.getSkill);
-router.post('/getskillid', studentController.getSkillId);
+router.post('/getskillid', studentController.getSkills);
 
 router.get('/getexperience', studentController.getExperience);
 router.post('/getexperienceid', studentController.getExperienceId);
 
-//router.get('/getacademic', studentController.getacademic);
+router.get('/getacademic', studentController.getAcademic);
+router.post('/AcademicId', studentController.getAcademicId);
 
 
 router.get('/college', studentController.College);

@@ -100,7 +100,7 @@ getskill(): Observable<any> {
   return this.http.get<any>(`${this.apiUrl}/student/getskill`);
 }
 
-getskillid(eid: any){
+getSkills(eid: any){
  // console.log('service'  ,eid);
   return this.http.post<any>(`${this.apiUrl}/student/getskillid`, { eid });
 }
@@ -118,8 +118,8 @@ getacademic(): Observable<any>{
   return this.http.get<any>(`${this.apiUrl}/student/getacademic`);
 }
 
-getacademicid(eid: any){
-  return this.http.post<any>(`${this.apiUrl}/student/getacademicid`, { eid });
+getAcademicId(eid: any){
+  return this.http.post<any>(`${this.apiUrl}/student/AcademicId`, { eid });
 }
 
 getDegreeProgram(){

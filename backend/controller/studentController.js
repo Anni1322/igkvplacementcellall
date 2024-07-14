@@ -2113,10 +2113,10 @@ const SkillDetails = async (req, res) => {
     try {
       // Create a new connection
       var request = new sql.Request();
-        request.input('Student_ID', sql.VarChar, Student_ID)
-        request.input('Registration_No', sql.VarChar, Registration_No)
-        request.input('Skill_Id', sql.VarChar, Skill_Id)
-        request.input('Skill_Cetificate_Url', sql.VarChar, Skill_Cetificate_Url)
+        request.input('Student_ID', sql.VarChar(50), Student_ID)
+        request.input('Registration_No', sql.VarChar(50), Registration_No)
+        request.input('Skill_Id', sql.Int, Skill_Id)
+        request.input('Skill_Cetificate_Url', sql.VarChar(1000), Skill_Cetificate_Url)
         request.input('Created_Date', sql.Date, Created_Date)
         const result = await request.query(`
           INSERT INTO tnp_student_skills (Student_ID, Registration_No, Skill_Id, Skill_Cetificate_Url, Created_Date)
@@ -2320,11 +2320,11 @@ const SkillDetails = async (req, res) => {
        } 
     };
 
-    const getSkillId = async (req, res) => {
+    const getSkills = async (req, res) => {
         const { eid } = req.body;
-        // if (!eid) {
-        //     return res.status(400).json({ error: 'eid is required' });
-        // }
+        if (!eid) {
+            return res.status(400).json({ error: 'eid is required' });
+        }
         try {
             const request = new sql.Request();
             request.input('eid', sql.VarChar(50), eid);
@@ -2333,7 +2333,7 @@ const SkillDetails = async (req, res) => {
             console.log('Executing query:', query, 'with eid:', eid);
             const result = await request.query(query);
             if (result.recordset.length > 0) {
-                res.json(result.recordset[0]);
+                res.json(result.recordset);  // Send the entire recordset
             } else {
                 return res.status(404).json({ error: 'Student not found' });
             }
@@ -2342,6 +2342,7 @@ const SkillDetails = async (req, res) => {
             return res.status(500).json({ error: 'Internal Server Error' });
         }
     };
+    
 
 //function to fetch data from experience details table
     const getExperience = async (req, res) => {
@@ -2382,7 +2383,7 @@ const SkillDetails = async (req, res) => {
     
             const result = await request.query(query);
             if (result.recordset.length > 0) {
-                res.json(result.recordset[0]);
+                res.json(result.recordset);
             } else {
                 return res.status(404).json({ error: 'Student not found' });
             }
@@ -2391,27 +2392,59 @@ const SkillDetails = async (req, res) => {
             return res.status(500).json({ error: 'Internal Server Error' });
         }
     };
-
+    
    
 // //function to fetch data from academic details table 
-// const getacademic = async (req, res) => {
-//     try {
-//         const request = new sql.Request();
-//         const selectQuery = `SELECT * FROM dbo.tnp_student_academic_details_array;`;
-//         request.query(selectQuery, (err, result) => {
-//             if (err) {
-//                 console.error(err);
-//                 res.status(500).json({ error: 'Error executing the query' });
-//                 return;
-//             }
-//             // Send the fetched records as JSON response
-//             res.status(200).json(result.recordset);
-//         });
-//     } catch (error) {
-//         console.error('Error fetching academic details: ', error);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// };
+const getAcademic = async (req, res) => {
+    try {
+        const request = new sql.Request();
+        const query = 'SELECT * FROM dbo.tnp_student_experience';
+
+        request.query(query, (err, result) => {
+            if (err) {
+                console.error('Error executing the query: ', err);
+                res.status(500).json({ error: 'Error executing the query' });
+                return;
+            }
+            //Send the fetched records as JSON response
+            res.status(200).json(result.recordset);
+        });
+    
+    } catch (error) {
+        console.error( 'Error fetching experience details: ', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+
+    }
+};
+
+
+const getAcademicId = async (req, res) => {
+    const { eid } = req.body;
+
+    if (!eid) {
+        return res.status(400).json({ error: 'eid is required' });
+    }
+
+    try {
+        const request = new sql.Request();
+        request.input('eid', sql.VarChar(50), eid);
+
+        const query = 'SELECT * FROM dbo.tnp_student_academic_details_array WHERE Student_ID = @eid';
+        console.log('Executing query:', query, 'with eid:', eid);
+
+        const result = await request.query(query);
+        if (result.recordset.length > 0) {
+            res.json(result.recordset); // This will return an array of records
+        } else {
+            return res.status(404).json({ error: 'Student not found' });
+        }
+    } catch (error) {
+        console.error('Error checking existence in SQL Server: ', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+
 
 
 
@@ -2483,10 +2516,11 @@ module.exports ={
 
     getSkill,
     getExperience,
-    //getacademic,
+    getAcademic,
 
-    getSkillId,
+    getSkills,
     getExperienceId,
+    getAcademicId,
 
     College,
     PassingOutYear

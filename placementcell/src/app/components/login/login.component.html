@@ -9,7 +9,7 @@
 
       <div class="card loginbg "data-aos="fade-down"  data-aos-duration="2000">
         <div class="signup-container mt-3 ">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
             <div class="form-group">
               <label for="username">Username</label>
               <input type="text" id="username" formControlName="username" required>
