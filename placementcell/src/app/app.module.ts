@@ -138,6 +138,9 @@ import { SliderComponent } from './m-layout/slider/slider.component';
 import { HomemComponent } from './homem/homem.component';
 import { CompanySliderComponent } from './m-layout/company-slider/company-slider.component';
 import { TopStudentSliderComponent } from './m-layout/top-student-slider/top-student-slider.component';
+import { HeaderComponent } from './m-layout/header/header.component';
+import { MHeaderComponent } from './m-layout/m-header/m-header.component';
+import { NotificationComponent } from './notification/notification.component';
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -231,6 +234,9 @@ import { TopStudentSliderComponent } from './m-layout/top-student-slider/top-stu
       HomemComponent,
       CompanySliderComponent,
       TopStudentSliderComponent,
+      HeaderComponent,
+      MHeaderComponent,
+      NotificationComponent,
    
      
      

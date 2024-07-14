@@ -81,6 +81,7 @@ import { CFileuploadComponent } from './components/company/c-fileupload/c-fileup
 import { TopheaderComponent } from './componets/prac/topheader/topheader.component';
 import { CSidebarComponent } from './components/company/c-layout/c-sidebar/c-sidebar.component';
 import { HomemComponent } from './homem/homem.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
  
@@ -116,6 +117,9 @@ const routes: Routes = [
 
   {path:'login', component:LoginComponent},
   {path:'signup', component:SignupComponent},
+  {path:'notification', component:NotificationComponent},
+
+
   {path:'addproduct', component:AddProjectComponent},
   {path:'forninput', component:ForminputComponent},
   {path:'fileupload', component:FileuploadComponent},

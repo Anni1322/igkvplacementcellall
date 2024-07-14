@@ -10,7 +10,9 @@
 }
 
 .menu a {
-  background-color: #e5e5e5;
+  margin-left: 4px;
+  background-color: #FFA934;
+  border: 1px solid rgb(17, 0, 0);
   padding: 8px;
   margin-top: 7px;
   display: block;
@@ -28,22 +30,29 @@
 
 
 .navbar{
-    background-color: #1886E5;
+    // background-color: #1886E5;
     border: 1.8px solid white;
     border-radius: 5px;
+    
  
   }
 .navbar li{
+    margin: 6px;
     float: right;
   }
-  .navbar li a:hover{
+.navbar li a{
+    color: #fff;
+  }
+.navbar li a:hover{
       background-color: #FFA934;
       color: #fff;
       border: 1px solid white;
       border-radius: 5px;
   }
 
- 
+  span{
+  background-color: #FFA934;
+ }
 
 @media only screen and (max-width: 620px) {
   /* For mobile phones: */

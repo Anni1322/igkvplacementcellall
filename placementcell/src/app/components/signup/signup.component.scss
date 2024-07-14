@@ -28,14 +28,58 @@ main{
   
   button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #FFA934;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
   
-  button:hover {
-    background-color: #0056b3;
+  // button:hover {
+  //   background-color: #0056b3;
+  // }
+  
+
+  .signupbg{
+    color: rgb(255, 255, 255);
+    background-image: url('/assets/icons/loginpage.jpg');
+  
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+   
   }
   
+  .form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .form-check-input {
+    margin-right: 10px;
+  }
+  
+
+  .form-group {
+    gap: 1rem; /* Optional: Adds space between buttons */
+  }
+  
+
+.btn{
+margin-left: 5px;
+  // background-color: #fff;
+}
+
+
+  @media only screen and (max-width: 600px) {
+    .signupbg {
+      background-size: cover; /* Adjust as needed */
+      background-position: center;
+    }
+  }
