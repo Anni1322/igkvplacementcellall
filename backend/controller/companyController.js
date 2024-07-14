@@ -965,7 +965,6 @@ const registerCompany = async (req, res) => {
 
 
 
-
 const getcompanyinformation = async (req, res) => {
     const { cid } = req.body;
     // const cid = "COM07"

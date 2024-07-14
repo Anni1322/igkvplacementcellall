@@ -18,7 +18,6 @@ const bodyParser = require('body-parser');
 companyRouter.use(bodyParser.json());
 companyRouter.use(bodyParser.urlencoded({extended:true}))
 
-
 //  Ensure the directory exists
 // const uploadDir = path.join(__dirname, '../public/com');
 // if (!fs.existsSync(uploadDir)) {
