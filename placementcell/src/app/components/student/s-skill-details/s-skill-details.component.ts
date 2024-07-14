@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class SSkillDetailsComponent implements OnInit{
   
   user:any = { };
   skilldetailsform : any;
+  
 
   constructor(private fb:FormBuilder, private StudentService: StudentService){ }
 

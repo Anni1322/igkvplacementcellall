@@ -23,9 +23,9 @@ export class SProfileComponent implements OnInit{
  
   Experience: any;
 
-
+  Academic: any;
  
-  // displayedColumns: string[] = [ 'Admission_Year_Id','College_Name','Degree_Programme_Id','Marksheet_Url'];
+  //displayedColumns: string[] = [ 'Admission_Year_Id','College_Name','Degree_Programme_Id','Marksheet_Url'];
   // dataSource! :  MatTableDataSource<any>;
   // datacontainer: any;
 
@@ -56,7 +56,7 @@ export class SProfileComponent implements OnInit{
           // this.getdata(this.user.eid);
           this.getskill(this.user.eid) 
 
-          //this.getacademic(this.user.eid)
+          this.getAcademic(this.user.eid)
 
           this.getexperience(this.user.eid)
       }
@@ -74,59 +74,13 @@ export class SProfileComponent implements OnInit{
           })
 
    }
-  //   getacademic(eid: any) {
-  //    console.log('academic id', eid)
-  //   this.ds.getacademicid(eid).subscribe(
-  //     (response:[]) => {
-  //       this.academic = response;
-  //       console.log('academic details', this.academic);
-  //     });
-  //   }
-
-//   datacontainer1=[
-//     {'Admission_Year_Id':'2024','College_Name':'kvk','Degree_Programme_Type_Id':'3','Marksheet_Url':'xyz'}
-//   ]
-
-
-//for academic details 
-  // getacademic(eid: any) {
-  //   console.log("academic id", eid);
-  //   // this.ds.getacademicid(eid).subscribe(data => {
-    //   console.log('academic details:', data);
-    //   this.datacontainer = data
-    //   console.log('kh',this.datacontainer);
-      
-//       this.dataSource = new MatTableDataSource(data)
-//       // const academic_data = data;
-//       // if (academic_data) {
-//       //   this.dataSource = new MatTableDataSource(academic_data);
-//       //   console.log('2', this.dataSource);
-//       // }
-//     });
-//  }
-
-  // async getacademic(eid: any) {
-  //   console.log("academic id", eid);
-  //   try {
-  //     const data = await this.ds.getacademicid(eid).toPromise();
-  //     console.log('academic details:', data);
-  //     const academic_data = data;
-  //     if (academic_data) {
-  //       this.dataSource = new MatTableDataSource(academic_data);
-  //       console.log('2', this.dataSource);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error fetching academic details:', error);
-  //     // Additional error handling can be done here if needed
-  //   }
-  // }
-  
+   
 
 
 //for skills details
   getskill(eid:any){
     console.log( 'skill id', eid)
-     this.ds.getskillid(eid).subscribe(
+     this.ds.getSkills(eid).subscribe(
       (response) => {
         this.Skills = response;
         console.log('skills details:', this.Skills);
@@ -135,18 +89,6 @@ export class SProfileComponent implements OnInit{
     )
   }
 
-  // async getskill(eid: any) {
-  //   console.log('skill id', eid);
-  //   try {
-  //     const response = await this.ds.getskillid(eid).toPromise();
-  //     this.skills = response;
-  //     console.log('skills details:', this.skills);
-  //   } catch (error) {
-  //     console.error('Error fetching skill details:', error);
-  //     // You can handle the error further here if needed
-  //   }
-  // }
-  
 //for experience details
   getexperience(eid:any){
     console.log( 'experience id', eid);
@@ -159,19 +101,23 @@ export class SProfileComponent implements OnInit{
     )
   }
 
-  // async getexperience(eid: any) {
-  //   try {
-  //     console.log('experience id', eid);
-  //     const response = await this.ds.getexperienceid(eid).toPromise();
-  //     this.experience = response;
-  //     console.log('experience details:', this.experience);
-  //   } catch (error) {
-  //     console.error('Error fetching experience details:', error);
-  //   }
-  // }
+  //for academic details 
+  getAcademic(eid: any) {
+    console.log('academic id', eid);
+    this.ds.getAcademicId(eid).subscribe(
+      (response) => {
+        this.Academic = response;
+        console.log('Academic details:', this.Academic);
+      },
+      (error) => {
+        console.error('Error fetching academic details:', error);
+      }
+    );
+  }
+ 
   
  
-  //
+  //for profile data
   profiledata:any;
   
   getdata(eid: any) {

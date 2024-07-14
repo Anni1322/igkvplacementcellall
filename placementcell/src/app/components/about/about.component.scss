@@ -1,19 +1,18 @@
 main{
   background-color: #bab9f8b2;
   height: 150%; 
-  // margin-left: 62px;
-  
 
 }
 .container{
   width: 150%;
+
 }
 
 .container-fluid{
    background-color: #3aaaff;
    height: 70px;
    font-size: medium;
-  padding: 1rem;
+   padding: 1rem;
   
 }
 
@@ -44,7 +43,7 @@ main{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #0a2e87; /* Adjust background color to match the one in the image */
+    background-color: #007bff; /* Adjust background color to match the one in the image */
     padding: 20px;
     border-radius: 10px;
 }
@@ -70,11 +69,12 @@ main{
 
 .info h2 {
     font-size: 18px;
-    color: #003399; /* Adjust text color to match the one in the image */
+    color: #0c529d; /* Adjust text color to match the one in the image */
     margin: 10px 0 5px;
 }
 
 .info p {
     font-size: 14px;
-    color: #003399; /* Adjust text color to match the one in the image */
+    color: #0c529d; /* Adjust text color to match the one in the image */
+    margin: 5px;
 }
