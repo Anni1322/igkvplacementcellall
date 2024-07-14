@@ -75,12 +75,12 @@ import { CSSelectedComponent } from './components/company/c-s-selected/c-s-selec
 import { CSRejectComponent } from './components/company/c-s-reject/c-s-reject.component';
 import { AStudentViewComponent } from './components/admin/a-student-view/a-student-view.component';
 import { ACompanyViewComponent } from './components/admin/a-company-view/a-company-view.component';
-import { TopheaderComponent } from './componets/prac/topheader/topheader.component';
+// import { TopheaderComponent } from './componets/prac/topheader/topheader.component';
 import { SVacancyNextroundApplyComponent } from './components/student/s-vacancy-nextround-apply/s-vacancy-nextround-apply.component';
 import { CFileuploadComponent } from './components/company/c-fileupload/c-fileupload.component';
-
-
-
+import { TopheaderComponent } from './componets/prac/topheader/topheader.component';
+import { CSidebarComponent } from './components/company/c-layout/c-sidebar/c-sidebar.component';
+import { HomemComponent } from './homem/homem.component';
 
 
  
@@ -97,8 +97,8 @@ const routes: Routes = [
 
  
  
-  // {path:'', component:CaptchacodeComponent},
-  {path:'', component:HomeComponent},
+  {path:'', component:HomemComponent},
+  {path:'home', component:HomeComponent},
   {path:'admin', component:AdminComponent,children:[
     {path:'company_registration', component:CompanyregistrationComponentComponent},
     {path:'a-dashboard', component:ADashboardComponent},
@@ -119,9 +119,13 @@ const routes: Routes = [
   {path:'addproduct', component:AddProjectComponent},
   {path:'forninput', component:ForminputComponent},
   {path:'fileupload', component:FileuploadComponent},
+  {path:'sidebaree', component:CSidebarComponent},
 
 
- {path:'cap', component:CaptchacodeComponent},
+
+
+
+ {path:'captcha', component:CaptchacodeComponent},
  {path:'tophead', component:TopheaderComponent},
  
 
@@ -154,7 +158,6 @@ const routes: Routes = [
     {path:'skill-view', component:SSkillViewComponent},
     {path:'experience-view', component:SExperienceViewComponent},
     {path:'academic-view', component:SAcademicViewComponent},
-    {path:'s-vacancy-nextround-apply', component:SVacancyNextroundApplyComponent},
   ]},
  
 

@@ -29,6 +29,59 @@ const getVacancyApply = async (req, res) => {
   }
 };
 
+// for admin api 
+// const StudentList = async (req, res) => {
+//   try {
+//     const id = req.body.Company_ID;
+//       const pool = await sql.connect();
+//       const request = pool.request();
+//       const query = `SELECT * FROM tnp_student_application_details WHERE Company_ID = @id`;
+//       const result = await request.query(query);
+//       const records = result.recordset;
+      
+//       // Respond with the fetched records
+//       res.status(200).json(records);
+//   } catch (error) {
+//       console.error('Error fetching student application details:', error);
+//       res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// };
+
+
+
+
+const Student_application_List = async (req, res) => {
+    const { Company_Id } = req.body;
+    // Company_Id = "COM04"
+    // vid = 10
+    // if (!eid) {
+    //     return res.status(400).json({ error: 'eid is required' });
+    // }
+    console.log("com id ",Company_Id)
+    try {
+        const request = new sql.Request();
+        request.input('Company_Id', sql.VarChar(50), Company_Id);
+        const query = 'SELECT * FROM dbo.tnp_student_application_details WHERE Company_Id = @Company_Id';
+       
+        console.log('Executing query:', query, 'with eid:', Company_Id);
+        const result = await request.query(query);
+        if (result.recordset.length > 0) {
+            res.json(result.recordset);
+        } else {
+            return res.status(404).json({ error: 'vacancy not found' });
+        }
+    } catch (error) {
+        console.error('Error checking existence in SQL Server: ', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+
+
+
+
+
+
 
 // for short list
 const getshortlist = async (req, res) => {
@@ -362,6 +415,7 @@ const getstudentdetails = async (req, res) => {
 
 module.exports ={
   getVacancyApply,
+  Student_application_List,
   update_by_adminVacancyApply,
   getVacanciesDetils,
   getstudentdetails,

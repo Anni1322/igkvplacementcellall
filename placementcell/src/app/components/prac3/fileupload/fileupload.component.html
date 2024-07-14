@@ -1,3 +1,91 @@
+<<<<<<< HEAD
+<!-- <div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center">User Form</h2>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-group mb-3">
+          <label for="name">Name</label>
+          <input type="text" id="name" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': userForm.controls['name'].invalid && userForm.controls['name'].touched }">
+          <div class="invalid-feedback" *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched">
+            Name is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': userForm.controls['email'].invalid && userForm.controls['email'].touched }">
+          <div class="invalid-feedback" *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched">
+            Valid email is required.
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label for="photo">Photo</label>
+          <input type="file" id="photo" (change)="onFileSelected($event)" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="userForm.invalid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+ -->
+
+
+
+
+
+
+
+<div class="container">
+      <!-- company logo upload -->
+      <div class="row fileupload" >
+        <div class="col" style="margin-top: 5px; margin-bottom: 5px;">
+            <div>Upload Company Logo(image)</div>
+            <input type="file"  (change)="selectLogo($event)" required>
+        </div>
+        <div class="col" style="margin-top: 20px;">
+            <div></div>
+            <button mat-raised-button color="primary" type="button" (click)="uploadLogo()">Upload</button>
+        </div>
+      </div>
+
+        <!-- company Broucher uplaod -->
+        <div class="row fileupload">
+          <div class="col" style="margin-top: 5px; margin-bottom: 5px">
+            <div>Upload Company Broucher(pdf)</div>
+            <input type="file" (change)="selectBroucher($event)" />
+          </div>
+          <div class="col" style="margin-top: 20px">
+            <div></div>
+            <button
+              mat-raised-button
+              color="primary"
+              type="button"
+              (click)="uploadBroucher()"
+            >
+              Upload
+            </button>
+          </div>
+        </div>
+        <!-- company's other documents -->
+        <div class="row fileupload">
+          <div class="col" style="margin-top: 5px; margin-bottom: 5px">
+            <div>Upload Other Documents(pdf)</div>
+            <input type="file" (change)="selectOther($event)" required />
+          </div>
+          <div class="col" style="margin-top: 20px">
+            <div></div>
+            <button
+              mat-raised-button
+              color="primary"
+              type="button"
+              (click)="uploadOther()"
+            >
+              Upload
+            </button>
+          </div>
+        </div>
+</div>
+=======
 <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
@@ -29,3 +117,4 @@
   
 
   
+>>>>>>> 47513669a4da47461936ea6b84d72f8daff87d01

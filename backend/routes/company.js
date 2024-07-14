@@ -6,6 +6,13 @@ const companyController = require('../controller/companyController');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const cors = require('cors');
+
+const app = express();
+app.use(cors());
+// Serve static files from the 'uploads' directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 const bodyParser = require('body-parser');
 companyRouter.use(bodyParser.json());
@@ -20,51 +27,6 @@ companyRouter.use(bodyParser.urlencoded({extended:true}))
 
 companyRouter.use(express.static('public'));
 
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//         cb(null, 'uploads/resumes');
-//     },
-//     filename: function (req, file, cb) {
-//         // const name = Date.now() + '-' + file.originalname;
-//         const name = Date.now() + path.extname(file.originalname);
-//         cb(null, name);
-//     }
-// });
-
-// const upload = multer({ storage: storage });
-
-// doa
-const upload = multer({    
-    storage: multer.diskStorage({
-      destination: function (req, file, cb) {    
-        cb(null, "uploads");  
-      },
-      filename: function (req, file, cb) {
-        cb(null, Date.now()+path.extname(file.originalname));  
-      }
-      
-    }),
-    // limits:{fileSize:10000000}   
-  });     
-// doa
-
- 
-
-// Endpoint to register a company
-companyRouter.post('/registerCompany', upload.fields([
-    { name: 'companyLogo', maxCount: 1 },
-    { name: 'companyBroucher', maxCount: 1 },
-    { name: 'companyOtherDoc', maxCount: 1 }
-]), companyController.registerCompany);
-
-
-
-// companyRouter.post('/postCompanyDetails', upload.single('companyLogo'), upload.single('companyBroucher'), upload.single('companyOtherDoc'), companyController.registerCompany);
-
-
-
-
-
 companyRouter.post('/add_vacancy',companyController.addVacancy);
 
 companyRouter.post('/getdata_update_vacancy',companyController.Updatejobdataget);
@@ -72,22 +34,15 @@ companyRouter.post('/getdata_update_vacancy',companyController.Updatejobdataget)
 companyRouter.post('/update_vacancy', companyController.updateJob);
 
 companyRouter.get('/vacancies', companyController.getVacanciesDetils);
+
 companyRouter.post('/getdata_All_Company_id',companyController.getdata_All_Company_id);
+
+// companyRouter.post('/getdata_student_list_by_Company_id',companyController);
 
 // added by roshni
 companyRouter.get('/', companyController.getAllCompany);
 
-
-//companyRouter.post('/getdata_update_vacancyNext', companyController.UpdateNextjobdataget);
-
-
-// companyRouter.post('/registerCompany', 
-// upload.fields([
-//     { name: 'Company_Logo_Url', maxCount: 1 },
-//     { name: 'Company_Logo', maxCount: 1 },
-//     { name: 'Company_Broucher', maxCount: 1 },
-//     { name: 'Company_Other_Doc_Url', maxCount: 1 }
-// ]), companyController.registerCompany);
+companyRouter.post('/registerCompany',companyController.registerCompany);
 
 companyRouter.post('/getcompanyinformation',companyController.getcompanyinformation);
 
@@ -106,8 +61,8 @@ companyRouter.get('/block', companyController.getblock);
 
 
 
-companyRouter.post('/fileupload',upload.single('file'),companyController.fileupload);
-companyRouter.get('/fileupload',companyController.getfiles);
+// companyRouter.post('/fileupload',upload.single('file'),companyController.fileupload);
+// companyRouter.get('/fileupload',companyController.getfiles);
 
 
 
@@ -120,14 +75,88 @@ companyRouter.get('/fileupload',companyController.getfiles);
 
 
 // another api 
-       
-// Logog File End point
-companyRouter.post('/uploadLogo',upload.single('Company_Logo_Url'),companyController.uploadLogo);
-companyRouter.post('/uploadBroucher',upload.single('Company_Logo_Url'),companyController.uploadBroucher);
-companyRouter.post('/uploadOtherDoc',upload.single('Company_Logo_Url'),companyController.uploadOtherDoc);
+
+//fileUploads
+const upload = multer({   
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {  
+      cb(null, "uploads/");
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + path.extname(file.originalname)); 
+    }
+  }),
+  limits: { fileSize: 10000000 }  
+});
+
+companyRouter.post('/uploadLogo', upload.single('Company_Logo_Url'), (req, res, next) => {
+  const file = req.file;
+  if (!file) {
+    return next("No file found");
+  }
+  res.json({ Company_Logo_Url: `/uploads/${req.file.filename}` });
+});
 
 
-// another api  
+
+
+
+
+
+
+
+
+
+
+
+
+// Broucher file end point 
+
+
+companyRouter.post('/uploadBroucher',upload.single('Company_Broucher'),(req, resp,next) => {  //here user is the key for image which must be same in frotend(angular)
+  const file = req.file;
+  if(!file){
+    return next("no file found")
+  }    
+  resp.json({Company_Broucher: `/uploads/${req.file.filename}`})
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Other File end piont
+
+// companyRouter.post('/uploadOther',upload.single('Company_Other_Doc_Url'),(req, resp,next) => {   
+// const file = req.file;
+// if(!file){
+//   return next("no file found")
+// }
+// resp.json({Company_Other_Doc_Url: `/other/images/${req.file.filename}`})
+// });
+
+
+companyRouter.post('/uploadOther', upload.single('Company_Other_Doc_Url'), (req, resp, next) => {
+  const file = req.file;
+  if (!file) {
+    return next("no file found");
+  }
+  resp.json({ Company_Other_Doc_Url: `/other/images/${req.file.filename}` });
+});
+
+
+
+
 
 
 

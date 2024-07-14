@@ -29,6 +29,19 @@ export class AdminService {
     return this.http.get<StudentApplicationDetails[]>(`${this.baseurl}/VacancyApply`);
   }
 
+
+
+
+  // getVacancyApplybyid(Company_Id: string): Observable<StudentApplicationDetails[]> {
+  //   return this.http.get<StudentApplicationDetails[]>(`${this.baseurl}/Student_application_List/${Company_Id}`);
+  // }
+
+  getVacancyApplybyid(Company_Id: any){
+    return this.http.post<any>(`${this.baseurl}/Student_application_List`, { Company_Id });
+  }
+
+
+
   getshortlist(): Observable<StudentApplicationDetails[]> {
     return this.http.get<StudentApplicationDetails[]>(`${this.baseurl}/getshortlist`);
   }

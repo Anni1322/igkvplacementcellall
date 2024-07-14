@@ -30,7 +30,7 @@ export class ForminputComponent implements OnInit {
     this.dataSource = new MatTableDataSource<StudentApplicationDetails>([]);    
     this.applicationService.getVacancyApply().subscribe((data:StudentApplicationDetails[]) => {
       this.dataSource.data = data;
-      console.log("response", this.dataSource.data);
+      console.log("Student List", this.dataSource.data);
     });
   }
 

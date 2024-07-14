@@ -122,28 +122,18 @@ getAcademicId(eid: any){
   return this.http.post<any>(`${this.apiUrl}/student/AcademicId`, { eid });
 }
 
-getDegreeProgram(){
-  return this.http.get(`${this.apiUrl}/student/getDegree_program`);
+
+
+
+
+
+rowDataSubject:any;
+
+setRowDataNextRaoud(rowdata: any): void {
+  this.rowDataSubject.next(rowdata);
 }
 
-getDegreeType() {
-  return this.http.get(`${this.apiUrl}/student/getDegree_type`);
+getRowDataNextRaoud(): Observable<any> {
+  return this.rowDataSubject.asObservable();
 }
-
-getSubject() {
-  return this.http.get(`${this.apiUrl}/student/getSubjects`);
-}
-
-getAdmissionyear(){
-  return this.http.get(`${this.apiUrl}/student/admissionyear`);
-}
-
-getCollege() {
-  return this.http.get(`${this.apiUrl}/student/college`);
-}
-
-getPassingOutYear() {
-  return this.http.get(`${this.apiUrl}/student/passingoutyear`);
-}
-
 }

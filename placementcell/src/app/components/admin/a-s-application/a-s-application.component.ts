@@ -77,6 +77,8 @@ export class ASApplicationComponent implements OnInit, AfterViewInit {
       this.dataSource.data = data;
       console.log("response",this.dataSource.data);
     });
+
+ 
   }
 
  

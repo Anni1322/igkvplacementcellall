@@ -2,6 +2,9 @@
 const Student = require('../model/studentModel');
 const bcrypt = require('bcrypt');
 const sql = require('../config/db');
+
+
+ 
 const { getGender, getSalutation_English, getSalutation_Hindi } = require('./studentController');
 
 
@@ -647,9 +650,140 @@ const getAllCompany = async(req, res)=>{
 }
  
 // Function to register a company
-const registerCompany = async (req, res) => {
+// const registerCompany = async (req, res) => {
+//     const {
+//         Company_Id,
+//         Company_Registration_No,
+//         Tnp_Registration_No,
+//         Company_Name,
+//         Company_Type,
+//         Company_Category,
+//         Company_Email,
+//         Company_Phone_Number,
+//         Hr_Name,
+//         Hr_Contact_No,
+//         Hr_Email,
+//         Contact_Person,
+//         Contact_Person_Email,
+//         Contact_Person_Phone,
+//         Company_Short_Name,
+//         Address,
+//         State,
+//         District,
+//         Block,
+//         Company_Profile,
+//         Website,
+//         Created_Date,
+//         Company_Logo_Url,
+//         Company_Logo,
+//         Company_Broucher,
+//         Company_Other_Doc_Url
 
-     
+//     } = req.body;
+//     // Validate required fields
+//     if (!Company_Id || !Company_Name || !Company_Email) {
+//         return res.status(400).json({ error: 'Required fields are missing' });
+//     }
+
+//     try {
+//         const request = new sql.Request();
+
+//         const insertQuery = `
+//             INSERT INTO dbo.company_registration (
+//                 Company_Id,
+//                 Company_Registration_No,
+//                 Tnp_Registration_No,
+//                 Company_Name,
+//                 Company_Type,
+//                 Company_Category,
+//                 Company_Email,
+//                 Company_Phone_Number,
+//                 Hr_Name,
+//                 Hr_Contact_No,
+//                 Hr_Email,
+//                 Contact_Person,
+//                 Contact_Person_Email,
+//                 Contact_Person_Phone,
+//                 Company_Short_Name,
+//                 Address,
+//                 State,
+//                 District,
+//                 Block,
+//                 Company_Profile,
+//                 Website,
+//                 Company_Logo_Url,
+//                 Company_Logo,
+//                 Company_Broucher,
+//                 Company_Other_Doc_Url,
+//                 Created_Date
+//             ) VALUES (
+//                 @Company_Id,
+//                 @Company_Registration_No,
+//                 @Tnp_Registration_No,
+//                 @Company_Name,
+//                 @Company_Type,
+//                 @Company_Category,
+//                 @Company_Email,
+//                 @Company_Phone_Number,
+//                 @Hr_Name,
+//                 @Hr_Contact_No,
+//                 @Hr_Email,
+//                 @Contact_Person,
+//                 @Contact_Person_Email,
+//                 @Contact_Person_Phone,
+//                 @Company_Short_Name,
+//                 @Address,
+//                 @State,
+//                 @District,
+//                 @Block,
+//                 @Company_Profile,
+//                 @Website,
+//                 @Company_Logo_Url,
+//                 @Company_Logo,
+//                 @Company_Broucher,
+//                 @Company_Other_Doc_Url,
+//                 @Created_Date
+//             )
+//         `;
+
+//         request.input('Company_Id', sql.VarChar(99), Company_Id);
+//         request.input('Company_Registration_No', sql.VarChar(50), Company_Registration_No);
+//         request.input('Tnp_Registration_No', sql.VarChar(50), Tnp_Registration_No);
+//         request.input('Company_Name', sql.VarChar(50), Company_Name);
+//         request.input('Company_Type', sql.SmallInt, Company_Type);
+//         request.input('Company_Category', sql.SmallInt, Company_Category);
+//         request.input('Company_Email', sql.VarChar(50), Company_Email);
+//         request.input('Company_Phone_Number', sql.VarChar(20), Company_Phone_Number);
+//         request.input('Hr_Name', sql.VarChar(30), Hr_Name);
+//         request.input('Hr_Contact_No', sql.VarChar(30), Hr_Contact_No);
+//         request.input('Hr_Email', sql.VarChar(50), Hr_Email);
+//         request.input('Contact_Person', sql.VarChar(50), Contact_Person);
+//         request.input('Contact_Person_Email', sql.VarChar(50), Contact_Person_Email);
+//         request.input('Contact_Person_Phone', sql.VarChar(12), Contact_Person_Phone);
+//         request.input('Company_Short_Name', sql.VarChar(20), Company_Short_Name);
+//         request.input('Address', sql.VarChar(100), Address);
+//         request.input('State', sql.SmallInt, State);
+//         request.input('District', sql.SmallInt, District);
+//         request.input('Block', sql.SmallInt, Block);
+//         request.input('Company_Profile', sql.VarChar(1000), Company_Profile);
+//         request.input('Website', sql.VarChar(5000), Website);
+//         request.input('Company_Logo_Url', sql.VarChar(6000), Company_Logo_Url);
+//         request.input('Company_Logo', sql.VarChar(500), Company_Logo);
+//         request.input('Company_Broucher', sql.VarChar(500), Company_Broucher);
+//         request.input('Company_Other_Doc_Url', sql.VarChar(500), Company_Other_Doc_Url);
+//         // request.input('Created_Date', sql.DateTime, Created_Date || new Date());
+//         request.input('Created_Date', sql.DateTime, new Date().toISOString());
+
+//         await request.query(insertQuery);
+
+//         res.status(200).json({ message: 'Company registered successfully' });
+//     } catch (err) {
+//         console.error('Error inserting into SQL Server: ', err);
+//         res.status(500).json({ error: 'Internal Server Error', details: err.message });
+//     }
+// };
+
+const registerCompany = async (req, res) => {
     const {
         Company_Id,
         Company_Registration_No,
@@ -677,19 +811,7 @@ const registerCompany = async (req, res) => {
         Company_Logo,
         Company_Broucher,
         Company_Other_Doc_Url
-
     } = req.body;
-
-  
- 
-    // console.log("path this is",Company_Logo.file.name,Company_Broucher,Company_Other_Doc_Url)
-
-
-    
-    // console.log("path this is",Company_Logo)
-
-
-
 
     // Validate required fields
     if (!Company_Id || !Company_Name || !Company_Email) {
@@ -699,65 +821,113 @@ const registerCompany = async (req, res) => {
     try {
         const request = new sql.Request();
 
-        const insertQuery = `
-            INSERT INTO dbo.company_registration (
-                Company_Id,
-                Company_Registration_No,
-                Tnp_Registration_No,
-                Company_Name,
-                Company_Type,
-                Company_Category,
-                Company_Email,
-                Company_Phone_Number,
-                Hr_Name,
-                Hr_Contact_No,
-                Hr_Email,
-                Contact_Person,
-                Contact_Person_Email,
-                Contact_Person_Phone,
-                Company_Short_Name,
-                Address,
-                State,
-                District,
-                Block,
-                Company_Profile,
-                Website,
-                Company_Logo_Url,
-                Company_Logo,
-                Company_Broucher,
-                Company_Other_Doc_Url,
-                Created_Date
-            ) VALUES (
-                @Company_Id,
-                @Company_Registration_No,
-                @Tnp_Registration_No,
-                @Company_Name,
-                @Company_Type,
-                @Company_Category,
-                @Company_Email,
-                @Company_Phone_Number,
-                @Hr_Name,
-                @Hr_Contact_No,
-                @Hr_Email,
-                @Contact_Person,
-                @Contact_Person_Email,
-                @Contact_Person_Phone,
-                @Company_Short_Name,
-                @Address,
-                @State,
-                @District,
-                @Block,
-                @Company_Profile,
-                @Website,
-                @Company_Logo_Url,
-                @Company_Logo,
-                @Company_Broucher,
-                @Company_Other_Doc_Url,
-                @Created_Date
-            )
+        // Check if the company already exists
+        const checkQuery = `
+            SELECT COUNT(*) AS count
+            FROM dbo.company_registration
+            WHERE Company_Id = @Company_Id
         `;
-
         request.input('Company_Id', sql.VarChar(99), Company_Id);
+        const result = await request.query(checkQuery);
+
+        const companyExists = result.recordset[0].count > 0;
+
+        let query;
+        if (companyExists) {
+            // Update existing company
+            query = `
+                UPDATE dbo.company_registration
+                SET
+                    Company_Registration_No = @Company_Registration_No,
+                    Tnp_Registration_No = @Tnp_Registration_No,
+                    Company_Name = @Company_Name,
+                    Company_Type = @Company_Type,
+                    Company_Category = @Company_Category,
+                    Company_Email = @Company_Email,
+                    Company_Phone_Number = @Company_Phone_Number,
+                    Hr_Name = @Hr_Name,
+                    Hr_Contact_No = @Hr_Contact_No,
+                    Hr_Email = @Hr_Email,
+                    Contact_Person = @Contact_Person,
+                    Contact_Person_Email = @Contact_Person_Email,
+                    Contact_Person_Phone = @Contact_Person_Phone,
+                    Company_Short_Name = @Company_Short_Name,
+                    Address = @Address,
+                    State = @State,
+                    District = @District,
+                    Block = @Block,
+                    Company_Profile = @Company_Profile,
+                    Website = @Website,
+                    Company_Logo_Url = @Company_Logo_Url,
+                    Company_Logo = @Company_Logo,
+                    Company_Broucher = @Company_Broucher,
+                    Company_Other_Doc_Url = @Company_Other_Doc_Url,
+                    Created_Date = @Created_Date
+                WHERE
+                    Company_Id = @Company_Id
+            `;
+        } else {
+            // Insert new company
+            query = `
+                INSERT INTO dbo.company_registration (
+                    Company_Id,
+                    Company_Registration_No,
+                    Tnp_Registration_No,
+                    Company_Name,
+                    Company_Type,
+                    Company_Category,
+                    Company_Email,
+                    Company_Phone_Number,
+                    Hr_Name,
+                    Hr_Contact_No,
+                    Hr_Email,
+                    Contact_Person,
+                    Contact_Person_Email,
+                    Contact_Person_Phone,
+                    Company_Short_Name,
+                    Address,
+                    State,
+                    District,
+                    Block,
+                    Company_Profile,
+                    Website,
+                    Company_Logo_Url,
+                    Company_Logo,
+                    Company_Broucher,
+                    Company_Other_Doc_Url,
+                    Created_Date
+                ) VALUES (
+                    @Company_Id,
+                    @Company_Registration_No,
+                    @Tnp_Registration_No,
+                    @Company_Name,
+                    @Company_Type,
+                    @Company_Category,
+                    @Company_Email,
+                    @Company_Phone_Number,
+                    @Hr_Name,
+                    @Hr_Contact_No,
+                    @Hr_Email,
+                    @Contact_Person,
+                    @Contact_Person_Email,
+                    @Contact_Person_Phone,
+                    @Company_Short_Name,
+                    @Address,
+                    @State,
+                    @District,
+                    @Block,
+                    @Company_Profile,
+                    @Website,
+                    @Company_Logo_Url,
+                    @Company_Logo,
+                    @Company_Broucher,
+                    @Company_Other_Doc_Url,
+                    @Created_Date
+                )
+            `;
+        }
+
+        // Set query parameters
         request.input('Company_Registration_No', sql.VarChar(50), Company_Registration_No);
         request.input('Tnp_Registration_No', sql.VarChar(50), Tnp_Registration_No);
         request.input('Company_Name', sql.VarChar(50), Company_Name);
@@ -782,14 +952,13 @@ const registerCompany = async (req, res) => {
         request.input('Company_Logo', sql.VarChar(500), Company_Logo);
         request.input('Company_Broucher', sql.VarChar(500), Company_Broucher);
         request.input('Company_Other_Doc_Url', sql.VarChar(500), Company_Other_Doc_Url);
-        // request.input('Created_Date', sql.DateTime, Created_Date || new Date());
         request.input('Created_Date', sql.DateTime, new Date().toISOString());
 
-        await request.query(insertQuery);
+        await request.query(query);
 
-        res.status(200).json({ message: 'Company registered successfully' });
+        res.status(200).json({ message: companyExists ? 'Company updated successfully' : 'Company registered successfully' });
     } catch (err) {
-        console.error('Error inserting into SQL Server: ', err);
+        console.error('Error inserting/updating in SQL Server: ', err);
         res.status(500).json({ error: 'Internal Server Error', details: err.message });
     }
 };
@@ -807,6 +976,7 @@ const getcompanyinformation = async (req, res) => {
         const query = 'SELECT * FROM dbo.company_registration WHERE Company_Id = @cid';
         console.log('Executing query:', query, 'with eid:', cid);
         const result = await request.query(query);
+        // console.log(result)
         if (result.recordset.length > 0) {
             res.json(result.recordset[0]);
         } else {
@@ -989,32 +1159,20 @@ const getfiles = async (req, res) => {
 
 
 
-const uploadLogo = async (req, resp,next) => {  
-    const file = req.file;
-    if(!file){
-      return next("no file found")
-    }
-    resp.json({Company_Logo_Url: `/logo/images/${req.file.filename}`})
-  }
-
-const uploadBroucher = async (req, resp,next) => {  
-    const file = req.file;
-    if(!file){
-      return next("no file found")
-    }
-    resp.json({Company_Broucher: `/broucher/images/${req.file.filename}`})
-  }
-
-
-const uploadOtherDoc = async (req, resp,next) => {  
-    const file = req.file;
-    if(!file){
-      return next("no file found")
-    }
-    resp.json({Company_Other_Doc_Url: `/other/images/${req.file.filename}`})
-  }
 
  
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           
@@ -1042,10 +1200,7 @@ module.exports ={
 
 
     fileupload,
-    getfiles,
-    uploadLogo,
-    uploadBroucher,
-    uploadOtherDoc
+    getfiles
 
 
     

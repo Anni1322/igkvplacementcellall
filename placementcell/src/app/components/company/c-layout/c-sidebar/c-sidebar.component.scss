@@ -25,7 +25,9 @@
     // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     // background-color: #ffffff;
     // background-color: #90c6ef;
-    background-color: #8C69CD;
+    
+    // background-color: #7a787d;
+    background-color: #182C61;
     color: rgb(255, 255, 255);
     width: 200px;
     padding: 20px;
@@ -34,14 +36,17 @@
     top: 0;
     left: 0;
     // border-radius: 10%;
-    overflow-x: hidden;
+
+    // overflow-x: hidden;
     margin-top: 48px;
     // transition: transform 0.3s;
+    // opacity: 1; /* Fully opaque */
+    // z-index: 1000; /* High z-index to appear above the header */
   }
   
   .sidebar ul {
-    margin-top: 5px;
-    border-top: 3px solid red;
+    margin-top: 8px;
+    // border-top: 3px solid red;
     list-style: none;
     padding: 0;
     color: white;

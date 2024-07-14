@@ -3,6 +3,7 @@ import { CServiceService } from '../service/c-service.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Route } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-c-basic-details',
@@ -25,6 +26,17 @@ export class CBasicDetailsComponent implements OnInit {
   companyLogo!: File;
   companyBroucher!: File;
   companyOtherDoc!: File;
+
+  broucherFile?: File;
+  otherFile?: File;
+  logoFile?:File;
+
+  
+  
+ 
+  
+
+
 
   constructor(
     private fb: FormBuilder,
@@ -49,6 +61,10 @@ export class CBasicDetailsComponent implements OnInit {
       Contact_Person_Email: [null],
       Contact_Person_Phone: [null],
       Company_Short_Name: [null],
+
+      username: [null],
+
+
       Address: [null],
       State: [null],
       District: [null],
@@ -139,6 +155,7 @@ export class CBasicDetailsComponent implements OnInit {
       //patch value
       this.companyregistrationForm.patchValue({
         Company_Id: this.companyid.eid,
+        username:this.companyid.username
         //  Company_Name: this.companyid.name,
       });
     }
@@ -146,28 +163,118 @@ export class CBasicDetailsComponent implements OnInit {
     this.getCompanydata(this.companyid.eid);
   }
 
-  onFileSelected(event: any, type: string) {
-    switch (type) {
-      case 'Company_Logo_Url':
-        this.companyLogo = event.target.files[0];
-        console.log(this.companyLogo)
-        this.companyregistrationForm.patchValue({
-          Company_Logo: this.companyLogo,
-        });
-        break;
-      case 'Company_Broucher':
-        this.companyBroucher = event.target.files[0];
-        console.log(this.companyBroucher)
-        // this.companyregistrationForm.patchValue({
-        //   Company_Logo: this.companyLogo,
-        // });
-        break;
-      case 'Company_Other_Doc_Url':
-        this.companyOtherDoc = event.target.files[0];
-        console.log(this.companyOtherDoc)
-        break;
+
+
+
+
+
+
+  nopath(){
+    Swal.fire("please select a file","","warning")
+  }
+
+
+
+     // logo file upload 
+  selectLogo(event: any) {
+      if (event.target.files.length > 0) {
+        const file1 = event.target.files[0];            //it is used to get the input file dom property
+        this.logoFile = file1
+      }
+  }
+//upload logo
+uploadLogo(){                            
+    if(!this.logoFile){
+      return this.nopath();
+    }
+    const LogoformData = new FormData();
+    LogoformData.append('Company_Logo_Url', this.logoFile);
+    console.log(this.logoFile)
+    this.CServices.uploadLogo(LogoformData).subscribe((result:any=[])=>{
+       console.log(result.body.Company_Logo_Url);
+      // console.log(result);
+      this.companyLogo = result.body.Company_Logo_Url;
+      this.companyregistrationForm.patchValue({
+        Company_Logo_Url: this.companyLogo,
+      });
+      Swal.fire("Logo uploaded successfully")
+      //this.iseditmode=false;
+    });
+    
+}
+
+
+
+
+
+   // broucher file upload 
+   selectBroucher(event: any) {
+    if (event.target.files.length > 0) {
+      const file1 = event.target.files[0];            //it is used to get the input file dom property
+      this.broucherFile = file1
     }
   }
+//upload broucher
+uploadBroucher(){                            //multer will accept form data so we here creating a form data
+  if(!this.broucherFile){
+    return this.nopath();
+  }
+  const BroucherformData = new FormData();
+  BroucherformData.append('Company_Broucher', this.broucherFile);
+  console.log(this.broucherFile)
+
+  this.CServices.uploadbroucher(BroucherformData).subscribe((result:any=[])=>{
+     console.log(result.body.Company_Broucher);
+    // console.log(result);
+    this.companyBroucher =result.body.Company_Broucher;
+    this.companyregistrationForm.patchValue({
+      Company_Broucher: this.companyBroucher,
+    });
+    Swal.fire("Broucher uploaded successfully")
+    //this.iseditmode=false;
+  });
+  
+  }
+
+
+
+  // broucher file upload 
+
+  
+  // selectOther(event: any) {
+  //   if (event.target.files.length > 0) {
+  //     this.otherFile = event.target.files[0]; 
+  //   }
+  // }
+
+
+//upload broucher
+
+// uploadOther(){                             
+//   if(!this.otherFile){
+//     return this.nopath();
+//   }
+//   const OtherformData = new FormData();
+//   OtherformData.append('Company_Other_Doc_Url', this.otherFile);
+//   console.log(this.otherFile)
+
+//   this.CServices.uploadotherdoc(OtherformData).subscribe((result:any=[])=>{
+//      console.log(result.body.Company_Other_Doc_Url);
+//     // console.log(result);
+//     this.companyOtherDoc = result.body.Company_Other_Doc_Url;
+//     this.companyregistrationForm.patchValue({
+//       Company_Other_Doc_Url: this.companyOtherDoc,
+//     });
+//     Swal.fire("Document uploaded successfully")
+//     //this.iseditmode=false;
+//   });
+  
+//   }
+
+  
+
+
+
 
   
   
@@ -249,9 +356,11 @@ export class CBasicDetailsComponent implements OnInit {
     console.log('cID:', cid);
     this.companyds.getCompanyDetails(cid).subscribe(
       (response) => {
-        // console.log('Raw Response:', response);
+        console.log('Raw Response:', response);
         this.companydata = response;
+        
         console.log('companydata Details:', this.companydata);
+        // console.log('companydata Details:', this.companydata.Company_Logo_Url);
 
         //patch value
         this.companyregistrationForm.patchValue({

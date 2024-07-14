@@ -26,16 +26,17 @@
   // }
   .custom-toolbar{
     // background-color: #ffffff;
-    background-color: #8254d8;
-    color: #000000;
-  
+    // background-color: #8254d8;
+    background-color: #1B1464;
+    color: #ffffff;
+  border-radius: 0px 0px 20px 20px;
   
   }
   .mat-toolbar button, mat-icon{
-    color: #440000 !important;
+    color: #ffffff !important;
   }
   .mat-icon-button {
-    color: #000000 ;
+    color: #ffffff ;
     background-color: #f0f0f0; /* Background color of the button */
     border-radius: 50%; /* Make the button round */
     width: 40px; /* Adjust the button width as needed */
@@ -81,6 +82,9 @@
     margin-right: 10px;
   }
   
+  .button{
+  color: #ffffff;
+  }
   
   .notification-icon {
     color: #f0f0f0 !important;

@@ -1,8 +1,16 @@
 
 
-    <div  class="sidebar" [ngClass]="{ 'showSidebar': isSidebarVisible, 'hideSidebar': !isSidebarVisible }" [@fadeInOut] >
+    <div  class="sidebar " [ngClass]="{ 'showSidebar': isSidebarVisible, 'hideSidebar': !isSidebarVisible }" [@fadeInOut] >
+
       <div >
       <ul>
+              
+        <div class="d-flex">
+          <span class="name" style="font-size: 15px; ">{{ user.username }} -</span><br>
+          <span class="name"> - ID: {{ user.eid }}</span>  
+          
+        </div>
+
 
       <!-- <li>
         <a routerLinkActive="active" (click)="toggleSubmenu()">
@@ -12,7 +20,7 @@
             <mat-icon>{{ isSubmenuOpen ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
           </span>
         </a>
-        //Sub-menu for Dashboard with left padding //
+        //Sub-menu for Dashboard with left padding //  
         <ul *ngIf="isSubmenuOpen" class="sub-menu">
           <li><a routerLink="/dashboard" routerLinkActive="active"><span class="menu-icon material-icons">details</span><span class="menu-text">Details</span></a></li>
           <li><a routerLink="/dashboard/messages" routerLinkActive="active"><span class="menu-icon material-icons">message</span><span class="menu-text">Messages</span></a></li>
@@ -20,27 +28,40 @@
       </li> -->
 
       <li>
-        <div class="circle row align-items-center" >
-            <div class="col-auto">
-                <img src="https://thumbs.dreamstime.com/b/vector-illustration-avatar-dummy-logo-collection-image-icon-stock-isolated-object-set-symbol-web-137160339.jpg" class="img-fluid rounded-circle" alt="Profile Picture" style="width: 50px; height: 50px;">
-            </div>
-            <div class="col"style="margin-top: 15px;">
-                <span class="name" style="font-size: 25px; margin-top: 15px;">{{ user.username }}</span><br>
-                <span class="name">ID: {{ user.eid }}</span><br>
-                <!-- <button class="btn" (click)="logout()">Logout</button> -->
-            </div>
-           
-        </div>
     </li><hr>
     
     
 
       <li>
+        
+
+
+
         <a routerLink="/company/c-dashboard" routerLinkActive="active">
           <span class="menu-icon material-icons">dashboard</span>
           <span class="menu-text">dashboard</span>
         </a>
+        
+     
+
+  
       </li>
+
+      <!-- <li>
+        <a routerLinkActive="active" (click)="toggleSubmenu()">
+          <span class="menu-icon material-icons">dashboard</span>
+          <span class="menu-text">Dashboard</span>
+          <span class="sub-menu-icon" [ngClass]="{ 'sub-menu-open': isSubmenuOpen }">
+            <mat-icon>{{ isSubmenuOpen ? 'keyboard_arrow_down' : 'keyboard_arrow_right' }}</mat-icon>
+          </span>
+        </a>
+        <ul *ngIf="isSubmenuOpen" class="sub-menu">
+          <li><a routerLink="/company/c-status" routerLinkActive="active"><span class="menu-icon material-icons">details</span><span class="menu-text">Vacancy list</span></a></li>
+          <li><a routerLink="/company/s-application" routerLinkActive="active"><span class="menu-icon material-icons">message</span><span class="menu-text">Total Applicatns List</span></a></li>
+          <li><a routerLink="/company/s-selected" routerLinkActive="active"><span class="menu-icon material-icons">message</span><span class="menu-text">Student Seleted</span></a></li>
+        </ul>
+      </li> -->
+      
       <li>
         <a routerLink="/company/c-basic-details" routerLinkActive="active">
           <span class="menu-icon material-icons">face</span>

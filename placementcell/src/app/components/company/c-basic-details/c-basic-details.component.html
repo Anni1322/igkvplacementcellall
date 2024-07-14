@@ -194,6 +194,19 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <mat-form-field appearance="outline" class="inputfieldsize">
+                                            <mat-label for="username">
+                                                Username:
+                                            </mat-label>
+                                            <input matInput placeholder="User Name" formControlName="username">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+
                                 <div>
                                   <button mat-button matStepperNext class="btn text-center bg-primary mt-2">Next</button>
                                 </div>
@@ -275,7 +288,7 @@
                                 </div>
 
                        
-                                <!-- 
+                             
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <mat-form-field appearance="outline" class="inputfieldsize">
@@ -285,31 +298,34 @@
                                             <input  matInput placeholder="logo url" formControlName="Company_Logo_Url">
                                         </mat-form-field>
                                     </div>
-                                </div> -->
+                                </div>  
+                              
+                             
+                               
 
-                                <div class="col-lg-4">
-                                    <div class="form-group mb-3">
-                                        <label for="Company_Logo_Url">Company Logo</label>
-                                        <input type="file" id="Company_Logo_Url" (change)="onFileSelected($event, 'Company_Logo_Url')" placeholder="resume path" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <mat-form-field appearance="outline" class="inputfieldsize">
+                                            <mat-label for="Company_Broucher">
+                                                Company Broucher:
+                                            </mat-label>
+                                            <input  matInput placeholder="Company Broucher url" formControlName="Company_Broucher">
+                                        </mat-form-field>
                                     </div>
                                 </div>  
 
- 
-                    
-                                
-                                <div class="col-lg-4">
-                                    <div class="form-group mb-3">
-                                        <label for="Company_Broucher">Company Broucher</label>
-                                        <input type="file" id="Company_Broucher" (change)="onFileSelected($event, 'Company_Broucher')" placeholder="Company_Broucher path" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                                <!-- <div class="col-md-3">
+                                    <div class="form-group">
+                                        <mat-form-field appearance="outline" class="inputfieldsize">
+                                            <mat-label for="Company_Other_Doc_Url">
+                                                Company Other Doc Url:
+                                            </mat-label>
+                                            <input  matInput placeholder="url" formControlName="Company_Other_Doc_Url">
+                                        </mat-form-field>
                                     </div>
-                                </div>  
+                                </div>   -->
+
                                 
-                                <div class="col-lg-4">
-                                    <div class="form-group mb-3">
-                                        <label for="Company_Other_Doc_Url">Company Other doc</label>
-                                        <input type="file" id="Company_Other_Doc_Url" (change)="onFileSelected($event, 'Company_Other_Doc_Url')" placeholder="Company_Other_Doc_Url path" class="form-control" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
-                                    </div>
-                                </div>
                                 
 
 
@@ -329,11 +345,69 @@
                             </mat-step>
                             <mat-step>
                                 <div class="card-body">
-                                    <div class="row">
-                              <ng-template matStepLabel>Submition section</ng-template>
-                             
-                             
-                             
+
+                                    <div class="container">
+                                        <!-- company logo upload -->
+                                        <div class="row fileupload" >
+                                          <div class="col" style="margin-top: 5px; margin-bottom: 5px;">
+                                              <div>Upload Company Logo</div>
+                                              <input type="file"  (change)="selectLogo($event)" required>
+                                          </div>
+                                          <div class="col" style="margin-top: 20px;">
+                                              <div></div>
+                                              <button mat-raised-button color="primary" type="button" (click)="uploadLogo()">Upload</button>
+                                          </div>
+                                        </div>
+                                  
+                                          <!-- company Broucher uplaod -->
+                                          <div class="row fileupload">
+                                            <div class="col" style="margin-top: 5px; margin-bottom: 5px"  >
+                                              <div>Upload Company Broucher</div>
+                                              <input type="file" (change)="selectBroucher($event)" />
+                                            </div>
+                                            <div class="col" style="margin-top: 20px">
+                                              <div></div>
+                                              <button
+                                                mat-raised-button
+                                                color="primary"
+                                                type="button"
+                                                (click)="uploadBroucher()"
+                                              >
+                                                Upload
+                                              </button>
+                                            </div>
+                                          </div>
+                                          <!-- company's other documents -->
+                
+                                          <!-- <div class="row fileupload">
+                                            <div class="col" style="margin-top: 5px; margin-bottom: 5px">
+                                              <div>Upload Other Documents(pdf)</div>
+                                              <input type="file" (change)="selectOther($event)" required />
+                                            </div>
+                                            <div class="col" style="margin-top: 20px">
+                                              <div></div>
+                                              <button
+                                                mat-raised-button
+                                                color="primary"
+                                                type="button"
+                                                (click)="uploadOther()"
+                                              >
+                                                Upload
+                                              </button>
+                                            </div>
+                                          </div> -->
+                
+                                          
+                                  </div> 
+
+
+
+
+
+
+
+                        <div class="row">
+                            <ng-template matStepLabel>Submition section</ng-template>
                               <!-- <div class="col-md-3">
                                 <div class="form-group">
                                   <mat-form-field appearance="outline" class="inputfieldsize">
@@ -370,53 +444,14 @@
                             </div>
                            
                     </mat-step>
-                    <!--<mat-step>
-                        <ng-template matStepLabel="content">Done</ng-template>
-                            <div class="col-lg-3">
-                                <div class="card">
-                                    <div class="card-header  p-1 " style="background-color: #3aaaff">
-                                        <h5 class="ms-1 mt-1 text-white">Company_Logo</h5>
-                                    </div>
-                                <div class="card-body ">
-                                    <div class="row">
-                                        <div class="col-lg-12 d-flex justify-content-center">
-                                            <div class=" rounded shadow mb-1 border border-1 border-dark" style="background-image: url('./../assets/register/prof-bg.jpg'); background-size: cover; background-position: center; width: 200px; height: 252px;">
-                                                <img id="imgUpload" class="img-thumbnail bg-transparent rounded"  style="height:250px;width:200px;">
-                                            </div>
-                                         </div>
-                                            <hr class="brline p-0 m-0 mt-1"/>
-       
-                                             <hr class="brline p-0 m-0 mt-1"/>
 
-                                            <div class="upload-option1 mt-1">
-                                            <label for="files"><i class="fa-solid fa-user-graduate"></i> <b> Select Company Logo File</b></label>
-                                            <input matInput class="form-control form-control shadow rounded border-1 border-dark bg-primary-subtle" id="C_Logo_File" type="file" title ="Please Choose Company Logo" />
-                                        </div>
-                                             <hr class="brline p-0 m-0 mt-2"/>
-                                    </div>
-                                </div>
-                                    <button mat-button matStepperPrevious>Back</button>
-                                    <button mat-button (click)="stepper.reset()">Reset</button>
-                                </div>
-                                <div
-                                class="mt-2 d-flex justify-content-evenly pt-4 pb-3 rounded-top bg-white border border-1 border-dark">
-                              <button type="submit" class="btn btn-primary">Submit</button> 
-                                <button type="submit" class="btn btn-primary" (click)="onSubmit()"  [disabled]="companyregistrationForm!.valid">Submit</button>
-                            </div>
-    
-                            </div>
-                    </mat-step>-->
-
+               
                 </mat-stepper>
-
-                           <!-- stapper end -->
-                           
-
-                    </form>
+                           <!-- stapper end --> 
+                </form>
 
                     <div
                             class="rounded-bottom border border-dark border-1 p-1 text-center m-0 bg-dark text-light fw-bold">
-
                             <!-- <a class="text-light" href="#">User Manual</a> || -->
                             <!-- <a class="text-light" href="#">User Instruction</a> || -->
                             <!-- <small class="text-primary register-text">If Already have an account !.. -->
@@ -437,3 +472,7 @@
 
                        
                                                  
+
+
+
+ 

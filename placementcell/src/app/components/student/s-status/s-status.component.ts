@@ -1,6 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
+import { SVacancyNextroundApplyComponent } from '../s-vacancy-nextround-apply/s-vacancy-nextround-apply.component';
+import { MatDialog } from '@angular/material/dialog';
+
+
+// for dialog box
+export interface DialogData {
+  name: string;
+}
+
+
 
 @Component({
   selector: 'app-s-status',
@@ -9,11 +19,14 @@ import { StudentService } from 'src/app/services/student.service';
 })
 export class SStatusComponent implements OnInit{
   vacancyApplications: any;
+ 
   studentId:any;
+  name:any; 
 
   constructor(
     private applyVacancy:StudentService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    public dialog: MatDialog
     ){}
 
   ngOnInit(): void {
@@ -45,6 +58,35 @@ sendstudentid(eid:any){
 
 
 
-  // for pagination 
+  // for second roud
+  formNext(rowdata: any): void {
+    console.log("rowid", rowdata);
+    
+    // Set row data in the service
+    // this.applyVacancy.setRowDataNextRaoud(rowdata);
+  
+    //  Log the row data
+  
+    //  this.applyVacancy.getRowDataNextRaoud().subscribe(data => {
+    //   console.log("data received", data);
+    //   // You can handle the data here if needed
+    // }, error => {
+    //   console.error("Error fetching row data", error);
+    // });
+  
+    // Assuming Vacancy_ID contains the data you want to pass to the dialog
+  
+    const dialogRef = this.dialog.open(SVacancyNextroundApplyComponent, {
+      width: '650px',
+      data: { name: rowdata }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.name = result;
+    });
+  }
+  
+  
   
 }

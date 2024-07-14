@@ -15,6 +15,9 @@ import { CSApplicationActionComponent } from '../c-s-application-action/c-s-appl
 })
 export class CSApplicationComponent implements OnInit, AfterViewInit {
 
+  cid:any;
+
+
   displayedColumns: string[] = [
     'S.No.', 
     'Student_Application_ID', 
@@ -50,16 +53,34 @@ export class CSApplicationComponent implements OnInit, AfterViewInit {
     private applicationService: AdminService,
     public dialog: MatDialog,
     private excelExportService: ExcelExportService
-    ) {}
+    ) {
+     // Retrieve user data from localStorage
+     const userData = localStorage.getItem('currentUser');
+     // Check if user data exists
+     if (userData) {
+       this.cid = JSON.parse(userData);
+       console.log("cid ",this.cid.eid)
+       this.applicationService.getVacancyApplybyid(this.cid.eid).subscribe(data => {
+        this.dataSource.data = data;
+        // console.log("list student",this.dataSource.data);
+        // console.log("list student",data);
+      });
+
+     }
+
+
+
+    }
 
  
     
 
   ngOnInit() {
-    this.applicationService.getVacancyApply().subscribe(data => {
-      this.dataSource.data = data;
-      console.log("response",this.dataSource.data);
-    });
+    // this.applicationService.getVacancyApply().subscribe(data => {
+    //   this.dataSource.data = data;
+    //   console.log("response",this.dataSource.data);
+    // });
+
   }
 
  

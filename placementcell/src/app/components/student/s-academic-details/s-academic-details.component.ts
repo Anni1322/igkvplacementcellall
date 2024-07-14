@@ -51,68 +51,71 @@ export class SAcademicDetailsComponent  implements OnInit {
    
   }
 
-  //for college name
-  this.studentds.getCollege().subscribe(
-    (response) => {
-      //console.log('Raw response: ', response);
-      this.college = response;
-      console.log('college details:', this.college);
-    },
-    (error) => {
-      console.log('Error: ', error);
-    }
-  );
 
-  //
-  this.studentds.getDegreeType().subscribe(
-    (response) => {
-      this.DegreeType = response;
-      console.log('Degree type details: ', this.DegreeType);
-    },
-    (error) => {
-      console.log('Error: ', error);
-    }
-  );
+  
 
-  this.studentds.getDegreeProgram().subscribe(
-    (response) => {
-      this.DegreeProgram = response;
-      console.log('Degree program details: ', this.DegreeProgram);
-    },
-    (error) => {
-      console.log('Error: ', error);
-    }
-  );
+  // //for college name
+  // this.studentds.getCollege().subscribe(
+  //   (response) => {
+  //     //console.log('Raw response: ', response);
+  //     this.college = response;
+  //     console.log('college details:', this.college);
+  //   },
+  //   (error) => {
+  //     console.log('Error: ', error);
+  //   }
+  // );
 
-  this.studentds.getSubject().subscribe(
-    (response) => {
-      this.Subject = response;
-      console.log('Subject details: ', this.Subject);
-    },
-    (error) => {
-      console.log('Error: ', error);
-    }
-  );
+  // //
+  // this.studentds.getDegreeType().subscribe(
+  //   (response) => {
+  //     this.DegreeType = response;
+  //     console.log('Degree type details: ', this.DegreeType);
+  //   },
+  //   (error) => {
+  //     console.log('Error: ', error);
+  //   }
+  // );
 
-  this.studentds.getAdmissionyear().subscribe(
-    (response) => {
-      this.AdmissionSession = response;
-      console.log('Admission year details: ', this.AdmissionSession);
-    },
-    (error) => {
-      console.log('Error: ', error);
-    }
-  );
+  // this.studentds.getDegreeProgram().subscribe(
+  //   (response) => {
+  //     this.DegreeProgram = response;
+  //     console.log('Degree program details: ', this.DegreeProgram);
+  //   },
+  //   (error) => {
+  //     console.log('Error: ', error);
+  //   }
+  // );
 
-  this.studentds.getPassingOutYear().subscribe(
-    (response) => {
-      this.PassingYear = response;
-      console.log('Passing out year details: ', this.PassingYear);
-    },
-    (error) => {
-      console.log('Error: ', error);
-    }
-  );
+  // this.studentds.getSubject().subscribe(
+  //   (response) => {
+  //     this.Subject = response;
+  //     console.log('Subject details: ', this.Subject);
+  //   },
+  //   (error) => {
+  //     console.log('Error: ', error);
+  //   }
+  // );
+
+  // this.studentds.getAdmissionyear().subscribe(
+  //   (response) => {
+  //     this.AdmissionSession = response;
+  //     console.log('Admission year details: ', this.AdmissionSession);
+  //   },
+  //   (error) => {
+  //     console.log('Error: ', error);
+  //   }
+  // );
+
+  // this.studentds.getPassingOutYear().subscribe(
+  //   (response) => {
+  //     this.PassingYear = response;
+  //     console.log('Passing out year details: ', this.PassingYear);
+  //   },
+  //   (error) => {
+  //     console.log('Error: ', error);
+  //   }
+  // );
 
 
 }

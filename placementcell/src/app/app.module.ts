@@ -130,14 +130,15 @@ import { CSRejectComponent } from './components/company/c-s-reject/c-s-reject.co
 import { CSApplicationActionComponent } from './components/company/c-s-application-action/c-s-application-action.component';
 import { ACompanyViewComponent } from './components/admin/a-company-view/a-company-view.component';
 import { AStudentViewComponent } from './components/admin/a-student-view/a-student-view.component';
-
 import { CFileuploadComponent } from './components/company/c-fileupload/c-fileupload.component';
 import { TopheaderComponent } from './componets/prac/topheader/topheader.component';
-
 import { SVacancyNextroundApplyComponent } from './components/student/s-vacancy-nextround-apply/s-vacancy-nextround-apply.component';
 import { CommonModule } from '@angular/common';
+import { SliderComponent } from './m-layout/slider/slider.component';
+import { HomemComponent } from './homem/homem.component';
+import { CompanySliderComponent } from './m-layout/company-slider/company-slider.component';
+import { TopStudentSliderComponent } from './m-layout/top-student-slider/top-student-slider.component';
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 
 
  
@@ -223,13 +224,14 @@ import { CommonModule } from '@angular/common';
       CSApplicationActionComponent,
       ACompanyViewComponent,
       AStudentViewComponent,
-
       CFileuploadComponent,
       TopheaderComponent,
-
       SVacancyNextroundApplyComponent,
+      SliderComponent,
+      HomemComponent,
+      CompanySliderComponent,
+      TopStudentSliderComponent,
    
-
      
      
 

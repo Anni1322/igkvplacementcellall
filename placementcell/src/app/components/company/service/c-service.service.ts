@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { JobStatus } from '../c-status/job-status.model';
@@ -107,6 +107,45 @@ getFiles(): Observable<any> {
 
 
 
+
+
+
+ //file upload code
+ uploadLogo( formData:any): Observable<HttpEvent<any>> {
+  const req = new HttpRequest('POST', `${this.apiUrl}/uploadLogo`, formData, {
+    reportProgress: true,
+    responseType: 'json'
+  });
+  return this.http.request(req);
+}
+
+
+
+uploadbroucher( formData1:any): Observable<HttpEvent<any>> {
+  const req = new HttpRequest('POST', `${this.apiUrl}/uploadBroucher`, formData1, {
+    reportProgress: true,
+    responseType: 'json'
+  });
+  return this.http.request(req);
+}
+
+ //file upload code Broucher
+//  uploadbroucher( formData1:any): Observable<HttpEvent<any>> {
+//   const req = new HttpRequest('POST', `${this.apiUrl}/uploadBroucher`, formData1, {
+//     reportProgress: true,
+//     responseType: 'json'
+//   });
+//   return this.http.request(req);
+// }
+
+//file upload code Other Data
+uploadotherdoc( formData2:any): Observable<HttpEvent<any>> {
+  const req = new HttpRequest('POST', `${this.baseurl}/uploadOther`, formData2, {
+    reportProgress: true,
+    responseType: 'json'
+  });
+  return this.http.request(req);
+}
 
 
 
