@@ -1,0 +1,78 @@
+<!-- <div *ngFor="let job of jobs">
+    <h3>{{ job.title }}</h3>
+    <p>{{ job.description }}</p>
+  </div>
+-->
+
+<!-- <h1>Job Listings</h1>
+  <main>
+    <section class="job-listings">
+      <h2>Current Job Openings</h2>
+      <ul>
+        <li>
+          <h3>Software Engineer</h3>
+          <p>Company: XYZ Tech</p>
+          <p>Location: Rural Area, State</p>
+          <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut urna id felis eleifend sagittis.</p>
+          <a href="#">Apply Now</a>
+        </li>
+       
+      </ul>
+    </section>
+  </main> -->
+
+
+
+
+ <mat-card class="custom-card">
+    <mat-card-header><h1>Job Listings</h1></mat-card-header>
+    <mat-card-content>
+    <div class="search-container">
+      <input type="text" class="search-box" placeholder="Search...">
+      <button class="search-button">Search </button>
+    </div>
+    
+    <mat-divider></mat-divider>
+    <section>
+    <div class="example-label"> </div>
+    <div class="example-button-row">
+      <button mat-stroked-button>All</button>
+      <button mat-stroked-button color="primary">software_Engineer</button>
+      <button mat-stroked-button color="primary">Network_Engineer</button>
+      <button mat-stroked-button color="primary">Developer</button>
+      <a mat-stroked-button href="https://www.google.com/" target="_blank">Link</a>
+    </div>
+    </section>
+   <mat-divider></mat-divider>
+  
+  <mat-list>
+    <mat-list-item class="box">
+      <span matListItemTitle>Company_Name-Capgemini</span>
+      <span matListItemLine>Post-Software Engineer</span>
+      <span matListItemLine>Description-many details</span>
+      <button>Apply</button>
+    </mat-list-item>
+    <mat-list-item class="box">
+      <span matListItemTitle>Company_Name-Accenture</span>
+      <span matListItemLine>Post-Network Engineer</span>
+      <span matListItemLine>Description-other details</span>
+      <button>Apply</button>
+    </mat-list-item>
+    <mat-list-item class="box">
+    
+      <span matListItemTitle>Cubelelo</span>
+      <span matListItemLine>Post- </span>
+      <span matListItemLine>Description-other details</span>
+      <button mat>Apply</button>
+    </mat-list-item>
+    
+    <mat-list-item>
+      <span matListItemTitle>   </span>
+      <span matListItemTitle>   </span>
+      <span matListItemTitle>   </span>
+      <button mat-button></button>
+    </mat-list-item>
+  
+  </mat-list>
+  </mat-card-content>
+  </mat-card>

@@ -1,0 +1,200 @@
+ 
+<!-- <body style="font-family:Verdana;color:#aaaaaa; margin: 6px;"> -->
+
+ <!-- top nav bar -->
+<div class="container-fluid topnavbar" style="background-color: #8686e5;">
+    <div class="container p-0 rounded rounded-top-0  text-white">
+        <div class="row px-1">
+                <ul class="nav col left-link">
+                    <li class="top-li ms-2">
+                        <a class="nav-link text-white" href="https://igkv.ac.in/web/igkv.aspx"
+                            aria-label="इंदिरा गांधी कृषि विश्वविद्यालय - External Regional Language Site that opens in a new window"
+                            title="इंदिरा गांधी कृषि विश्वविद्यालय - External Regional Language Site that opens in a new window"
+                            onclick="return confirm('You are being redirected to an external website. Please note that North Baster Kanker District, State Chhattisgarh cannot be held responsible for external websites content & privacy policies.');"
+                            target="_blank" rel="noopener noreferrer">
+                            इंदिरा गांधी कृषि विश्वविद्यालय रायपुर
+                        </a>
+                    </li>
+  
+                    <!-- second link -->
+                    <li class="top-li egov-link border-start border-end">
+                        <a class="nav-link text-white" href="https://cgstate.gov.in/"
+                            aria-label="छत्तीसगढ़ शासन - External Regional Language Site that opens in a new window"
+                            title="छत्तीसगढ़ शासन - External Regional Language Site that opens in a new window"
+                            onclick="return confirm('You are being redirected to an external website. Please note that North Baster Kanker District, State Chhattisgarh cannot be held responsible for external websites content & privacy policies.');"
+                            target="_blank" rel="noopener noreferrer">
+                            Government of Chhattisgarh
+                        </a>
+                    </li>
+  
+                    <!-- For Right Side Link  -->
+              
+                    <!-- second link -->
+                </ul>
+                <ul class="nav col right-link">
+                
+                    <li class="top-li ms-auto border-start border-end">
+                        <a class="nav-link text-white" routerLink="#main">
+                            SKIP TO MAIN CONTENT
+                        </a>
+                    </li>
+                    <!-- three link -->
+                    <li class="top-li  ms-md-end border-end">
+                        <a class="nav-link text-white" href="https://igkv.ac.in/web/igkv.aspx">
+                            Site-Map
+                        </a>
+                    </li>
+                    <!-- link 4 -->
+                    <li id="translateBtn" class="top-li  ms-md-end me-0">
+                        <a class="nav-link text-white" href="#">
+                         ENG-हिं
+                        </a> 
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+    </div>
+
+   
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" data-aos="fade-down" data-aos-duration="2000">
+        <a class="navbar-brand" href="#">
+            <img src="https://igkv.ac.in/Images/img/logo_with_name2.png" alt="Logo" style="width: 18rem; height: 3rem;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/signup">Signup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+        
+    </nav>
+
+    <!-- slider -->
+
+    <app-slider></app-slider>
+
+    <!-- slider -->
+
+
+
+
+
+<div style="overflow:auto">
+  <div class="menu">
+    <a href="https://igkv.ac.in/recruitmenthome.aspx">Igkv Recruitmenthome</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+    <a href="#">Link 4</a>
+  </div>
+
+
+
+
+
+
+  <div class="main">
+
+      <!-- maques -->
+  <div class="notification-section mt-2" data-aos="fade-right"   data-aos-duration="2000">
+    <div class="container page-heading text-center p-0 bg-white rounded">
+      <h3 style="background-color: #8686e5"
+          class=" p-2 text-light rounded border border-end-0 border-bottom-0 border-start-0 border-5 border-dark">
+          <strong>Notification</strong>
+      </h3>
+    </div>
+    <div class="card" >
+      <marquee class="notification_body " style="margin: 20px;" behavior="scroll" direction="up" scrollamount="3" scrolldelay="10" onmouseover="this.stop();" onmouseout="this.start();">
+        <div class="row">
+          <div class="mt-4" *ngFor="let vacancy of data">
+              <span class="card-subtitle mb-2 text-muted" hidden>VID: {{ vacancy.Vacancy_ID }} </span>
+            
+                      <span class="card-title"><img src="https://img.icons8.com/?size=100&id=mIQ6moZZHoBs&format=png&color=000000" width="20px"  height="15px" alt="" srcset="">  Last Date : {{ vacancy.Last_Date_for_apply | date }} </span>
+                      <span class="card-title">Post : {{ vacancy.Job_Title }} </span>
+                      <!-- <span class="card-title">Company : {{ vacancy.Company_Id }} </span> -->
+                      <!-- <span class="card-title">Post No : {{ vacancy.Vacancy_ID }} </span> -->
+                      <a [routerLink]="['/login']" class="card-link"> Apply Now</a> 
+                      <a [routerLink]="['/login']" class="card-link"> More</a>
+          </div>
+      </div>
+      </marquee>
+  </div>
+</div>
+
+  <!-- maques -->
+
+    
+    <section class="sec-1" data-aos="fade-up">
+        <div class="bg container text-center border-radius rounded shadow-sm mx-auto ">
+          <div class="stats d-flex justify-content-center mt-1">
+            <div class="stat-item p-4">
+              <h1>232</h1>
+              <p>Registered Students</p>
+            </div>
+            <div class="stat-item p-4">
+              <h1>521</h1>
+              <p>Registered Companie's</p>
+            </div>
+            <div class="stat-item p-4">
+              <h1>1453</h1>
+              <p>Placed Students</p>
+            </div>
+            <div class="stat-item p-4">
+              <h1>32</h1>
+              <p>Workers</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <app-company-slider></app-company-slider>
+
+</div>
+
+  <div class="right" >
+    <h2>News</h2>
+    <div class="card m-2">
+        <!-- <span>h</span>
+        <span>h</span>
+        <span>h</span>
+        <span>h</span> -->
+    </div>
+    <!-- <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> -->
+  </div>
+</div>
+
+<app-footer></app-footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
