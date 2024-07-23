@@ -16,6 +16,7 @@ import { CSApplicationActionComponent } from '../c-s-application-action/c-s-appl
   styleUrls: ['./c-s-shortlist.component.scss']
 })
 export class CSShortlistComponent implements OnInit, AfterViewInit {
+  cid: any;
 
   displayedColumns: string[] = [
     'S.No.', 
@@ -52,7 +53,20 @@ export class CSShortlistComponent implements OnInit, AfterViewInit {
     private applicationService: AdminService,
     public dialog: MatDialog,
     private excelExportService: ExcelExportService
-    ) {}
+    ) {
+    //   const userData = localStorage.getItem('currentUser');
+    //  // Check if user data exists
+    //  if (userData) {
+    //    this.cid = JSON.parse(userData);
+    //    console.log("cid ",this.cid.eid)
+    //    this.applicationService.getVacancyApplybyid(this.cid.eid).subscribe(data => {
+    //     this.dataSource.data = data;
+    //     // console.log("list student",this.dataSource.data);
+    //     // console.log("list student",data);
+    //   });
+
+    //  }
+    }
 
  
     
@@ -193,3 +207,5 @@ export interface StudentApplicationDetails {
   // Private_IP_Address?: string;
 }
 
+//s-shortlist apply the company id match to the table 
+//this is show all the student application 

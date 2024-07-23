@@ -19,5 +19,6 @@ export class SVacancyDetailsComponent {
       }
     });
     };
+  }
   
-}
+//add company name in the table and remove description field 

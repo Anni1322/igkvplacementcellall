@@ -176,31 +176,6 @@ export class SAplicationComponent implements OnInit  {
     
   }
   
-  //for form data collect    
-  // getvalueFromform(formValue: any) {
-  //   console.log('Form Data:', formValue.value);
-  //   const userdata = formValue.value
-  //   this.studentService.postStudentDetails(formValue).subscribe(
-  //     () => {
-  //       alert('Form submitted successfully!');
-  //       this.studentregistrationForm.reset(); // Reset the form after successful submission
-  //     },
-  //     (error) => {
-  //       console.error('Error submitting form:', error);
-  //       // Display a more user-friendly message
-  //       alert('An error occurred while submitting the form. Please try again later.');
-  //       // Optionally, handle specific error scenarios based on status code
-  //       if (error.status === 500) {
-  //         console.error('Internal Server Error: Please contact support.');
-  //       } else {
-  //         console.error(`Error: ${error.message}`);
-  //       }
-  //     }
-  //   );
-  // }
-
-
-
 
   onSubmit(): void {
     if (this.studentregistrationForm.valid) {
@@ -229,22 +204,12 @@ export class SAplicationComponent implements OnInit  {
     }
     
   }
-
-
-
-  
-  
-  
-  // onSubmit() {
-  //   if (this.studentregistrationForm.valid) {
-  //     this.getvalueFromform(this.studentregistrationForm.value);
-  //   } else {
-  //     console.log('Form is not valid');
-  //   }
-  // }
   
   onClear() {
     this.studentregistrationForm.reset();
   }
   
 }
+
+//pending work - dateformat change 
+//gender id can not patch the value 

@@ -144,4 +144,30 @@ router.get('/passingoutyear', studentController.PassingOutYear);
 // router.post('/edit/:id', studentController.postEditstudent);
 // router.get('/delete/:id', studentController.deletestudent);
 
+const dirUpload = path.join(__dirname, 'uploads');
+if (!fs.existsSync(dirUpload)) {
+  fs.mkdirSync(dirUpload, { recursive: true });
+}
+
+//fileUploads
+const Upload = multer({   
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {  
+      cb(null, "./uploads");
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + path.extname(file.originalname)); 
+    }
+  }),
+  limits: { fileSize: 10000000 }  
+});
+
+router.post('/uploadcertificate', Upload.single('Skill_Certificate_Url'), (req, res, next) => {
+    const file = req.file;
+    if (!file) {
+      return res.status(400).send('No file uploaded.');
+    }
+    res.json({ Skill_Certificate_Url: `/uploads/${file.filename}` });
+  });
+
 module.exports = router;

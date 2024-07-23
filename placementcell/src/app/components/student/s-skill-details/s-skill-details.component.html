@@ -1,4 +1,3 @@
-
 <div class="container mt-5">
   <div class="card">
     <div class="card-body">
@@ -9,16 +8,17 @@
         <div class="row">
           <!-- Student Details -->
           <div class="col-md-4">
-              <div class="form-group mb-1">
-                <label for="Student_ID" style="font-size: .77rem;">Student ID:</label>
-                <input id="Student_ID" formControlName="Student_ID" class="form-control" style="font-size: .77rem;" />
-              </div>
+            <div class="form-group mb-1">
+              <label for="Student_ID" style="font-size: .77rem;">Student ID:</label>
+              <input id="Student_ID" formControlName="Student_ID" class="form-control" style="font-size: .77rem;" />
             </div>
+          </div>
 
           <div class="col-md-4">
             <div class="form-group mb-1">
               <label for="Registration_No" style="font-size: .77rem;">Registration No:</label>
-              <input id="Registration_No" formControlName="Registration_No" class="form-control" style="font-size: .77rem;" />
+              <input id="Registration_No" formControlName="Registration_No" class="form-control"
+                style="font-size: .77rem;" />
             </div>
           </div>
 
@@ -33,17 +33,27 @@
           <div class="col-md-4">
             <div class="form-group mb-1">
               <label for="Skill_Certificate_Url" style="font-size: .77rem;">Skill Certificate Url:</label>
-              <input id="Skill_Certificate_Url" formControlName="Skill_Certificate_Url" class="form-control" style="font-size: .77rem;" />
+              <input type="text" id="Skill_Certificate_Url" formControlName="Skill_Certificate_Url" class="form-control"
+                style="font-size: .77rem;" />
             </div>
           </div>
 
           <div class="col-md-4">
             <div class="form-group mb-1">
               <label for="Created_Date" style="font-size: .77rem;">Created Date:</label>
-              <input type="date" id="Created_Date" formControlName="Created_Date" class="form-control" style="font-size: .77rem;" />
+              <input type="date" id="Created_Date" formControlName="Created_Date" class="form-control"
+                style="font-size: .77rem;" />
             </div>
           </div>
-     
+
+          <div class="row fileupload">
+            <div class="col" style="margin-top: 5px; margin-bottom: 5px;">
+              <div>Upload Certificate</div>
+              <input type="file" (change)="selectCertificate($event)" required>
+              <button class="btn btn-primary mt-2" type="button" (click)="uploadCertificate()">Upload</button>
+            </div>
+          </div>
+
         </div>
 
         <button type="submit" class="btn btn-primary mt-3">Submit</button>
@@ -53,9 +63,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-

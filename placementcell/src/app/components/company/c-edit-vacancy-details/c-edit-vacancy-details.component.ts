@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CServiceService } from '../service/c-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-c-edit-vacancy-details',
@@ -11,7 +11,8 @@ export class CEditVacancyDetailsComponent implements OnInit  {
   formData: any = {};
   constructor(
     private ds:CServiceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
     ){}
   formdata:any
 
@@ -62,7 +63,8 @@ getvacancydata(vid:any) {
     console.log('Form Data:', formData);
 
     this.ds.updateVacancy(formData).subscribe(()=>{
-      alert('Update(edit) successfully!');
+      alert('Update(edit) successfully!'); //show the message 
+      this.router.navigate(['/company/c-status']); //redirect the page after successfully submitting 
     },(error) => {
       console.error('Error submitting form:', error);
     })

@@ -134,7 +134,7 @@ const routes: Routes = [
  
 
 // header
- 
+//  {path:' ', redirectTo:'/student', pathMatch:'full'},
   {path:'student', component:StudentComponent,children:[
     {path:'s-dashboard', component:SDashboardComponent},
     {path:'student_profile', component:StudentProfileComponent},
@@ -207,3 +207,9 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+// export const routingcomponents = [ StudentComponent,
+//                                    SProfileComponent,
+//                                    SAcademicDetailsComponent,
+
+// ]

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CServiceService } from '../service/c-service.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-c-add-vacancy-details',
@@ -13,7 +14,7 @@ export class CAddVacancyDetailsComponent {
   companayid:any;
   vancancydata:any;
 
-  constructor(private ds:CServiceService, private fb: FormBuilder){
+  constructor(private ds:CServiceService, private fb: FormBuilder, private router: Router){
     this.formData = this.fb.group({
       Vacancy_ID: ['', Validators.required],
       Company_Id: ['', Validators.required],
@@ -62,23 +63,20 @@ export class CAddVacancyDetailsComponent {
       const formAllData = this.formData.value;
       console.log(this.formData.value);
       
-
       this.ds.postVacancies(formAllData).subscribe((Response)=>{
         this.vancancydata = Response
         console.log(this.vancancydata);
         alert(this.vancancydata.message);
+        this.vancancydata.reset();
+        this.router.navigate(['/company/c-status']); //redirect the page after successfully submitted 
       },(error) => {
         console.error('Error submitting form:', error);
       })
     }
   }
+  
 
   
- 
-
- 
-
-   
   }
 
- 
+ //reset and page navigation can not working s

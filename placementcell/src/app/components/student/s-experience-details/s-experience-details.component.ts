@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class SExperienceDetailsComponent implements OnInit{
   user:any = { };
   experiencedetailsform: any;
 
-  constructor(private fb:FormBuilder, private Stuedentservice:StudentService, private studentds:StudentService){ }
+  constructor(private fb:FormBuilder, private Stuedentservice:StudentService, private studentds:StudentService, private router: Router){ }
   ngOnInit(): void {
     this.experiencedetailsform = this.fb.group({
       Student_ID: [null],
@@ -51,15 +52,16 @@ export class SExperienceDetailsComponent implements OnInit{
 
   }
 
-  //experience details form submission 
+
   getvalueFromform(value: any) {
     const formValue = this.experiencedetailsform.value;
     console.log('Form Data:', formValue);
-
+  
     this.Stuedentservice.postAddExperience(formValue).subscribe(
       () => {
         alert('Form submitted successfully!');
         this.experiencedetailsform.reset(); // Reset the form after successful submission
+        this.router.navigate(['/student/s-profile/id:']); // Navigate to the previous page
       },
       (error: { status: number; message: any; }) => {
         console.error('Error submitting form:', error);
@@ -72,7 +74,6 @@ export class SExperienceDetailsComponent implements OnInit{
       }
     );
   }
-
   
   onSubmit() {
     if (this.experiencedetailsform.valid) {
@@ -81,10 +82,39 @@ export class SExperienceDetailsComponent implements OnInit{
       console.log('Form is not valid');
     }
   }
+  //experience details form submission exeperince 
+  // getvalueFromform(value: any) {
+  //   const formValue = this.experiencedetailsform.value;
+  //   console.log('Form Data:', formValue);
+
+  //   this.Stuedentservice.postAddExperience(formValue).subscribe(
+  //     () => {
+  //       alert('Form submitted successfully!');
+  //       this.experiencedetailsform.reset(); // Reset the form after successful submission
+  //     },
+  //     (error: { status: number; message: any; }) => {
+  //       console.error('Error submitting form:', error);
+  //       alert('An error occurred while submitting the form. Please try again later.');
+  //       if (error.status === 500) {
+  //         console.error('Internal Server Error: Please contact support.');
+  //       } else {
+  //         console.error(`Error: ${error.message}`);
+  //       }
+  //     }
+  //   );
+  // }
+
   
-  // onClear() {
-  //   this.experiencedetailsform.reset();
+  // onSubmit() {
+  //   if (this.experiencedetailsform.valid) {
+  //     this.getvalueFromform(this.experiencedetailsform.value);
+  //   } else {
+  //     console.log('Form is not valid');
+  //   }
   // }
 
 
 }
+
+//pending work- after submitting the form page can redirect to the s-profile page 
+//navigation not working the experience page 

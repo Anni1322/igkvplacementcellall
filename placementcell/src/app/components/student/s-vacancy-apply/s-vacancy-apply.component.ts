@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CServiceService } from '../../company/service/c-service.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { StudentService } from 'src/app/services/student.service';
@@ -31,6 +31,7 @@ export class SVacancyApplyComponent implements OnInit {
     private companyds:CServiceService,
     private route: ActivatedRoute,
     private studentds: StudentService,
+    private router: Router,
     ) {
 
  
@@ -202,14 +203,15 @@ if (userString !== null) {
         response => {
           Swal.fire('Form submitted successfully!')
           console.log('Form submitted successfully!', response);
-          this.vacancyApplydata.reset();
+          this.vacancyApplydata.reset(); //reset the page after successfully submitted  
           this.selectedFile = null;
+          this.router.navigate(['/student/s-status']); //redirect the page after successfully submitted
         },
         error => {
           // Swal.fire("Allready In this Vacancy Applied")
           Swal.fire({
             icon: "error",
-            title: "You are Allready Applied Please Check My Application",
+            title: "You are Already Applied Please Check My Application",
             // text: "Something went wrong!",
             // footer: '<a href="#">Why do I have this issue?</a>'
           });
@@ -222,8 +224,6 @@ if (userString !== null) {
 }
 
 }
-
- 
 
 
 

@@ -14,7 +14,7 @@
                 <div class="#">
                     <div class="card">
                         <div class="card-header p-1" style="background-color: #3aaaff">
-                            <h5 class="ms-1 mt-1 text-white"><b>Update Vacancy</b></h5>
+                            <h5 class="ms-1 mt-1 text-white"><b>Update Vacancy details</b></h5>
                         </div>
 
                         <mat-stepper>
@@ -122,11 +122,11 @@
                             <mat-step>
                                 <div class="card-body">
                                     <div class="row">
-                                        <h2>second</h2>
+                                        <h2>other_details</h2>
                                         <ng-template matStepLabel="content">Second_Content</ng-template>
                                          
                                         <div class="col-lg-4">
-                                            <div class="form-group">
+                                            <div class="form-group" hidden>
                                                 <label for="Status">Status: </label>
                                                 <input type="text" class="form-control" [(ngModel)]="vacancydata.Status" id="Status" name="Status" value="Pending" ngModel>                                            
                                             </div>
@@ -160,7 +160,7 @@
                             class="mt-2 d-flex justify-content-evenly pt-4 pb-3 rounded-top bg-white border border-1 border-dark">
                             <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                             <button type="submit" class="btn btn-primary"
-                                (click)="getvalueFromform(NgForm.value)">Update</button>
+                                (click)="getvalueFromform(NgForm.value)" >Update</button>
                         </div>
 
                         <div
@@ -186,7 +186,7 @@
 
 
 
-
+<!--After update form is redirect to the status page -->
 
 
 

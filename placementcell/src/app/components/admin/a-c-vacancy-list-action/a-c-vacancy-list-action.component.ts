@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
  
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CServiceService } from '../../company/service/c-service.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -17,7 +17,8 @@ export class ACVacancyListActionComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private ds: CServiceService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -76,6 +77,7 @@ export class ACVacancyListActionComponent implements OnInit {
       this.ds.updateVacancy(formValue).subscribe(
         () => {
           alert('Update (edit) successful!');
+          this.router.navigate(['/admin/a-dashboard']); //redirect the page after successfully updated
         },
         (error) => {
           console.error('Error submitting form:', error);
