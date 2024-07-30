@@ -16,7 +16,10 @@ const cors = require('cors');
 
 
 const app = express();
+
 app.use(cors());
+app.use(cors({origin: "*"}));
+
 app.use(express.static('public'));
 
 const PORT = process.env.PORT || 3000;
@@ -33,6 +36,8 @@ const upload = multer({ dest: 'uploads/' });
 app.use('/student', studentRouter);
 app.use('/company', companyRouter);
 app.use('/admin', adminRouter);
+ 
+
 
 
 app.listen(PORT, () => {

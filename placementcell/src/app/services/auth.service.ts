@@ -46,10 +46,22 @@ export class AuthService {
   }
 
 
+
   // Method to get the token
   getToken(): string | null {
     return localStorage.getItem('Token');
   }
+
+
+
+  // for auth 
+  isAuthenticated(){
+    const userData = localStorage.getItem('currentUser');
+    console.log("profiledata"+ userData)
+    return true
+  }
+  // for auth 
+
 
   
 

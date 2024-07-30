@@ -56,6 +56,12 @@ export class HomeComponent   {
         console.log(data[0].Company_Id); 
       }
     });
+
+
+
+ 
+
+
     };
 
 

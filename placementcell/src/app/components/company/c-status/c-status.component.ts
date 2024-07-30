@@ -122,4 +122,3 @@ export interface JobStatus {
   Public_IP_Address: string;
   Private_IP_Address: string;
 }
-

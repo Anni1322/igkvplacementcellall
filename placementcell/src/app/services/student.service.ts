@@ -2,6 +2,7 @@ import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -174,6 +175,7 @@ export class StudentService {
     return this.http.request(req);
   }
 
+
   // For Marksheet upload 
   UploadMarksheet(formData: any): Observable<HttpEvent<any>> {
     const req = new HttpRequest('POST', `${this.apiUrl}/uploadcetrificate`, formData, {
@@ -184,6 +186,10 @@ export class StudentService {
   }
 
   // for data pass one component to anather component 
+
+
+
+// for data pass one component to anather component 
 private rowDataSubject = new BehaviorSubject<any>(null);
 setRowData(rowdata: any): void {
   this.rowDataSubject.next(rowdata);
@@ -191,4 +197,9 @@ setRowData(rowdata: any): void {
 getRowData(): Observable<any> {
   return this.rowDataSubject.asObservable();
 }
+
+
+// for data pass one component to anather component 
+
+
 }

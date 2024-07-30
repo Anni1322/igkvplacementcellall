@@ -633,21 +633,42 @@ const Signup = async (req, res) => {
     });
 };
 
-const getAllCompany = async(req, res)=>{
+// const getAllCompany = async(req, res)=>{
+//     var request = new sql.Request();
+//     var query = "SELECT * FROM dbo.company_registration";
+
+//     // Execute the SQL query
+//     request.query(query, function(err, records) {
+//         if (err) {
+//             console.log(err);
+//             res.status(500).json({ error: 'Error executing the query' });
+//             return;
+//         }
+//         // Send the fetched records as JSON response
+//         res.json(records.recordset);
+//     });
+// }
+
+
+
+const getAllCompany = async (req, res) => {
     var request = new sql.Request();
     var query = "SELECT * FROM dbo.company_registration";
-
+  
     // Execute the SQL query
     request.query(query, function(err, records) {
-        if (err) {
-            console.log(err);
-            res.status(500).json({ error: 'Error executing the query' });
-            return;
-        }
-        // Send the fetched records as JSON response
-        res.json(records.recordset);
+      if (err) {
+        console.log(err);
+        res.status(500).json({ error: 'Error executing the query' });
+        return;
+      }
+      // Send the fetched records as JSON response
+      const totalCount = records.recordset.length;
+      res.json({ data: records.recordset, totalCount });
     });
-}
+  }
+
+
  
 // Function to register a company
 // const registerCompany = async (req, res) => {
@@ -965,6 +986,8 @@ const registerCompany = async (req, res) => {
 
 
 
+
+
 const getcompanyinformation = async (req, res) => {
     const { cid } = req.body;
     // const cid = "COM07"
@@ -1071,6 +1094,8 @@ const getdistrict = async (req, res)=> {
     }
 }
 
+
+
 const getblock = async (req, res)=> {
     try {
         const request = new sql.Request();
@@ -1161,11 +1186,128 @@ const getfiles = async (req, res) => {
 
 
  
+const totalcompany = async (req, res)=>{
+
+    try {
+        const pool = await sql.connect();
+        const query = 'select * from '
+        const result = await request.query()
+        
+    } catch (error) {
+        console.error('Error Fetchin File Path:',error)
+        
+    }
+}
 
 
 
 
 
+
+// for files uploads 
+const postCompanyfiles = async (req, res) => {
+    const {
+        Company_Id,
+        Created_Date,
+        Company_Logo_Url,
+        Company_Logo,
+        Company_Broucher, 
+        Company_Other_Doc_Url
+    } = req.body;
+
+    // Validate required fields
+    if (!Company_Id) {
+        return res.status(400).json({ error: 'Required fields are missing' });
+    }
+
+    try {
+        const request = new sql.Request();
+
+        // Check if the company already exists
+        const checkQuery = `
+            SELECT COUNT(*) AS count
+            FROM dbo.Companiesfiles
+            WHERE Company_Id = @Company_Id
+        `;
+        request.input('Company_Id', sql.Int, Company_Id);
+        const result = await request.query(checkQuery);
+
+        const companyExists = result.recordset[0].count > 0;
+
+        let query;
+        if (companyExists) {
+            // Update existing company
+            query = `
+                UPDATE dbo.Companiesfiles
+                SET
+                    Company_Logo_Url = @Company_Logo_Url,
+                    Company_Logo = @Company_Logo,
+                    Company_Broucher = @Company_Broucher, 
+                    Company_Other_Doc_Url = @Company_Other_Doc_Url,
+                    Created_Date = @Created_Date
+                WHERE
+                    Company_Id = @Company_Id
+            `;
+        } else {
+            // Insert new company
+            query = `
+                INSERT INTO dbo.Companiesfiles (
+                    Company_Logo_Url,
+                    Company_Logo,
+                    Company_Broucher,  
+                    Company_Other_Doc_Url,
+                    Created_Date
+                ) VALUES (
+                    @Company_Logo_Url,
+                    @Company_Logo,
+                    @Company_Broucher, 
+                    @Company_Other_Doc_Url,
+                    @Created_Date
+                )
+            `;
+        }
+
+        // Set query parameters
+        request.input('Company_Logo_Url', sql.NVarChar(6000), Company_Logo_Url);
+        request.input('Company_Logo', sql.NVarChar(6000), Company_Logo);
+        request.input('Company_Broucher',sql.NVarChar(6000), Company_Broucher);  
+        request.input('Company_Other_Doc_Url', sql.NVarChar(255), Company_Other_Doc_Url);
+        request.input('Created_Date', sql.DateTime, new Date().toISOString());
+
+        await request.query(query);
+
+        res.status(200).json({ message: companyExists ? 'Uploading successfully Done' : 'Company registered successfully' });
+    } catch (err) {
+        console.error('Error inserting/updating in SQL Server: ', err);
+        res.status(500).json({ error: 'Internal Server Error', details: err.message });
+    }
+};
+
+
+
+const getCompanyfiles = async (req, res) => {
+    const { cid } = req.body;
+    console.log(cid);
+    try {
+        const request = new sql.Request();
+        request.input('cid', sql.VarChar(50), cid);
+
+        const query = 'SELECT * FROM dbo.Companiesfiles WHERE Company_Id = @cid';
+        console.log('Executing query:', query, 'with eid:', cid);
+        const result = await request.query(query);
+        // console.log(result)
+        if (result.recordset.length > 0) {
+            res.json(result.recordset[0]);
+        } else {
+            return res.status(404).json({ error: 'Student not found' });
+        }
+    } catch (error) {
+        console.error('Error checking existence in SQL Server: ', error);
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+// for files uploads 
 
 
 
@@ -1200,7 +1342,9 @@ module.exports ={
 
 
     fileupload,
-    getfiles
+    getfiles,
+    postCompanyfiles,
+    getCompanyfiles
 
 
     

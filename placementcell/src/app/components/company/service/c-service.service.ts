@@ -67,8 +67,21 @@ getVacancyNextdata(Vacancy_ID: string): Observable<any> {
 //}
 
 postCompanyDetails(data:any){
-  console.log("hudi baba",data)
+  // console.log("hudi baba",data)
   return this.http.post<any>(`${this.baseurl}/company/registerCompany`, data);
+}
+
+// for files 
+postCompanyfiles(data:any){
+  // console.log("hudi baba",data)
+  return this.http.post<any>(`${this.baseurl}/company/allfiles`, data);
+}
+// for files 
+
+
+
+getCompanyfiles(cid:any){
+  return this.http.post<any>(`${this.baseurl}/company/allfiles`, {cid});
 }
 
 
@@ -111,6 +124,10 @@ getFiles(): Observable<any> {
 
 
  //file upload code
+ uploadLogos( formData:any): Observable<HttpEvent<any>> {
+  return this.http.post<any>(`${this.apiUrl}/uploadLogo`, formData);
+}
+
  uploadLogo( formData:any): Observable<HttpEvent<any>> {
   const req = new HttpRequest('POST', `${this.apiUrl}/uploadLogo`, formData, {
     reportProgress: true,
@@ -139,8 +156,9 @@ uploadbroucher( formData1:any): Observable<HttpEvent<any>> {
 // }
 
 //file upload code Other Data
-uploadotherdoc( formData2:any): Observable<HttpEvent<any>> {
-  const req = new HttpRequest('POST', `${this.baseurl}/uploadOther`, formData2, {
+ 
+uploadOtherDoc( formData1:any): Observable<HttpEvent<any>> {
+  const req = new HttpRequest('POST', `${this.apiUrl}/otherDocFile`, formData1, {
     reportProgress: true,
     responseType: 'json'
   });
@@ -148,6 +166,24 @@ uploadotherdoc( formData2:any): Observable<HttpEvent<any>> {
 }
 
 
+
+
+
+// this for cout 
+totalcompany():Observable<any>{
+  return this.http.get<any>(`${this.baseurl}/company/totalcompany`)
+}
+// this for cout 
+
+// this for cout 
+totalstudent():Observable<any>{
+  return this.http.get<any>(`${this.baseurl}/student/totalstudent`)
+}
+// this for cout 
+
+
+
+ 
 
 
 

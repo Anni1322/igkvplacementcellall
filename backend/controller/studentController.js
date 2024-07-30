@@ -652,6 +652,9 @@ const VacancyApply = async (req, res) => {
 
 
 
+
+
+
 // for admin api 
 const getVacancyApplyStudentDetails = async(req, res)=>{
     var request = new sql.Request();
@@ -777,9 +780,19 @@ const getAllStudents = async(req, res)=>{
             return;
         }
         // Send the fetched records as JSON response
-        res.json(records.recordset);
+ 
+      const totalCount = records.recordset.length;
+      res.json({ data: records.recordset, totalCount });
     });
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -1905,6 +1918,11 @@ const NextRoutdDetails = async (req, res) => {
 };
 
 
+// post api for apply Next Roud 
+
+
+
+
 // add by anil 29-05-2024
 const uploadfile = async (req, res) => {
     const file = req.file;
@@ -2577,6 +2595,20 @@ const nextround = async (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //end 
 
 
@@ -2653,6 +2685,6 @@ module.exports ={
 
     College,
     PassingOutYear,
-    nextround
 
+    NextRoutdDetails
 }

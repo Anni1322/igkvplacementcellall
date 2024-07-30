@@ -140,6 +140,7 @@ router.get('/passingoutyear', studentController.PassingOutYear);
 // router.get('/delete/:id', studentController.deletestudent);
 
 
+
 // this api created for next round form data save
 router.post('/NextRoutdDetails',studentController.NextRoutdDetails);
 
@@ -151,6 +152,23 @@ router.post('/uploadcertificate', upload.single('Skill_Certificate_Url'), (req, 
     }
     res.json({ Skill_Certificate_Url: `/uploads/${file.filename}` });
   });
+
+
+
+// add by anil data on 19-07-2023
+// reason for cout total company
+router.get('/totalstudent', studentController.getAllStudents);
+// reason for cout total company
+// add by anil data on 19-07-2023
+
+
+
+// this api created for next round form data save
+router.post('/NextRoutdDetails',studentController.NextRoutdDetails);
+// this api created for next round form data save
+
+
+
 
 //Create a GEt API endpoint to retrieve file
 router.get('/uploads/:filename', (req, res, next) => {

@@ -174,7 +174,7 @@ export class CBasicDetailsComponent implements OnInit {
     Swal.fire("please select a file","","warning")
   }
 
-
+  baseimageur = 'http://localhost:3000/company';
 
      // logo file upload 
   selectLogo(event: any) {

@@ -15,6 +15,7 @@ export class CProfileComponent implements OnInit {
   companydata : any;
   userid: any;
 
+  baseimageur = 'http://localhost:3000/company';
   
   constructor(
      private companyds:CServiceService,

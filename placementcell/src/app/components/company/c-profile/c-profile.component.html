@@ -1,16 +1,18 @@
 
 
 <section class="bg-light">
-    <div class="container">
+    <div class="container m-5">
         <div class="row">
             <div class="col-lg-12 mb-4 mb-sm-5">
                 <div class="card card-style1 border-0">
                     <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
                         <div class="row align-items-center">
-                            <div class="col-lg-6 mb-4 mb-lg-0">
-                                 <img src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?size=338&ext=jpg&ga=GA1.1.1480204119.1718755200&semt=sph" alt="Company Logo" class="img-fluid">
-                                 
+                            <div class="col-lg-3 ">
+                                <div class="logo-body shadow border-1 fixed-size-container">
+                                    <img class="fixed-size-image" [src]="baseimageur + companydata.Company_Logo_Url" alt="User Image" >
                                 </div>
+                                
+                            </div>
     
                             <div class="col-lg-6 px-xl-10">
                                 <!--<div class="bg-secondary d-lg-inline-block py-1-5 px-1-5 px-sm-6 mb-1-8 rounded">
@@ -101,9 +103,22 @@
             <button type="submit" class="btn btn-primary mt-2">Update Logo</button>
           </form>
           
-
-        
           
           
     </div>
 </div>-->
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="logos-slide" *ngIf="images.length">
+    <img *ngFor="let image of images" [src]="'http://localhost:3000/' + image.imagePath" [alt]="image.imageName" />
+  </div> -->

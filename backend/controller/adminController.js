@@ -413,6 +413,52 @@ const getstudentdetails = async (req, res) => {
     }
 };
 
+
+
+
+
+
+// student list 
+
+// const getAllStudents = async(req, res)=>{
+//     var request = new sql.Request();
+//     var query = "SELECT * FROM dbo.student_registration";
+
+//     // Execute the SQL query
+//     request.query(query, function(err, records) {
+//         if (err) {
+//             console.log(err);
+//             res.status(500).json({ error: 'Error executing the query' });
+//             return;
+//         }
+//         // Send the fetched records as JSON response
+ 
+//       const totalCount = records.recordset.length;
+//       res.json({ data: records.recordset, totalCount });
+//     });
+// }
+
+
+
+const getAllStudents = async (req, res) => {
+    try {
+        const pool = await sql.connect();
+        const request = pool.request();
+        var query = "SELECT * FROM dbo.student_registration";
+        const result = await request.query(query);
+        const records = result.recordset;
+       
+        // Respond with the fetched records
+        res.status(200).json(records);
+    } catch (error) {
+        console.error('Error fetching student application details:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
+
+// student list 
+
 module.exports ={
   getVacancyApply,
   Student_application_List,
@@ -421,7 +467,11 @@ module.exports ={
   getstudentdetails,
   getshortlist,
   getSelected,
-  getReject
+  getReject,
+
+  getAllStudents
+
+
 }
 
 

@@ -63,7 +63,22 @@ section.bg-light {
     &-style1 {
       border: none;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    
     }
+
+// for image or logo
+.fixed-size-container {
+  width: 150px; /* Set desired fixed width */
+  height: 150px; /* Set desired fixed height */
+  overflow: hidden; /* Hide overflow if image is larger */
+}
+.fixed-size-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the container while maintaining aspect ratio */
+}
+// for image or logo
+
 
     .card-body {
       padding: $spacing-unit * 1.9;
