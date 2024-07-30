@@ -176,7 +176,7 @@ export class SAplicationComponent implements OnInit  {
     
   }
   
-
+  
   onSubmit(): void {
     if (this.studentregistrationForm.valid) {
       console.log('Form Submitted!', this.studentregistrationForm.value);

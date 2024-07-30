@@ -137,7 +137,7 @@ getFiles(): Observable<any> {
 }
 
 
-
+//for broucher file
 uploadbroucher( formData1:any): Observable<HttpEvent<any>> {
   const req = new HttpRequest('POST', `${this.apiUrl}/uploadBroucher`, formData1, {
     reportProgress: true,

@@ -194,4 +194,29 @@ router.post('/uploadmarksheet', upload.single('Marksheet_Url'), (req, res, next)
   res.json({ Marksheet_Url: `/upload/${file.filename}`});
 });
 
+//Router to uplaod image 
+router.post('/upload', upload.single('image'), (req, res) => {
+  const file = req.file;
+  if (!file) {
+    return res.status(400).send('No file uplaoded.');
+  }
+
+  //Insert image metadata into the database 
+  const query = `INSERT INTO Image (imagePath, imageName) VALUES ('${file.path}', '${file.filename}')`;
+  sql.query(query, (err, result) => {
+    if (err) console.log(err);
+    else res.send('File uploaded and saved to database');
+  });
+});
+
+//Rpute to get images
+router.get('/images', (req, res) => {
+  const query = 'SELECT * FROM Image';
+  sql.query(query, (err, result) => {
+    if (err) console.log(err);
+    else res.json(result.recordset);
+  });
+});
+
+
 module.exports = router;
