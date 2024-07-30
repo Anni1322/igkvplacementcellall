@@ -85,3 +85,6 @@ sendstudentid(eid:any){
   
   
 }
+
+
+//remove student id and add company id and company name 

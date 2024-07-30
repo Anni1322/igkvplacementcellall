@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { CServiceService } from '../service/c-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 import { AdminService } from '../../admin/service/admin.service';
 import Swal from 'sweetalert2';
@@ -32,7 +32,8 @@ export class CSApplicationActionComponent implements OnInit {
     private companyds:CServiceService,
     private route: ActivatedRoute,
     private studentds: StudentService,
-    private adminService:AdminService
+    private adminService:AdminService,
+    private router: Router,
     ) {
       this.vacancyApplydata = this.fb.group({
         Student_Application_ID: [''],
@@ -131,8 +132,9 @@ this.adminService.getRowData().subscribe(data => {
             response => {
                 Swal.fire('Form submitted successfully!');
                 console.log('Form submitted successfully!', response);
-                this.vacancyApplydata.reset();
+                this.vacancyApplydata.reset();//reset the form after successfully submitted 
                 this.selectedFile = null;
+                this.router.navigate(['/company/c-dashboard']); //redirect the page after successfully submitted 
             },
             error => {
                 console.error('Error submitting form', error);

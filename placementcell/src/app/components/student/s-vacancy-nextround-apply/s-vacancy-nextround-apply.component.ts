@@ -100,9 +100,11 @@ this.studentds.getRowData().subscribe(data => {
   
   }
 }
-
-
-
-
+//redirect the page 
  
 }
+
+
+//nextround api create with the specific field to fill the form and get the data
+//after submitting the form page can redirect to the preview page 
+//see reason link not working 

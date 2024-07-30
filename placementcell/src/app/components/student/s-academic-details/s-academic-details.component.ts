@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
+
 
 @Component({
   selector: 'app-s-academic-details',
@@ -18,7 +20,7 @@ export class SAcademicDetailsComponent  implements OnInit {
   AdmissionSession: any;
   PassingYear: any;
 
-  constructor(private fb: FormBuilder , private studentds:StudentService) { }
+  constructor(private fb: FormBuilder , private studentds:StudentService, private router: Router) { }
 
   ngOnInit(): void {
     this.academicDetailsForm = this.fb.group({
@@ -55,68 +57,71 @@ export class SAcademicDetailsComponent  implements OnInit {
   
 
   // //for college name
-  // this.studentds.getCollege().subscribe(
-  //   (response) => {
-  //     //console.log('Raw response: ', response);
-  //     this.college = response;
-  //     console.log('college details:', this.college);
-  //   },
-  //   (error) => {
-  //     console.log('Error: ', error);
-  //   }
-  // );
+  this.studentds.getcollege().subscribe(
+    (response) => {
+      //console.log('Raw response: ', response);
+      this.college = response;
+      console.log('college details:', this.college);
+    },
+    (error) => {
+      console.log('Error: ', error);
+    }
+  );
 
-  // //
-  // this.studentds.getDegreeType().subscribe(
-  //   (response) => {
-  //     this.DegreeType = response;
-  //     console.log('Degree type details: ', this.DegreeType);
-  //   },
-  //   (error) => {
-  //     console.log('Error: ', error);
-  //   }
-  // );
+  //for degree type 
+  this.studentds.getDegree_type().subscribe(
+    (response) => {
+      this.DegreeType = response;
+      console.log('Degree type details: ', this.DegreeType);
+    },
+    (error) => {
+      console.log('Error: ', error);
+    }
+   );
 
-  // this.studentds.getDegreeProgram().subscribe(
-  //   (response) => {
-  //     this.DegreeProgram = response;
-  //     console.log('Degree program details: ', this.DegreeProgram);
-  //   },
-  //   (error) => {
-  //     console.log('Error: ', error);
-  //   }
-  // );
+  //for degree program id 
+  this.studentds.getDegreeProgram().subscribe(
+    (response) => {
+      this.DegreeProgram = response;
+      console.log('Degree program details: ', this.DegreeProgram);
+    },
+    (error) => {
+      console.log('Error: ', error);
+    }
+  );
 
-  // this.studentds.getSubject().subscribe(
-  //   (response) => {
-  //     this.Subject = response;
-  //     console.log('Subject details: ', this.Subject);
-  //   },
-  //   (error) => {
-  //     console.log('Error: ', error);
-  //   }
-  // );
+  //for subject id 
+  this.studentds.getSubject().subscribe(
+    (response) => {
+      this.Subject = response;
+      console.log('Subject details: ', this.Subject);
+    },
+    (error) => {
+      console.log('Error: ', error);
+    }
+  );
 
-  // this.studentds.getAdmissionyear().subscribe(
-  //   (response) => {
-  //     this.AdmissionSession = response;
-  //     console.log('Admission year details: ', this.AdmissionSession);
-  //   },
-  //   (error) => {
-  //     console.log('Error: ', error);
-  //   }
-  // );
+  //for admission year id 
+  this.studentds.getAdmissionyear().subscribe(
+    (response) => {
+      this.AdmissionSession = response;
+      console.log('Admission year details: ', this.AdmissionSession);
+    },
+    (error) => {
+      console.log('Error: ', error);
+    }
+  );
 
-  // this.studentds.getPassingOutYear().subscribe(
-  //   (response) => {
-  //     this.PassingYear = response;
-  //     console.log('Passing out year details: ', this.PassingYear);
-  //   },
-  //   (error) => {
-  //     console.log('Error: ', error);
-  //   }
-  // );
-
+  //for passing out year 
+  this.studentds.getPassingOutYear().subscribe(
+    (response) => {
+      this.PassingYear = response;
+      console.log('Passing out year details: ', this.PassingYear);
+    },
+    (error) => {
+      console.log('Error: ', error);
+    }
+  );
 
 }
 
@@ -143,6 +148,7 @@ export class SAcademicDetailsComponent  implements OnInit {
         () => {
           alert('Form submitted successfully!');
           this.academicDetailsForm.reset(); 
+          this.router.navigate(['/student/s-profile/id:']);//redirect the page after successfully submitted 
         },
         (error) => {
           console.error('Error submitting form:', error);
@@ -159,10 +165,5 @@ export class SAcademicDetailsComponent  implements OnInit {
     }
   }
 
-  
-  // onClear(): void {
-  //   this.academicDetailsForm.reset();
-  // }
 }
 
-//form submission to the academic details but the clear button is not working properly 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class SBasicDetailsEditComponent implements OnInit {
   user: any = {}; // Initialize user object here
   formData!: FormGroup; // Initialize formData object here
 
-  constructor(private ds: StudentService,private fb: FormBuilder) {}
+  constructor(private ds: StudentService,private fb: FormBuilder, private router: Router) {}
 
 
 
@@ -64,6 +65,7 @@ export class SBasicDetailsEditComponent implements OnInit {
     console.log('Form Data:', formData);
     this.ds.postBasicDetails(formData).subscribe(() => {
       alert('Form Update successfully!');
+      this.router.navigate(['/student/s-profile/id:']); //redirect the page after successfully submitted
       // form.reset(); // Reset the form after successful submission
     }, (error) => {
       console.error('Error submitting form:', error);

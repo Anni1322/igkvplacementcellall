@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CServiceService } from '../service/c-service.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { Route } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -41,7 +41,8 @@ export class CBasicDetailsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private CServices: CServiceService,
-    private companyds: CServiceService
+    private companyds: CServiceService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -319,7 +320,8 @@ uploadBroucher(){                            //multer will accept form data so w
       this.CServices.postCompanyDetails(userData).subscribe(
         () => {
           alert('Form submitted successfully!');
-          this.companyregistrationForm.reset();
+          this.companyregistrationForm.reset(); //reset the page after successfully submitted 
+          this.router.navigate(['/company/c-profile']); //redirect the page after successfully submitted 
         },
         (error) => {
           console.error('Error submitting form:', error);
@@ -335,21 +337,6 @@ uploadBroucher(){                            //multer will accept form data so w
 
     }
   }
-  
-
-
-
-
-
-  // on clear the form details
-  onClear() {
-    this.companyregistrationForm.reset();
-  }
-
- 
-
-
-
   
 
   getCompanydata(cid: any) {

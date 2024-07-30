@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class SBasicDetailsComponent implements OnInit  {
   user: any = {}; // Initialize user object here
   formData: any = {}; // Initialize formData object here
 
-  constructor(private ds: StudentService) {}
+  constructor(private ds: StudentService, private router: Router) {}
 
   ngOnInit(): void {
     // Retrieve user data from localStorage
@@ -40,6 +41,7 @@ export class SBasicDetailsComponent implements OnInit  {
     console.log('Form Data:', formData);
     this.ds.postStudentDetails(formData).subscribe(() => {
       alert('Form submitted successfully!');
+      this.router.navigate(['/student/s-profile/id:']);//redirect the page after successffully submitted 
       // form.reset(); // Reset the form after successful submission
     }, (error) => {
       console.error('Error submitting form:', error);
