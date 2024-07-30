@@ -6,7 +6,10 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
+const cors = require('cors');
 
+const app = express();
+app.use(cors());
 
 // // Configure multer for file upload
 // const upload = multer({ dest: 'uploads/' });
@@ -15,32 +18,24 @@ const bodyParser = require('body-parser');
 student_route.use(bodyParser.json());
 student_route.use(bodyParser.urlencoded({extended:true}))
 
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//         // cb(null,path.join(__dirname, '../public/images'))
-//         cb(null, '../public/images/');
-//     },
-//     filename:function (req, file, cb) {
-//         const name = Date.now()+'-'+file.originalname;
-//         cb(null,name);
-//     }
-// })
-// const upload = multer({storage:storage});
 
 //  Ensure the directory exists
-const uploadDir = path.join(__dirname, '../public/images');
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
+const uploadsDir = path.join(__dirname, '../uploads');
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
 }
+
+app.use('/uplaods', express.static(uploadsDir));
+app.use(express.static('uploads'));
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, uploadDir);
+        cb(null, uploadsDir);
     },
     filename: function (req, file, cb) {
-        const name = Date.now() + '-' + file.originalname;
-        cb(null, name);
-    }
+        cb(null,  Date.now() + path.extname(file.originalname));
+    },
+    limits: {fileSize: 10000000}
 });
 
 const upload = multer({ storage: storage });
@@ -144,30 +139,41 @@ router.get('/passingoutyear', studentController.PassingOutYear);
 // router.post('/edit/:id', studentController.postEditstudent);
 // router.get('/delete/:id', studentController.deletestudent);
 
-const dirUpload = path.join(__dirname, 'uploads');
-if (!fs.existsSync(dirUpload)) {
-  fs.mkdirSync(dirUpload, { recursive: true });
-}
 
-//fileUploads
-const Upload = multer({   
-  storage: multer.diskStorage({
-    destination: function (req, file, cb) {  
-      cb(null, "./uploads");
-    },
-    filename: function (req, file, cb) {
-      cb(null, Date.now() + path.extname(file.originalname)); 
-    }
-  }),
-  limits: { fileSize: 10000000 }  
-});
+// this api created for next round form data save
+router.post('/NextRoutdDetails',studentController.NextRoutdDetails);
 
-router.post('/uploadcertificate', Upload.single('Skill_Certificate_Url'), (req, res, next) => {
+//for Skill Certificate uplaod 
+router.post('/uploadcertificate', upload.single('Skill_Certificate_Url'), (req, res, next) => {
     const file = req.file;
     if (!file) {
-      return res.status(400).send('No file uploaded.');
+      return next("No file found");
     }
     res.json({ Skill_Certificate_Url: `/uploads/${file.filename}` });
   });
+
+//Create a GEt API endpoint to retrieve file
+router.get('/uploads/:filename', (req, res, next) => {
+  const filename = req.params.filename;
+  const filepath = path.join(uploadsDir, filename);
+
+  //Debugging: log the file path
+  console.log(`Retrieving file from: ${filepath} `);
+
+  res.sendFile(filepath, err => {
+    if(err) {
+      next(err);
+    }
+  });
+});
+
+//for makksheet upload 
+router.post('/uploadmarksheet', upload.single('Marksheet_Url'), (req, res, next) => {
+  const file = req.file;
+  if(!file) {
+    return next("No file found");
+  }
+  res.json({ Marksheet_Url: `/upload/${file.filename}`});
+});
 
 module.exports = router;

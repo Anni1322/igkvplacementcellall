@@ -164,15 +164,15 @@ export class SAplicationComponent implements OnInit  {
     );
 
     //get for registrationtype table 
-    this.studentds.getRegistrationType().subscribe(
-      (response) => {
-        this.registrationtype = response;
-        console.log(`registration type details: `, this.registrationtype);
-      },
-      (error) => {
-        console.log('Error: ', error);
-      }
-    );
+    // this.studentds.getRegistrationType().subscribe(
+    //   (response) => {
+    //     this.registrationtype = response;
+    //     console.log(`registration type details: `, this.registrationtype);
+    //   },
+    //   (error) => {
+    //     console.log('Error: ', error);
+    //   }
+    // );
     
   }
   

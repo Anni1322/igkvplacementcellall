@@ -40,9 +40,9 @@ export class AdminService {
     return this.http.post<any>(`${this.baseurl}/Student_application_List`, { Company_Id });
   }
 
+  
 
-
-  getshortlist(): Observable<StudentApplicationDetails[]> {
+  getshortlist(eid: any): Observable<StudentApplicationDetails[]> {
     return this.http.get<StudentApplicationDetails[]>(`${this.baseurl}/getshortlist`);
   }
   getReject(): Observable<StudentApplicationDetails[]> {

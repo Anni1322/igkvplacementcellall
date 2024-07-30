@@ -1,6 +1,6 @@
 import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -152,8 +152,20 @@ export class StudentService {
     return this.http.get(`${this.apiUrl}/student/passingoutyear`);
   }
 
+  // postNextRound(data: any) {
+  //   return this.http.post<any>(`${this.apiUrl}/student/nextround`, data);
+  // }
 
-  //Certificate upload 
+
+  PostNextRoutdDetails(data: any) {
+    // return this.http.post(this.studentDetail_Post_Url, data);  
+    return this.http.post<any>(`${this.apiUrl}/student/NextRoutdDetails`, data);
+  }
+  // UploadCertificates(formData: any): Observable<HttpEvent<any>> {
+  //   return this.http.post<any>(`${this.apiUrl}/uploadcertificate`, formData);
+  // }
+
+  //For Certificate upload 
   UploadCertificate(formData: any): Observable<HttpEvent<any>> {
     const req = new HttpRequest('POST', `${this.apiUrl}/uploadcertificate`, formData, {
       reportProgress: true,
@@ -162,14 +174,21 @@ export class StudentService {
     return this.http.request(req);
   }
 
-
-  rowDataSubject: any;
-
-  setRowDataNextRaoud(rowdata: any): void {
-    this.rowDataSubject.next(rowdata);
+  // For Marksheet upload 
+  UploadMarksheet(formData: any): Observable<HttpEvent<any>> {
+    const req = new HttpRequest('POST', `${this.apiUrl}/uploadcetrificate`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
   }
 
-  getRowDataNextRaoud(): Observable<any> {
-    return this.rowDataSubject.asObservable();
-  }
+  // for data pass one component to anather component 
+private rowDataSubject = new BehaviorSubject<any>(null);
+setRowData(rowdata: any): void {
+  this.rowDataSubject.next(rowdata);
+}
+getRowData(): Observable<any> {
+  return this.rowDataSubject.asObservable();
+}
 }

@@ -74,7 +74,7 @@ companyRouter.get('/block', companyController.getblock);
 
 
 
-// another api 
+// another api for file uploads 
 
 //fileUploads
 const upload = multer({   
@@ -96,7 +96,6 @@ companyRouter.post('/uploadLogo', upload.single('Company_Logo_Url'), (req, res, 
   }
   res.json({ Company_Logo_Url: `/uploads/${req.file.filename}` });
 });
-
 
 
 

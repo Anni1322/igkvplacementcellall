@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./c-s-reject.component.scss']
 })
 export class CSRejectComponent implements OnInit, AfterViewInit {
+  cid:any;
 
   displayedColumns: string[] = [
     'S.No.', 
@@ -50,7 +51,8 @@ export class CSRejectComponent implements OnInit, AfterViewInit {
     private applicationService: AdminService,
     public dialog: MatDialog,
     private excelExportService: ExcelExportService
-    ) {}
+    ) {
+    }
 
  
     
@@ -182,3 +184,6 @@ export interface StudentApplicationDetails {
   // Public_IP_Address?: string;
   // Private_IP_Address?: string;
 }
+
+//match the company id and to view only the rejected student applications
+//action perform in option unto the table 

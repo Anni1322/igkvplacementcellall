@@ -19,6 +19,8 @@ export class SSkillDetailsComponent implements OnInit {
   selectedFile: File | null = null;
   SkillFile?: File;
   SkillCertificate?: File;
+  
+
 
 
   constructor(private fb: FormBuilder,
@@ -89,13 +91,14 @@ export class SSkillDetailsComponent implements OnInit {
     Swal.fire("please select a file", "", "warning")
   }
 
+//for select file 
   selectCertificate(event: any) {
     if (event.target.files.length > 0) {
       const file1 = event.target.files[0];            //it is used to get the input file dom property
       this.SkillFile = file1
     }
   }
-
+//for upload certificate 
   uploadCertificate() {
     if (!this.SkillFile) {
       return this.nopath();
@@ -105,8 +108,8 @@ export class SSkillDetailsComponent implements OnInit {
     console.log(this.SkillFile);
 
     this.StudentService.UploadCertificate(CertificateformData).subscribe((result: any) => {
-      console.log(result.Skill_Certificate_Url); // Correct property name in the response
-      this.SkillCertificate = result.Skill_Certificate_Url; // Correct property name in the response
+      console.log(result.body.Skill_Certificate_Url); // Correct property name in the response
+      this.SkillCertificate = result.body.Skill_Certificate_Url; // Correct property name in the response
       this.skilldetailsform.patchValue({
         Skill_Certificate_Url: this.SkillCertificate,
       });
@@ -118,4 +121,5 @@ export class SSkillDetailsComponent implements OnInit {
 }
 
 
-
+//file can not show the upload folder 
+//

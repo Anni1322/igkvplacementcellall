@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-s-experience-details',
@@ -11,6 +12,7 @@ import { StudentService } from 'src/app/services/student.service';
 export class SExperienceDetailsComponent implements OnInit{
   user:any = { };
   experiencedetailsform: any;
+  marksheet: any;
 
   constructor(private fb:FormBuilder, private Stuedentservice:StudentService, private studentds:StudentService, private router: Router){ }
   ngOnInit(): void {
@@ -113,7 +115,7 @@ export class SExperienceDetailsComponent implements OnInit{
   //   }
   // }
 
-
+  
 }
 
 //pending work- after submitting the form page can redirect to the s-profile page 

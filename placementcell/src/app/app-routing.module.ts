@@ -82,6 +82,7 @@ import { TopheaderComponent } from './componets/prac/topheader/topheader.compone
 import { CSidebarComponent } from './components/company/c-layout/c-sidebar/c-sidebar.component';
 import { HomemComponent } from './homem/homem.component';
 import { NotificationComponent } from './notification/notification.component';
+import { authGuard } from './services/auth.guard';
 
 
  
@@ -92,7 +93,7 @@ const routes: Routes = [
 
   // for new sidebar 
   // {path:'', redirectTo: 'dashboard', pathMatch : 'full'},
-  {path:'dashboard', component:DashboardComponent},
+  {path:'dashboard', component:DashboardComponent , canActivate:[authGuard]},
   {path:'abody', component:AdminBodyComponent},
   
 

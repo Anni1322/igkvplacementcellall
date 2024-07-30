@@ -54,36 +54,37 @@ export class CSShortlistComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog,
     private excelExportService: ExcelExportService
     ) {
-    //   const userData = localStorage.getItem('currentUser');
-    //  // Check if user data exists
-    //  if (userData) {
-    //    this.cid = JSON.parse(userData);
-    //    console.log("cid ",this.cid.eid)
-    //    this.applicationService.getVacancyApplybyid(this.cid.eid).subscribe(data => {
-    //     this.dataSource.data = data;
-    //     // console.log("list student",this.dataSource.data);
-    //     // console.log("list student",data);
-    //   });
+      // Retrieve user data from localStorage
+     const userData = localStorage.getItem('currentUser');
+     // Check if user data exists
+     if (userData) {
+       this.cid = JSON.parse(userData);
+       console.log("cid ",this.cid.eid)
+       this.applicationService.getVacancyApplybyid(this.cid.eid).subscribe(data => {
+        this.dataSource.data = data;
+        // console.log("list student",this.dataSource.data);
+        // console.log("list student",data);
+      });
 
-    //  }
+     }
     }
 
  
     
 
     ngOnInit() {
-      this.applicationService.getshortlist().subscribe(
-        (response: any) => {
-          // Assuming response from API contains both records and selectedCount
-          this.dataSource.data = response;
-          console.log("Response:", response);
-          // console.log("Selected Count:", response.selectedCount);
-        },
-        error => {
-          console.error('Error fetching selected applications:', error);
-          // Handle error as needed
-        }
-      );
+      // this.applicationService.getshortlist().subscribe(
+      //   (response: any) => {
+      //     // Assuming response from API contains both records and selectedCount
+      //     this.dataSource.data = response;
+      //     console.log("Response:", response);
+      //     // console.log("Selected Count:", response.selectedCount);
+      //   },
+      //   error => {
+      //     console.error('Error fetching selected applications:', error);
+      //     // Handle error as needed
+      //   }
+      // );
     }
     
  
@@ -164,7 +165,6 @@ export class CSShortlistComponent implements OnInit, AfterViewInit {
 
 
 
-
   enableEditing(row: any) {
     row.editing = true;
   }
@@ -207,5 +207,6 @@ export interface StudentApplicationDetails {
   // Private_IP_Address?: string;
 }
 
-//s-shortlist apply the company id match to the table 
+//s-shortlist apply the company id match to the view only the shortlisted student applications 
 //this is show all the student application 
+

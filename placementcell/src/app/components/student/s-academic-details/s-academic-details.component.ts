@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StudentService } from 'src/app/services/student.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -19,6 +20,9 @@ export class SAcademicDetailsComponent  implements OnInit {
   Subject: any;
   AdmissionSession: any;
   PassingYear: any;
+  marksheet: any;
+  Stuedentservice: any;
+  Marksheet1!: File;
 
   constructor(private fb: FormBuilder , private studentds:StudentService, private router: Router) { }
 
@@ -164,6 +168,36 @@ export class SAcademicDetailsComponent  implements OnInit {
       );
     }
   }
+
+  nopath() {
+    Swal.fire("please select a file", "", "warning")
+  }
+
+  selectMarksheet(event: any) {
+    if (event.target.files.length > 0) {
+      const file1 = event.target.files[0];            //it is used to get the input file dom property
+      this.marksheet = file1
+    }
+  }
+
+  uploadmarksheet() {
+    if (!this.marksheet) {
+      return this.nopath();
+    }
+    const MarksheetformData = new FormData();
+    MarksheetformData.append('Marksheet_Url', this.marksheet); // Make sure the key matches what the server expects
+    console.log(this.marksheet);
+
+    this.Stuedentservice.UploadMarksheet(MarksheetformData).subscribe((result: any) => {
+      console.log(result.body.Marksheet_Url); // Correct property name in the response
+      this.Marksheet1 = result.body.Marksheet_Url; // Correct property name in the response
+      this.academicDetailsForm.patchValue({
+        Marksheet_Url: this.Marksheet1,
+      });
+      Swal.fire("Marksheet uploaded successfully");
+    });
+  }
+ 
 
 }
 

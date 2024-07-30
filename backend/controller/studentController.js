@@ -1836,7 +1836,73 @@ const getstudentdetails = async (req, res) => {
     }
 };
 
+// post api for apply Next Roud 
+const NextRoutdDetails = async (req, res) => {
+    const {
+        Vacancy_ID,
+        Company_ID,
+        Student_ID,
+        Full_Name,
+        Job_Title,
+        Fathers_Name,
+        Email,
+        Mobile,
+        Status,
+        Application_Submission_Date
+    } = req.body;
 
+    try {
+        // Connect to the database using the exported sql object
+        const pool = await sql.connect();
+        const request = pool.request(); // Create a request object from the pool
+
+        // Check if the Vacancy_ID already exists
+        const checkQuery = `
+            SELECT COUNT(*) as count 
+            FROM VacancyApplication 
+            WHERE Vacancy_ID = @Vacancy_ID AND Student_ID = @Student_ID`;
+
+        // Bind the inputs
+        request.input('Vacancy_ID', sql.NVarChar(50), Vacancy_ID);
+        request.input('Student_ID', sql.NVarChar(50), Student_ID);
+
+        const result = await request.query(checkQuery);
+        const count = result.recordset[0].count;
+
+        if (count > 0) {
+            // Vacancy_ID already exists for the given Student_ID, return a response indicating that the form is already submitted
+            return res.status(400).json({ message: 'Form already submitted for this vacancy.' });
+        }
+
+        // Insert new student application details
+        const insertQuery = `
+            INSERT INTO VacancyApplication 
+                (Vacancy_ID, Company_ID, Student_ID, Full_Name, Post_Name, Fathers_Name, Email, Mobile, Status, Application_Submission_Date)
+            VALUES 
+                (@Vacancy_ID, @Company_ID, @Student_ID, @Full_Name, @Post_Name, @Fathers_Name, @Email, @Mobile, @Status, @Application_Submission_Date)`;
+
+        // Bind the remaining values
+        request.input('Company_ID', sql.NVarChar(50), Company_ID);
+        request.input('Full_Name', sql.NVarChar(100), Full_Name);
+        request.input('Post_Name', sql.NVarChar(100), Job_Title);
+        request.input('Fathers_Name', sql.NVarChar(100), Fathers_Name);
+        request.input('Email', sql.NVarChar(100), Email);
+        request.input('Mobile', sql.NVarChar(13), Mobile);
+        request.input('Status', sql.NVarChar(20), Status);
+
+        // Convert and bind the date value
+        const formattedDate = new Date(Application_Submission_Date);
+        request.input('Application_Submission_Date', sql.Date, formattedDate);
+
+        await request.query(insertQuery);
+
+        // Respond with success message
+        res.status(200).json({ message: 'Student application details inserted successfully' });
+    } catch (err) {
+        console.error('Error inserting student application details: ', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
 
 
 // add by anil 29-05-2024
@@ -2445,6 +2511,69 @@ const getAcademicId = async (req, res) => {
 };
 
 
+// post api for apply vacancy next round 
+const nextround = async (req, res) => {
+    const {
+        Company_ID,
+        Vacancy_ID,
+        Student_ID,
+        Full_Name,
+        Fathers_Name,
+        Post_Name,
+        Mobile_Number,
+        Email,
+    } = req.body;
+
+    try {
+        const pool = await sql.connect(); // Connect to the database using the exported sql object
+
+        // Check if the Vacancy_ID already exists
+        const checkRequest = pool.request();
+        const checkQuery = `
+            SELECT COUNT(*) as count 
+            FROM tnp_vacancy_nextround_details
+            WHERE Vacancy_ID = @Vacancy_ID AND Student_ID = @Student_ID`;
+
+        checkRequest.input('Vacancy_ID', sql.Int, Vacancy_ID);
+        checkRequest.input('Student_ID', sql.NVarChar(50), Student_ID);
+
+        const result = await checkRequest.query(checkQuery);
+        const count = result.recordset[0].count;
+
+        if (count > 0) {
+            // Vacancy_ID already exists for the given Student_ID, return a response indicating that the form is already submitted
+            return res.status(400).json({ message: 'Form already submitted for this vacancy.' });
+        }
+
+        // Insert new student application details
+        const insertRequest = pool.request();
+        const insertQuery = `
+            INSERT INTO tnp_vacancy_nextround_details
+                (Company_ID, Vacancy_ID, Student_ID, Full_Name, Fathers_Name, Post_Name, Mobile_Number, Email)
+            VALUES 
+                (@Company_ID, @Vacancy_ID, @Student_ID, @Full_Name, @Fathers_Name, @Post_Name, @Mobile_Number, @Email)`;
+
+        // Bind the remaining values
+        insertRequest.input('Company_ID', sql.Int, Company_ID);
+        insertRequest.input('Vacancy_ID', sql.Int, Vacancy_ID);
+        insertRequest.input('Student_ID', sql.NVarChar(50), Student_ID);
+        insertRequest.input('Full_Name', sql.VarChar(50), Full_Name);
+        insertRequest.input('Fathers_Name', sql.VarChar(50), Fathers_Name);
+        insertRequest.input('Post_Name', sql.VarChar(50), Post_Name);
+        insertRequest.input('Mobile_Number', sql.NVarChar(50), Mobile_Number);
+        insertRequest.input('Email', sql.NVarChar(50), Email);
+
+        await insertRequest.query(insertQuery);
+
+        // Respond with success message
+        res.status(200).json({ message: 'Student application details inserted successfully' });
+    } catch (err) {
+        console.error('Error inserting student application details: ', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+
 
 
 
@@ -2523,6 +2652,7 @@ module.exports ={
     getAcademicId,
 
     College,
-    PassingOutYear
+    PassingOutYear,
+    nextround
 
 }

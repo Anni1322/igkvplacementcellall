@@ -49,7 +49,7 @@ const getVacancyApply = async (req, res) => {
 
 
 
-
+//for all students applications
 const Student_application_List = async (req, res) => {
     const { Company_Id } = req.body;
     // Company_Id = "COM04"
@@ -118,7 +118,7 @@ const getReject = async (req, res) => {
 };
 
 
-// for getReject
+// for getselected 
 const getSelected = async (req, res) => {
     try {
       const pool = await sql.connect();

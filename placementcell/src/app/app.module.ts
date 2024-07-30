@@ -24,7 +24,7 @@ import { CompanyregistrationComponentComponent } from './components/registration
 import { StudentragistrationComponentComponent } from './components/registration/studentragistration-component/studentragistration-component.component';
 import { JoblistComponent } from './components/joblist/joblist.component';
 
-import { HttpClientModule } from '@angular/common/http'; 
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'; 
 
 
 import { FormsModule } from '@angular/forms';
@@ -141,6 +141,8 @@ import { TopStudentSliderComponent } from './m-layout/top-student-slider/top-stu
 import { HeaderComponent } from './m-layout/header/header.component';
 import { MHeaderComponent } from './m-layout/m-header/m-header.component';
 import { NotificationComponent } from './notification/notification.component';
+import { httpInterceptor } from './components/interceptor/http.interceptor';
+
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -285,7 +287,6 @@ import { NotificationComponent } from './notification/notification.component';
     MatDatepickerModule,
     MatNativeDateModule,
     CommonModule,
-   // FontAwesomeModule
    
     
 
@@ -293,7 +294,9 @@ import { NotificationComponent } from './notification/notification.component';
     
     
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass:httpInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

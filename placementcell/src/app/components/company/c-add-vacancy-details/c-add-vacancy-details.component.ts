@@ -78,5 +78,3 @@ export class CAddVacancyDetailsComponent {
 
   
   }
-
- //reset and page navigation can not working s

@@ -15,6 +15,7 @@ import { CSApplicationActionComponent } from '../c-s-application-action/c-s-appl
   styleUrls: ['./c-s-selected.component.scss']
 })
 export class CSSelectedComponent implements OnInit, AfterViewInit {
+  cid:any;
 
   displayedColumns: string[] = [
     'S.No.', 
@@ -51,7 +52,10 @@ export class CSSelectedComponent implements OnInit, AfterViewInit {
     private applicationService: AdminService,
     public dialog: MatDialog,
     private excelExportService: ExcelExportService
-    ) {}
+    ) {
+      // Retrieve user data from localStorage
+     
+    }
 
  
     
@@ -183,3 +187,5 @@ export interface StudentApplicationDetails {
   // Public_IP_Address?: string;
   // Private_IP_Address?: string;
 }
+
+//match the company id and to view only selected student in the vacancy 

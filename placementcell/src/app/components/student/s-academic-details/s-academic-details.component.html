@@ -161,6 +161,13 @@
                     </mat-form-field> 
                 </div>
             </div>
+            <div class="row fileupload">
+              <div class="col" style="margin-top: 5px; margin-bottom: 5px;">
+                <div>Upload Marksheet</div>
+                <input type="file" (change)="selectMarksheet($event)" required>
+                <button class="btn btn-primary mt-2" type="button" (click)="uploadmarksheet()">Upload</button>
+              </div>
+            </div>
 
           </div>
                       
