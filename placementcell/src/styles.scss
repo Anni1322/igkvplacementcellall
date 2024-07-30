@@ -62,7 +62,7 @@ body {
   
   /* Template Custom Colors */
   :root {
-    --alt-background-color: #0e1d34;
+    --alt-background-color: #474787;
   }
   
   /* Smooth scroll */
@@ -753,19 +753,19 @@ body {
   }
   
   /*--------------------------------------------------------------
-  # Hero Section
+  # cout  Section
   --------------------------------------------------------------*/
-  .hero {
+  .cout  {
     --default-color: #ffffff;
     --background-color: var(--alt-background-color);
     --heading-color: #ffffff;
     width: 100%;
-    min-height: 50vh;
+    min-height: 20vh;
     position: relative;
-    padding: 120px 0 60px 0;
+    padding: 40px 0 30px 0;
   }
   
-  .hero .hero-bg {
+  .cout  .hero-bg {
     position: absolute;
     inset: 0;
     display: block;
@@ -775,12 +775,12 @@ body {
     z-index: 1;
   }
   
-  .hero .container {
+  .cout  .container {
     position: relative;
     z-index: 3;
   }
   
-  .hero h2 {
+  .cout  h2 {
     margin-bottom: 20px;
     padding: 0;
     font-size: 48px;
@@ -788,24 +788,24 @@ body {
   }
   
   @media (max-width: 575px) {
-    .hero h2 {
+    .cout  h2 {
       font-size: 30px;
     }
   }
   
-  .hero p {
+  .cout  p {
     font-size: 15px;
     font-weight: 400;
     margin-bottom: 40px;
   }
   
-  .hero form {
+  .cout  form {
     background: var(--default-color);
     padding: 10px;
     border-radius: 10px;
   }
   
-  .hero form .form-control {
+  .cout  form .form-control {
     padding-top: 18px;
     padding-bottom: 18px;
     padding-left: 20px;
@@ -815,28 +815,28 @@ body {
     background: none !important;
   }
   
-  .hero form .form-control:hover,
-  .hero form .form-control:focus {
+  .cout  form .form-control:hover,
+  .cout  form .form-control:focus {
     outline: none;
     box-shadow: none;
   }
   
-  .hero form .btn-primary {
+  .cout  form .btn-primary {
     color: var(--contrast-color);
     background-color: var(--accent-color);
     padding: 10px 30px;
   }
   
-  .hero form .btn-primary:hover {
+  .cout  form .btn-primary:hover {
     background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
   }
   
-  .hero .stats-item {
+  .cout  .stats-item {
     padding: 30px;
     width: 100%;
   }
   
-  .hero .stats-item span {
+  .cout  .stats-item span {
     font-size: 32px;
     display: block;
     font-weight: 700;
@@ -845,7 +845,7 @@ body {
     position: relative;
   }
   
-  .hero .stats-item span:after {
+  .cout  .stats-item span:after {
     content: "";
     position: absolute;
     display: block;
@@ -858,7 +858,7 @@ body {
     margin: auto;
   }
   
-  .hero .stats-item p {
+  .cout  .stats-item p {
     padding: 0;
     margin: 0;
     font-family: var(--heading-font);
@@ -869,7 +869,7 @@ body {
   /*--------------------------------------------------------------
   # Featured Services Section
   --------------------------------------------------------------*/
-  .featured-services .service-item {
+  .featured-topstudent .service-item {
     position: relative;
     height: 100%;
     margin-bottom: 30px;
@@ -1041,10 +1041,12 @@ body {
     }
   }
   
+
+  
   /*--------------------------------------------------------------
-  # Services Section
+  # topstudent Section
   --------------------------------------------------------------*/
-  .services .card {
+  .topstudent .card {
     background-color: var(--background-color);
     color: var(--default-color);
     border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
@@ -1053,17 +1055,23 @@ body {
     height: 100%;
   }
   
-  .services .card .card-img {
+  .topstudent .card {
     overflow: hidden;
-    margin-bottom: 15px;
-    border-radius: 0;
+    border-radius: 5;
   }
+    .card-img {
+    overflow: hidden;
+    margin: 6px;
+    border-radius: 5;
+  }
+
+
   
-  .services .card .card-img img {
+  .topstudent .card .card-img img {
     transition: 0.3s ease-in-out;
   }
   
-  .services .card h3 {
+  .topstudent .card h3 {
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 5px;
@@ -1071,23 +1079,76 @@ body {
     text-transform: uppercase;
   }
   
-  .services .card a {
+  .topstudent .card a {
     color: var(--heading-color);
     transition: 0.3;
   }
   
-  .services .card a:hover {
+  .topstudent .card a:hover {
     color: var(--accent-color);
   }
   
-  .services .card p {
+  .topstudent .card p {
     padding: 0 30px;
     margin-bottom: 30px;
     color: color-mix(in srgb, var(--default-color), transparent 40%);
     font-size: 15px;
   }
   
-  .services .card:hover .card-img img {
+  .topstudent .card:hover .card-img img {
+    transform: scale(1.1);
+  }
+  
+
+
+
+  /*--------------------------------------------------------------
+  # topcompany Section
+  --------------------------------------------------------------*/
+  .topcompany .card {
+    background-color: var(--background-color);
+    color: var(--default-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+    position: relative;
+    border-radius: 0;
+    height: 100%;
+  }
+  
+  .topcompany .card .card-img {
+    overflow: hidden;
+    margin-bottom: 15px;
+    border-radius: 0;
+  }
+  
+  .topcompany .card .card-img img {
+    transition: 0.3s ease-in-out;
+  }
+  
+  .topcompany .card h3 {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 5px;
+    padding: 10px 30px;
+    text-transform: uppercase;
+  }
+  
+  .topcompany .card a {
+    color: var(--heading-color);
+    transition: 0.3;
+  }
+  
+  .topcompany .card a:hover {
+    color: var(--accent-color);
+  }
+  
+  .topcompany .card p {
+    padding: 0 30px;
+    margin-bottom: 30px;
+    color: color-mix(in srgb, var(--default-color), transparent 40%);
+    font-size: 15px;
+  }
+  
+  .topcompany .card:hover .card-img img {
     transform: scale(1.1);
   }
   
@@ -1157,49 +1218,49 @@ body {
   }
   
   /*--------------------------------------------------------------
-  # Features Section
+  # headprofile Section
   --------------------------------------------------------------*/
-  .features .features-item {
+  .headprofile .headprofile-item {
     color: color-mix(in srgb, var(--default-color), transparent 20%);
   }
   
-  .features .features-item+.features-item {
+  .headprofile .headprofile-item+.headprofile-item {
     margin-top: 100px;
   }
   
   @media (max-width: 640px) {
-    .features .features-item+.features-item {
+    .headprofile .headprofile-item+.headprofile-item {
       margin-top: 40px;
     }
   }
   
-  .features .features-item h3 {
+  .headprofile .headprofile-item h3 {
     font-weight: 700;
     font-size: 26px;
   }
   
-  .features .features-item ul {
+  .headprofile .headprofile-item ul {
     list-style: none;
     padding: 0;
   }
   
-  .features .features-item ul li {
+  .headprofile .headprofile-item ul li {
     padding-bottom: 10px;
     display: flex;
     align-items: center;
   }
   
-  .features .features-item ul li:last-child {
+  .headprofile .headprofile-item ul li:last-child {
     padding-bottom: 0;
   }
   
-  .features .features-item ul i {
+  .headprofile .headprofile-item ul i {
     font-size: 20px;
     padding-right: 4px;
     color: var(--accent-color);
   }
   
-  .features .features-item p:last-child {
+  .headprofile .headprofile-item p:last-child {
     margin-bottom: 0;
   }
   
@@ -1580,6 +1641,8 @@ body {
     font-weight: 500;
   }
   
+
+  
   /*--------------------------------------------------------------
   # Team Section
   --------------------------------------------------------------*/
@@ -1635,6 +1698,9 @@ body {
     margin: 0 2px;
   }
   
+
+
+
   /*--------------------------------------------------------------
   # Service Details Section
   --------------------------------------------------------------*/

@@ -50,12 +50,7 @@
                                                 <input type="text" class="form-control" [(ngModel)]="vacancydata.Job_Title" id="Job_Title" name="Job_Title" ngModel>                                    
                                             </div>
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">     
-                                                <label for="Job_Description">Job Description: </label>
-                                                <textarea class="form-control" [(ngModel)]="vacancydata.Job_Description" id="Job_Description" name="Job_Description" rows="4" ngModel></textarea>
-                                            </div>
-                                        </div>
+                                     
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label for="Job_Selection">Job Selection: </label>
@@ -98,18 +93,36 @@
                                                 <input type="number" class="form-control" [(ngModel)]="vacancydata.Maximum_Age" id="Maximum_Age" name="Maximum_Age" ngModel>                                           
                                             </div>
                                         </div>
+
                                         <div class="col-lg-4">
                                             <div class="form-group">         
                                                 <label for="Preferred_Gender">Preferred Gender: </label>
                                                 <input type="text" class="form-control" [(ngModel)]="vacancydata.Preferred_Gender" id="Preferred_Gender" name="Preferred_Gender" ngModel> 
                                             </div>
+
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group">
-                                                <label for="Prefered_Language">Preferred Language: </label>
-                                                <input type="text" class="form-control" [(ngModel)]="vacancydata.Prefered_Language" id="Prefered_Language" name="Prefered_Language" ngModel> 
-                                            </div>
+                                                <label for="Preferred_Language">Preferred Language: </label>
+                                                <select [(ngModel)]="vacancydata.Preferred_Language" class="form-control" id="Preferred_Language" name="Preferred_Language">
+                                                  <option value="English">English</option>
+                                                  <option value="Hindi">Hindi</option>
+                                                  <option value="Other">Other</option>
+                                                </select>
+                                              
+                                                <div *ngIf="vacancydata.Preferred_Language === 'Other'" class="mt-2">
+                                                  <input type="text" class="form-control" [(ngModel)]="vacancydata.Other_Language" placeholder="Please specify" id="Other_Language" name="Other_Language">
+                                                </div>
+                                              </div>
+                                              
                                         </div> 
+
+                                        <div class="col-lg-4">
+                                            <div class="form-group">     
+                                                <label for="Job_Description">Job Description: </label>
+                                                <textarea class="form-control" [(ngModel)]="vacancydata.Job_Description" id="Job_Description" name="Job_Description" rows="4" ngModel></textarea>
+                                            </div>
+                                        </div>
 
                                         <button mat-button matStepperNext>Next</button>
 

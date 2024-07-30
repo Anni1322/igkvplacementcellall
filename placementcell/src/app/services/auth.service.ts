@@ -47,6 +47,14 @@ export class AuthService {
 
 
 
+
+  // for auth 
+  isAuthenticated(){
+    const userData = localStorage.getItem('currentUser');
+    console.log("profiledata"+ userData)
+    return true
+  }
+  // for auth 
  
 
   

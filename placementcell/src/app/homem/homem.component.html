@@ -2,65 +2,20 @@
 <!-- <body style="font-family:Verdana;color:#aaaaaa; margin: 6px;"> -->
 
  <!-- top nav bar -->
-<div class="container-fluid topnavbar" style="background-color: #8686e5;">
-    <div class="container p-0 rounded rounded-top-0  text-white">
-        <div class="row px-1">
-                <ul class="nav col left-link">
-                    <li class="top-li ms-2">
-                        <a class="nav-link text-white" href="https://igkv.ac.in/web/igkv.aspx"
-                            aria-label="इंदिरा गांधी कृषि विश्वविद्यालय - External Regional Language Site that opens in a new window"
-                            title="इंदिरा गांधी कृषि विश्वविद्यालय - External Regional Language Site that opens in a new window"
-                            onclick="return confirm('You are being redirected to an external website. Please note that North Baster Kanker District, State Chhattisgarh cannot be held responsible for external websites content & privacy policies.');"
-                            target="_blank" rel="noopener noreferrer">
-                            इंदिरा गांधी कृषि विश्वविद्यालय रायपुर
-                        </a>
-                    </li>
-  
-                    <!-- second link -->
-                    <li class="top-li egov-link border-start border-end">
-                        <a class="nav-link text-white" href="https://cgstate.gov.in/"
-                            aria-label="छत्तीसगढ़ शासन - External Regional Language Site that opens in a new window"
-                            title="छत्तीसगढ़ शासन - External Regional Language Site that opens in a new window"
-                            onclick="return confirm('You are being redirected to an external website. Please note that North Baster Kanker District, State Chhattisgarh cannot be held responsible for external websites content & privacy policies.');"
-                            target="_blank" rel="noopener noreferrer">
-                            Government of Chhattisgarh
-                        </a>
-                    </li>
-  
-                    <!-- For Right Side Link  -->
-              
-                    <!-- second link -->
-                </ul>
-                <ul class="nav col right-link">
-                
-                    <li class="top-li ms-auto border-start border-end">
-                        <a class="nav-link text-white" routerLink="#main">
-                            SKIP TO MAIN CONTENT
-                        </a>
-                    </li>
-                    <!-- three link -->
-                    <li class="top-li  ms-md-end border-end">
-                        <a class="nav-link text-white" href="https://igkv.ac.in/web/igkv.aspx">
-                            Site-Map
-                        </a>
-                    </li>
-                    <!-- link 4 -->
-                    <li id="translateBtn" class="top-li  ms-md-end me-0">
-                        <a class="nav-link text-white" href="#">
-                         ENG-हिं
-                        </a> 
-                    </li>
-                </ul>
-            </div>
-        </div>
-    
-    </div>
+ 
 
    <div class="bg-primary">
 
     <nav class="navbar navbar-expand-lg navbar-light " data-aos="fade-down" data-aos-duration="2000">
       <a class="navbar-brand" href="#">
-          <img src="https://igkv.ac.in/Images/img/logo_with_name2.png" alt="Logo" style="width: 13rem; height: 3rem;">
+        <div class="leader">
+          <!-- <span class="abbreviation">IGKV</span> -->
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRglLEn2q__uagAGZK1QuBzzEwN0d93n_RMOQ&s" alt="" style="width: 3rem; height: 3rem;">
+          <span class="logo">Indira Gandhi Krishi Vishwavidyalaya Raipur</span>
+       
+      </div>
+
+          <!-- <img src="https://igkv.ac.in/Images/img/logo_with_name2.png" alt="Logo" style="width: 13rem; height: 3rem;"> -->
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -101,12 +56,7 @@
 
 
 <div style="overflow:auto">
-  <div class="menu">
-    <a href="https://igkv.ac.in/recruitmenthome.aspx">Igkv Recruitmenthome</a>
-    <a href="#">Student</a>
-    <a href="#">Company</a>
-    <a href="#">Jobs</a>
-  </div>
+
 
 
 
@@ -116,73 +66,424 @@
   <div class="main">
 
       <!-- maques -->
-  <div class="notification-section mt-2" data-aos="fade-right"   data-aos-duration="2000">
-    <div class="container page-heading text-center p-0 bg-white rounded">
-      <h3 style="background-color: #1886E5"
-          class=" p-2 text-light rounded border border-end-0 border-bottom-0 border-start-0 border-5 border-dark">
-          <strong>Notification</strong>
-      </h3>
-    </div>
-    <div class="card" style="height: 150px;" >
-      <marquee class="notification_body " style="margin: 20px;" behavior="scroll" direction="up" scrollamount="3" scrolldelay="10" onmouseover="this.stop();" onmouseout="this.start();">
-        <div class="row">
-          <div class="mt-4" *ngFor="let vacancy of data">
-              <span class="card-subtitle mb-2 text-muted" hidden>VID: {{ vacancy.Vacancy_ID }} </span>
-            
-                      <span class="card-title"><img src="https://img.icons8.com/?size=100&id=mIQ6moZZHoBs&format=png&color=000000" width="20px"  height="15px" alt="" srcset="">  Last Date : {{ vacancy.Last_Date_for_apply | date }} </span>
-                      <span class="card-title">Post : {{ vacancy.Job_Title }} </span>
-                      <!-- <span class="card-title">Company : {{ vacancy.Company_Id }} </span> -->
-                      <!-- <span class="card-title">Post No : {{ vacancy.Vacancy_ID }} </span> -->
-                      <a [routerLink]="['/login']" class="card-link"> Apply Now</a> 
-                      <a [routerLink]="['/login']" class="card-link"> More</a>
-          </div>
-      </div>
-      </marquee>
-  </div>
-</div>
+
 
   <!-- maques -->
-
-    
- 
- 
-        <div  data-aos="fade-up" class="bg container text-center sec-1 border-radius rounded shadow-sm mx-auto ">
-          <div class="stats d-flex justify-content-center mt-1">
-            <div class="stat-item p-4">
-              <h1>232</h1>
-              <p>Registered Students</p>
-            </div>
-            <div class="stat-item p-4">
-              <h1>521</h1>
-              <p>Registered Companie's</p>
-            </div>
-            <div class="stat-item p-4">
-              <h1>1453</h1>
-              <p>Placed Students</p>
-            </div>
-            <div class="stat-item p-4">
-              <h1>32</h1>
-              <p>Workers</p>
-            </div>
-          </div>
-        </div>
-    
-
       <app-company-slider></app-company-slider>
 
 </div>
 
-  <!-- <div class="right" > -->
-    <!-- <h2>News</h2> -->
-    <!-- <div class="card m-2"> -->
-        <!-- <span>h</span>
-        <span>h</span>
-        <span>h</span>
-        <span>h</span> -->
-    <!-- </div> -->
-    <!-- <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p> -->
-  <!-- </div> -->
+ 
+
+
+
+
+
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section" >
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span>Notification</span>
+        <h2>Notification</h2>
+      
+
+        <div class="col-lg-12">
+          <div class="faq-container">
+            <div class="faq-item faq-active" data-aos="fade-up" data-aos-delay="200">
+              <i class="faq-icon bi bi-bell"></i>
+              <h3>Notification</h3>
+              <div class="faq-content">
+                <!-- <p>jobs available's.</p> -->
+              </div>
+            </div><!-- End Faq item-->
+        
+            <marquee class="notification_body border" behavior="scroll" direction="up" scrollamount="10" scrolldelay="15" onmouseover="this.stop();" onmouseout="this.start();" style="height: 300px; overflow: hidden;">
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="300" *ngFor="let vacancy of data">
+                <i class="faq-icon bi bi-info-circle"></i>
+                <img src="https://img.icons8.com/?size=100&id=mIQ6moZZHoBs&format=png&color=000000" width="20px" alt="" srcset="">  
+                Last Date : {{ vacancy.Last_Date_for_apply | date }} 
+                <span class="card-subtitle text-muted" hidden>VID: {{ vacancy.Vacancy_ID }} </span>
+        
+                <a [routerLink]="['/login']" class="card-link"> Apply Now</a> 
+                <!-- <a [routerLink]="['/notification']" class="card-link"> More</a> -->
+        
+                <h3>Post : {{ vacancy.Job_Title }}</h3>
+        
+                <i [routerLink]="['/notification']" class="faq-toggle bi bi-chevron-right"><a [routerLink]="['/notification']" class="card-link"> More</a></i>
+              </div><!-- End Faq item-->
+            </marquee>
+          </div>
+        </div>
+        
+ 
+
+      </div><!-- End Section Title -->
+
+    </section>
+    <!-- /Faq Section -->
+
+
+
+
 </div>
+<section>
+  <div class="notification-section mt-2 mb-2" data-aos="fade-right" data-aos-duration="2000">
+    <div class="container ">
+      <div class="row justify-content-center">
+        <div class="col-md-3">
+          <div class="stat-item p-4">
+            <h1>{{StudentCont}}</h1>
+            <p class="stat">Registered Students</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-item p-4">
+            <h1>{{ComapnyCont}}</h1>
+            <p class="stat">Registered Companies</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="stat-item p-4">
+            <h1>{{ComapnyCont}}</h1>
+            <p class="stat">Placed Students</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+ 
+
+
+
+
+<!-- top student -->
+<!-- <section>
+  <h1 class="justify-content-center">Top Student</h1>
+<marquee class="notification_body border" behavior="scroll" direction="left" scrollamount="10" scrolldelay="15" onmouseover="this.stop();" onmouseout="this.start();">
+  
+  <div class="row justify-content-center">
+    <div class="d-flex">
+    <div class="col-md-3 mb-3" *ngFor="let cmapany of top5company">
+      <div class="stat-item p-2">
+        <div class="shadow border-1 image-container">
+          <img class="fixed-size-image" [src]="baseimageur + cmapany.Company_Logo_Url  || 'https://statinfer.com/wp-content/uploads/dummy-user.png'" alt="Company Logo">
+        </div>
+        <p class="stat">{{cmapany.Company_Name || 'Unknown'}}</p>
+        <p class="stat">{{cmapany.Contact_Person || 'Unknown'}}</p>
+        <p class="stat">{{cmapany.Hr_Contact_No || 'Unknown'}}</p>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+</marquee>
+</section> -->
+<!-- top student -->
+
+
+
+
+
+<!-- top company -->
+<!-- <section>
+  <h1 class="justify-content-center">Top Company</h1>
+  <marquee class="notification_body border" behavior="scroll" direction="left" scrollamount="10" scrolldelay="15" onmouseover="this.stop();" onmouseout="this.start();">
+    
+    <div class="row justify-content-center">
+      <div class="d-flex">
+      <div class="col-md-3 mb-3" *ngFor="let student of top5Students">
+        <div class="stat-item p-2">
+          <div class="shadow border-1 image-container">
+            <img src="{{student.profileImageUrl || 'https://statinfer.com/wp-content/uploads/dummy-user.png'}}" alt="User Image" class="student-image">
+          </div>
+          <p class="name_img">{{student.Student_First_Name_E || 'Unknown'}}</p>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+  </marquee>
+  </section> -->
+<!-- top company -->
+
+
+
+
+
+
+<!-- top company -->
+<!-- <section>
+<marquee class="notification_body border" behavior="scroll" direction="left" scrollamount="10" scrolldelay="15" onmouseover="this.stop();" onmouseout="this.start();">
+  <div class="row">
+    <div class="d-flex">
+      <div class="row" *ngFor="let student of top5Students">
+        <div class="col-md-2">
+          <div class="stat-items_img p-4">
+            <div class="img-container">
+              <img src="{{student.profileImageUrl || 'https://statinfer.com/wp-content/uploads/dummy-user.png'}}" alt="User Image" class="student-image">
+            </div>
+            <p class="name_img">{{student.Student_First_Name_E || 'Unknown'}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</marquee>
+</section> -->
+<!-- top company -->
+
+
+
+
+        <!-- topstudent Section -->
+        <section id="topstudent" class="topstudent section" style="background-color: #dfe4ea;">
+
+          <!-- Section Title -->
+          <div class="container section-title" data-aos="fade-up">
+            <span>Top Student's<br></span>
+            <h2>Top Student's</h2>
+            <p>At Indira Gandhi Krishi Vishwavidyalaya (IGKV), we take immense pride in the accomplishments of our students. Here are the top 5 students who have secured prestigious placements, showcasing their exceptional talent and dedication. Congratulations to them!</p>
+          </div><!-- End Section Title -->
+
+          <div class="container">
+            <marquee class="notification_body border" behavior="scroll" direction="left" scrollamount="10" scrolldelay="15" onmouseover="this.stop();" onmouseout="this.start();">
+            <div class="row gy-2 ">
+              <div class="d-flex">
+              <div class="col-lg-2 col-md-2" data-aos="fade-up" data-aos-delay="100"  *ngFor="let student of top5Students">
+                <div class="card rounded">
+                  <div class="card-img ">
+                    <!-- <img src="assets/img/service-1.jpg" alt="" class="img-fluid"> -->
+                    <img src="{{student.profileImageUrl || 'https://statinfer.com/wp-content/uploads/dummy-user.png'}}" alt="User Image" class="img-fluid">
+                  </div>
+                  <h3>{{student.Student_First_Name_E || 'Unknown'}}</h3>
+                  <p>ohter details</p>
+                </div>
+              </div><!-- End Card Item -->
+              </div>
+            </div>
+            </marquee>
+          </div>
+        </section><hr>
+        <!-- /topstudent Section -->
+
+
+
+
+  
+
+        <!-- topcompany Section -->
+        <section id="topcompany" class="topcompany section" style="background-color: #dfe4ea;">
+
+          <!-- Section Title -->
+          <div class="container section-title" data-aos="fade-up">
+            <span>Top Compani's<br></span>
+            <h2>Top Company's</h2>
+            <p>Indira Gandhi Krishi Vishwavidyalaya (IGKV) is proud to partner with leading companies and organizations in the agricultural and allied sectors. These top companies actively participate in our placement programs, offering valuable opportunities to our graduates. Here are some of the most prestigious companies that visit IGKV for placements:</p>
+          </div><!-- End Section Title -->
+
+          <div class="container">
+            <marquee class="notification_body border" behavior="scroll" direction="left" scrollamount="10" scrolldelay="15" onmouseover="this.stop();" onmouseout="this.start();">
+            <div class="row gy-2 ">
+              <div class="d-flex">
+              <div class="col-lg-2 col-md-2" data-aos="fade-up" data-aos-delay="100"  *ngFor="let cmapany of top5company">
+                <div class="card">
+                  <div class="card-img ">
+                    <!-- <img src="assets/img/service-1.jpg" alt="" class="img-fluid"> -->
+                    <img class="fixed-size-image" [src]="baseimageur + cmapany.Company_Logo_Url  || 'https://statinfer.com/wp-content/uploads/dummy-user.png'" alt="Company Logo" class="img-fluid">
+  
+                  </div>
+                  <h3>{{cmapany.Company_Name || 'Unknown'}}</h3>
+  
+                  <!-- <p class="stat">{{cmapany.Contact_Person || 'Unknown'}}</p>
+                  <p class="stat">{{cmapany.Hr_Contact_No || 'Unknown'}}</p> -->
+                  <p>{{cmapany.Contact_Person || 'Unknown'}}</p>
+                </div>
+              </div><!-- End Card Item -->
+              </div>
+            </div>
+            </marquee>
+          </div>
+        </section>
+        <!-- /topcompany Section -->
+
+
+
+
+
+    <!-- Section -->
+    <section id="cout" class="cout section">
+
+      <img src="assets/img/world-dotted-map.png" alt="" class="hero-bg" data-aos="fade-in">
+
+      <div class="container">
+        <div class="row gy-4 d-flex justify-content-between">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+            <h4 data-aos="fade-up ">Empowering Future Leaders: IGKV’s Placement Success</h4>
+            <p data-aos="fade-up" data-aos-delay="100">At Indira Gandhi Krishi Vishwavidyalaya (IGKV), we are dedicated to shaping the future of agriculture through exceptional education and real-world opportunities. Our commitment to academic excellence and industry collaboration has attracted a diverse and talented student body, all eager to make a difference in the agricultural sector.</p>
+
+         
+
+            <div class="row gy-4" data-aos="fade-up" data-aos-delay="300">
+
+              <div class="col-lg-3 col-6">
+                <div class="stats-item text-center w-100 h-100">
+                  <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="0" class="">{{StudentCont}}</span>
+                  <p>Registered Students</p>
+                </div>
+              </div><!-- End Stats Item -->
+
+
+              <div class="col-lg-3 col-6">
+                <div class="stats-item text-center w-100 h-100">
+                  <span  class="">{{ComapnyCont}}</span>
+                  <p>Registered Companies</p>
+                </div>
+              </div><!-- End Stats Item -->
+
+              <!-- <div class="col-lg-3 col-6">
+                <div class="stats-item text-center w-100 h-100">
+                  <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="0" class="purecounter">1453</span>
+                  <p>jobs</p>
+                </div>
+              </div> -->
+              <!-- End Stats Item -->
+
+              <!-- <div class="col-lg-3 col-6">
+                <div class="stats-item text-center w-100 h-100">
+                  <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="0" class="purecounter">32</span>
+                  <p>Workers</p>
+                </div>
+              </div> -->
+              <!-- End Stats Item -->
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+            <!-- <img src="assets/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt=""> -->
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+    
+    <!-- / Section -->
+
+
+
+
+
+
+
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6 position-relative align-self-start order-lg-last order-first" data-aos="fade-up" data-aos-delay="200">
+            <img src="https://lh3.googleusercontent.com/p/AF1QipPMRyoQBovYTy4l4XOuTsQa191DrC9_enmr0g4_=s1360-w1360-h1020" class="img-fluid" alt="">
+            <!-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a> -->
+            
+          </div>
+
+          <div class="col-lg-6 content order-last  order-lg-first" data-aos="fade-up" data-aos-delay="100">
+            <h3>About Us</h3>
+            <p class="text-justify p-3 m-2">
+              Indira Gandhi Krishi Vishwavidyalaya (IGKV) is located in Raipur, the capital city of the state of Chhattisgarh in central India.
+              The university was established on January 20, 1987, and is named after the former Prime Minister of India, Indira Gandhi, in her honour.IGKV has a primary mandate to provide education, conduct research, 
+              and offer extension services in the field of agriculture and related areas.The university offers a wide range of academic programs, including undergraduate, postgraduate, and doctoral programsin various 
+              agricultural disciplines.These programs cover fields such as agronomy, horticulture, soil science, plant pathology, entomology,agricultural engineering, and more.IGKV has several affiliated and constituent colleges across Chhattisgarh. 
+              These colleges play a crucial role in delivering quality agricultural education and hands-on training to students. IGKV is actively involved in agricultural research, with a focus on improving agricultural practices and addressing regional challenges.
+              This research is aimed at increasing crop productivity, sustainability, and the overall well-being of farmers in Chhattisgarh.IGKV operates various research stations across different agro-climatic zones within the state. 
+              These stations conduct region-specific research to address the unique agricultural needs and challenges of each area. The university conducts research on a variety of crops, including cereals (such as rice and wheat), pulses (like chickpeas and lentil etc), 
+              oilseeds (such as soybeans and groundnuts etc), and fruits (including mangoes, citrus fruits, and others).This research contributes to the development of better agricultural practices for these crops in Chhattisgarh. 
+              The university provides extension services to disseminate agricultural knowledge, best practices, and technological advancements to the farming community in Chhattisgarh. These services help bridge the gap between research and practical application for farmers. 
+              Indira Gandhi Krishi Vishwavidyalaya is a crucial institution in Chhattisgarh, contributing to the development of the agricultural sector, education, and research in the state. Its work plays a vital role in improving agricultural practices and the lives of farmers in the region.
+            </p>
+        
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- /About Section -->
+
+
+
+    <!-- headprofile Section -->
+    <section id="headprofile" class="headprofile section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span>headprofile</span>
+        <h2>headprofile</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4 align-items-center headprofile-item">
+          <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
+            <img src="https://igkv.ac.in/utilities/imageSizeHandle.ashx?p=images/Chancellor/2023-BISWABHUSAN%20HARICHANDAN.jpg|201|242|50"  alt="">
+          </div>
+          <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
+            
+ 
+            <h3>Shri Biswabhusan Harichandan</h3>
+            <h3> Hon'ble Governor of CG and Chancellor</h3>
+            <p>Shri Biswabhusan Harichandan serves as the esteemed Governor of Chhattisgarh and is also the Chancellor of Indira Gandhi Krishi Vishwavidyalaya (IGKV). His leadership and commitment play a pivotal role in guiding the university toward academic excellence and fostering growth in the field of agriculture.</p>
+            <ul>
+              <li><i class="bi bi-check"></i><span>Governance and Leadership.</span></li>
+              <li><i class="bi bi-check"></i> <span>Educational Advancements.</span></li>
+              <li><i class="bi bi-check"></i> <span>Promoting Agriculture.</span></li>
+            </ul>
+          </div>
+        </div><!-- headprofile Item -->
+
+        <div class="row gy-4 align-items-center headprofile-item">
+          <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+            <img src="https://igkv.ac.in/utilities/imageSizeHandle.ashx?p=images/HVC/2022-girishchandel.jpg|300|300|50"  alt="">
+          </div>
+          <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
+            <h3>Dr. Girish Chandel</h3>
+            <h3>Vice Chancellor of Indira Gandhi Krishi Vishwavidyalaya (IGKV)</h3>
+        
+            <p class="fst-italic">
+              Dr. Girish Chandel is the esteemed Vice Chancellor of Indira Gandhi Krishi Vishwavidyalaya (IGKV). With a distinguished career in agricultural science and education, Dr. Chandel plays a crucial role in steering IGKV toward achieving excellence in research, education, and community service..
+            </p>
+            <ul>
+              <li><i class="bi bi-check"></i><span>Academic Leadership.</span></li>
+              <li><i class="bi bi-check"></i> <span>Research Development.</span></li>
+              <li><i class="bi bi-check"></i> <span>Industry Collaboration.</span></li>
+              <li><i class="bi bi-check"></i> <span>Student Empowerment.</span></li>
+            </ul>
+          </div>
+        </div><!-- headprofile Item -->
+
+     
+      
+
+      </div>
+
+    </section><!-- /headprofile Section -->
+
+    
+
+
+
 
 <app-footer></app-footer>
 

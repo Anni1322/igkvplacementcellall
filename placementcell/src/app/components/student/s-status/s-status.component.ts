@@ -25,6 +25,7 @@ export class SStatusComponent implements OnInit{
 
   constructor(
     private applyVacancy:StudentService,
+    private studentds:StudentService,
     private route:ActivatedRoute,
     public dialog: MatDialog
     ){}
@@ -43,10 +44,8 @@ sendstudentid(eid:any){
       // console.log('Raw Response:', response);
       this.vacancyApplications = response;
       console.log('student application details:', this.vacancyApplications);
-
       if (this.vacancyApplications) {
         console.log('Vacancy_ID:', this.vacancyApplications.Vacancy_ID);
-   
       } else {
         console.log('No eid  data received.');
       }
@@ -61,23 +60,19 @@ sendstudentid(eid:any){
   // for second roud
   formNext(rowdata: any): void {
     console.log("rowid", rowdata);
-    
-    // Set row data in the service
-    // this.applyVacancy.setRowDataNextRaoud(rowdata);
-  
-    //  Log the row data
-  
-    //  this.applyVacancy.getRowDataNextRaoud().subscribe(data => {
-    //   console.log("data received", data);
-    //   // You can handle the data here if needed
-    // }, error => {
-    //   console.error("Error fetching row data", error);
-    // });
-  
-    // Assuming Vacancy_ID contains the data you want to pass to the dialog
-  
+        // Set row data in the service
+        this.studentds.setRowData(rowdata);
+
+        // Log the row data
+        this.studentds.getRowData().subscribe(data => {
+         console.log("data received form ss serivce", data);
+         // You can handle the data here if needed
+       }, error => {
+         console.error("Error fetching row data", error);
+       });
     const dialogRef = this.dialog.open(SVacancyNextroundApplyComponent, {
-      width: '650px',
+      width: '490px',
+      height: '460px',
       data: { name: rowdata }
     });
   

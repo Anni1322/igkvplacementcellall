@@ -5,14 +5,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { CompanyregistrationComponentComponent } from './components/registration/companyregistration-component/companyregistration-component.component';
 import { StudentragistrationComponentComponent } from './components/registration/studentragistration-component/studentragistration-component.component';
-import { JoblistComponent } from './components/joblist/joblist.component';
+ 
 import { StudentComponent } from './components/student/student.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { StudentProfileComponent } from './components/student/student-profile/student-profile.component';
 import { StudentNotificationComponent } from './components/student/student-notification/student-notification.component';
 
-import { MyApplicationTrackingComponent } from './components/student/my-application-tracking/my-application-tracking.component';
+ 
 import { LoginpageComponent } from './practice/loginpage/loginpage.component';
 import { SidenavComponent } from './practice2/sidenav/sidenav.component';
 import { DashboardComponent } from './practice2/dashboard/dashboard.component';
@@ -75,13 +75,17 @@ import { CSSelectedComponent } from './components/company/c-s-selected/c-s-selec
 import { CSRejectComponent } from './components/company/c-s-reject/c-s-reject.component';
 import { AStudentViewComponent } from './components/admin/a-student-view/a-student-view.component';
 import { ACompanyViewComponent } from './components/admin/a-company-view/a-company-view.component';
-// import { TopheaderComponent } from './componets/prac/topheader/topheader.component';
+ 
 import { SVacancyNextroundApplyComponent } from './components/student/s-vacancy-nextround-apply/s-vacancy-nextround-apply.component';
 import { CFileuploadComponent } from './components/company/c-fileupload/c-fileupload.component';
-import { TopheaderComponent } from './componets/prac/topheader/topheader.component';
+ 
 import { CSidebarComponent } from './components/company/c-layout/c-sidebar/c-sidebar.component';
 import { HomemComponent } from './homem/homem.component';
 import { NotificationComponent } from './notification/notification.component';
+import { TopCompanySliderComponent } from './m-layout/top-company-slider/top-company-slider.component';
+import { ADashbComponent } from './components/admin/a-dashb/a-dashb.component';
+import { CFileuploadsComponent } from './components/company/c-fileuploads/c-fileuploads.component';
+import { authGuard } from './services/AuthGurd/auth.guard';
 
 
  
@@ -100,7 +104,7 @@ const routes: Routes = [
  
   {path:'', component:HomemComponent},
   {path:'home', component:HomeComponent},
-  {path:'admin', component:AdminComponent,children:[
+  {path:'admin',canActivate:[authGuard], component:AdminComponent,children:[
     {path:'company_registration', component:CompanyregistrationComponentComponent},
     {path:'a-dashboard', component:ADashboardComponent},
     {path:'s-application', component:ASApplicationComponent},
@@ -109,6 +113,7 @@ const routes: Routes = [
     {path:'a-c-vacancylist-action/:id', component:ACVacancyListActionComponent},
     {path:'a-student-view', component:AStudentViewComponent},
     {path:'a-company-view', component:ACompanyViewComponent},
+    {path:'a-dashb', component:ADashbComponent},
   ]},
  
   // {path:'student_registraion', component:StudentragistrationComponentComponent},
@@ -118,6 +123,7 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'signup', component:SignupComponent},
   {path:'notification', component:NotificationComponent},
+  {path:'top_company', component:TopCompanySliderComponent},
 
 
   {path:'addproduct', component:AddProjectComponent},
@@ -130,12 +136,11 @@ const routes: Routes = [
 
 
  {path:'captcha', component:CaptchacodeComponent},
- {path:'tophead', component:TopheaderComponent},
  
 
 // header
  
-  {path:'student', component:StudentComponent,children:[
+  {path:'student', canActivate:[authGuard],component:StudentComponent,children:[
     {path:'s-dashboard', component:SDashboardComponent},
     {path:'student_profile', component:StudentProfileComponent},
     {path:'student_notification', component:StudentNotificationComponent},
@@ -167,7 +172,7 @@ const routes: Routes = [
 
 
   // company
-  {path:'company', component:CompanyComponent,children:[
+  {path:'company',canActivate:[authGuard], component:CompanyComponent,children:[
     {path:'c-dashboard', component:CDashboardComponent},
     {path:'c-basic-details', component:CBasicDetailsComponent},
     {path:'c-Jobpost', component:CJobpostComponent},
@@ -184,6 +189,7 @@ const routes: Routes = [
     {path:'s-selected', component:CSSelectedComponent},
 
     {path:'c-uploads', component:CFileuploadComponent},
+    {path:'c-filesuploads', component:CFileuploadsComponent},
 
   
   ]},

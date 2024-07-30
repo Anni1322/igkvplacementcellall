@@ -13,4 +13,8 @@ adminRouter.get('/getshortlist',adminController.getshortlist);
 adminRouter.get('/getReject',adminController.getReject);
 adminRouter.get('/getSelected',adminController.getSelected);
 
+
+adminRouter.get('/student_list',adminController.getAllStudents);
+
+
 module.exports = adminRouter;

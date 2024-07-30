@@ -144,4 +144,27 @@ router.get('/passingoutyear', studentController.PassingOutYear);
 // router.post('/edit/:id', studentController.postEditstudent);
 // router.get('/delete/:id', studentController.deletestudent);
 
+
+
+
+
+// add by anil data on 19-07-2023
+// reason for cout total company
+router.get('/totalstudent', studentController.getAllStudents);
+// reason for cout total company
+// add by anil data on 19-07-2023
+
+
+
+// this api created for next round form data save
+router.post('/NextRoutdDetails',studentController.NextRoutdDetails);
+// this api created for next round form data save
+
+
+
+
+
+
+
+
 module.exports = router;

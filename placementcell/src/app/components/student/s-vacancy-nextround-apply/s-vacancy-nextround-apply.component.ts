@@ -19,6 +19,7 @@ export class SVacancyNextroundApplyComponent implements OnInit {
 
   Student_ID :any;
   vid:any; usereid:any;
+  rowData:any;
 
   // dataget through vacancy id 
   vacancydata:any;
@@ -51,18 +52,53 @@ export class SVacancyNextroundApplyComponent implements OnInit {
     });
 
 
+   
+
+    // get data from next roud form
+    // rowdata get 
+this.studentds.getRowData().subscribe(data => {
+  this.rowData = data;
+  console.log("Row data in AnotherComponent:", this.rowData);
+  
+// get sid from row for search unique
+  console.log("ths is application id",data.Student_ID);
+  this.vacancyApplydata.patchValue({Student_Application_ID:data.Student_Application_ID})
+  this.vacancyApplydata.patchValue({Company_ID:data.Company_ID})
+  this.vacancyApplydata.patchValue({Student_ID:data.Student_ID})
+  this.vacancyApplydata.patchValue({Vacancy_ID:data.Vacancy_ID})
+  this.vacancyApplydata.patchValue({Flag:data.Flag})
+  this.vacancyApplydata.patchValue({Application_Submission_Date:data.Application_Submission_Date})
+  this.vacancyApplydata.patchValue({Full_Name:data.Full_Name})
+  this.vacancyApplydata.patchValue({Fathers_Name:data.Fathers_Name})
+  this.vacancyApplydata.patchValue({Job_Title:data.Post_Name})
+  this.vacancyApplydata.patchValue({Mobile:data.Mobile})
+  this.vacancyApplydata.patchValue({Email:data.Email})
+  this.vacancyApplydata.patchValue({Status:data.Status})
+  // You can handle the data here if needed
+});
+    // get data from next roud form
+
+
   }
   
 
   onSubmit() {
     if (this.vacancyApplydata.valid) {
-      const formData = new FormData();
-      console.log(this.vacancyApplydata.value)
- 
-
-      console.log("this is data ",formData)     
-    }
-
+      console.log("this data come from next roud form ",this.vacancyApplydata.value);
+    
+      this.studentds.PostNextRoutdDetails(this.vacancyApplydata.value).subscribe(
+        (data)=>{
+          console.log("sucessfull",data);
+          Swal.fire("Successfully Applied ")
+        },
+        (error)=>{
+          Swal.fire("Already")
+          console.log(error)
+        }
+      );
+    
+  
+  }
 }
 
 

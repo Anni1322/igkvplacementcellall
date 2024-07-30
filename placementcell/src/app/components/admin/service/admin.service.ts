@@ -76,8 +76,8 @@ getAllCompany():Observable<any[]> {
   return this.http.get<any[]>(`${this.apiurl}/company`);
 }
 
-getAllStudents():Observable<any[]>{
-  return this.http.get<any[]>( `${this.apiurl}/student`);
+getAllStudents():Observable<StudentApplicationDetails[]>{
+  return this.http.get<StudentApplicationDetails[]>( `${this.baseurl}/student_list`);
 }
 
 }

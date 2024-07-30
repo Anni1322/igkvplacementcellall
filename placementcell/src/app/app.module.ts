@@ -22,7 +22,7 @@ import {MatCommonModule, MatNativeDateModule, MatOptionModule} from '@angular/ma
 import {MatBadgeModule} from '@angular/material/badge';
 import { CompanyregistrationComponentComponent } from './components/registration/companyregistration-component/companyregistration-component.component';
 import { StudentragistrationComponentComponent } from './components/registration/studentragistration-component/studentragistration-component.component';
-import { JoblistComponent } from './components/joblist/joblist.component';
+ 
 
 import { HttpClientModule } from '@angular/common/http'; 
 
@@ -32,8 +32,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { StudentNotificationComponent } from './components/student/student-notification/student-notification.component';
 import { StudentProfileComponent } from './components/student/student-profile/student-profile.component';
-import { MyApplicationTrackingComponent } from './components/student/my-application-tracking/my-application-tracking.component';
-
+ 
 import { StudentHeaderComponent } from './components/student/student-header/student-header.component';
 import { LoginpageComponent } from './practice/loginpage/loginpage.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -131,7 +130,7 @@ import { CSApplicationActionComponent } from './components/company/c-s-applicati
 import { ACompanyViewComponent } from './components/admin/a-company-view/a-company-view.component';
 import { AStudentViewComponent } from './components/admin/a-student-view/a-student-view.component';
 import { CFileuploadComponent } from './components/company/c-fileupload/c-fileupload.component';
-import { TopheaderComponent } from './componets/prac/topheader/topheader.component';
+
 import { SVacancyNextroundApplyComponent } from './components/student/s-vacancy-nextround-apply/s-vacancy-nextround-apply.component';
 import { CommonModule } from '@angular/common';
 import { SliderComponent } from './m-layout/slider/slider.component';
@@ -141,7 +140,12 @@ import { TopStudentSliderComponent } from './m-layout/top-student-slider/top-stu
 import { HeaderComponent } from './m-layout/header/header.component';
 import { MHeaderComponent } from './m-layout/m-header/m-header.component';
 import { NotificationComponent } from './notification/notification.component';
+import { TopCompanySliderComponent } from './m-layout/top-company-slider/top-company-slider.component';
+import { ADashbComponent } from './components/admin/a-dashb/a-dashb.component';
+import { CFileuploadsComponent } from './components/company/c-fileuploads/c-fileuploads.component';
 //import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
 
 
  
@@ -155,12 +159,11 @@ import { NotificationComponent } from './notification/notification.component';
     HomeComponent,
     CompanyregistrationComponentComponent,
     StudentragistrationComponentComponent,
-    JoblistComponent,
+ 
     LoginComponent,
     SignupComponent,
     StudentNotificationComponent,
     StudentProfileComponent,
-    MyApplicationTrackingComponent,
     StudentHeaderComponent,
     LoginpageComponent,
     BodyComponent,
@@ -228,7 +231,6 @@ import { NotificationComponent } from './notification/notification.component';
       ACompanyViewComponent,
       AStudentViewComponent,
       CFileuploadComponent,
-      TopheaderComponent,
       SVacancyNextroundApplyComponent,
       SliderComponent,
       HomemComponent,
@@ -237,6 +239,9 @@ import { NotificationComponent } from './notification/notification.component';
       HeaderComponent,
       MHeaderComponent,
       NotificationComponent,
+      TopCompanySliderComponent,
+      ADashbComponent,
+      CFileuploadsComponent,
    
      
      

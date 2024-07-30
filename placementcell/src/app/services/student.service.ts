@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -126,14 +125,22 @@ getAcademicId(eid: any){
 
 
 
+PostNextRoutdDetails(data: any) {
+  // return this.http.post(this.studentDetail_Post_Url, data);  
+  return this.http.post<any>(`${this.apiUrl}/student/NextRoutdDetails`, data);
+}
 
-rowDataSubject:any;
 
-setRowDataNextRaoud(rowdata: any): void {
+
+// for data pass one component to anather component 
+private rowDataSubject = new BehaviorSubject<any>(null);
+setRowData(rowdata: any): void {
   this.rowDataSubject.next(rowdata);
 }
-
-getRowDataNextRaoud(): Observable<any> {
+getRowData(): Observable<any> {
   return this.rowDataSubject.asObservable();
 }
+// for data pass one component to anather component 
+
+
 }
